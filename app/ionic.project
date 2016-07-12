@@ -2,6 +2,7 @@
   "name": "app",
   "app_id": "",
   "gulpStartupTasks": [
+    "jade",
     "sass",
     "watch"
   ],

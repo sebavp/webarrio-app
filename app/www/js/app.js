@@ -11,14 +11,14 @@ webarrio.run(["$ionicPlatform", function($ionicPlatform) {
 webarrio.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-  .state('home', {
-    url: '/',
-    templateUrl: 'home.html',
-    controller: 'HomeCtrl',
-    controllerAs: 'home'
-  });
+    .state('home', {
+      url: '/',
+      templateUrl: 'templates/home.html',
+      controller: 'HomeCtrl',
+      controllerAs: 'home'
+    });
 
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise('/');
 
 }])
 
