@@ -1,13 +1,4 @@
 {
-  "name": "app",
-  "app_id": "",
-  "gulpStartupTasks": [
-    "jade",
-    "sass",
-    "watch"
-  ],
-  "watchPatterns": [
-    "www/**/*",
-    "!www/lib/**/*"
-  ]
+  "name": "WeBarrio",
+  "app_id": ""
 }
