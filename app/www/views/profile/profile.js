@@ -1,5 +1,5 @@
 'Use Strict';
-angular.module('App').controller('profileController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, $log, Auth, FURL, Utils) {
+angular.module('App').controller('profileController', function ($scope, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup, $firebaseObject, $log, Auth, FURL, Utils) {
   var ref = new Firebase(FURL);
  $scope.user = angular.fromJson($localStorage.profile);
  $log.log("User:", $localStorage.email);
