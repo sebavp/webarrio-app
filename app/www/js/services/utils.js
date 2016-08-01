@@ -8,7 +8,7 @@ angular.module('App').factory('Utils', function($ionicLoading,$ionicPopup) {
   	    showBackdrop: false,
   	    maxWidth: 200,
   	    showDelay: 500,
-        template: '<p class="item-icon-left">Loading...<ion-spinner icon="lines"/></p>'
+        template: '<p class="item-icon-left">Cargando...<ion-spinner icon="lines"/></p>'
       });
     },
 

@@ -9877,6 +9877,38 @@ a.button {
   .log p {
     width: 100%; }
 
+.register {
+  color: white;
+  background: red;
+  background: url("../img/bg-orangegrad.png") center no-repeat;
+  background-size: cover; }
+  .register .logo {
+    width: 40%;
+    height: 15%;
+    margin: 30% auto 15%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; }
+  .register form.login {
+    text-align: center; }
+    .register form.login input {
+      font-family: 'work_sansbold';
+      width: 70%;
+      color: white;
+      border-bottom: 1px solid white;
+      background: transparent; }
+      .register form.login input.text {
+        margin: 1vh auto; }
+      .register form.login input.login {
+        color: #f76913;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        padding: 10px;
+        border: none;
+        background: white; }
+  .register p {
+    width: 100%; }
+
 .view {
   font-family: 'work_sansregular';
   width: 100%;
@@ -9884,6 +9916,13 @@ a.button {
 
 input {
   border-radius: 0; }
+
+.bar-header {
+  color: white;
+  background: #f76913;
+  height: 50px; }
+  .bar-header .title {
+    line-height: 50px; }
 
 a {
   font-family: 'work_sansbold';

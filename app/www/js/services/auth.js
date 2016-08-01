@@ -20,6 +20,9 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
     createProfile: function(uid, user) {
       var profile = {
 				id: uid,
+        nombre: user.name,
+        apellido: user.lastname,
+        condominio: user.condominio,
         email: user.email,
 				registered_in: Date()
       };
