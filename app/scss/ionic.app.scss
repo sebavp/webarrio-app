@@ -20,4 +20,31 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import 'scss/colors';
+@import 'scss/fonts';
+@import 'scss/logo64';
+@import 'scss/home';
+
+.view{
+  font-family: 'work_sansregular';
+  width: 100%;
+  height: 100vh;
+}
+input{
+  border-radius: 0;
+}
+a{
+  font-family: 'work_sansbold';
+  text-decoration:none;
+  &.orange{
+    color:$orange;
+  }
+  &.white{
+    color:white;
+  }
+}
+.bottom{
+  position: absolute;
+  bottom: 1vh;
+}
 

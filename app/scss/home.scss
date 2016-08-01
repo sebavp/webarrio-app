@@ -1,0 +1,37 @@
+.home{
+  color: white;
+  background: red;
+  background: url('../img/bg-home.jpg') center no-repeat;
+  background-size: cover;
+  .logo{
+    width: 40%;
+    height: 15%;
+    margin: 30% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  form.login{
+    text-align: center;
+    input{
+      font-family: 'work_sansbold';
+      width: 70%;
+      color: white;
+      border-bottom: 1px solid white;
+      background: transparent;
+      &.text{
+        margin: 1vh auto;
+      }
+      &.login{
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        padding: 10px;
+        border: none;
+        background: $orange;
+      }
+    }
+  }
+  p{
+    width: 100%;
+  }
+}
