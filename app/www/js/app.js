@@ -1,34 +1,5 @@
 'Use Strict';
-angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages'])
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-    .state('login', {
-      url: '/login',
-      templateUrl: 'views/login/login.html',
-      controller:'loginController'
-    })
-    .state('forgot', {
-      url: '/forgot',
-      templateUrl: 'views/forgot/forgot.html',
-      controller:'forgotController'
-    })
-    .state('register', {
-      url: '/register',
-      templateUrl: 'views/register/register.html',
-      controller:'registerController'
-    })
-    .state('home', {
-      url: '/home',
-      templateUrl: 'views/home/home.html',
-      controller:'homeController'
-    })
-    .state('profile', {
-      url: '/profile',
-      templateUrl: 'views/profile/profile.html',
-      controller:'profileController'
-    });
-  $urlRouterProvider.otherwise("/login");
-})
+angular.module('WeBarrio', ['ionic', 'WeBarrio.routes', 'WeBarrio.controllers', 'WeBarrio.utils','WeBarrio.auth', 'ngStorage', 'ngCordova','firebase','ngMessages'])
 
 .constant('FURL', {
     apiKey: "AIzaSyCK2M3JsJ0bCpooHJZ78bTkkA2Qix-qio0",
@@ -75,3 +46,6 @@ angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages']
     }
   });
 });
+
+
+angular.module('WeBarrio.controllers', []);

@@ -1,4 +1,5 @@
-angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, Utils) {
+angular.module('WeBarrio.auth', [])
+  .factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, Utils) {
 
 	//var ref = new Firebase(FURL);
 

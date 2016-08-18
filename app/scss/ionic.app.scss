@@ -26,6 +26,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import 'scss/login';
 @import 'scss/register';
 @import 'scss/home';
+@import 'scss/dashboard';
+
+
+p,span, div, h3{
+  font-family: 'work_sansregular';
+}
 
 .view{
   font-family: 'work_sansregular';
@@ -58,3 +64,10 @@ a{
   bottom: 1vh;
 }
 
+.force-show{
+  display: block !important;
+}
+
+.color-white{
+  color: $white;
+}

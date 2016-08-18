@@ -1,0 +1,63 @@
+.dashboard-view{
+	.hero{
+		padding-top: 5px;
+		text-align: center;
+		background-color: $orange;
+		color: $white;
+	}
+	p{
+		font-size: 25px;
+		padding: 10px;
+	}
+	.list{
+		position: relative;
+    	top: -12px;
+    	.button{
+			text-align: left;
+    		padding: 5px 20px;
+    		margin: 0;
+    	}
+	}
+}
+
+.account-view{
+	.item{
+		padding-top: 10px;
+		padding-bottom: 0;
+		&:first-child{
+			.orange{
+				color: $orange;
+			}
+		}
+	}
+
+	.left-s{
+		p{
+			color: $black;
+			font-size: 15px;
+			text-transform: uppercase;
+			font-weight: bolder;
+		}
+		small{
+			font-size: 13px; 
+		}
+	}
+
+	.right-s{
+		p{
+			text-align: right;
+			position: relative;
+			top: 10px;
+		}
+		span{
+			font-size: 22px; 
+		}
+	}
+}
+.account-footer{
+	
+	.pay-button{
+		margin: 0;
+		border: 0;
+	}
+}

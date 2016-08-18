@@ -6,12 +6,20 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var jshint = require('gulp-jshint');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  jslint: ['./www/js/**/*.js', './www/views/**/*.js']
 };
 
 gulp.task('default', ['sass']);
+
+gulp.task('lint', function() {
+  return gulp.src(paths.jslint)
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+});
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -28,6 +36,7 @@ gulp.task('sass', function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.jslint, ['lint']);
 });
 
 gulp.task('install', ['git-check'], function() {

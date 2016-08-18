@@ -1,16 +1,29 @@
-'Use Strict';
-angular.module('App').controller('forgotController', function ($scope, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+(function() {
+    'use strict';
 
-  $scope.resetpassword = function(user) {
-      if(angular.isDefined(user)){
-      Auth.resetpassword(user.email)
-        .then(function() {
-          //console.log("Password reset email sent successfully!");
-          $location.path('/login');
-        }, function(err) {
-           //console.error("Error: ", err);
-        });
-      }
-    };
-}
-);
+    angular
+        .module('WeBarrio.controllers')
+        .controller('forgotController', forgotController);
+
+    function forgotController($scope, $state, Auth) {
+        
+        console.info("forgotController init");
+
+      $scope.resetpassword = function(user) {
+          if(angular.isDefined(user)){
+          Auth.resetpassword(user.email)
+            .then(function() {
+              //console.log("Password reset email sent successfully!");
+              $stage.go('login');
+            }, function(err) {
+               //console.error("Error: ", err);
+            });
+          }
+      };
+        
+    }
+
+
+
+
+}).call(this);

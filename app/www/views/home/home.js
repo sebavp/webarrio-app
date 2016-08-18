@@ -1,14 +1,18 @@
-'Use Strict';
-angular.module('App').controller('homeController', function ($scope, $state,$cordovaOauth, $localStorage, $log, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
-  var ref = firebase.database().ref();
+(function() {
+    'use strict';
 
-  $scope.logOut = function () {
-      Auth.logout();
-      $location.path("/login");
-  }
-  
-  $scope.profile = function () {
-      $location.path("/profile");
-  }
-}
-);
+    angular
+        .module('WeBarrio.controllers')
+        .controller('homeController', homeController);
+
+    function homeController($scope, $state) {
+        
+        console.info("homeController init");
+
+        
+    }
+
+
+
+
+}).call(this);

@@ -1,10 +1,37 @@
 <ion-view view-title="Home" hide-back-button="true">
         <ion-content class="padding-top">
-          <p class="text-center" style="line-height: 100px;color:#333;">
-            contenido app
-          </p>
-          <!-- TODO Profile -->
-          <!-- <button ng-click="profile()" class="button button-outline button-assertive">Profile</button> -->
-          <button ng-click="logOut()" class="button button-full button-positive">Cerrar Sesión</button>
+        	<div class="list home-menu">
+
+  				<div class="item item-divider text-center">
+    				<span>Condominio La Reina 123</span>
+  				</div>
+
+				<div class="row">
+  					<div class="col col-100" ui-sref="tabs.dashboard">
+  						<i class="icon ion-social-usd-outline"></i>
+  						<span>Administracíon</span>
+  					</div>
+  				</div>
+
+				<div class="row">
+  					<div class="col col-50" ui-sref="tabs.chat">
+  						<i class="icon ion-chatbox"></i>
+  						<span>Mensajes</span>
+  					</div>
+  					<div class="col col-50">
+  						<i class="icon ion-ios-calendar"></i>
+  						<span>Agenda</span>
+  					</div>
+  				</div>
+
+				<div class="row">
+  					<div class="col col-100">
+  						<span>Comunidad</span>
+  						<i class="icon ion-person-stalker"></i>
+  					</div>
+  				</div>
+
+  			</div>
+  				
         </ion-content>
 </ion-view>
