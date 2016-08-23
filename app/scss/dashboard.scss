@@ -55,9 +55,58 @@
 	}
 }
 .account-footer{
-	
+
 	.pay-button{
 		margin: 0;
 		border: 0;
+	}
+}
+
+// .modal-open{
+// 	&.sidebar-modal{
+// 		.modal-wrapper{
+// 			height: 100%;
+// 			position: relative;
+// 			top: 45px;
+// 			.main-sidebar{
+// 				height: 100%;
+// 				background-color: rgba(0, 0, 0, 0.74);
+// 				.row{
+// 					height: 100%;
+// 					padding: 0;
+// 					.col{
+// 						padding: 0;
+// 						background-color: $black;
+// 						.item{
+// 							background-color: $black;
+// 							color: $white;
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+.modal-wrapper{
+	height: 100%;
+	position: relative;
+	top: 50px;
+	.main-sidebar{
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.74);
+		.row{
+			height: 100%;
+			padding: 0;
+			.col{
+				padding: 0;
+				background-color: lighten($black, 15%);
+				.item{
+					background-color: lighten($black, 15%);
+					color: $white;
+					text-align: right;
+				}
+			}
+		}
 	}
 }

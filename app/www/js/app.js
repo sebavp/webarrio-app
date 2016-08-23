@@ -1,5 +1,16 @@
 'Use Strict';
-angular.module('WeBarrio', ['ionic', 'WeBarrio.routes', 'WeBarrio.controllers', 'WeBarrio.utils','WeBarrio.auth', 'ngStorage', 'ngCordova','firebase','ngMessages'])
+angular.module('WeBarrio', [
+  'ionic',
+  'WeBarrio.routes',
+  'WeBarrio.controllers',
+  'WeBarrio.directives',
+  'WeBarrio.utils',
+  'WeBarrio.auth',
+  'ngStorage',
+  'ngCordova',
+  'firebase',
+  'ngMessages'
+  ])
 
 .constant('FURL', {
     apiKey: "AIzaSyCK2M3JsJ0bCpooHJZ78bTkkA2Qix-qio0",

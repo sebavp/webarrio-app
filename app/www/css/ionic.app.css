@@ -9986,6 +9986,24 @@ a.button {
   margin: 0;
   border: 0; }
 
+.modal-wrapper {
+  height: 100%;
+  position: relative;
+  top: 50px; }
+  .modal-wrapper .main-sidebar {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.74); }
+    .modal-wrapper .main-sidebar .row {
+      height: 100%;
+      padding: 0; }
+      .modal-wrapper .main-sidebar .row .col {
+        padding: 0;
+        background-color: #262626; }
+        .modal-wrapper .main-sidebar .row .col .item {
+          background-color: #262626;
+          color: #FFF;
+          text-align: right; }
+
 p, span, div, h3 {
   font-family: 'work_sansregular'; }
 
