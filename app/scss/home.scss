@@ -1,8 +1,50 @@
+$admin-h: 50px;
 .home-menu{
-	.col{
-		padding: 30px;
-		text-align: center;
-		border: 1px solid $black;
-		font-size: 17px;
-	}
+  .border-bottom{
+    border-bottom: 1px solid $orange;
+    padding-bottom:0;
+  }
+  .col{
+    font-size: 17px;
+    padding: 30px;
+    text-align: center;
+    color: $text;
+    // border: 1px solid $black;
+  }
+  .condominio{
+    font-size: 12px;
+    font-weight: 700;
+    color: $text-grey;
+    background: $grey;
+  }
+  .admin, .comunidad{
+    img{
+      float: left;
+      width: $admin-h;
+      height: $admin-h;
+      margin-right: 5%;
+      margin-left: 15%;
+    }
+    span{
+      line-height: $admin-h;
+      float: left;
+    }
+  }
+  .col-50.message, .col-50.agenda{
+    float: left;
+    margin-top: 5px;
+    text-align: center;
+    img{
+      width: $admin-h;
+      height: $admin-h;
+    }
+    span{
+      width:100%;
+      float: left;
+      margin-top: 10px;
+    }
+  }
+  .col-50.message{
+    border-right: 1px solid $orange;
+  }
 }

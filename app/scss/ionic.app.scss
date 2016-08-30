@@ -16,20 +16,24 @@ $dark:                            #444 !default;
 */
 
 // The path for our ionicons font files, relative to the built CSS in www/css
-$ionicons-font-path: "../lib/ionic/fonts" !default;
+$ionicons-font-path: '../lib/ionic/fonts' !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import 'www/lib/ionic/scss/ionic';
 @import 'scss/colors';
 @import 'scss/fonts';
 @import 'scss/logo64';
 @import 'scss/login';
 @import 'scss/register';
 @import 'scss/home';
+@import 'scss/sidebar';
 @import 'scss/dashboard';
+@import 'scss/tabicons';
 
-
-p,span, div, h3{
+p,
+span,
+div,
+h3{
   font-family: 'work_sansregular';
 }
 
@@ -41,22 +45,26 @@ p,span, div, h3{
 input{
   border-radius: 0;
 }
+.padding-top,
+.padding-vertical{
+  padding-top: 7px;
+}
 .bar-header{
-  color:white;
-  background: $orange;
   height: 50px;
+  color: white;
+  background: $orange;
   .title{
     line-height: 50px;
   }
 }
 a{
   font-family: 'work_sansbold';
-  text-decoration:none;
+  text-decoration: none;
   &.orange{
-    color:$orange;
+    color: $orange;
   }
   &.white{
-    color:white;
+    color: white;
   }
 }
 .bottom{
@@ -70,4 +78,9 @@ a{
 
 .color-white{
   color: $white;
+}
+img.user{
+  width: 20px;
+  height: 20px;
+  margin-top: 8px;
 }

@@ -9935,17 +9935,56 @@ a.button {
   .register p {
     width: 100%; }
 
+.home-menu .border-bottom {
+  border-bottom: 1px solid #f76913;
+  padding-bottom: 0; }
+
 .home-menu .col {
+  font-size: 17px;
   padding: 30px;
   text-align: center;
-  border: 1px solid #000;
-  font-size: 17px; }
+  color: #484848; }
+
+.home-menu .condominio {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a4a4;
+  background: #e9efef; }
+
+.home-menu .admin img, .home-menu .comunidad img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-right: 5%;
+  margin-left: 15%; }
+
+.home-menu .admin span, .home-menu .comunidad span {
+  line-height: 50px;
+  float: left; }
+
+.home-menu .col-50.message, .home-menu .col-50.agenda {
+  float: left;
+  margin-top: 5px;
+  text-align: center; }
+  .home-menu .col-50.message img, .home-menu .col-50.agenda img {
+    width: 50px;
+    height: 50px; }
+  .home-menu .col-50.message span, .home-menu .col-50.agenda span {
+    width: 100%;
+    float: left;
+    margin-top: 10px; }
+
+.home-menu .col-50.message {
+  border-right: 1px solid #f76913; }
+
+.main-sidebar .item {
+  border-left: none; }
 
 .dashboard-view .hero {
   padding-top: 5px;
   text-align: center;
   background-color: #f76913;
-  color: #FFF; }
+  color: #fff; }
 
 .dashboard-view p {
   font-size: 25px;
@@ -10001,10 +10040,58 @@ a.button {
         background-color: #262626; }
         .modal-wrapper .main-sidebar .row .col .item {
           background-color: #262626;
-          color: #FFF;
+          color: #fff;
           text-align: right; }
 
-p, span, div, h3 {
+.tabs-stable > .tabs,
+.tabs.tabs-stable {
+  border: none !important;
+  background-color: #e9efef;
+  background-image: none !important; }
+  .tabs-stable > .tabs i.ion-home,
+  .tabs.tabs-stable i.ion-home {
+    width: 30px;
+    height: 40px;
+    padding: 6px 4px 2px;
+    content: url(../img/icons/home.svg);
+    opacity: .9; }
+  .tabs-stable > .tabs i.ion-dash,
+  .tabs.tabs-stable i.ion-dash {
+    width: 30px;
+    height: 32px;
+    margin-top: 6px;
+    padding: 4px 4px;
+    content: url(../img/icons/dashboard.svg);
+    opacity: .9; }
+  .tabs-stable > .tabs i.ion-chat,
+  .tabs.tabs-stable i.ion-chat {
+    width: 30px;
+    height: 40px;
+    padding: 6px 4px 2px;
+    content: url(../img/icons/chat.svg);
+    opacity: .9; }
+  .tabs-stable > .tabs i.ion-bell,
+  .tabs.tabs-stable i.ion-bell {
+    width: 30px;
+    height: 40px;
+    padding: 6px 4px 2px;
+    content: url(../img/icons/bell.svg);
+    opacity: .9; }
+  .tabs-stable > .tabs i.ion-sos,
+  .tabs.tabs-stable i.ion-sos {
+    width: 30px;
+    height: 40px;
+    padding: 6px 4px 2px;
+    content: url(../img/icons/sos.svg);
+    opacity: .9; }
+  .tabs-stable > .tabs .sos,
+  .tabs.tabs-stable .sos {
+    background-color: #ed1c24; }
+
+p,
+span,
+div,
+h3 {
   font-family: 'work_sansregular'; }
 
 .view {
@@ -10015,10 +10102,14 @@ p, span, div, h3 {
 input {
   border-radius: 0; }
 
+.padding-top,
+.padding-vertical {
+  padding-top: 7px; }
+
 .bar-header {
+  height: 50px;
   color: white;
-  background: #f76913;
-  height: 50px; }
+  background: #f76913; }
   .bar-header .title {
     line-height: 50px; }
 
@@ -10038,4 +10129,9 @@ a {
   display: block !important; }
 
 .color-white {
-  color: #FFF; }
+  color: #fff; }
+
+img.user {
+  width: 20px;
+  height: 20px;
+  margin-top: 8px; }

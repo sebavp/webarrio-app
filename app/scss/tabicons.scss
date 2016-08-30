@@ -1,0 +1,45 @@
+.tabs-stable > .tabs,
+.tabs.tabs-stable{
+  border: none!important;
+  background-color: $grey;
+  background-image: none!important;
+  i.ion-home{
+    width: 30px;
+    height: 40px;
+    padding: 6px 4px 2px;
+    content: url(../img/icons/home.svg);
+    opacity: .9;
+  }
+  i.ion-dash{
+    width: 30px;
+    height: 32px;
+    margin-top: 6px;
+    padding: 4px 4px;
+    content: url(../img/icons/dashboard.svg);
+    opacity: .9;
+  }
+  i.ion-chat{
+    width: 30px;
+    height: 40px;
+    padding: 6px 4px 2px;
+    content: url(../img/icons/chat.svg);
+    opacity: .9;
+  }
+  i.ion-bell{
+    width: 30px;
+    height: 40px;
+    padding: 6px 4px 2px;
+    content: url(../img/icons/bell.svg);
+    opacity: .9;
+  }
+  i.ion-sos{
+    width: 30px;
+    height: 40px;
+    padding: 6px 4px 2px;
+    content: url(../img/icons/sos.svg);
+    opacity: .9;
+  }
+  .sos{
+    background-color: $alert;
+  }
+}
