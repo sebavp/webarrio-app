@@ -7,12 +7,12 @@
         <ion-content class="padding-top">
         	<div class="list home-menu">
 
-  				<div class="item item-divider text-center condominio">
-    				<span>Condominio La Reina 123</span>
+  				<div class="item item-divider text-center condominio" ng-repeat='condo in home.condos'>
+    				<span>{{condo.name}}</span>
   				</div>
 
   				<div class="item item-divider text-center condominio">
-    				<span>Depto 602</span>
+    				<span>Dpto.</span>
   				</div>
 
 				<div class="row admin border-bottom">

@@ -23,7 +23,7 @@ angular.module('WeBarrio.directives', [])
 				// 	//scope.onSelectOption(option, scope.optionType);
 				// };
 				return element.bind('click', function() {
-					console.log(modal.isShown())
+					console.log(modal.isShown());
 					if (modal.isShown()) {
 						modal.hide();	
 					} else{
@@ -35,4 +35,4 @@ angular.module('WeBarrio.directives', [])
 			}
 		};
 	}
-])
+]);

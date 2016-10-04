@@ -6,6 +6,8 @@ angular.module('WeBarrio', [
   'WeBarrio.directives',
   'WeBarrio.utils',
   'WeBarrio.auth',
+  'WeBarrio.services',
+  'WeBarrio.config',
   'ngStorage',
   'ngCordova',
   'firebase',
