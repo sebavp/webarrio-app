@@ -1,8 +1,11 @@
 $admin-h: 50px;
 .home-menu{
+  .item-divider{
+    margin: 0;
+  }
   .border-bottom{
+    padding-bottom: 0;
     border-bottom: 1px solid $orange;
-    padding-bottom:0;
   }
   .col{
     font-size: 17px;
@@ -17,7 +20,8 @@ $admin-h: 50px;
     color: $text-grey;
     background: $grey;
   }
-  .admin, .comunidad{
+  .admin,
+  .comunidad{
     img{
       float: left;
       width: $admin-h;
@@ -30,7 +34,8 @@ $admin-h: 50px;
       float: left;
     }
   }
-  .col-50.message, .col-50.agenda{
+  .col-50.message,
+  .col-50.agenda{
     float: left;
     margin-top: 5px;
     text-align: center;
@@ -39,8 +44,8 @@ $admin-h: 50px;
       height: $admin-h;
     }
     span{
-      width:100%;
       float: left;
+      width: 100%;
       margin-top: 10px;
     }
   }
