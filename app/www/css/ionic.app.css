@@ -9935,55 +9935,57 @@ a.button {
   .register p {
     width: 100%; }
 
-.home-menu .item-divider {
-  margin: 0; }
-
-.home-menu .border-bottom {
-  padding-bottom: 0;
-  border-bottom: 1px solid #f76913; }
-
-.home-menu .col {
-  font-size: 17px;
-  padding: 30px;
-  text-align: center;
-  color: #484848; }
-
-.home-menu .condominio {
-  font-size: 12px;
-  font-weight: 700;
-  color: #94a4a4;
-  background: #e9efef; }
-
-.home-menu .admin img,
-.home-menu .comunidad img {
-  float: left;
-  width: 50px;
-  height: 50px;
-  margin-right: 5%;
-  margin-left: 15%; }
-
-.home-menu .admin span,
-.home-menu .comunidad span {
-  line-height: 50px;
-  float: left; }
-
-.home-menu .col-50.message,
-.home-menu .col-50.agenda {
-  float: left;
-  margin-top: 5px;
-  text-align: center; }
-  .home-menu .col-50.message img,
-  .home-menu .col-50.agenda img {
-    width: 50px;
-    height: 50px; }
-  .home-menu .col-50.message span,
-  .home-menu .col-50.agenda span {
+.home-menu {
+  padding-top: 0px; }
+  .home-menu .slider-pager {
+    z-index: 9;
+    bottom: 4px; }
+  .home-menu .item-divider {
+    margin: 0; }
+  .home-menu .border-bottom {
+    padding-bottom: 0;
+    border-bottom: 1px solid #f76913; }
+  .home-menu .col {
+    font-size: 17px;
+    padding: 30px;
+    text-align: center;
+    color: #484848; }
+  .home-menu .condominio {
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a4a4;
+    background: #e9efef; }
+    .home-menu .condominio.moreinfo {
+      height: 50px; }
+  .home-menu .slider-pager .slider-pager-page {
+    color: #f76913; }
+  .home-menu .admin img,
+  .home-menu .comunidad img {
     float: left;
-    width: 100%;
-    margin-top: 10px; }
-
-.home-menu .col-50.message {
-  border-right: 1px solid #f76913; }
+    width: 50px;
+    height: 50px;
+    margin-right: 5%;
+    margin-left: 15%; }
+  .home-menu .admin span,
+  .home-menu .comunidad span {
+    line-height: 50px;
+    float: left; }
+  .home-menu .col-50.message,
+  .home-menu .col-50.agenda {
+    float: left;
+    margin-top: 5px;
+    text-align: center; }
+    .home-menu .col-50.message img,
+    .home-menu .col-50.agenda img {
+      width: 50px;
+      height: 50px; }
+    .home-menu .col-50.message span,
+    .home-menu .col-50.agenda span {
+      float: left;
+      width: 100%;
+      margin-top: 10px; }
+  .home-menu .col-50.message {
+    border-right: 1px solid #f76913; }
 
 .main-sidebar .item {
   border-left: none; }

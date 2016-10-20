@@ -1,5 +1,10 @@
 $admin-h: 50px;
 .home-menu{
+  padding-top: 0px;
+  .slider-pager{
+    z-index: 9;
+    bottom: 4px;
+  }
   .item-divider{
     margin: 0;
   }
@@ -19,6 +24,12 @@ $admin-h: 50px;
     font-weight: 700;
     color: $text-grey;
     background: $grey;
+    &.moreinfo{
+      height: 50px;
+    }
+  }
+  .slider-pager .slider-pager-page{
+    color: $orange;
   }
   .admin,
   .comunidad{

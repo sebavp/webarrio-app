@@ -5,7 +5,7 @@ angular.module('WeBarrio.services', [])
         deferred = $q.defer();
         $http({
           method: 'GET',
-          url: CONFIG.apiURL
+          url: CONFIG.apiURL + 'users/1' //to-do: {userid}
         }).then(function(userData) {
           deferred.resolve(userData);
         });
