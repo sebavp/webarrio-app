@@ -1,43 +1,46 @@
-<ion-view view-title="Home" hide-back-button="true">
-  <ion-nav-buttons side="right">
-    <button class="button-clear force-show" main-sidebar>
-      <img class="user" src="img/icons/user.svg" />
+<ion-view view-title='Home' hide-back-button='true'>
+  <ion-nav-buttons side='right'>
+    <button class='button-clear force-show' main-sidebar>
+      <img class='user' src='img/icons/user.svg' />
     </button>
   </ion-nav-buttons>
-  <ion-content class="padding-top">
-    <div class="list home-menu">
-      <div class="item item-divider text-center condominio" ng-if="!home.condos">
-        <ion-spinner icon="dots"></ion-spinner>
+  <ion-content class='padding-top'>
+    <div class='list home-menu'>
+      <div class='item item-divider text-center condominio', ng-if='!home.condos'>
+        <ion-spinner icon='dots'></ion-spinner>
       </div>
-      <ion-slide-box on-slide-changed="slideHasChanged($index)">
-        <ion-slide class="item item-divider text-center condominio" ng-repeat="condo in home.condos">
+      <ion-slide-box on-slide-changed='slideHasChanged($index)'>
+        <ion-slide class='item item-divider text-center condominio' ng-class='{"moreinfo":home.condos.length>0}', ng-repeat='condo in home.condos'>
           <span>{{condo.name}}</span>
         </ion-slide>
+        <div class='item item-divider text-center condominio' ng-if="home.condos.length == 0">
+          <span>No estas asociado a ningun condominio</span>
+        </div>
       </ion-slide-box>
-      <div class="item item-divider text-center condominio">
-        <span ng-repeat="depto in currentDepto">Dpto. {{depto.number}}</span>
+      <div class='item item-divider text-center condominio'>
+        <span ng-repeat='depto in currentDepto'>Dpto. {{depto.number}}</span>
       </div>
-      <div class="row admin border-bottom">
-        <div class="col col-100" ui-sref="tabs.dashboard">
-          <img src="img/icons/money.svg" />
+      <div class='row admin border-bottom'>
+        <div class='col col-100' ui-sref='tabs.dashboard'>
+          <img src='img/icons/money.svg' />
           <span>Administracíon</span>
         </div>
       </div>
 
-      <div class="row border-bottom">
-        <div class="col col-50 message" ui-sref="tabs.chat">
-          <img src="img/icons/message.svg" />
+      <div class='row border-bottom'>
+        <div class='col col-50 message' ui-sref='tabs.chat'>
+          <img src='img/icons/message.svg' />
           <span>Mensajes</span>
         </div>
-        <div class="col col-50 agenda">
-          <img src="img/icons/agenda.svg" />
+        <div class='col col-50 agenda'>
+          <img src='img/icons/agenda.svg' />
           <span>Agenda</span>
         </div>
       </div>
 
-      <div class="row comunidad">
-        <div class="col col-100">
-          <img src="img/icons/comunidad.svg" />
+      <div class='row comunidad'>
+        <div class='col col-100'>
+          <img src='img/icons/comunidad.svg' />
           <span>Comunidad</span>
         </div>
       </div>
