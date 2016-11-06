@@ -10,7 +10,7 @@
         <ion-spinner icon='dots'></ion-spinner>
       </div>
       <ion-slide-box on-slide-changed='slideHasChanged($index)'>
-        <ion-slide class='item item-divider text-center condominio' ng-class='{"moreinfo":home.condos.length>0}', ng-repeat='condo in home.condos'>
+        <ion-slide class='item item-divider text-center condominio' ng-class='{"moreinfo":home.condos.length>1}', ng-repeat='condo in home.condos'>
           <span>{{condo.name}}</span>
         </ion-slide>
         <div class='item item-divider text-center condominio' ng-if="home.condos.length == 0">

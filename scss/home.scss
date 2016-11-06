@@ -24,8 +24,10 @@ $admin-h: 50px;
     font-weight: 700;
     color: $text-grey;
     background: $grey;
+    z-index: 99;
     &.moreinfo{
       height: 50px;
+      z-index: 0;
     }
   }
   .slider-pager .slider-pager-page{
