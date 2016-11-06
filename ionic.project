@@ -12,7 +12,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "https://webarrio-api.herokuapp.com/api"
+      "proxyUrl": "http://admin.webarrio.cl/api"
     }
   ]
 }
