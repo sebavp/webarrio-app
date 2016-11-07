@@ -1,12 +1,13 @@
 <ion-view view-title="Administración">
+
     <ion-nav-buttons side="left">
       <button class="button-clear force-show" ng-click="goBack()">
         <i class="color-white ion-chevron-left"></i>
       </button>
     </ion-nav-buttons>
-    <ion-nav-buttons side="right">
-      <button class="button-clear force-show" main-sidebar>
-        <i class="color-white ion-person"></i>
+    <ion-nav-buttons side='right'>
+      <button class='button-clear force-show' main-sidebar>
+        <img class='user' src='img/icons/user.svg' />
       </button>
     </ion-nav-buttons>
 <!--     <ion-nav-bar>
@@ -17,9 +18,9 @@
         <ion-content class="dashboard-view">
         	<div class="hero">
         		<small>A PAGAR</small>
-        		<p>54000</p>
-        		<small>PRÓXIMO VENCIMIENTO</small>
-        		<p>13 FEB 2016</p>
+        		<p>${{commonExpenses[0].total}}</p>
+        		<small>Correspondiente a</small>
+        		<p>{{commonExpenses[0].month}}</p>
         	</div>
         	<div class="list">
 				<div class="item button button-full icon-right ion-ios-arrow-right" ui-sref="dashboard-account">

@@ -1,21 +1,18 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('WeBarrio.controllers')
-        .controller('dashboardController', dashboardController);
+  angular
+    .module('WeBarrio.controllers')
+    .controller('dashboardController', dashboardController);
 
-    function dashboardController($scope, $state, $ionicHistory) {
-        
-        console.info("dashboardController init");
-
-        $scope.goBack = function (){
-            $state.go("tabs.home");
-        };
-        
-    }
-
-
-
+  function dashboardController($rootScope, $scope, $state, $ionicHistory, dataAPIService) {
+    dataAPIService.getCommonExpenses($rootScope.currentDepto[0].id).then(function(resp){
+      $rootScope.commonExpenses = resp.data.common_expenses;
+      console.log($rootScope.commonExpenses);
+    })
+    $scope.goBack = function (){
+      $state.go("tabs.home");
+    };
+  }
 
 }).call(this);
