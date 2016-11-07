@@ -1,5 +1,17 @@
 <ion-view view-title="Mensajes" hide-back-button="true">
         <ion-content class="padding-top">
-        	<h3 class="text-center">Mensajes</h3>
+        	<div class="list">
+        		<div class="item">
+        			<p class="text-center">
+        				No tienes mensajes
+        			</p>
+        		</div>
+        	</div>
         </ion-content>
+	  <ion-footer-bar class="chat-footer">
+	    <button class="button button-full" ui-sref="new_message">
+	      Nuevo Mensaje
+	      <i class="icon ion-android-chat"></i>
+	    </button>
+	  </ion-footer-bar>
 </ion-view>

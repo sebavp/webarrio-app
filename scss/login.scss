@@ -6,12 +6,15 @@
   .logo{
     width: 40%;
     height: 15%;
-    margin: 30% auto;
+    margin: 100px auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
   }
   form.login{
+    width: 400px;
+    display: block;
+    margin: auto;
     text-align: center;
     input{
       font-family: 'work_sansbold';

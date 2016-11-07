@@ -9880,11 +9880,14 @@ a.button {
   .log .logo {
     width: 40%;
     height: 15%;
-    margin: 30% auto;
+    margin: 100px auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain; }
   .log form.login {
+    width: 400px;
+    display: block;
+    margin: auto;
     text-align: center; }
     .log form.login input {
       font-family: 'work_sansbold';
@@ -9991,6 +9994,18 @@ a.button {
 
 .main-sidebar .item {
   border-left: none; }
+
+.chat-footer {
+  border: 1px solid #f76913; }
+  .chat-footer .button {
+    margin: 0;
+    background-color: transparent;
+    font-size: 17px;
+    color: #f76913;
+    font-family: 'work_sansregular'; }
+    .chat-footer .button.activated {
+      border: 0px;
+      opacity: 0.7; }
 
 .dashboard-view .hero {
   padding-top: 5px;

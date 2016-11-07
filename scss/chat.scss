@@ -1,0 +1,14 @@
+.chat-footer{
+	border: 1px solid $orange;
+	.button{
+		margin: 0;
+		background-color: transparent;
+		font-size: 17px;
+		color: $orange;
+    	font-family: 'work_sansregular';
+    	&.activated{
+    		border: 0px;
+    		opacity: 0.7;
+    	}
+	}
+}

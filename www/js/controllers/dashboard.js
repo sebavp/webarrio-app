@@ -5,11 +5,14 @@
     .module('WeBarrio.controllers')
     .controller('dashboardController', dashboardController);
 
-  function dashboardController($rootScope, $scope, $state, $ionicHistory, dataAPIService) {
-    dataAPIService.getCommonExpenses($rootScope.currentDepto[0].id).then(function(resp){
-      $rootScope.commonExpenses = resp.data.common_expenses;
-      console.log($rootScope.commonExpenses);
-    })
+  function dashboardController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage) {
+    var currentDepto =  $localStorage.currentDepto;
+    console.log(currentDepto)
+    if (currentDepto) {
+      dataAPIService.getCommonExpenses(currentDepto[0].id).then(function(resp){
+        $scope.commonExpenses = resp.data.common_expenses;
+      })
+    };
     $scope.goBack = function (){
       $state.go("tabs.home");
     };

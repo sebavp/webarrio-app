@@ -17,20 +17,22 @@ angular.module('WeBarrio.services.auth', [])
         return $http(req)
     },
 
-   //  logout: function() {
-   //    auth.$signOut();
-			// console.log("Usuario Sale.");
-   //  },
+    logout: function() {
+			console.log("Usuario Sale.");
+    },
 
-		// resetpassword: function(email) {
-		// 	return auth.$sendPasswordResetEmail(
-		// 		  email
-		// 		).then(function() {
-		// 			Utils.alertshow("Exito.","La clave fue enviada a su correo.");
-		// 		}).catch(function(error) {
-		// 			Utils.errMessage(error);
-		// 		});
-  //   },
+		resetpassword: function(user) {
+        var req = {
+          method: 'POST',
+          url: CONFIG.apiURL + "/users/reset",
+          data: {
+            user: {
+              email: user.email,
+            }
+          },
+        };
+        return $http(req)
+    },
 
 		// changePassword: function(user) {
 		// 	return auth.$changePassword({email: user.email, oldPassword: user.oldPass, newPassword: user.newPass});

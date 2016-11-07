@@ -1,0 +1,27 @@
+<ion-view view-title="Nuevo Mensaje" hide-back-button="true">
+  <ion-nav-bar>
+    <ion-nav-back-button class="button-clear force-show" ng-click="goBack()">
+      <i class="color-white ion-chevron-left"></i>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+        <ion-content class="padding-top">
+		<div class="list">
+		    <div class='item item-divider text-center condominio'>
+          		<span>{{currentCondominio.name}}</span>
+        	</div>
+
+		    <a class="item item-avatar" >
+		      <img src="/img/person-men.png">
+		      <h2>Juan</h2>
+		      <p>Torre B, Depto 1103</p>
+		    </a>
+
+		    <a class="item item-avatar" >
+		      <img src="/img/person-girl.png">
+		      <h2>Juana</h2>
+		      <p>Torre A, Depto 210</p>
+		    </a>
+
+		</div>
+        </ion-content>
+</ion-view>

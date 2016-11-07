@@ -15,6 +15,8 @@
       $rootScope.home.condos = currentUser.condos;
       if ($rootScope.home.condos && $rootScope.home.condos.length > 0) {
         $rootScope.currentDepto = $rootScope.home.condos[0].departments;
+        $localStorage.currentCondo = $rootScope.home.condos[0];
+        $localStorage.currentDepto = $rootScope.currentDepto;
         // console.log($rootScope.currentDepto);
       } else {
         $rootScope.home.condos = [];
@@ -24,6 +26,8 @@
       // }); 
       $rootScope.slideHasChanged = function($index){
         $rootScope.currentDepto = $rootScope.home.condos[$index].departments;
+        $localStorage.currentDepto = $rootScope.home.condos[$index].departments;
+        $localStorage.currentCondo = $rootScope.home.condos[$index];
       };
     }
 

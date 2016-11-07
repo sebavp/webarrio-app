@@ -1,6 +1,6 @@
 angular.module('WeBarrio.directives', [])
 .directive("mainSidebar", [
-	"$ionicModal", "$rootScope", function($ionicModal, $rootScope) {
+	"$ionicModal", "$rootScope", "$state", function($ionicModal, $rootScope, $state) {
 		return {
 			restrict: 'A',
 			// templateUrl: 'templates/directives/dropdown-modal.html',
@@ -17,13 +17,17 @@ angular.module('WeBarrio.directives', [])
 					
 				};
 				createModal();
+
+				scope.logOut = function () {
+					modal.hide();
+					$state.go('login');
+				};
 				// scope.selectOption = function (option) {
 				// 	modal.remove();
 				// 	createModal();
 				// 	//scope.onSelectOption(option, scope.optionType);
 				// };
 				return element.bind('click', function() {
-					console.log(modal.isShown());
 					if (modal.isShown()) {
 						modal.hide();	
 					} else{

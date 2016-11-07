@@ -9,7 +9,7 @@ angular.module('WeBarrio.routes', [])
     .state('forgot', {
       url: '/forgot',
       templateUrl: 'templates/forgot/forgot.html',
-      controller:'forgotController'
+      controller:'loginController'
     })
     .state('register', {
       url: '/register',
@@ -58,6 +58,13 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
+    
+    .state('new_message', {
+      url: '/menu/dashboard/nuevo_mensaje',
+      templateUrl: 'templates/chat/new_message.html',
+      controller:'chatController'
+    })
+
 
     .state('tabs.feed', {
       url: '/feed/',
