@@ -1,0 +1,25 @@
+.agenda-view{
+	.subheader{
+		.icon{
+			font-size: 25px;
+			position: relative;
+			top: 8px;
+			margin: 5px;
+			&.ion-plus{
+				color: $orange;
+			}
+		}
+	}
+	.list{
+		.icon{
+			font-size: 25px;
+		}
+		.list-inset{
+			margin: 0;
+			.item{
+				color: $orange;
+				border: 0;
+			}
+		}
+	}
+}

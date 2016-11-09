@@ -43,6 +43,16 @@ angular.module('WeBarrio.routes', [])
       }
     })
 
+    .state('tabs.agenda', {
+      url: '/agenda/',
+      views: {
+        'tab_dashboard': {
+          templateUrl: 'templates/agenda/agenda.html',
+          controller: 'agendaController'
+        }
+      }
+    })
+
     .state('dashboard-account', {
       url: '/menu/dashboard/mi-cuenta',
       templateUrl: 'templates/dashboard/account.html',

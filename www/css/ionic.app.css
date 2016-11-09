@@ -10157,6 +10157,23 @@ a.button {
     .alert-view .alert-row .col {
       padding-top: 25px; }
 
+.agenda-view .subheader .icon {
+  font-size: 25px;
+  position: relative;
+  top: 8px;
+  margin: 5px; }
+  .agenda-view .subheader .icon.ion-plus {
+    color: #f76913; }
+
+.agenda-view .list .icon {
+  font-size: 25px; }
+
+.agenda-view .list .list-inset {
+  margin: 0; }
+  .agenda-view .list .list-inset .item {
+    color: #f76913;
+    border: 0; }
+
 .profile-view .card {
   margin: 0; }
 

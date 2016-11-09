@@ -1,0 +1,29 @@
+<ion-view view-title="Agenda" hide-back-button="true">
+  <ion-nav-bar>
+    <ion-nav-back-button class="button-clear force-show" ng-click="goBack()">
+      <i class="color-white ion-chevron-left"></i>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+        <ion-content class="padding-top agenda-view">
+            <div class="subheader">
+            	<div class="col-20 col-offset-80">
+                	<span><i class="icon ion-search"></i></span>
+            		<span><i class="icon ion-plus"></i></span>
+            	</div>
+            </div>
+        	<div class="list">
+        		<div ng-repeat="profesion in profesiones">
+	        		<div class="item item-icon-right" ng-click="selectProfesion(profesion)">
+	        			{{profesion.name}}
+	        			<i class="icon ion-chevron-down"></i>
+	        		</div>
+	    			<div class="list-inset" ng-if="profesion.id == profesionSeleccionada">
+	    				<div class="item item-icon-right" ng-repeat="persona in profesion.personas">
+	    					{{persona.name}}
+	    				</div>
+	    			</div>
+	    		</div>
+
+        	</div>
+        </ion-content>
+</ion-view>
