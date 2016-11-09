@@ -3,7 +3,8 @@
     <div class="view log">
       <div class="logo"></div>
       <form class="login" novalidate name="loginForm" ng-submit="loginForm.$valid && signIn(user)">
-        <label ng-class="{ 'has-error' : loginForm.txtemail.$invalid && loginForm.$submitted }">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email</span>
           <input class="text" 
             name="txtemail" 
             type="email" 
@@ -13,7 +14,8 @@
             ng-maxlength="30"
             required>
         </label>
-        <label ng-class="{ 'has-error-lr' : loginForm.txtPassword.$invalid && loginForm.$submitted }">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Contraseña</span>
           <input class="text" 
             name="txtPassword" 
             type="password" 

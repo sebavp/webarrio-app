@@ -11,8 +11,12 @@
   ],
   "proxies": [
     {
-      "path": "/api",
+      "path": "/api2",
       "proxyUrl": "http://admin.webarrio.cl/api"
+    },
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:3000/api"
     }
   ]
 }

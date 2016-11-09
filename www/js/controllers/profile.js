@@ -5,19 +5,21 @@
         .module('WeBarrio.controllers')
         .controller('profileController', profileController);
 
-    function profileController($scope, $state, $log, $localStorage, Auth) {
+    function profileController($scope, $state, $log, $localStorage, $ionicHistory) {
         
-        console.info("profileController init");
+      console.info("profileController init");
 
- 		$scope.user = angular.fromJson($localStorage.profile);
- 		$log.log("User:", $localStorage.email);
-
-		$scope.logOut = function () {
-      		Auth.logout();
-      		$state.go('login');
-  		};
-
-        
+ 		   $scope.currentUser = $localStorage.currentUser.user;
+  
+       console.log($scope.currentUser)
+  
+        $scope.goBack = function (){
+          if (_.isNull($ionicHistory.viewHistory().backView)) {
+            $state.go("tabs.home")
+          } else{
+            $ionicHistory.goBack(); 
+          } 
+        };
     }
 
 

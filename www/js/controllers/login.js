@@ -34,10 +34,10 @@
             if(angular.isDefined(user)){
               Utils.show();
               Auth.resetpassword(user)
-                .then(function() {
+                .then(function(response) {
                   Utils.hide();
-                  Utils.alertshow("Exito.","La clave fue enviada a su correo.");
-                  $stage.go('login');
+                  Utils.alertshow("Exito.",response.data.message);
+                  $state.go('login');
                 }, function(err) {
                   Utils.hide();
                   Utils.errMessage(err.data.message);

@@ -1,5 +1,31 @@
-.main-sidebar{
-  .item{
-    border-left:none;
-  }
+
+.sidebar-modal{
+	.modal-backdrop-bg{
+		top: 50px;
+		z-index: 0;
+	}
+	.main-sidebar{
+		.col .list .item{
+			border-left:none;
+			&:hover{
+				@include transition( background-color ease 1s );
+				background-color: $white;
+				color: $black;
+			}
+		}
+		@media(min-width: 767px){
+			.col{
+				@include flex(0 0 30%);
+				margin-left: 70%; 
+			}
+		}
+	}
+	&.modal-open{
+		.right-buttons{
+			.button-clear{
+				border-bottom: 6px solid $white;
+	    		border-radius: 17px;
+			}
+		}
+	}
 }

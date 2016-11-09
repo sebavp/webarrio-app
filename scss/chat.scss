@@ -1,3 +1,11 @@
+.chat-view{
+	.subheader{
+		.active{
+			color: $orange;
+		}
+	}
+}
+
 .chat-footer{
 	border: 1px solid $orange;
 	.button{

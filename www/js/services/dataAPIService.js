@@ -14,6 +14,16 @@ angular.module('WeBarrio.services', [])
         });
         return deferred.promise;
       },
+      getPeopleFromCondo: function(condoId) {
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/condos/' + condoId + '/people'
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
+      },
     };
     return service;
 });

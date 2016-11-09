@@ -4,7 +4,7 @@
       <img class='user' src='img/icons/user.svg' />
     </button>
   </ion-nav-buttons>
-  <ion-content class='padding-top'>
+  <ion-content class="padding-top home-bg">
     <div class='list home-menu'>
       <div class='item item-divider text-center condominio', ng-if='!home.condos'>
         <ion-spinner icon='dots'></ion-spinner>
@@ -21,27 +21,31 @@
         <span ng-repeat='depto in currentDepto'>Dpto. {{depto.number}}</span>
       </div>
       <div class='row admin border-bottom'>
-        <div class='col col-100' ui-sref='tabs.dashboard'>
-          <img src='img/icons/money.svg' />
-          <span>Administracíon</span>
+        <div class='col col-100 clickable' ui-sref='tabs.dashboard'>
+          <div class="text-center row-options">
+            <img src='img/icons/money.svg' />
+            <span>Administracíon</span>
+          </div>
         </div>
       </div>
 
       <div class='row border-bottom'>
-        <div class='col col-50 message' ui-sref='tabs.chat'>
+        <div class='col col-50 message clickable' ui-sref='tabs.chat'>
           <img src='img/icons/message.svg' />
           <span>Mensajes</span>
         </div>
-        <div class='col col-50 agenda'>
+        <div class='col col-50 agenda clickable'>
           <img src='img/icons/agenda.svg' />
           <span>Agenda</span>
         </div>
       </div>
 
       <div class='row comunidad'>
-        <div class='col col-100'>
-          <img src='img/icons/comunidad.svg' />
-          <span>Comunidad</span>
+        <div class='col col-100 clickable'>
+          <div class="text-center row-options">
+            <img src='img/icons/comunidad.svg' />
+            <span>Comunidad</span>
+          </div>
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@ $ionicons-font-path: '../lib/ionic/fonts' !default;
 // Include all of Ionic
 @import 'www/lib/ionic/scss/ionic';
 @import 'scss/colors';
+@import 'scss/functions';
 @import 'scss/fonts';
 @import 'scss/logo64';
 @import 'scss/login';
@@ -29,6 +30,8 @@ $ionicons-font-path: '../lib/ionic/fonts' !default;
 @import 'scss/sidebar';
 @import 'scss/chat';
 @import 'scss/dashboard';
+@import 'scss/alert';
+@import 'scss/profile';
 @import 'scss/tabicons';
 
 p,
@@ -84,4 +87,22 @@ img.user{
   width: 20px;
   height: 20px;
   margin-top: 8px;
+}
+
+@media(min-width:450px){
+  .platform-browser{
+    .scroll-content{
+      overflow-y: auto !important;
+    }
+  }
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.subheader{
+  background: $grey;
+  text-align: center;
+  height: 40px;
 }

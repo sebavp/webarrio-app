@@ -1,5 +1,44 @@
 <ion-view view-title="SOS" hide-back-button="true">
-        <ion-content class="padding-top">
-        	<h3 class="text-center">Alerta SOS</h3>
-        </ion-content>
+	<ion-nav-bar>
+		<ion-nav-back-button class="button-clear force-show" ng-click="goBack()">
+			<i class="color-white ion-chevron-left"></i>
+		</ion-nav-back-button>
+	</ion-nav-bar>
+    <ion-content class="padding-top alert-view">
+    	<div class="title-alert">
+    		<p class="text-center"><i class="icon ion-alert"></i></p>
+    		<h2> ALERTA VECINAL</h2>
+    		<p>Usar con responsabilidad y respeto a sus vecinos</p>
+    	</div>
+    	<a href="tel:131">
+	    	<div class="alert-row row">
+	    		<div class="col">
+	    			<h2>131</h2>
+	    		</div>
+	    		<div class="col">
+	    			<i class="icon ion-flame"></i>
+	    		</div>
+	    	</div>
+    	</a>
+    	<a href="tel:132">
+	    	<div class="alert-row row">
+	    		<div class="col">
+	    			<h2>132</h2>
+	    		</div>
+	    		<div class="col">
+	    			<i class="icon ion-medkit"></i>
+	    		</div>
+	    	</div>
+    	</a>
+    	<a href="tel:133">
+	    	 <div class="alert-row row">
+	    		<div class="col">
+	    			<h2>133</h2>
+	    		</div>
+	    		<div class="col">
+	    			<i class="icon ion-android-car"></i>
+	    		</div>
+	    	</div>
+	    </a>
+    </ion-content>
 </ion-view>

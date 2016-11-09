@@ -3,7 +3,6 @@ angular.module('WeBarrio.directives', [])
 	"$ionicModal", "$rootScope", "$state", function($ionicModal, $rootScope, $state) {
 		return {
 			restrict: 'A',
-			// templateUrl: 'templates/directives/dropdown-modal.html',
 			link: function(scope, element) {
 				var modal;
 				var createModal = function () {
@@ -22,11 +21,10 @@ angular.module('WeBarrio.directives', [])
 					modal.hide();
 					$state.go('login');
 				};
-				// scope.selectOption = function (option) {
-				// 	modal.remove();
-				// 	createModal();
-				// 	//scope.onSelectOption(option, scope.optionType);
-				// };
+				scope.goToProfile = function (){
+					modal.hide();
+					$state.go('profile');	
+				};
 				return element.bind('click', function() {
 					if (modal.isShown()) {
 						modal.hide();	

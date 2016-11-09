@@ -1,0 +1,20 @@
+.profile-view{
+  .card{
+    margin: 0;
+  }
+  .item-image{
+    padding: 10px;
+    background-color: $orange;
+    img{
+      height: 150px;
+      width: auto;
+    }
+  }
+  h2{
+    font-size: 20px; 
+    font-family: 'work_sanslight';
+  }
+  .item-icon-left{
+    height: 55px;
+  }
+}

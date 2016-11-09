@@ -6,7 +6,7 @@
   .logo{
     width: 40%;
     height: 15%;
-    margin: 100px auto;
+    margin: 50px auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -16,6 +16,16 @@
     display: block;
     margin: auto;
     text-align: center;
+    .item-floating-label{
+      border: 0;
+      padding: 6px 0 5px 6px;
+    }
+    span{
+      color: $white;
+      font-family: 'work_sansbold';
+      left: 60px;
+      text-align: left;
+    }
     input{
       font-family: 'work_sansbold';
       width: 70%;
@@ -23,7 +33,7 @@
       border-bottom: 1px solid white;
       background: transparent;
       &.text{
-        margin: 1vh auto;
+        margin: 0 auto;
       }
       &.login{
         margin-top: 5vh;
