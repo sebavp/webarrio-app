@@ -9885,7 +9885,7 @@ a.button {
     background-position: center;
     background-size: contain; }
   .log form.login {
-    width: 400px;
+    width: 320px;
     display: block;
     margin: auto;
     text-align: center; }
@@ -9895,7 +9895,7 @@ a.button {
     .log form.login span {
       color: #fff;
       font-family: 'work_sansbold';
-      left: 60px;
+      left: 50px;
       text-align: left; }
     .log form.login input {
       font-family: 'work_sansbold';
@@ -10173,6 +10173,67 @@ a.button {
   .agenda-view .list .list-inset .item {
     color: #f76913;
     border: 0; }
+
+.agenda-detail .card {
+  margin: 0; }
+
+.agenda-detail .item-image {
+  padding: 0;
+  height: 185px; }
+  .agenda-detail .item-image .orange-bar {
+    height: 100px;
+    background-color: #f76913; }
+  .agenda-detail .item-image .img-container {
+    background: transparent;
+    position: relative;
+    bottom: 70px; }
+  .agenda-detail .item-image .img {
+    border-radius: 100%;
+    margin: auto;
+    background-color: #e9efef;
+    height: 150px;
+    width: 150px;
+    background-image: url(../img/icons/user_orange.svg);
+    background-repeat: no-repeat;
+    background-position: center; }
+
+.agenda-detail .item {
+  border: 0; }
+
+.agenda-detail h1 {
+  color: #f76913;
+  font-size: 30px;
+  font-family: 'work_sansregular'; }
+
+.agenda-detail h3 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'work_sansmedium'; }
+
+.agenda-detail a {
+  color: #444;
+  text-decoration: underline; }
+
+.agenda-detail .detail-content {
+  box-shadow: 0 0 0 0;
+  height: 190px;
+  border-top: 2px solid #FAFAFA;
+  border-bottom: 2px solid #FAFAFA; }
+  .agenda-detail .detail-content .text {
+    height: 100px;
+    padding: 30px;
+    white-space: pre-line; }
+
+.agenda-footer {
+  height: 60px;
+  color: #f76913;
+  font-size: 30px; }
+  .agenda-footer i.ion-dash {
+    width: 30px;
+    height: 32px;
+    padding: 4px 4px;
+    content: url(../img/icons/dashboard_orange.svg);
+    opacity: .9; }
 
 .profile-view .card {
   margin: 0; }

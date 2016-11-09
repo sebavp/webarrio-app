@@ -53,6 +53,13 @@ angular.module('WeBarrio.routes', [])
       }
     })
 
+    .state('agenda-detail', {
+      url: '/menu/agenda/:profesion/:person_id',
+      templateUrl: 'templates/agenda/agenda_detail.html',
+      controller:'agendaController'
+    })
+
+
     .state('dashboard-account', {
       url: '/menu/dashboard/mi-cuenta',
       templateUrl: 'templates/dashboard/account.html',

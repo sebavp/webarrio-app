@@ -22,7 +22,13 @@ angular.module('WeBarrio', [
       StatusBar.styleDefault();
     }
   });
-});
+})
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.views.transition('ios');
+  $ionicConfigProvider.tabs.style('standard').position('bottom');
+  $ionicConfigProvider.navBar.alignTitle('center').positionPrimaryButtons('left');
+})
+;
 
 
 angular.module('WeBarrio.controllers', []);

@@ -18,7 +18,7 @@
 	        			<i class="icon ion-chevron-down"></i>
 	        		</div>
 	    			<div class="list-inset" ng-if="profesion.id == profesionSeleccionada">
-	    				<div class="item item-icon-right" ng-repeat="persona in profesion.personas">
+	    				<div class="item item-icon-right" ng-repeat="persona in profesion.personas" ng-click="goToDetail(profesion, persona)">
 	    					{{persona.name}}
 	    				</div>
 	    			</div>

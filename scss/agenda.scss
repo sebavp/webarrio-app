@@ -23,3 +23,73 @@
 		}
 	}
 }
+
+.agenda-detail{
+  .card{
+    margin: 0;
+  }
+  .item-image{
+    padding: 0;
+    height: 185px;
+    .orange-bar{
+    	height: 100px;
+    	background-color: $orange;
+    }
+    .img-container{
+	    background: transparent;
+	    position: relative;
+	    bottom: 70px;
+    }
+    .img{
+    	border-radius: 100%;
+    	margin: auto;
+    	background-color: $grey;
+      	height: 150px;
+      	width: 150px;
+      	background-image: url(../img/icons/user_orange.svg);
+      	background-repeat: no-repeat;
+    	background-position: center;
+    }
+  }
+  .item{
+  	border: 0;
+  }
+  h1{
+  	color: $orange;
+    font-size: 30px; 
+    font-family: 'work_sansregular';
+  }
+  h3{
+  	text-transform: uppercase;
+  	letter-spacing: 1px;
+  	font-family: 'work_sansmedium';
+  }
+  a{
+  	color: #444;
+  	text-decoration: underline;
+  }
+  .detail-content{
+  	box-shadow: 0 0 0 0;
+    height: 190px;
+    border-top: 2px solid $whitesmoke;
+    border-bottom: 2px solid $whitesmoke;
+    .text{
+    	height: 100px;
+    	padding: 30px;
+    	white-space: pre-line;
+    }
+  }
+}
+
+.agenda-footer{
+	height: 60px;
+    color: $orange;
+    font-size: 30px;
+	  i.ion-dash{
+	    width: 30px;
+	    height: 32px;
+	    padding: 4px 4px;
+	    content: url(../img/icons/dashboard_orange.svg);
+	    opacity: .9;
+	  }
+}
