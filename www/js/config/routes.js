@@ -1,6 +1,7 @@
 angular.module('WeBarrio.routes', [])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+    // LOGIN
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login/login.html',
@@ -8,21 +9,25 @@ angular.module('WeBarrio.routes', [])
     })
     .state('forgot', {
       url: '/forgot',
-      templateUrl: 'templates/forgot/forgot.html',
+      templateUrl: 'templates/login/forgot.html',
       controller:'loginController'
     })
+
+    // REGISTER
     .state('register', {
       url: '/register',
       templateUrl: 'templates/register/register.html',
       controller:'registerController'
     })
 
+    // HOME-TABS
     .state('tabs', {
       url: '/menu',
       abstract: true,
       templateUrl: 'templates/tabs.html'
     })
-    
+
+    // HOME
     .state('tabs.home', {
       url: '/home/',
       views: {
@@ -33,6 +38,7 @@ angular.module('WeBarrio.routes', [])
       }
     })
 
+    // DASHBOARD
     .state('tabs.dashboard', {
       url: '/dashboard/',
       views: {
@@ -42,30 +48,34 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-
-    .state('tabs.agenda', {
-      url: '/agenda/',
-      views: {
-        'tab_dashboard': {
-          templateUrl: 'templates/agenda/agenda.html',
-          controller: 'agendaController'
-        }
-      }
-    })
-
-    .state('agenda-detail', {
-      url: '/menu/agenda/:profesion/:person_id',
-      templateUrl: 'templates/agenda/agenda_detail.html',
-      controller:'agendaController'
-    })
-
-
     .state('dashboard-account', {
       url: '/menu/dashboard/mi-cuenta',
       templateUrl: 'templates/dashboard/account.html',
       controller:'accountController'
     })
+    
+    // AGENDA
+    .state('tabs.agenda', {
+      url: '/agenda/',
+      views: {
+        'tab_home': {
+          templateUrl: 'templates/agenda/agenda.html',
+          controller: 'agendaController'
+        }
+      }
+    })
+    .state('agenda-detail', {
+      url: '/menu/agenda/:profesion/:person_id',
+      templateUrl: 'templates/agenda/agenda_detail.html',
+      controller:'agendaController'
+    })
+    .state('agenda-new', {
+      url: '/menu/agenda/nuevo',
+      templateUrl: 'templates/agenda/agenda_new.html',
+      controller:'agendaController'
+    })
 
+    // CHAT
     .state('tabs.chat', {
       url: '/chat/',
       views: {
@@ -74,15 +84,14 @@ angular.module('WeBarrio.routes', [])
           controller: 'chatController'
         }
       }
-    })
-    
+    })    
     .state('new_message', {
       url: '/menu/dashboard/nuevo_mensaje',
       templateUrl: 'templates/chat/new_message.html',
       controller:'chatController'
     })
 
-
+    // FEED (NOTIFICACIONES)
     .state('tabs.feed', {
       url: '/feed/',
       views: {
@@ -92,7 +101,8 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-  
+    
+    // ALERTA SOS
     .state('tabs.alerta', {
       url: '/alerta/',
       views: {
@@ -102,12 +112,37 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-  
+    
+    //
+    .state('tabs.comunidad', {
+      url: '/comunidad/',
+      views: {
+        'tab_home': {
+          templateUrl: 'templates/comunidad/comunidad.html',
+          controller: 'comunidadController'
+        }
+      }
+    })
 
+    // VISTAS SIDEMENU
+    // PERFIL
     .state('profile', {
       url: '/profile',
-      templateUrl: 'templates/profile/profile.html',
-      controller:'profileController'
-    });
+      templateUrl: 'templates/sidemenu/profile.html',
+      controller:'sideMenuController'
+    })
+    // AYUDA
+    .state('help', {
+      url: '/help',
+      templateUrl: 'templates/sidemenu/help.html',
+      controller:'sideMenuController'
+    })
+    // CONFIGURACION
+    .state('config', {
+      url: '/config',
+      templateUrl: 'templates/sidemenu/config.html',
+      controller:'sideMenuController'
+    })
+    ;
   $urlRouterProvider.otherwise("/login");
 });

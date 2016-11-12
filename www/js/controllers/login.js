@@ -5,7 +5,7 @@
         .module('WeBarrio.controllers')
         .controller('loginController', loginController);
 
-    function loginController($scope, $state, $log, Utils, Auth, $localStorage) {
+    function loginController($scope, $state, $log, Utils, Auth, $localStorage, $timeout) {
         
         console.info("loginController init");
 
@@ -25,7 +25,11 @@
               }, function(err) {
                 console.log(err)
                 Utils.hide();
-                Utils.errMessage(err.data.message);
+                $scope.error = {show: true, msg: err.data.message}
+                $timeout(function() {
+                  $scope.error.show = false;
+                }, 3000);
+                // Utils.errMessage(err.data.message);
               });
             }
           };

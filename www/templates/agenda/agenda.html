@@ -5,20 +5,25 @@
     </ion-nav-back-button>
   </ion-nav-bar>
         <ion-content class="padding-top agenda-view">
-            <div class="subheader">
-            	<div class="col-20 col-offset-80">
-                	<span><i class="icon ion-search"></i></span>
-            		<span><i class="icon ion-plus"></i></span>
+            <div class="subheader row">
+                <div class="col-90">
+                  <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" ng-model="searchText" ng-change="searchInAgenda(searchText)" placeholder="Buscar">
+                  </label>
+                </div>
+            	<div class="col-10" ng-click="nuevoRegistro()">
+            		<span class="new"><i class="icon ion-plus"></i></span>
             	</div>
             </div>
         	<div class="list">
-        		<div ng-repeat="profesion in profesiones">
+        		<div ng-repeat="profesion in profesiones | orderBy:'name'" ng-hide="profesion.contacts.length == 0 ">
 	        		<div class="item item-icon-right" ng-click="selectProfesion(profesion)">
 	        			{{profesion.name}}
 	        			<i class="icon ion-chevron-down"></i>
 	        		</div>
-	    			<div class="list-inset" ng-if="profesion.id == profesionSeleccionada">
-	    				<div class="item item-icon-right" ng-repeat="persona in profesion.personas" ng-click="goToDetail(profesion, persona)">
+	    			<div class="list-inset" ng-if="profesion.id == profesionSeleccionada || searching">
+	    				<div class="item item-icon-right" ng-repeat="persona in profesion.contacts | filter: searchText" ng-click="goToDetail(profesion, persona)">
 	    					{{persona.name}}
 	    				</div>
 	    			</div>

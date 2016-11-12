@@ -25,6 +25,10 @@
             ng-maxlength="30"
             required>
         </label>
+        <div class="item error-message" ng-if="error.show">
+            <p>{{error.msg}}</p>
+        </div>
+
 
         <input class="login" type="submit" value="Conectarse">
       </form>

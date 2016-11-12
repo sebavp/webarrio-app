@@ -3,11 +3,11 @@
 
     angular
         .module('WeBarrio.controllers')
-        .controller('profileController', profileController);
+        .controller('sideMenuController', sideMenuController);
 
-    function profileController($scope, $state, $log, $localStorage, $ionicHistory) {
+    function sideMenuController($scope, $state, $log, $localStorage, $ionicHistory) {
         
-      console.info("profileController init");
+      console.info("sideMenuController init");
 
  		   $scope.currentUser = $localStorage.currentUser.user;
   

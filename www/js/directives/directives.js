@@ -6,7 +6,7 @@ angular.module('WeBarrio.directives', [])
 			link: function(scope, element) {
 				var modal;
 				var createModal = function () {
-					$ionicModal.fromTemplateUrl('templates/dashboard/sidebar.html', {
+					$ionicModal.fromTemplateUrl('templates/sidemenu/sidebar.html', {
 						scope: scope,
 						animation: 'none'
 					}).then(function(modalInstance) {
@@ -18,12 +18,13 @@ angular.module('WeBarrio.directives', [])
 				createModal();
 
 				scope.logOut = function () {
+					//TODO: CLEAR LOCALSTORAGE
 					modal.hide();
 					$state.go('login');
 				};
-				scope.goToProfile = function (){
+				scope.goTo = function (target){
 					modal.hide();
-					$state.go('profile');	
+					$state.go(target);	
 				};
 				return element.bind('click', function() {
 					if (modal.isShown()) {

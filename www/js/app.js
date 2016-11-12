@@ -7,6 +7,7 @@ angular.module('WeBarrio', [
   'WeBarrio.directives',
   'WeBarrio.utils',
   'WeBarrio.services.auth',
+  'WeBarrio.services.agenda',
   'WeBarrio.services',
   'WeBarrio.config',
   'ngStorage',
