@@ -10135,37 +10135,44 @@ a.button {
           background-color: #262626; }
 
 .alert-view {
-  background-color: #ed1c24;
   text-align: center;
   color: #fff; }
+  .alert-view img.sos {
+    width: 50px;
+    margin-top: 15px; }
   .alert-view h2 {
-    color: #fff;
-    font-family: 'work_sansmedium'; }
+    font-family: 'work_sansmedium';
+    color: #fff; }
   .alert-view .title-alert {
-    background-color: #f76913;
     height: 200px;
-    border-bottom: 2px solid #fff; }
+    border-bottom: 2px solid #fff;
+    background-color: #f76913; }
     .alert-view .title-alert .ion-alert {
       font-size: 50px;
       position: relative;
       top: 10px; }
     .alert-view .title-alert p {
-      font-size: 22px;
+      font-size: 15px;
       margin: 0 23px; }
   .alert-view .alert-row {
     cursor: pointer;
+    border-width: 0 0 1px 0;
     border-style: solid;
     border-color: #fff;
-    border-width: 0px 0px 2px 0px; }
+    background-color: #ed1c24; }
     .alert-view .alert-row h2 {
       font-size: 50px;
-      margin-left: 15%; }
+      line-height: 90px;
+      margin: 0;
+      padding: 0; }
     .alert-view .alert-row .icon {
       font-size: 55px;
       margin-right: 15%;
       color: #fff; }
     .alert-view .alert-row .col {
-      padding-top: 25px; }
+      padding: 0; }
+      .alert-view .alert-row .col img {
+        height: 80px; }
 
 .agenda-view .subheader {
   height: 50px; }

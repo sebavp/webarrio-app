@@ -1,41 +1,50 @@
 .alert-view{
-	background-color: $alert;
-	text-align: center;
-	color: $white;
-	h2{
-		color: $white;
-		font-family: 'work_sansmedium';
-	}
-	.title-alert{
-		background-color: $orange;
-		height: 200px;
-		border-bottom: 2px solid $white;
-		.ion-alert{
-		    font-size: 50px;
-		    position: relative;
-		    top: 10px;
-		}
-		p{
-			font-size: 22px;
-			margin: 0 23px;
-		}
-	}
-	.alert-row{
-		cursor: pointer;
-		border-style: solid;
-		border-color: $white;
-		border-width: 0px 0px 2px 0px;
-		h2{
-			font-size: 50px;
-			margin-left: 15%;
-		}
-		.icon{
-			font-size: 55px;
-			margin-right: 15%;
-			color: $white;
-		}
-		.col{
-			padding-top: 25px;
-		}
-	}
+  text-align: center;
+  color: $white;
+  img.sos{
+    width: 50px;
+    margin-top: 15px;
+  }
+  h2{
+    font-family: 'work_sansmedium';
+    color: $white;
+  }
+  .title-alert{
+    height: 200px;
+    border-bottom: 2px solid $white;
+    background-color: $orange;
+    .ion-alert{
+      font-size: 50px;
+      position: relative;
+      top: 10px;
+    }
+    p{
+      font-size: 15px;
+      margin: 0 23px;
+    }
+  }
+  .alert-row{
+    cursor: pointer;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: $white;
+    background-color: $alert;
+    h2{
+      font-size: 50px;
+      line-height: 90px;
+      margin: 0;
+      padding: 0;
+    }
+    .icon{
+      font-size: 55px;
+      margin-right: 15%;
+      color: $white;
+    }
+    .col{
+      padding: 0;
+      img{
+        height: 80px;
+      }
+    }
+  }
 }
