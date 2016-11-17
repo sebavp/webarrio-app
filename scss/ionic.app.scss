@@ -34,11 +34,13 @@ $ionicons-font-path: '../lib/ionic/fonts' !default;
 @import 'scss/agenda';
 @import 'scss/profile';
 @import 'scss/tabicons';
+@import 'scss/comunidad';
 
 p,
 span,
 div,
-h3, option{
+h3,
+option{
   font-family: 'work_sansregular';
 }
 
@@ -103,7 +105,7 @@ img.user{
 }
 
 .subheader{
-  background: $grey;
-  text-align: center;
   height: 40px;
+  text-align: center;
+  background: $grey;
 }

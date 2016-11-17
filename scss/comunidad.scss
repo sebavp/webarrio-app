@@ -1,0 +1,27 @@
+.comunidad-view{
+  .item{
+    font-family: 'work_sansregular';
+    line-height: 70px;
+    height: 70px;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: $text;
+    .icon{
+      img{
+        height: 35px;
+      }
+    }
+    .badge{
+      font-size: 12px;
+      line-height: 20px;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      text-align: center;
+      border-radius: 50%;
+      background-color: $orange;
+      color: white;
+      display: block;
+    }
+  }
+}
