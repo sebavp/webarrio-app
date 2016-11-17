@@ -13,7 +13,7 @@ var paths = {
   jslint: ['./www/js/**/*.js', './www/views/**/*.js']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('serve:before', ['sass', 'watch']);
 
 gulp.task('lint', function() {
   return gulp.src(paths.jslint)
@@ -23,8 +23,7 @@ gulp.task('lint', function() {
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
-    .pipe(sass())
-    .on('error', sass.logError)
+    .pipe(sass({errLogToConsole: true}))
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0

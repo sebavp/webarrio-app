@@ -1,65 +1,70 @@
 .dashboard-view{
-	.hero{
-		padding-top: 5px;
-		text-align: center;
-		background-color: $orange;
-		color: $white;
-	}
-	p{
-		font-size: 25px;
-		padding: 10px;
-	}
-	.list{
-		position: relative;
-    	top: -12px;
-    	.button{
-			text-align: left;
-    		padding: 5px 20px;
-    		margin: 0;
-    	}
-	}
+  .hero{
+    padding-top: 5px;
+    text-align: center;
+    color: $white;
+    background-color: $orange;
+  }
+  p{
+    font-size: 25px;
+    padding: 10px;
+    &.common-expenses{
+      font-size: 40px;
+    }
+  }
+  .list{
+    position: relative;
+    top: -12px;
+    .button{
+      margin: 0;
+      padding: 5px 20px;
+      text-align: left;
+      border-bottom: 1px solid $grey;
+      background-color: white;
+    }
+  }
 }
 
 .account-view{
-	.item{
-		padding-top: 10px;
-		padding-bottom: 0;
-		&:first-child{
-			.orange{
-				color: $orange;
-			}
-		}
-	}
-
-	.left-s{
-		p{
-			color: $black;
-			font-size: 15px;
-			text-transform: uppercase;
-			font-weight: bolder;
-		}
-		small{
-			font-size: 13px; 
-		}
-	}
-
-	.right-s{
-		p{
-			text-align: right;
-			position: relative;
-			top: 10px;
-		}
-		span{
-			font-size: 22px; 
-		}
-	}
+  .item{
+    padding-top: 10px;
+    padding-bottom: 0;
+    &:first-child{
+      .orange{
+        color: $orange;
+      }
+    }
+    .mute{
+      color: $text-grey;
+    }
+  }
+  .left-s{
+    p{
+      font-size: 15px;
+      font-weight: bolder;
+      text-transform: uppercase;
+      color: $black;
+    }
+    small{
+      font-size: 13px;
+    }
+  }
+  .right-s{
+    p{
+      position: relative;
+      top: 10px;
+      text-align: right;
+    }
+    span{
+      font-size: 22px;
+    }
+  }
 }
 .account-footer{
-
-	.pay-button{
-		margin: 0;
-		border: 0;
-	}
+  .pay-button{
+    margin: 0;
+    border: 0;
+  }
 }
 
 // .modal-open{
@@ -89,24 +94,24 @@
 // }
 
 .modal-wrapper{
-	height: 100%;
-	position: relative;
-	top: 50px;
-	.main-sidebar{
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.74);
-		.row{
-			height: 100%;
-			padding: 0;
-			.col{
-				padding: 0;
-				background-color: lighten($black, 15%);
-				.item{
-					background-color: lighten($black, 15%);
-					color: $white;
-					text-align: right;
-				}
-			}
-		}
-	}
+  position: relative;
+  top: 50px;
+  height: 100%;
+  .main-sidebar{
+    height: 100%;
+    background-color: rgba(0, 0, 0, .74);
+    .row{
+      height: 100%;
+      padding: 0;
+      .col{
+        padding: 0;
+        background-color: lighten($black, 15%);
+        .item{
+          text-align: right;
+          color: $white;
+          background-color: lighten($black, 15%);
+        }
+      }
+    }
+  }
 }

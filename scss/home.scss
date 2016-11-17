@@ -1,9 +1,9 @@
 $admin-h: 50px;
 .home-menu{
+  padding-top: 0;
   background-color: $whitesmoke;
-  padding-top: 0px;
   @media(min-width: 767px){
-    margin: 0px 25%;
+    margin: 0 25%;
     border: solid 1px $whitesmoke;
   }
   .slider-pager{
@@ -31,12 +31,12 @@ $admin-h: 50px;
   .condominio{
     font-size: 12px;
     font-weight: 700;
+    z-index: 99;
     color: $text-grey;
     background: $grey;
-    z-index: 99;
     &.moreinfo{
-      height: 50px;
       z-index: 0;
+      height: 50px;
     }
   }
   .slider-pager .slider-pager-page{
@@ -53,7 +53,7 @@ $admin-h: 50px;
       line-height: $admin-h;
       position: relative;
       bottom: 20px;
-      margin-left: -3%; 
+      margin-left: -3%;
     }
   }
   .col-50.message,
@@ -77,12 +77,16 @@ $admin-h: 50px;
   .clickable{
     &:hover{
       @include transition( background-color ease .7s );
-      background-color: lighten($black, 40%);
+
       color: $white;
+      background-color: lighten($black, 40%);
     }
   }
 }
-
+.modal-open .right-buttons .button-clear{
+  border-bottom: 6px solid #fff;
+  border-radius: 17px;
+}
 .home-bg{
   // background-image: url(../img/icons-bg-example.jpg);
   // background-repeat: repeat;
