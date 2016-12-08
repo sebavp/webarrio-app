@@ -63,6 +63,12 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/longtext.html',
       controller:'longtextController'
     })
+    // reglamento
+    .state('dashboard-reglamento', {
+      url: '/menu/dashboard/reglamento',
+      templateUrl: 'templates/dashboard/reglamento.html',
+      controller:'dashboardController'
+    })
     // AGENDA
     .state('tabs.agenda', {
       url: '/agenda/',
@@ -146,11 +152,12 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/sidemenu/help.html',
       controller:'sideMenuController'
     })
+
     // CONFIGURACION
     .state('config', {
       url: '/config',
       templateUrl: 'templates/sidemenu/config.html',
-      controller:'sideMenuController'
+      controller:'dashboardController'
     })
     ;
   $urlRouterProvider.otherwise("/login");
