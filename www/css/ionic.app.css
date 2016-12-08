@@ -10190,14 +10190,14 @@ a.button {
     .agenda-view .subheader span.new {
       margin-right: 20%; }
   .agenda-view .subheader .item-input {
-    padding: 0 10px;
     margin: 3px 10px;
+    padding: 0 10px;
     border-radius: 6px; }
     .agenda-view .subheader .item-input .icon {
+      position: absolute;
       top: -1px;
-      float: right;
       right: 1px;
-      position: absolute; }
+      float: right; }
 
 .agenda-view .list .icon {
   font-size: 25px; }
@@ -10208,25 +10208,30 @@ a.button {
     color: #f76913;
     border: 0; }
 
+.agenda-detail img.more {
+  display: block;
+  width: 30px;
+  margin: 20px auto; }
+
 .agenda-detail .card {
   margin: 0; }
 
 .agenda-detail .item-image {
-  padding: 0;
-  height: 185px; }
+  height: 185px;
+  padding: 0; }
   .agenda-detail .item-image .orange-bar {
     height: 100px;
     background-color: #f76913; }
   .agenda-detail .item-image .img-container {
-    background: transparent;
     position: relative;
-    bottom: 70px; }
+    bottom: 70px;
+    background: transparent; }
   .agenda-detail .item-image .img {
-    border-radius: 100%;
-    margin: auto;
-    background-color: #e9efef;
-    height: 150px;
     width: 150px;
+    height: 150px;
+    margin: auto;
+    border-radius: 100%;
+    background-color: #e9efef;
     background-image: url(../img/icons/user_orange.svg);
     background-repeat: no-repeat;
     background-position: center; }
@@ -10235,30 +10240,30 @@ a.button {
   border: 0; }
 
 .agenda-detail h1 {
-  color: #f76913;
+  font-family: 'work_sansregular';
   font-size: 30px;
-  font-family: 'work_sansregular'; }
+  color: #f76913; }
 
 .agenda-detail h3 {
-  text-transform: uppercase;
+  font-family: 'work_sansmedium';
   letter-spacing: 1px;
-  font-family: 'work_sansmedium'; }
+  text-transform: uppercase; }
 
 .agenda-detail a {
-  color: #444;
-  text-decoration: underline; }
+  text-decoration: underline;
+  color: #444; }
 
 .agenda-detail .detail-content {
-  box-shadow: 0 0 0 0;
   height: 190px;
   border-top: 2px solid #FAFAFA;
-  border-bottom: 2px solid #FAFAFA; }
+  border-bottom: 2px solid #FAFAFA;
+  box-shadow: 0 0 0 0; }
   .agenda-detail .detail-content .text {
     height: 100px;
     padding: 30px;
     white-space: pre-line; }
 
-.phone-input input[type="number"] {
+.phone-input input[type='number'] {
   width: 90%;
   margin-left: 10%; }
 
@@ -10269,9 +10274,9 @@ a.button {
   text-align: center; }
 
 .agenda-footer {
+  font-size: 30px;
   height: 60px;
-  color: #f76913;
-  font-size: 30px; }
+  color: #f76913; }
   .agenda-footer i.ion-dash {
     width: 30px;
     height: 32px;
@@ -10279,11 +10284,11 @@ a.button {
     content: url(../img/icons/dashboard_orange.svg);
     opacity: .9; }
   .agenda-footer .button-full {
+    font-family: 'work_sansmedium';
     margin: 0;
-    background: #f76913;
     color: white;
     border-radius: 5px;
-    font-family: 'work_sansmedium'; }
+    background: #f76913; }
 
 .profile-view .card {
   margin: 0; }

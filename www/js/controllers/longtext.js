@@ -8,8 +8,8 @@
     var currentDepto =  $localStorage.currentDepto;
     console.info("longtextController init");
     $scope.longtext = {
-      title: 'Título',
-      html: '<p>contenido en <strong>html</strong>',
+      title: 'Reglamento',
+      iframe: 'http://www.admicomu.cl/documentacion/EjemploReglamentoInterno.pdf',
     };
     $scope.goBack = function (){
       $state.go("tabs.dashboard");

@@ -1,15 +1,15 @@
 .agenda-view{
-	.subheader{
+  .subheader{
     height: 50px;
-		.icon{
-			font-size: 25px;
-			position: relative;
-			top: 8px;
-			margin: 5px;
-			&.ion-plus{
-				color: $orange;
-			}
-		}
+    .icon{
+      font-size: 25px;
+      position: relative;
+      top: 8px;
+      margin: 5px;
+      &.ion-plus{
+        color: $orange;
+      }
+    }
     span{
       float: right;
       &.new{
@@ -17,90 +17,95 @@
       }
     }
     .item-input{
-      padding: 0 10px;
       margin: 3px 10px;
+      padding: 0 10px;
       border-radius: 6px;
       .icon{
-        top: -1px;
-        float: right;
-        right: 1px;
         position: absolute;
+        top: -1px;
+        right: 1px;
+        float: right;
       }
     }
-	}
-	.list{
-		.icon{
-			font-size: 25px;
-		}
-		.list-inset{
-			margin: 0;
-			.item{
-				color: $orange;
-				border: 0;
-			}
-		}
-	}
+  }
+  .list{
+    .icon{
+      font-size: 25px;
+    }
+    .list-inset{
+      margin: 0;
+      .item{
+        color: $orange;
+        border: 0;
+      }
+    }
+  }
 }
 
 .agenda-detail{
+  img.more{
+    display: block;
+    width: 30px;
+    margin: 20px auto;
+  }
   .card{
     margin: 0;
   }
   .item-image{
-    padding: 0;
     height: 185px;
+    padding: 0;
     .orange-bar{
-    	height: 100px;
-    	background-color: $orange;
+      height: 100px;
+      background-color: $orange;
     }
     .img-container{
-	    background: transparent;
-	    position: relative;
-	    bottom: 70px;
+      position: relative;
+      bottom: 70px;
+      background: transparent;
     }
     .img{
-    	border-radius: 100%;
-    	margin: auto;
-    	background-color: $grey;
-      	height: 150px;
-      	width: 150px;
-      	background-image: url(../img/icons/user_orange.svg);
-      	background-repeat: no-repeat;
-    	background-position: center;
+      width: 150px;
+      height: 150px;
+      margin: auto;
+      border-radius: 100%;
+      background-color: $grey;
+      background-image: url(../img/icons/user_orange.svg);
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
   .item{
-  	border: 0;
+    border: 0;
   }
   h1{
-  	color: $orange;
-    font-size: 30px; 
     font-family: 'work_sansregular';
+    font-size: 30px;
+    color: $orange;
   }
   h3{
-  	text-transform: uppercase;
-  	letter-spacing: 1px;
-  	font-family: 'work_sansmedium';
+    font-family: 'work_sansmedium';
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
   a{
-  	color: #444;
-  	text-decoration: underline;
+    text-decoration: underline;
+    color: #444;
   }
   .detail-content{
-  	box-shadow: 0 0 0 0;
     height: 190px;
     border-top: 2px solid $whitesmoke;
     border-bottom: 2px solid $whitesmoke;
+    box-shadow: 0 0 0 0;
     .text{
-    	height: 100px;
-    	padding: 30px;
-    	white-space: pre-line;
+      height: 100px;
+      padding: 30px;
+      white-space: pre-line;
     }
   }
 }
 
 .phone-input{
-  input[type="number"]{
+  input[type='number']{
     width: 90%;
     margin-left: 10%;
   }
@@ -113,9 +118,9 @@
 }
 
 .agenda-footer{
-	height: 60px;
-  color: $orange;
   font-size: 30px;
+  height: 60px;
+  color: $orange;
   i.ion-dash{
     width: 30px;
     height: 32px;
@@ -124,10 +129,10 @@
     opacity: .9;
   }
   .button-full{
+    font-family: 'work_sansmedium';
     margin: 0;
-    background: $orange;
     color: white;
     border-radius: 5px;
-    font-family: 'work_sansmedium';
+    background: $orange;
   }
 }

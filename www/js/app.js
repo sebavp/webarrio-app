@@ -10,6 +10,7 @@ angular.module('WeBarrio', [
   'WeBarrio.services.agenda',
   'WeBarrio.services',
   'WeBarrio.config',
+  'WeBarrio.filters',
   'ngStorage',
   'ngCordova',
   'firebase'
