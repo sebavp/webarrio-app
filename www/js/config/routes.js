@@ -53,7 +53,16 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/account.html',
       controller:'accountController'
     })
-    
+    .state('dashboard-detail', {
+      url: '/menu/dashboard/detail',
+      templateUrl: 'templates/dashboard/detail.html',
+      controller:'detailController'
+    })
+    .state('dashboard-longtext', {
+      url: '/menu/dashboard/longtext',
+      templateUrl: 'templates/dashboard/longtext.html',
+      controller:'longtextController'
+    })
     // AGENDA
     .state('tabs.agenda', {
       url: '/agenda/',
