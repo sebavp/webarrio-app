@@ -10087,29 +10087,31 @@ a.button {
     border-bottom: 1px solid #e9efef;
     background-color: white; }
 
-.account-view .item {
+.account-view .item, .detail-view .item {
   padding-top: 10px;
   padding-bottom: 0; }
-  .account-view .item:first-child .orange {
+  .account-view .item:first-child .orange, .detail-view .item:first-child .orange {
     color: #f76913; }
-  .account-view .item .mute {
+  .account-view .item .mute, .detail-view .item .mute {
     color: #94a4a4; }
 
-.account-view .left-s p {
+.account-view .left-s p, .detail-view .left-s p {
   font-size: 15px;
   font-weight: bolder;
   text-transform: uppercase;
   color: #000; }
 
-.account-view .left-s small {
+.account-view .left-s small, .detail-view .left-s small {
   font-size: 13px; }
 
-.account-view .right-s p {
+.account-view .right-s p, .detail-view .right-s p {
   position: relative;
   top: 10px;
   text-align: right; }
+  .account-view .right-s p.notop, .detail-view .right-s p.notop {
+    top: 0; }
 
-.account-view .right-s span {
+.account-view .right-s span, .detail-view .right-s span {
   font-size: 22px; }
 
 .account-footer .pay-button {

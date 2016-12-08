@@ -1,0 +1,16 @@
+<ion-view>
+  <ion-nav-title>
+    {{longtext.title}}
+  </ion-nav-title>
+  <ion-nav-bar>
+    <ion-nav-back-button class="button-clear force-show" ng-click="goBack()">
+      <i class="color-white ion-chevron-left"></i>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+    <ion-content class="longtext-view">
+    <div class="content" ng-bind-html="longtext.html">
+
+    </div>
+  </ion-content>
+
+  </ion-view>

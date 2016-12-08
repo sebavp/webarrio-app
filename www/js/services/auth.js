@@ -1,8 +1,6 @@
 angular.module('WeBarrio.services.auth', [])
   .service('Auth', function($http, $log, Utils, CONFIG) {
-
-	var Auth = {
-
+  var Auth = {
     login: function(user) {
         var req = {
           method: 'POST',
@@ -14,13 +12,11 @@ angular.module('WeBarrio.services.auth', [])
             }
           },
         };
-        return $http(req)
+        return $http(req);
     },
-
     logout: function() {
 			console.log("Usuario Sale.");
     },
-
 		resetpassword: function(user) {
         var req = {
           method: 'POST',
@@ -31,14 +27,8 @@ angular.module('WeBarrio.services.auth', [])
             }
           },
         };
-        return $http(req)
+        return $http(req);
     },
-
-		// changePassword: function(user) {
-		// 	return auth.$changePassword({email: user.email, oldPassword: user.oldPass, newPassword: user.newPass});
-		// }
-
 	};
 	return Auth;
-
 });

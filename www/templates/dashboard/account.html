@@ -6,7 +6,7 @@
   </ion-nav-bar>
     <ion-content class="account-view">
       <div class="list">
-        <div class="item" ng-repeat="item in commonExpenses" ng-click="seeDetail(item)">
+        <div class="item" ng-repeat="item in commonExpenses">
           <div class="row">
             <div class="left-s col col-50">
               <p>{{item.month}}</p>
@@ -15,30 +15,6 @@
             <div class="right-s col col-50">
               <p><span class="orange"> ${{item.total}}</span></p>
             </div>
-          </div>
-          <div class="list list-inset" ng-show="showDetail == item.id">
-            <p class="text-center"> Detalle de Gastos</p>
-            <div class="item item-icon-left">
-              <i class="icon ion-ios-lightbulb"></i>
-              Luz: {{item.total_light}}
-            </div>
-
-            <div class="item item-icon-left">
-              <i class="icon ion-waterdrop"></i>
-              Agua: {{item.total_water}}
-            </div>
-
-            <div class="item item-icon-left">
-              <i class="icon ion-ios-flame"></i>
-              Gas: {{item.total_gas}}
-            </div>
-
-            <div class="item item-icon-left">
-              <i class="icon ion-ios-people"></i>
-              Personal: {{item.total_personal}}
-            </div>
-            <hr>
-
           </div>
         </div>
         <div class="item" ng-if="!commonExpenses">
