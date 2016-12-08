@@ -16,7 +16,7 @@
     },
     {
       "path": "/api",
-      "proxyUrl": "http://localhost:3000/api"
+      "proxyUrl": "http://admin.webarrio.cl/api"
     }
   ]
 }

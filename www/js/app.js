@@ -12,7 +12,8 @@ angular.module('WeBarrio', [
   'WeBarrio.config',
   'ngStorage',
   'ngCordova',
-  'firebase'
+  'firebase',
+  'pdf'
   ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function(FURL) {
