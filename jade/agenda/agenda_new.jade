@@ -1,0 +1,33 @@
+ion-view(view-title='Agenda', hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-content.agenda-detail(has-header='true')
+    .list.card
+      .item.item-image
+        .row.orange-bar
+        .row.img-container
+          .img
+      .item
+        h1.text-center Nuevo Contacto
+        // <h4 class="text-center">Elija el oficio o profesion del nuevo Contacto</h4>
+    .list.padding
+      form(name='newContactForm', ng-submit='newContact(newRecord)')
+        .item.item-select
+          span.input-label Oficio o Profesión
+          select(ng-model='newRecord.profesion', ng-options='p as p.name for p in profesiones', required='')
+            option(value='') Seleccione...
+        .item.item-input.item-stacked-label
+          span.input-label Nombre Completo
+          input(type='text', ng-model='newRecord.name', placeholder='Ingrese Nombre y Apellido', required='')
+        .item.item-input.item-stacked-label.phone-input
+          span.input-label Fono
+          input(type='number', ng-model='newRecord.phone', placeholder='Ingrese Fono', maxlength='9')
+          span.prefix +56
+        .item.item-input.item-stacked-label
+          span.input-label Descripción
+          textarea(ng-model='newRecord.description', placeholder='Ingrese Descripción')
+  ion-footer-bar.agenda-footer
+    .row
+      .col.text-center
+        button.button.button-full(ng-click='newContact(newRecord)')  Agregar

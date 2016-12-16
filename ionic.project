@@ -2,6 +2,7 @@
   "name": "WeBarrio",
   "app_id": "25d14e16",
   "gulpStartupTasks": [
+    "jade",
     "sass",
     "watch"
   ],

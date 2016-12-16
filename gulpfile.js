@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var jade = require( 'gulp-jade' );
 var gutil = require('gulp-util');
 var bower = require('bower');
 var concat = require('gulp-concat');
@@ -10,16 +11,25 @@ var jshint = require('gulp-jshint');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
+  jade: ['./jade/**/*.jade'],
   jslint: ['./www/js/**/*.js', './www/views/**/*.js']
 };
 
-gulp.task('serve:before', ['sass', 'watch']);
+// gulp.task( 'default', ['sass', 'jade'] );
+gulp.task('serve:before', ['sass', 'watch', 'jade']);
 
 gulp.task('lint', function() {
   return gulp.src(paths.jslint)
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
+
+gulp.task( 'jade', function (done) {
+  gulp.src(paths.jade)
+    .pipe(jade())
+    .pipe( gulp.dest('./www/') )
+    .on('end', done);
+} );
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -36,6 +46,7 @@ gulp.task('sass', function(done) {
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.jslint, ['lint']);
+  gulp.watch(paths.jade, ['jade']);
 });
 
 gulp.task('install', ['git-check'], function() {
