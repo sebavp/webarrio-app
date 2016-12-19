@@ -1,0 +1,28 @@
+ion-view(view-title='SOS' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.alert-view
+    .title-alert
+      p.text-center
+        img.sos(src='img/icons/sos.svg')
+      h2  ALERTA VECINAL
+      p Usar con responsabilidad y respeto a sus vecinos
+    a(href='tel:131')
+      .alert-row.row
+        .col
+          h2 131
+        .col
+          img.sos-small(src='img/icons/sos-cross.svg')
+    a(href='tel:132')
+      .alert-row.row
+        .col
+          h2 132
+        .col
+          img.sos-small(src='img/icons/sos-fire.svg')
+    a(href='tel:133')
+      .alert-row.row
+        .col
+          h2 133
+        .col
+          img.sos-small(src='img/icons/sos-cop.svg')

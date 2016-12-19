@@ -1,0 +1,32 @@
+ion-view(view-title='Home' hide-back-button='true')
+  ion-nav-buttons(side='right')
+    button.button-clear.force-show(main-sidebar='')
+      img.user(src='img/icons/user.svg')
+  ion-content.padding-top.home-bg
+    .list.home-menu
+      .item.item-divider.text-center.condominio(,='' ng-if='!home.condos')
+        ion-spinner(icon='dots')
+      ion-slide-box(on-slide-changed='slideHasChanged($index)')
+        ion-slide.item.item-divider.text-center.condominio(ng-class='{"moreinfo":home.condos.length>1}' ng-repeat='condo in home.condos')
+          span {{condo.name}}
+        .item.item-divider.text-center.condominio(ng-if='home.condos.length == 0')
+          span No estas asociado a ningun condominio
+      .item.item-divider.text-center.condominio
+        span(ng-repeat='depto in currentDepto') Dpto. {{depto.number}}
+      .row.admin.border-bottom
+        .col.col-100.clickable(ui-sref='tabs.dashboard')
+          .text-center.row-options
+            img(src='img/icons/money.svg')
+            span Administración
+      .row.border-bottom
+        .col.col-50.message.clickable(ui-sref='tabs.chat')
+          img(src='img/icons/message.svg')
+          span Mensajes
+        .col.col-50.agenda.clickable(ui-sref='tabs.agenda')
+          img(src='img/icons/agenda.svg')
+          span Agenda
+      .row.comunidad
+        .col.col-100.clickable(ui-sref='tabs.comunidad')
+          .text-center.row-options
+            img(src='img/icons/comunidad.svg')
+            span Comunidad

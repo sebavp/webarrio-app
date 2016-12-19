@@ -1,0 +1,12 @@
+.main-sidebar
+  .row
+    .col.col-50.col-offset-50
+      .list
+        .item(ng-click="goTo('profile')")
+          | Perfil
+        .item(ng-click="goTo('help')")
+          | Ayuda
+        .item(ng-click="goTo('config')")
+          | Configuración
+        .item(ng-click='logOut()')
+          | Cerrar Sesion

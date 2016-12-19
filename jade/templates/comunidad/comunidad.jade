@@ -1,0 +1,35 @@
+ion-view(view-title='Comunidad' hide-back-button='true')
+  ion-nav-buttons(side='left')
+    button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-nav-buttons(side='right')
+    button.button-clear.force-show(main-sidebar='')
+      img.user(src='img/icons/user.svg')
+  ion-content.padding-top.comunidad-view
+    .list
+      a.item.item-icon-left
+        .icon
+          img(src='img/icons/com-eventos.svg')
+        | Eventos
+        span.badge.badge-assertive 2
+      a.item.item-icon-left
+        .icon
+          img(src='img/icons/com-mascotas.svg')
+        | Mascotas
+      a.item.item-icon-left
+        .icon
+          img(src='img/icons/com-recomendaciones.svg')
+        | Recomendaciones
+      a.item.item-icon-left
+        .icon
+          img(src='img/icons/com-car.svg')
+        | Car pooling
+        span.badge.badge-assertive 2
+      a.item.item-icon-left
+        .icon
+          img(src='img/icons/com-anuncios.svg')
+        | Anuncios
+      a.item.item-icon-left
+        .icon
+          img(src='img/icons/com-clasificados.svg')
+        | Clasificados

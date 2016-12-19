@@ -1,0 +1,12 @@
+ion-view(hide-nav-bar='true')
+  ion-content
+    .view.log
+      .logo
+      form.login(novalidate='' name='forgotForm' ng-submit='forgotForm.$valid && resetPassword(forgotUser)')
+        label.item.item-input.item-floating-label
+          span.input-label Email
+          input.text(name='txtemail' type='email' ng-model='forgotUser.email' placeholder='Email' ng-minlength='5' ng-maxlength='30' required='')
+        input.login(type='submit' value='Recuperar Contraseña')
+      .forgot
+        p.text-center
+          a.orange(ui-sref='login') Volver

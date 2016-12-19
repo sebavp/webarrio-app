@@ -1,0 +1,16 @@
+ion-view(view-title='Detalle de gastos Comunes')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-content.detail-view
+    .list
+      .item(ng-repeat='item in accountDetails')
+        .row
+          .left-s.col.col-50
+            p {{item.title}}
+          .right-s.col.col-50
+            p.notop
+              span  ${{item.total}}
+      .item(ng-if='!accountDetails')
+        .row
+          p.text-center.col.col-100  Sin detalles Disponibles

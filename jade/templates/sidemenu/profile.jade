@@ -1,0 +1,19 @@
+ion-view(title='Perfil')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-content.profile-view(has-header='true')
+    .list.card
+      .item.item-image
+        img(src='/img/person-men.png')
+      .item
+        h2.text-center {{currentUser.name}} {{currentUser.last_name}}
+      .item.item-icon-left
+        i.icon.ion-email
+        | {{currentUser.email}}
+      .item.item-icon-left
+        i.icon.ion-male
+        | {{currentUser.sex}}
+      .item.item-icon-left
+        i.icon.ion-calendar
+        | {{currentUser.birthday}}

@@ -1,0 +1,39 @@
+ion-view(hide-nav-bar='true')
+  ion-content
+    .view.register
+      .logo
+      form.login(name='registerForm' novalidate='' ng-submit='registerForm.$valid && register(user)' ng-class="{ 'has-error' : registerForm.txtemail.$invalid && registerForm.$submitted }")
+        label
+          input.text(name='txtname' type='text' ng-model='user.name' placeholder='Nombre' ng-minlength='5' ng-maxlength='30' required='')
+        .form-errors(ng-messages='registerForm.txtname.$error' ng-if='registerForm.$submitted')
+          .form-error(ng-message='required') Campo requerido.
+          .form-error(ng-message='minlength') Debe tener al menos 5 caracteres.
+          .form-error(ng-message='maxlength') Debe tener menos de 30 caracteres.
+        label
+          input.text(name='txtlastname' type='text' ng-model='user.lastname' placeholder='Apellido' ng-minlength='5' ng-maxlength='30' required='')
+        .form-errors(ng-messages='registerForm.txtlastname.$error' ng-if='registerForm.$submitted')
+          .form-error(ng-message='required') Campo requerido.
+          .form-error(ng-message='minlength') Debe tener al menos 5 caracteres.
+          .form-error(ng-message='maxlength') Debe tener menos de 30 caracteres.
+        label
+          input.text(name='txtcondominio' type='text' ng-model='user.condominio' placeholder='Condominio' ng-minlength='5' ng-maxlength='30' required='')
+        .form-errors(ng-messages='registerForm.txtcondominio.$error' ng-if='registerForm.$submitted')
+          .form-error(ng-message='required') Campo requerido.
+          .form-error(ng-message='minlength') Debe tener al menos 5 caracteres.
+          .form-error(ng-message='maxlength') Debe tener menos de 30 caracteres.
+        label
+          input.text(name='txtemail' type='email' ng-model='user.email' placeholder='Email' ng-minlength='5' ng-maxlength='30' required='')
+        .form-errors(ng-messages='registerForm.txtemail.$error' ng-if='registerForm.$submitted')
+          .form-error(ng-message='required') Campo requerido.
+          .form-error(ng-message='email') Email no válido.
+          .form-error(ng-message='minlength') Debe tener al menos 5 caracteres.
+          .form-error(ng-message='maxlength') Debe tener menos de 30 caracteres.
+        label(ng-class="{ 'has-error-lr' : registerForm.txtpassword.$invalid  && registerForm.$submitted}")
+          input.text(name='txtpassword' type='password' ng-model='user.password' placeholder='Contraseña' ng-minlength='5' ng-maxlength='25' required='')
+        .form-errors(ng-messages='registerForm.txtpassword.$error' ng-if='registerForm.$submitted')
+          .form-error(ng-message='required') Debes ingresar una Contraseña.
+          .form-error(ng-message='minlength') Debe tener al menos 5 caracteres.
+          .form-error(ng-message='maxlength') Debe tener menos de 30 caracteres.
+          .form-error(ng-message='pattern') Debes ingresar sólo caracteres letras y numeros.
+        input.login(type='submit' value='Registrarse')
+    // /register

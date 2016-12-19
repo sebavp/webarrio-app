@@ -1,0 +1,27 @@
+ion-view(view-title='Administración')
+  ion-nav-buttons(side='left')
+    button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-nav-buttons(side='right')
+    button.button-clear.force-show(main-sidebar='')
+      img.user(src='img/icons/user.svg')
+  //- ion-nav-bar
+  //-   ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+  //-     i.color-white.ion-chevron-left
+
+  ion-content.dashboard-view
+    .hero(ng-if='commonExpenses')
+      small A PAGAR
+      p.common-expenses ${{commonExpenses[0].total}}
+      small Correspondiente a
+      p {{commonExpenses[0].month}}
+    .hero(ng-show='!commonExpenses')
+      small No Registra Deuda Pendiente
+      p
+    .list
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-account')
+        | Mi Cuenta
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-detail')
+        | Detalle de Gastos Comunes
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-reglamento')
+        | Reglamento

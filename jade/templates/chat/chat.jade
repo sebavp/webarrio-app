@@ -1,0 +1,24 @@
+ion-view(view-title='Mensajes' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.chat-view
+    .subheader.row
+      .col(ng-class="{'active': activeTab == 1}" ng-click='selectTab(1)')
+        span Vecinos
+      .col(ng-class="{'active': activeTab == 2}" ng-click='selectTab(2)')
+        span Conversaciones
+    .list(ng-show='activeTab == 1')
+      a.item.item-avatar(ng-repeat='p in people')
+        img(ng-src="{{p.sex == 'Hombre' ? '/img/person-men.png' : '/img/person-girl.png'}}")
+        h2 {{p.name}}
+        p Departamento {{p.depto_number}}
+    .list(ng-show='activeTab == 2')
+      .item
+        p.text-center
+          | No tienes conversaciones
+  ion-footer-bar.chat-footer
+    button.button.button-full(ui-sref='new_message')
+      | Nuevo Mensaje
+      i.icon.ion-android-chat
+

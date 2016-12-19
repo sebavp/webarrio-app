@@ -1,0 +1,17 @@
+ion-view(hide-nav-bar='true')
+  ion-content
+    .view.log
+      .logo
+      form.login(novalidate='' name='loginForm' ng-submit='loginForm.$valid && signIn(user)')
+        label.item.item-input.item-floating-label
+          span.input-label Email
+          input.text(name='txtemail' type='email' ng-model='user.email' placeholder='Email' ng-minlength='5' ng-maxlength='30' required='')
+        label.item.item-input.item-floating-label
+          span.input-label Contraseña
+          input.text(name='txtPassword' type='password' ng-model='user.password' placeholder='Contraseña' ng-minlength='5' ng-maxlength='30' required='')
+        .item.error-message(ng-if='error.show')
+          p {{error.msg}}
+        input.login(type='submit' value='Conectarse')
+      .forgot
+        p.text-center
+          a.orange(ui-sref='forgot') ¿Olvidaste tu contraseña?
