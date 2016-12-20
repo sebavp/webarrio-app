@@ -9946,6 +9946,9 @@ a.button {
   .register p {
     width: 100%; }
 
+button.button-clear {
+  border: none !important; }
+
 .home-menu {
   padding-top: 0;
   background-color: #FAFAFA; }
