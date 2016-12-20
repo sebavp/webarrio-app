@@ -5,6 +5,13 @@
 		z-index: 0;
 	}
 	.main-sidebar{
+		background-color: rgba(lighten($black, 25), .5)!important;
+		.row .col{
+			background-color: lighten($black, 35)!important;
+			.item{
+				background-color: lighten($black, 35)!important;
+			}
+		}
 		.col .list .item{
 			border-left:none;
 			&:hover{

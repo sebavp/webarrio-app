@@ -9948,6 +9948,15 @@ a.button {
 
 button.button-clear {
   border: none !important; }
+  button.button-clear:active, button.button-clear:focus {
+    opacity: .6; }
+
+.modal-open button.button-clear {
+  opacity: .6;
+  color: black; }
+
+.bar .buttons-right span {
+  margin-right: 10px; }
 
 .home-menu {
   padding-top: 0;
@@ -10023,7 +10032,6 @@ button.button-clear {
   border-radius: 17px; }
 
 .home-bg {
-  background-image: url(../img/bg-orangegrad-inverted.png);
   background-repeat: no-repeat;
   background-size: cover; }
 
@@ -10031,23 +10039,28 @@ button.button-clear {
   top: 50px;
   z-index: 0; }
 
-.sidebar-modal .main-sidebar .col .list .item {
-  border-left: none; }
-  .sidebar-modal .main-sidebar .col .list .item:hover {
-    -moz-transition: background-color ease 1s;
-    -o-transition: background-color ease 1s;
-    -webkit-transition: background-color ease 1s;
-    transition: background-color ease 1s;
-    background-color: #fff;
-    color: #000; }
-
-@media (min-width: 767px) {
-  .sidebar-modal .main-sidebar .col {
-    -webkit-flex: 0 0 30%;
-    -moz-flex: 0 0 30%;
-    -ms-flex: 0 0 30%;
-    flex: 0 0 30%;
-    margin-left: 70%; } }
+.sidebar-modal .main-sidebar {
+  background-color: rgba(64, 64, 64, 0.5) !important; }
+  .sidebar-modal .main-sidebar .row .col {
+    background-color: #595959 !important; }
+    .sidebar-modal .main-sidebar .row .col .item {
+      background-color: #595959 !important; }
+  .sidebar-modal .main-sidebar .col .list .item {
+    border-left: none; }
+    .sidebar-modal .main-sidebar .col .list .item:hover {
+      -moz-transition: background-color ease 1s;
+      -o-transition: background-color ease 1s;
+      -webkit-transition: background-color ease 1s;
+      transition: background-color ease 1s;
+      background-color: #fff;
+      color: #000; }
+  @media (min-width: 767px) {
+    .sidebar-modal .main-sidebar .col {
+      -webkit-flex: 0 0 30%;
+      -moz-flex: 0 0 30%;
+      -ms-flex: 0 0 30%;
+      flex: 0 0 30%;
+      margin-left: 70%; } }
 
 .sidebar-modal.modal-open .right-buttons .button-clear {
   border-bottom: 6px solid #fff;

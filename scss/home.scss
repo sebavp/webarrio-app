@@ -1,7 +1,25 @@
 $admin-h: 50px;
 button.button-clear{
-  border:none!important;
+  border: none!important;
+  &:active,
+  &:focus{
+    opacity: .6;
+  }
 }
+.modal-open{
+  button.button-clear{
+    opacity: .6;
+    color: black;
+  }
+}
+.bar{
+  .buttons-right{
+    span{
+      margin-right: 10px;
+    }
+  }
+}
+
 .home-menu{
   padding-top: 0;
   background-color: $whitesmoke;
@@ -94,7 +112,7 @@ button.button-clear{
   // background-image: url(../img/icons-bg-example.jpg);
   // background-repeat: repeat;
   // background-size: 200px;
-  background-image: url(../img/bg-orangegrad-inverted.png);
+  // background-image: url(../img/bg-orangegrad-inverted.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
