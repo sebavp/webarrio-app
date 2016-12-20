@@ -1,4 +1,7 @@
 $admin-h: 50px;
+.list:last-child{
+  top: 6px!important;
+}
 button.button-clear{
   border: none!important;
   &:active,

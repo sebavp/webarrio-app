@@ -1,4 +1,5 @@
-.dashboard-view{
+.dashboard-view,
+.detail-view{
   .hero{
     padding-top: 5px;
     text-align: center;
@@ -11,6 +12,14 @@
     &.common-expenses{
       font-size: 40px;
     }
+    .detalle-mes{
+      .item{
+        border: 10px solid #000;
+        .mute{
+          color: $text-grey;
+        }
+      }
+    }
   }
   .list{
     position: relative;
@@ -22,10 +31,34 @@
       border-bottom: 1px solid $grey;
       background-color: white;
     }
+    .item{
+      .upper{
+        text-transform: uppercase;
+      }
+      .detalle-mes{
+        hr{
+          border: none;
+          border-top: 1px solid $grey;
+        }
+        p{
+          font-size: 14px;
+          font-weight: 700;
+          padding: 0;
+        }
+        .item{
+          padding-top: 0;
+          padding-bottom: 0;
+          border: none;
+          .mute{
+            color: $text-grey;
+          }
+        }
+      }
+    }
   }
 }
 
-.account-view, .detail-view{
+.account-view{
   .item{
     padding-top: 10px;
     padding-bottom: 0;
@@ -71,29 +104,29 @@
 }
 
 // .modal-open{
-// 	&.sidebar-modal{
-// 		.modal-wrapper{
-// 			height: 100%;
-// 			position: relative;
-// 			top: 45px;
-// 			.main-sidebar{
-// 				height: 100%;
-// 				background-color: rgba(0, 0, 0, 0.74);
-// 				.row{
-// 					height: 100%;
-// 					padding: 0;
-// 					.col{
-// 						padding: 0;
-// 						background-color: $black;
-// 						.item{
-// 							background-color: $black;
-// 							color: $white;
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
+//  &.sidebar-modal{
+//    .modal-wrapper{
+//      height: 100%;
+//      position: relative;
+//      top: 45px;
+//      .main-sidebar{
+//        height: 100%;
+//        background-color: rgba(0, 0, 0, 0.74);
+//        .row{
+//          height: 100%;
+//          padding: 0;
+//          .col{
+//            padding: 0;
+//            background-color: $black;
+//            .item{
+//              background-color: $black;
+//              color: $white;
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
 // }
 
 .modal-wrapper{

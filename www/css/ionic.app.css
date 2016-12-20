@@ -9946,6 +9946,9 @@ a.button {
   .register p {
     width: 100%; }
 
+.list:last-child {
+  top: 6px !important; }
+
 button.button-clear {
   border: none !important; }
   button.button-clear:active, button.button-clear:focus {
@@ -10081,53 +10084,84 @@ button.button-clear {
       border: 0px;
       opacity: 0.7; }
 
-.dashboard-view .hero {
+.dashboard-view .hero,
+.detail-view .hero {
   padding-top: 5px;
   text-align: center;
   color: #fff;
   background-color: #f76913; }
 
-.dashboard-view p {
+.dashboard-view p,
+.detail-view p {
   font-size: 25px;
   padding: 10px; }
-  .dashboard-view p.common-expenses {
+  .dashboard-view p.common-expenses,
+  .detail-view p.common-expenses {
     font-size: 40px; }
+  .dashboard-view p .detalle-mes .item,
+  .detail-view p .detalle-mes .item {
+    border: 10px solid #000; }
+    .dashboard-view p .detalle-mes .item .mute,
+    .detail-view p .detalle-mes .item .mute {
+      color: #94a4a4; }
 
-.dashboard-view .list {
+.dashboard-view .list,
+.detail-view .list {
   position: relative;
   top: -12px; }
-  .dashboard-view .list .button {
+  .dashboard-view .list .button,
+  .detail-view .list .button {
     margin: 0;
     padding: 5px 20px;
     text-align: left;
     border-bottom: 1px solid #e9efef;
     background-color: white; }
+  .dashboard-view .list .item .upper,
+  .detail-view .list .item .upper {
+    text-transform: uppercase; }
+  .dashboard-view .list .item .detalle-mes hr,
+  .detail-view .list .item .detalle-mes hr {
+    border: none;
+    border-top: 1px solid #e9efef; }
+  .dashboard-view .list .item .detalle-mes p,
+  .detail-view .list .item .detalle-mes p {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0; }
+  .dashboard-view .list .item .detalle-mes .item,
+  .detail-view .list .item .detalle-mes .item {
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none; }
+    .dashboard-view .list .item .detalle-mes .item .mute,
+    .detail-view .list .item .detalle-mes .item .mute {
+      color: #94a4a4; }
 
-.account-view .item, .detail-view .item {
+.account-view .item {
   padding-top: 10px;
   padding-bottom: 0; }
-  .account-view .item:first-child .orange, .detail-view .item:first-child .orange {
+  .account-view .item:first-child .orange {
     color: #f76913; }
-  .account-view .item .mute, .detail-view .item .mute {
+  .account-view .item .mute {
     color: #94a4a4; }
 
-.account-view .left-s p, .detail-view .left-s p {
+.account-view .left-s p {
   font-size: 15px;
   font-weight: bolder;
   text-transform: uppercase;
   color: #000; }
 
-.account-view .left-s small, .detail-view .left-s small {
+.account-view .left-s small {
   font-size: 13px; }
 
-.account-view .right-s p, .detail-view .right-s p {
+.account-view .right-s p {
   position: relative;
   top: 10px;
   text-align: right; }
-  .account-view .right-s p.notop, .detail-view .right-s p.notop {
+  .account-view .right-s p.notop {
     top: 0; }
 
-.account-view .right-s span, .detail-view .right-s span {
+.account-view .right-s span {
   font-size: 22px; }
 
 .account-footer .pay-button {

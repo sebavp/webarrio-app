@@ -1,16 +1,25 @@
-ion-view(view-title='Detalle de gastos Comunes')
+ion-view(view-title='Mi Cuenta')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.detail-view
     .list
-      .item(ng-repeat='item in accountDetails')
-        .row
-          .left-s.col.col-50
-            p {{item.title}}
-          .right-s.col.col-50
-            p.notop
-              span  ${{item.total}}
-      .item(ng-if='!accountDetails')
-        .row
-          p.text-center.col.col-100  Sin detalles Disponibles
+      .item.button.button-full.icon-right.ion-ios-arrow-down(ng-repeat='item in commonExpenses', ng-init='hideInfo=true', ng-click='hideInfo=!hideInfo')
+        span.upper {{item.month}}
+        .detalle-mes(ng-hide='hideInfo')
+          hr
+          p  Detalle de Gastos
+          .item.item-icon-left
+            i.icon.ion-ios-lightbulb
+            |               Luz: {{item.total_light}}
+          .item.item-icon-left
+            i.icon.ion-waterdrop
+            |               Agua: {{item.total_water}}
+          .item.item-icon-left
+            i.icon.ion-ios-flame
+            |               Gas: {{item.total_gas}}
+          .item.item-icon-left
+            i.icon.ion-ios-people
+            |               Personal: {{item.total_personal}}
+          hr
+          p Total: {{item.total_light +  item.total_water + item.total_gas + item.total_personal}}
