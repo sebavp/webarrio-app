@@ -58,6 +58,21 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/detail.html',
       controller:'detailController'
     })
+    .state('dashboard-instalaciones', {
+      url: '/menu/dashboard/instalaciones',
+      templateUrl: 'templates/dashboard/instalaciones.html',
+      controller:'instalacionesController'
+    })
+    .state('dashboard-asambleas', {
+      url: '/menu/dashboard/asambleas',
+      templateUrl: 'templates/dashboard/asambleas.html',
+      controller:'asambleasController'
+    })
+    .state('dashboard-mantenciones', {
+      url: '/menu/dashboard/mantenciones',
+      templateUrl: 'templates/dashboard/mantenciones.html',
+      controller:'mantencionesController'
+    })
     .state('dashboard-longtext', {
       url: '/menu/dashboard/longtext',
       templateUrl: 'templates/dashboard/longtext.html',

@@ -17,11 +17,16 @@ ion-view(view-title='Administración')
       p {{commonExpenses[0].month}}
     .hero(ng-show='!commonExpenses')
       small No Registra Deuda Pendiente
-      p
     .list
       .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-account')
         | Mi Cuenta
       .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-detail')
         | Detalle de Gastos Comunes
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-instalaciones')
+        | Uso de Instalaciones
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-asambleas')
+        | Asambleas
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-mantenciones')
+        | Mantenciones
       .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-reglamento')
         | Reglamento
