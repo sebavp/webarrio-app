@@ -73,10 +73,20 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/asambleas.html',
       controller:'asambleasController'
     })
+    .state('dashboard-asambleas-detail', {
+      url: '/menu/dashboard/asambleas-detail',
+      templateUrl: 'templates/dashboard/asambleas-detail.html',
+      controller:'asambleasDetailController'
+    })
     .state('dashboard-mantenciones', {
       url: '/menu/dashboard/mantenciones',
       templateUrl: 'templates/dashboard/mantenciones.html',
       controller:'mantencionesController'
+    })
+    .state('dashboard-mantenciones-detail', {
+      url: '/menu/dashboard/mantenciones-detail',
+      templateUrl: 'templates/dashboard/mantenciones-detail.html',
+      controller:'mantencionesDetailController'
     })
     .state('dashboard-longtext', {
       url: '/menu/dashboard/longtext',
