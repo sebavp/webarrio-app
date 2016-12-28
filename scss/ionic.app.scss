@@ -36,6 +36,7 @@ $ionicons-font-path: '../lib/ionic/fonts' !default;
 @import 'scss/tabicons';
 @import 'scss/comunidad';
 @import 'scss/instalaciones';
+@import 'scss/asambleas';
 
 p,
 span,
@@ -58,6 +59,9 @@ input{
 }
 .right{
   float: right;
+}
+.muted{
+  opacity: .6;
 }
 .padding-top,
 .padding-vertical{

@@ -1,0 +1,31 @@
+ion-view(view-title='Asambleas' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref='dashboard-asambleas-detail')
+        i.color-white.ion-plus-round
+  ion-content.padding-top.asambleas-view
+    .list
+      a.item(ui-sref='dashboard-asambleas-detail')
+        p
+          strong Asamblea 2017
+          small.right
+            i.ion-calendar
+            |   14/12 20:00 HS
+    .list.muted.br
+      .item
+        small Asambleas anteriores
+    .list.muted
+      a.item(ui-sref='dashboard-asambleas-detail')
+        p
+          strong Asamblea 2016
+          small.right
+            i.ion-calendar
+            |   14/12 20:00 HS
+      a.item(ui-sref='dashboard-asambleas-detail')
+        p
+          strong Asamblea 2015
+          small.right
+            i.ion-calendar
+            |   14/12 20:00 HS

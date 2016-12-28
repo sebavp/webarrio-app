@@ -2,6 +2,9 @@ ion-view(view-title='Uso de Instalaciones' hide-back-button='true')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref='dashboard-instalaciones-detail')
+        i.color-white.ion-plus-round
   ion-content.padding-top.instalaciones-view
     .subheader.row
       .col(ng-class="{'active': activeTab == 1}" ng-click='selectTab(1)')

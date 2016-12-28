@@ -1,0 +1,14 @@
+.asambleas-view{
+  .list{
+    margin-bottom: 0;
+    .item{
+      border: none;
+    }
+    &.br{
+      margin: 0;
+      .item{
+        padding: 5px 16px;
+      }
+    }
+  }
+}

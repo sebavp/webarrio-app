@@ -10451,6 +10451,15 @@ button.button-clear {
     color: black;
     margin-bottom: 10px; }
 
+.asambleas-view .list {
+  margin-bottom: 0; }
+  .asambleas-view .list .item {
+    border: none; }
+  .asambleas-view .list.br {
+    margin: 0; }
+    .asambleas-view .list.br .item {
+      padding: 5px 16px; }
+
 p,
 span,
 div,
@@ -10471,6 +10480,9 @@ input {
 
 .right {
   float: right; }
+
+.muted {
+  opacity: .6; }
 
 .padding-top,
 .padding-vertical {
