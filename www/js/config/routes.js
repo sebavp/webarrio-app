@@ -163,7 +163,7 @@ angular.module('WeBarrio.routes', [])
       }
     })
     
-    //
+    // COMUNIDAD
     .state('tabs.comunidad', {
       url: '/comunidad/',
       views: {
@@ -172,6 +172,11 @@ angular.module('WeBarrio.routes', [])
           controller: 'comunidadController'
         }
       }
+    })
+    .state('comunidad-anuncios', {
+      url: '/comunidad/anuncios/',
+      templateUrl: 'templates/comunidad/anuncios.html',
+      controller:'anunciosController'
     })
 
     // VISTAS SIDEMENU
