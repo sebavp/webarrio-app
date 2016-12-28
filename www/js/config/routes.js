@@ -135,8 +135,8 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/chat/conversation.html',
       controller:'chatController'
     })
-    .state('new_message', {
-      url: '/menu/dashboard/nuevo_mensaje',
+    .state('chat-new-message', {
+      url: '/menu/chat/nuevo_mensaje',
       templateUrl: 'templates/chat/new_message.html',
       controller:'chatController'
     })

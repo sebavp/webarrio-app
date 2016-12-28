@@ -82,7 +82,7 @@ input{
   color: white;
   background: $orange;
   .title{
-    line-height: 50px;
+    line-height: 50px !important;
   }
 }
 a{
@@ -129,4 +129,9 @@ img.user{
   height: 40px;
   text-align: center;
   background: $grey;
+}
+
+.button.back-button{
+    position: relative;
+    left: 15px;
 }

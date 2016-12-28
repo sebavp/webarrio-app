@@ -10,11 +10,10 @@
 
     $scope.currentCondo = $localStorage.currentCondo;
     $scope.currentUser = $localStorage.currentUser
+    $scope.loading = true;
 
-    console.log($scope.currentCondo);
     var getAllPeople = function (){
       dataAPIService.getPeopleFromCondo($scope.currentCondo.id).then(function (response){
-        console.log(response)
         $scope.people = response.data.people;
       })
     };
@@ -32,34 +31,33 @@
 
     $scope.goBack = function (){
       if (_.isNull($ionicHistory.viewHistory().backView)) {
-        $state.go("tabs.home")
+        $state.go("tabs.chat")
       } else{
         $ionicHistory.goBack();
       }
     };
 
+    var loadUser = function(){
+      dataAPIService.getUser($stateParams.personId).then(function (userResponse) {
+          $scope.user = userResponse.data.user;
+          $scope.chatTitle = $scope.user.name;
+          $scope.$broadcast('scroll.refreshComplete');
+          $scope.loading = false;
+      });
+    }
 
-    $scope.chatTitle = "Conversación";
-
-    var loadChat = function (){
+    var loadChat = function (userLoading){
       mensajeService.getMessage($stateParams.chatId).then(function (response) {
-          
-          $scope.messages = response;
-
-          dataAPIService.getUser($stateParams.personId).then(function (userResponse) {
-              $scope.user = userResponse.data.user;
-              console.log($scope.user)
-              $scope.$broadcast('scroll.refreshComplete');
-          });
-
+        $scope.messages = response.$value === null ? [] : response;
+        if (!userLoading) {
+          loadUser();
+        };
       });
     }
 
     var loadChats = function(){
       mensajeService.getMessages($scope.currentUser.user.id).then(function (response) {
-          
           $scope.conversations = response;
-          console.log(response)
           getAllPeople();
       });
     }
@@ -68,7 +66,6 @@
       if ($state.current.name == "chat-conversation") {
         loadChat();
       } else {
-        
         loadChats();
       }
     });
@@ -83,6 +80,9 @@
         
         mensajeService.newMessage($stateParams.chatId, msg).then(function (response) {
             $scope.newMessageText = "";
+            if ($scope.messages.length == 0) {
+              loadChat(true)
+            };
         }, function (error) {
             console.log(error);
         });
