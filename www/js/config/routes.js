@@ -83,6 +83,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/mantenciones.html',
       controller:'mantencionesController'
     })
+    .state('dashboard-mantenciones-detail', {
+      url: '/menu/dashboard/mantenciones-detail',
+      templateUrl: 'templates/dashboard/mantenciones-detail.html',
+      controller:'mantencionesDetailController'
+    })
     .state('dashboard-longtext', {
       url: '/menu/dashboard/longtext',
       templateUrl: 'templates/dashboard/longtext.html',
