@@ -1,0 +1,14 @@
+ion-view(view-title='Clasificados' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref='comunidad-anuncios-new')
+        i.color-white.ion-plus-round
+  ion-content.padding-top.anuncios-view
+    .list
+      a.item.item-avatar(ng-repeat='clas in clasificados', ui-sref='comunidad-clasificados-detail')
+        img(src='/img/blank.png')
+        small.muted.right {{clas.date}} {{clas.hourStart}}
+        h2 {{clas.title}}
+        p.muted {{clas.desc}}

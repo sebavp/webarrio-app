@@ -183,6 +183,26 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/anuncios-detail.html',
       controller:'anunciosDetailController'
     })
+    .state('comunidad-eventos', {
+      url: '/comunidad/eventos/',
+      templateUrl: 'templates/comunidad/eventos.html',
+      controller:'eventosController'
+    })
+    .state('comunidad-eventos-detail', {
+      url: '/comunidad/eventos-detail/',
+      templateUrl: 'templates/comunidad/eventos-detail.html',
+      controller:'eventosDetailController'
+    })
+    .state('comunidad-clasificados', {
+      url: '/comunidad/clasificados/',
+      templateUrl: 'templates/comunidad/clasificados.html',
+      controller:'clasificadosController'
+    })
+    .state('comunidad-clasificados-detail', {
+      url: '/comunidad/clasificados-detail/',
+      templateUrl: 'templates/comunidad/clasificados-detail.html',
+      controller:'clasificadosDetailController'
+    })
 
     // VISTAS SIDEMENU
     // PERFIL
