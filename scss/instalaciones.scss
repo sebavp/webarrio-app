@@ -1,0 +1,24 @@
+.instalaciones-view{
+  .subheader{
+    .active{
+      color: $orange;
+    }
+  }
+}
+
+.instalaciones-detail-view{
+  .item{
+    border: none;
+    h2{
+      margin-bottom: 20px;
+    }
+
+    p.title{
+    margin: 0;
+    }
+    p.desc{
+      color: black;
+      margin-bottom: 10px;
+    }
+  }
+}

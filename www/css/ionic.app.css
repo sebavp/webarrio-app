@@ -10127,12 +10127,27 @@ button.button-clear {
   .detail-view .list .item .detalle-mes p {
     font-size: 14px;
     font-weight: 700;
-    padding: 0; }
+    padding: 0 16px; }
+    .dashboard-view .list .item .detalle-mes p.red,
+    .detail-view .list .item .detalle-mes p.red {
+      color: #ed1c24; }
+      .dashboard-view .list .item .detalle-mes p.red span.text-left,
+      .detail-view .list .item .detalle-mes p.red span.text-left {
+        float: left; }
+      .dashboard-view .list .item .detalle-mes p.red span.text-right,
+      .detail-view .list .item .detalle-mes p.red span.text-right {
+        float: right; }
   .dashboard-view .list .item .detalle-mes .item,
   .detail-view .list .item .detalle-mes .item {
     padding-top: 0;
     padding-bottom: 0;
     border: none; }
+    .dashboard-view .list .item .detalle-mes .item span.text-left,
+    .detail-view .list .item .detalle-mes .item span.text-left {
+      float: left; }
+    .dashboard-view .list .item .detalle-mes .item span.text-right,
+    .detail-view .list .item .detalle-mes .item span.text-right {
+      float: right; }
     .dashboard-view .list .item .detalle-mes .item .mute,
     .detail-view .list .item .detalle-mes .item .mute {
       color: #94a4a4; }
@@ -10423,6 +10438,19 @@ button.button-clear {
     color: white;
     display: block; }
 
+.instalaciones-view .subheader .active {
+  color: #f76913; }
+
+.instalaciones-detail-view .item {
+  border: none; }
+  .instalaciones-detail-view .item h2 {
+    margin-bottom: 20px; }
+  .instalaciones-detail-view .item p.title {
+    margin: 0; }
+  .instalaciones-detail-view .item p.desc {
+    color: black;
+    margin-bottom: 10px; }
+
 p,
 span,
 div,
@@ -10437,6 +10465,12 @@ option {
 
 input {
   border-radius: 0; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
 
 .padding-top,
 .padding-vertical {

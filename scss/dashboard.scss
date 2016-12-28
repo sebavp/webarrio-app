@@ -43,12 +43,31 @@
         p{
           font-size: 14px;
           font-weight: 700;
-          padding: 0;
+          padding: 0 16px;
+          &.red{
+            color: $alert;
+            span{
+              &.text-left{
+                float: left;
+              }
+              &.text-right{
+                float: right;
+              }
+            }
+          }
         }
         .item{
           padding-top: 0;
           padding-bottom: 0;
           border: none;
+          span{
+            &.text-left{
+              float: left;
+            }
+            &.text-right{
+              float: right;
+            }
+          }
           .mute{
             color: $text-grey;
           }

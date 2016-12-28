@@ -2,7 +2,7 @@ ion-view(view-title='Uso de Instalaciones' hide-back-button='true')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
-  ion-content.padding-top.chat-view
+  ion-content.padding-top.instalaciones-view
     .subheader.row
       .col(ng-class="{'active': activeTab == 1}" ng-click='selectTab(1)')
         span Hoy
@@ -11,10 +11,9 @@ ion-view(view-title='Uso de Instalaciones' hide-back-button='true')
       .col(ng-class="{'active': activeTab == 3}" ng-click='selectTab(3)')
         span Mes
     .list(ng-show='activeTab == 2')
-      a.item
-        h2 {{p.name}}
-        p Departamento {{p.depto_number}}
-    .list(ng-show='activeTab == 2')
-      .item
-        p.text-center
-          | No tienes conversaciones
+      a.item.item-avatar(ng-repeat='inst in instalaciones', ui-sref='dashboard-instalaciones-detail')
+        img(ng-src='{{inst.img}}')
+        h2 {{inst.name}}
+        p 
+          small.left por {{inst.by}}
+          small.right {{inst.date}} {{inst.hourStart}} HS

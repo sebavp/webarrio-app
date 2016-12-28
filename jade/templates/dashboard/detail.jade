@@ -11,15 +11,21 @@ ion-view(view-title='Mi Cuenta')
           p  Detalle de Gastos
           .item.item-icon-left
             i.icon.ion-ios-lightbulb
-            |               Luz: {{item.total_light}}
+            span.text-left Luz:
+            span.text-right {{item.total_light}}
           .item.item-icon-left
             i.icon.ion-waterdrop
-            |               Agua: {{item.total_water}}
+            span.text-left Agua:
+            span.text-right {{item.total_water}}
           .item.item-icon-left
             i.icon.ion-ios-flame
-            |               Gas: {{item.total_gas}}
+            span.text-left Gas:
+            span.text-right {{item.total_gas}}
           .item.item-icon-left
             i.icon.ion-ios-people
-            |               Personal: {{item.total_personal}}
+            span.text-left Personal:
+            span.text-right {{item.total_personal}}
           hr
-          p Total: {{item.total_light +  item.total_water + item.total_gas + item.total_personal}}
+          p.red
+            span.text-left Total: 
+            span.text-right {{item.total_light +  item.total_water + item.total_gas + item.total_personal}}
