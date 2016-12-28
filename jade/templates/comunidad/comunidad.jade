@@ -11,7 +11,7 @@ ion-view(view-title='Comunidad' hide-back-button='true')
         .icon
           img(src='img/icons/com-eventos.svg')
         | Eventos
-        span.badge.badge-assertive 2
+        span.badge.badge-assertive 3
       a.item.item-icon-left
         .icon
           img(src='img/icons/com-mascotas.svg')
@@ -29,7 +29,9 @@ ion-view(view-title='Comunidad' hide-back-button='true')
         .icon
           img(src='img/icons/com-anuncios.svg')
         | Anuncios
-      a.item.item-icon-left
+        span.badge.badge-assertive 3
+      a.item.item-icon-left(ui-sref='comunidad-clasificados')
         .icon
           img(src='img/icons/com-clasificados.svg')
         | Clasificados
+        span.badge.badge-assertive 4

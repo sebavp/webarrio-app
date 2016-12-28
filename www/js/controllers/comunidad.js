@@ -7,7 +7,9 @@ angular
   .controller('anunciosController', anunciosController)
   .controller('anunciosDetailController', anunciosController)
   .controller('eventosController', eventosController)
-  .controller('eventosDetailController', eventosDetailController);
+  .controller('eventosDetailController', eventosDetailController)
+  .controller('clasificadosController', clasificadosController)
+  .controller('clasificadosDetailController', clasificadosDetailController);
 
   function comunidadController($scope, $state) {
     console.info("comunidadController init");
@@ -18,10 +20,52 @@ angular
   function anunciosDetailController($scope, $state) {
     console.info("anunciosDetailController init");
   }
+  function clasificadosDetailController($scope, $state) {
+    console.info("clasificadosDetailController init");
+    $scope.goBack = function (){
+      $state.go("comunidad-clasificados");
+    };
+  }
   function eventosDetailController($scope, $state) {
     console.info("eventosDetailController init");
     $scope.goBack = function (){
       $state.go("comunidad-eventos");
+    };
+  }
+  function clasificadosController($scope, $state) {
+    console.info("clasificadosController init");
+    $scope.clasificados = [
+      {
+        title: 'Vendo sillón y escritorio',
+        desc: 'Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 2 cajones. Estado impecable!! $50000 el escritorio y $70000 el sillón',
+        by: 'Ana María',
+        date: '14 Jun',
+        img: '/img/blank.png'
+      },
+      {
+        title: 'Regalo platos',
+        desc: 'Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 2 cajones. Estado impecable!!',
+        by: 'Ana María',
+        date: '14 Jun',
+        img: '/img/blank.png'
+      },
+      {
+        title: 'Se alquila dpto 4B',
+        desc: 'Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 2 cajones. Estado impecable!!',
+        by: 'Ana María',
+        date: '14 Jun',
+        img: '/img/blank.png'
+      },
+      {
+        title: 'Miel artesanal',
+        desc: 'Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 2 cajones. Estado impecable!!',
+        by: 'Ana María',
+        date: '14 Jun',
+        img: '/img/blank.png'
+      }
+    ]
+    $scope.goBack = function (){
+      $state.go("tabs.comunidad");
     };
   }
   function eventosController($scope, $state) {
