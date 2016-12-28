@@ -13,7 +13,9 @@ angular
   .controller('recomendacionesController', recomendacionesController)
   .controller('recomendacionesDetailController', recomendacionesDetailController)
   .controller('mascotasController', mascotasController)
-  .controller('mascotasDetailController', mascotasDetailController);
+  .controller('mascotasDetailController', mascotasDetailController)
+  .controller('carpController', carpController)
+  .controller('carpDetailController', carpDetailController);
 
   function comunidadController($scope, $state) {
     console.info("comunidadController init");
@@ -36,6 +38,34 @@ angular
       $state.go("comunidad-eventos");
     };
   }
+  function carpDetailController($scope, $state) {
+    console.info("carpDetailController init");
+    $scope.goBack = function (){
+      $state.go("comunidad-carp");
+    };
+  }
+  function carpController($scope, $state) {
+    console.info("carpController init");
+    $scope.carp = [
+      {
+        title: 'Viajo a Valpo',
+        desc: 'Me quedan 2 lugares disponibles. Viajo por el fin de semana, puede ser ida y vuelta.',
+        by: 'Ana María',
+        img: '/img/blank.png',
+        date: '14 JUN'
+      },
+      {
+        title: 'Ida a la Moneda',
+        desc: 'Viajo todas las mañanas.',
+        by: 'Ana María',
+        img: '/img/blank.png',
+        date: '14 JUN'
+      }
+    ]
+    $scope.goBack = function (){
+      $state.go("tabs.comunidad");
+    };
+  }
   function mascotasDetailController($scope, $state) {
     console.info("mascotasDetailController init");
     $scope.goBack = function (){
@@ -49,19 +79,22 @@ angular
         title: 'Se perdió Flaco!!!!!!!',
         desc: 'Gato negro, macho. Lleva collar rojo. Por favor si lo encuentran contáctenme por acá o al 599991003. Visto por última vez el viernes a la tarde.',
         by: 'Ana María',
-        img: '/img/blank.png'
+        img: '/img/blank.png',
+        date: '14 JUN'
       },
       {
         title: 'Regalo perritos',
         desc: 'Abrió hace poco y tiene buenos precios para socios.',
         by: 'Ana María',
-        img: '/img/blank.png'
+        img: '/img/blank.png',
+        date: '14 JUN'
       },
       {
         title: 'BLAS PERDIDO',
         desc: 'Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 3 cajones',
         by: 'Ana María',
-        img: '/img/blank.png'
+        img: '/img/blank.png',
+        date: '14 JUN'
       }
     ]
     $scope.goBack = function (){

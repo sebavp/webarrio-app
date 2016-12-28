@@ -9,6 +9,6 @@ ion-view(view-title='Mascotas' hide-back-button='true')
     .list
       a.item.item-avatar(ng-repeat='pet in mascotas', ui-sref='comunidad-mascotas-detail')
         img(src='/img/blank.png')
-        small.muted.right {{pet.date}} {{pet.hourStart}}
+        small.muted.right {{pet.date}}
         h2 {{pet.title}}
         p.muted {{pet.desc}}
