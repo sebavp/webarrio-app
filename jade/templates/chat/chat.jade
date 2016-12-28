@@ -19,7 +19,13 @@ ion-view(view-title='Mensajes' hide-back-button='true')
         span.arrow
           i.icon.ion-chevron-right
     .list(ng-show='activeTab == 2')
-      .item
+      .item(ng-if="conversations.length == 0")
         p.text-center
           | No tienes conversaciones
+      a.item.item-avatar(ng-repeat="c in conversations | orderBy: 'createdAt' " ng-click="goToConversation(c, true)")
+        img(ng-src="{{p.avatar_url ? p.avatar_url : '/img/avatar-thumb.png'}}")
+        h2 {{c.personName}}
+        p Departamento {{c.deptoNumber}}
+        span.arrow
+          i.icon.ion-chevron-right
 

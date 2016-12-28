@@ -131,7 +131,7 @@ angular.module('WeBarrio.routes', [])
       }
     })
     .state('chat-conversation', {
-      url: '/chat/conversation/:personId/:chatId',
+      url: '/chat/conversation/:personId/:deptoNumber/:chatId',
       templateUrl: 'templates/chat/conversation.html',
       controller:'chatController'
     })

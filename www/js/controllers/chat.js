@@ -24,9 +24,13 @@
       $scope.activeTab = active;
     };
 
-    $scope.goToConversation = function(person){
-      var chatId = _.min([$scope.currentUser.user.id, person.id]) + "A" + _.max([$scope.currentUser.user.id, person.id])
-      $state.go('chat-conversation', {chatId: chatId, personId: person.id})
+    $scope.goToConversation = function(person, fromConversation){
+      if (fromConversation) {
+        $state.go('chat-conversation', {chatId: person.chatId, personId: person.chatId.split("A")[1], deptoNumber: person.deptoNumber})
+      } else{
+        var chatId = _.min([$scope.currentUser.user.id, person.id]) + "A" + _.max([$scope.currentUser.user.id, person.id])
+        $state.go('chat-conversation', {chatId: chatId, personId: person.id, deptoNumber: person.depto_number})
+      }
     }
 
     $scope.goBack = function (){
@@ -57,9 +61,24 @@
 
     var loadChats = function(){
       mensajeService.getMessages($scope.currentUser.user.id).then(function (response) {
+        console.log(response)
           $scope.conversations = response;
           getAllPeople();
       });
+    };
+
+    var saveConversation = function (){
+      var chatInfo = {
+        chatId: $stateParams.chatId,
+        personName: $scope.user.name,
+        deptoNumber: $stateParams.deptoNumber,
+        createdAt: Date.now(),
+      }
+      mensajeService.saveConversation($scope.currentUser.user.id, chatInfo).then(function(response){
+        console.log(response)
+      }, function(error){
+        console.log(error)
+      })
     }
 
     $scope.$on("$ionicView.beforeEnter", function(){
@@ -81,6 +100,7 @@
         mensajeService.newMessage($stateParams.chatId, msg).then(function (response) {
             $scope.newMessageText = "";
             if ($scope.messages.length == 0) {
+              saveConversation()
               loadChat(true)
             };
         }, function (error) {
