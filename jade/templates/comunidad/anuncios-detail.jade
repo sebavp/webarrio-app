@@ -1,0 +1,17 @@
+ion-view(view-title='Detalle Anuncio' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.instalaciones-detail-view
+    img.full(src='/img/ball.jpg')
+    .list
+      .padding
+        small.muted 14 JUN
+        h2 Pelota perdida
+        .avatar
+          img(src='/img/blank.png')
+          span Ana María
+        p Se encontró una pelota en la cancha de fútbol el jueves a la tarde, contactarse conmigo.
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button
+      |  Enviar un mensaje a Ana María

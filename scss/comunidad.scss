@@ -14,14 +14,40 @@
     .badge{
       font-size: 12px;
       line-height: 20px;
+      display: block;
       width: 20px;
       height: 20px;
       padding: 0;
       text-align: center;
+      color: white;
       border-radius: 50%;
       background-color: $orange;
-      color: white;
-      display: block;
+    }
+  }
+}
+.instalaciones-detail-view{
+  h2{
+    font-size: 20px;
+    margin-top: 5px;
+    color: $orange;
+  }
+  .avatar{
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+    img{
+      float: left;
+      width: 100%;
+      max-width: 40px;
+      height: 100%;
+      max-height: 40px;
+      border-radius: 50%;
+    }
+    span{
+      line-height: 40px;
+      float: left;
+      margin-left: 10px;
+      color: $text-grey;
     }
   }
 }

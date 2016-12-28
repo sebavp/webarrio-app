@@ -17,6 +17,6 @@ ion-view(view-title='Uso de Instalaciones' hide-back-button='true')
       a.item.item-avatar(ng-repeat='inst in instalaciones', ui-sref='dashboard-instalaciones-detail')
         img(ng-src='{{inst.img}}')
         h2 {{inst.name}}
-        p 
+        p
           small.left por {{inst.by}}
           small.right {{inst.date}} {{inst.hourStart}} HS

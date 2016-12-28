@@ -129,7 +129,7 @@ angular.module('WeBarrio.routes', [])
           controller: 'chatController'
         }
       }
-    })   
+    })
     .state('chat-conversation', {
       url: '/chat/conversation/:personId/:chatId',
       templateUrl: 'templates/chat/conversation.html',
@@ -151,7 +151,7 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-    
+
     // ALERTA SOS
     .state('tabs.alerta', {
       url: '/alerta/',
@@ -162,7 +162,7 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-    
+
     // COMUNIDAD
     .state('tabs.comunidad', {
       url: '/comunidad/',
@@ -177,6 +177,11 @@ angular.module('WeBarrio.routes', [])
       url: '/comunidad/anuncios/',
       templateUrl: 'templates/comunidad/anuncios.html',
       controller:'anunciosController'
+    })
+    .state('comunidad-anuncios-detail', {
+      url: '/comunidad/anuncios-detail/',
+      templateUrl: 'templates/comunidad/anuncios-detail.html',
+      controller:'anunciosDetailController'
     })
 
     // VISTAS SIDEMENU

@@ -3,20 +3,12 @@ ion-view(view-title='Anuncios' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
     ion-nav-buttons(side='right')
-      button.button-clear.force-show(ui-sref='dashboard-instalaciones-detail')
+      button.button-clear.force-show(ui-sref='comunidad-anuncios-new')
         i.color-white.ion-plus-round
-  ion-content.padding-top.instalaciones-view
-    .subheader.row
-      .col(ng-class="{'active': activeTab == 1}" ng-click='selectTab(1)')
-        span Hoy
-      .col(ng-class="{'active': activeTab == 2}" ng-click='selectTab(2)')
-        span Semana
-      .col(ng-class="{'active': activeTab == 3}" ng-click='selectTab(3)')
-        span Mes
-    .list(ng-show='activeTab == 2')
-      a.item.item-avatar(ng-repeat='inst in instalaciones', ui-sref='dashboard-instalaciones-detail')
-        img(ng-src='{{inst.img}}')
-        h2 {{inst.name}}
-        p 
-          small.left por {{inst.by}}
-          small.right {{inst.date}} {{inst.hourStart}} HS
+  ion-content.padding-top.anuncios-view
+    .list
+      a.item.item-avatar(ng-repeat='an in anuncios', ui-sref='comunidad-anuncios-detail')
+        img(ng-src='{{an.img}}')
+        small.muted.right {{an.date}} {{an.hourStart}}
+        h2 {{an.title}}
+        p {{an.desc}}

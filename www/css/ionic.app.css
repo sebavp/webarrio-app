@@ -10555,14 +10555,36 @@ button.button-clear {
   .comunidad-view .item .badge {
     font-size: 12px;
     line-height: 20px;
+    display: block;
     width: 20px;
     height: 20px;
     padding: 0;
     text-align: center;
-    border-radius: 50%;
-    background-color: #f76913;
     color: white;
-    display: block; }
+    border-radius: 50%;
+    background-color: #f76913; }
+
+.instalaciones-detail-view h2 {
+  font-size: 20px;
+  margin-top: 5px;
+  color: #f76913; }
+
+.instalaciones-detail-view .avatar {
+  float: left;
+  width: 100%;
+  margin: 10px 0; }
+  .instalaciones-detail-view .avatar img {
+    float: left;
+    width: 100%;
+    max-width: 40px;
+    height: 100%;
+    max-height: 40px;
+    border-radius: 50%; }
+  .instalaciones-detail-view .avatar span {
+    line-height: 40px;
+    float: left;
+    margin-left: 10px;
+    color: #94a4a4; }
 
 .instalaciones-view .subheader .active {
   color: #f76913; }
@@ -10609,6 +10631,15 @@ input {
 
 .muted {
   opacity: .6; }
+
+.full {
+  width: 100%; }
+
+.bar-orange {
+  background: #f76913; }
+  .bar-orange button {
+    color: white;
+    background: #f76913; }
 
 .padding-top,
 .padding-vertical {

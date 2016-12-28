@@ -63,6 +63,16 @@ input{
 .muted{
   opacity: .6;
 }
+.full{
+  width: 100%;
+}
+.bar-orange{
+  background: $orange;
+  button{
+    color: white;
+    background: $orange;
+  }
+}
 .padding-top,
 .padding-vertical{
   padding-top: 7px;
