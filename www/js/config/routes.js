@@ -119,7 +119,12 @@ angular.module('WeBarrio.routes', [])
           controller: 'chatController'
         }
       }
-    })    
+    })   
+    .state('chat-conversation', {
+      url: '/chat/conversation/:personId/:chatId',
+      templateUrl: 'templates/chat/conversation.html',
+      controller:'chatController'
+    })
     .state('new_message', {
       url: '/menu/dashboard/nuevo_mensaje',
       templateUrl: 'templates/chat/new_message.html',

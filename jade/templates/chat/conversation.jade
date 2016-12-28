@@ -1,0 +1,25 @@
+ion-view(cached='false')
+  //- ion-nav-bar
+  //-   ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+  //-     i.color-white.ion-chevron-left
+  ion-nav-buttons(side='left')
+    button.button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-nav-title  {{chatTitle || 'Mensajes'}} 
+  ion-nav-buttons(side='right')
+    button.button.button-clear
+      img.header-picture(ng-src='{{user.profileImageURL}}')
+  ion-content.chat(delegate-handle='chatScroll')
+    .message-list
+      .message-wrapper(ng-repeat='message in messages')
+        .message(ng-class="message.userId === user.id ? 'message-mine' : 'message-other'")
+          .message-text {{message.text}}
+          span.message-timestamp {{message.sentAt | date: 'HH:mm'}}
+      .message-wrapper(ng-if='messages.length == 0')
+        .message.message-sticked
+          .message-text No hay Mensajes
+  ion-footer-bar.bar-stable.footer-chat.item-input-inset(keyboard-attach='')
+    label.item-input-wrapper
+      input(ng-model='newMessageText', on-return='sendMessage()', on-focus='inputUp()', on-blur='inputDown()', dir='auto', type='text')
+    span
+      button.button.button-clear.button-positive(ng-click='sendMessage()') Enviar

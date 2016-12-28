@@ -8,6 +8,7 @@ angular.module('WeBarrio', [
   'WeBarrio.utils',
   'WeBarrio.services.auth',
   'WeBarrio.services.agenda',
+  'WeBarrio.services.mensajes',
   'WeBarrio.services',
   'WeBarrio.config',
   'WeBarrio.filters',
@@ -30,6 +31,18 @@ angular.module('WeBarrio', [
   $ionicConfigProvider.views.transition('ios');
   $ionicConfigProvider.tabs.style('standard').position('bottom');
   $ionicConfigProvider.navBar.alignTitle('center').positionPrimaryButtons('left');
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCK2M3JsJ0bCpooHJZ78bTkkA2Qix-qio0",
+    authDomain: "webarrio-6ffa7.firebaseapp.com",
+    databaseURL: "https://webarrio-6ffa7.firebaseio.com",
+    storageBucket: "webarrio-6ffa7.appspot.com",
+    messagingSenderId: "94113503596"
+  };
+  
+  firebase.initializeApp(config);
+  
 })
 ;
 

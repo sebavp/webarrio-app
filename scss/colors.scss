@@ -6,3 +6,50 @@ $text: #484848;
 $text-grey: #94a4a4;
 $alert: #ed1c24;
 $whitesmoke: #FAFAFA;
+
+//helpers
+.full-width{
+  width: 100%;
+}
+
+.text-offset{
+  @media(max-width: 420px){
+    position: relative;
+    left: -20px;
+    width: 170%;
+  }
+}
+
+.col-lg-50{
+  @media(min-width: 420px){
+    width: 50%;
+    display: inline-block;
+  }
+}
+
+.alert-info {
+  color: #fff !important;
+  background-color: #4a87ee !important;
+}
+.alert-success {
+  color: #fff !important;
+  background-color: #66cc33 !important;
+}
+.alert-warning {
+  color: #fff !important;
+  background-color: #E6B500 !important;
+}
+
+.only-xs{
+  display: none;
+  @media(max-width: 468px){
+    display: block;
+  }
+}
+
+.hidden-xs{
+  display: block;
+  @media(max-width: 468px){
+    display: none;
+  }
+}
