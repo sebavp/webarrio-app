@@ -9,7 +9,9 @@ angular
   .controller('eventosController', eventosController)
   .controller('eventosDetailController', eventosDetailController)
   .controller('clasificadosController', clasificadosController)
-  .controller('clasificadosDetailController', clasificadosDetailController);
+  .controller('clasificadosDetailController', clasificadosDetailController)
+  .controller('recomendacionesController', recomendacionesController)
+  .controller('recomendacionesDetailController', recomendacionesDetailController);
 
   function comunidadController($scope, $state) {
     console.info("comunidadController init");
@@ -30,6 +32,52 @@ angular
     console.info("eventosDetailController init");
     $scope.goBack = function (){
       $state.go("comunidad-eventos");
+    };
+  }
+  function recomendacionesDetailController($scope, $state) {
+    console.info("recomendacionesDetailController init");
+    $scope.goBack = function (){
+      $state.go("comunidad-recomendaciones");
+    };
+  }
+  function recomendacionesController($scope, $state) {
+    console.info("recomendacionesController init");
+    $scope.recomendaciones = [
+      {
+        title: 'Nuevo Café en la esquina',
+        desc: 'Super rico y buenos precios!!!!',
+        by: 'Ana María',
+        name: 'BRACIA',
+        address: 'SUECIA 205',
+        img: '/img/blank.png'
+      },
+      {
+        title: 'Club sport fit',
+        desc: 'Abrió hace poco y tiene buenos precios para socios.',
+        by: 'Ana María',
+        name: 'BRACIA',
+        address: 'SUECIA 205',
+        img: '/img/blank.png'
+      },
+      {
+        title: 'Sushi Sushi',
+        desc: 'Para comer en el lugar o pedidos, es muy bueno y precio acorde a calidad.',
+        by: 'Ana María',
+        name: 'BRACIA',
+        address: 'SUECIA 205',
+        img: '/img/blank.png'
+      },
+      {
+        title: 'Miel artesanal',
+        desc: 'Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 3 cajones',
+        by: 'Ana María',
+        name: 'BRACIA',
+        address: 'SUECIA 205',
+        img: '/img/blank.png'
+      }
+    ]
+    $scope.goBack = function (){
+      $state.go("tabs.comunidad");
     };
   }
   function clasificadosController($scope, $state) {

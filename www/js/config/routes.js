@@ -203,6 +203,16 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/clasificados-detail.html',
       controller:'clasificadosDetailController'
     })
+    .state('comunidad-recomendaciones', {
+      url: '/comunidad/recomendaciones/',
+      templateUrl: 'templates/comunidad/recomendaciones.html',
+      controller:'recomendacionesController'
+    })
+    .state('comunidad-recomendaciones-detail', {
+      url: '/comunidad/recomendaciones-detail/',
+      templateUrl: 'templates/comunidad/recomendaciones-detail.html',
+      controller:'recomendacionesDetailController'
+    })
 
     // VISTAS SIDEMENU
     // PERFIL

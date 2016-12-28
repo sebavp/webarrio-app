@@ -1,0 +1,14 @@
+ion-view(view-title='Recomendaciones' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref='comunidad-recomendaciones-new')
+        i.color-white.ion-plus-round
+  ion-content.padding-top.anuncios-view
+    .list
+      a.item.item-avatar(ng-repeat='reco in recomendaciones', ui-sref='comunidad-recomendaciones-detail')
+        img(src='/img/blank.png')
+        small.muted.right {{reco.date}} {{reco.hourStart}}
+        h2 {{reco.title}}
+        p.muted {{reco.desc}}
