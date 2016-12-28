@@ -11,7 +11,9 @@ angular
   .controller('clasificadosController', clasificadosController)
   .controller('clasificadosDetailController', clasificadosDetailController)
   .controller('recomendacionesController', recomendacionesController)
-  .controller('recomendacionesDetailController', recomendacionesDetailController);
+  .controller('recomendacionesDetailController', recomendacionesDetailController)
+  .controller('mascotasController', mascotasController)
+  .controller('mascotasDetailController', mascotasDetailController);
 
   function comunidadController($scope, $state) {
     console.info("comunidadController init");
@@ -32,6 +34,38 @@ angular
     console.info("eventosDetailController init");
     $scope.goBack = function (){
       $state.go("comunidad-eventos");
+    };
+  }
+  function mascotasDetailController($scope, $state) {
+    console.info("mascotasDetailController init");
+    $scope.goBack = function (){
+      $state.go("comunidad-mascotas");
+    };
+  }
+  function mascotasController($scope, $state) {
+    console.info("mascotasController init");
+    $scope.mascotas = [
+      {
+        title: 'Se perdió Flaco!!!!!!!',
+        desc: 'Gato negro, macho. Lleva collar rojo. Por favor si lo encuentran contáctenme por acá o al 599991003. Visto por última vez el viernes a la tarde.',
+        by: 'Ana María',
+        img: '/img/blank.png'
+      },
+      {
+        title: 'Regalo perritos',
+        desc: 'Abrió hace poco y tiene buenos precios para socios.',
+        by: 'Ana María',
+        img: '/img/blank.png'
+      },
+      {
+        title: 'BLAS PERDIDO',
+        desc: 'Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 3 cajones',
+        by: 'Ana María',
+        img: '/img/blank.png'
+      }
+    ]
+    $scope.goBack = function (){
+      $state.go("tabs.comunidad");
     };
   }
   function recomendacionesDetailController($scope, $state) {

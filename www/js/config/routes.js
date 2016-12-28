@@ -213,6 +213,16 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/recomendaciones-detail.html',
       controller:'recomendacionesDetailController'
     })
+    .state('comunidad-mascotas', {
+      url: '/comunidad/mascotas/',
+      templateUrl: 'templates/comunidad/mascotas.html',
+      controller:'mascotasController'
+    })
+    .state('comunidad-mascotas-detail', {
+      url: '/comunidad/mascotas-detail/',
+      templateUrl: 'templates/comunidad/mascotas-detail.html',
+      controller:'mascotasDetailController'
+    })
 
     // VISTAS SIDEMENU
     // PERFIL

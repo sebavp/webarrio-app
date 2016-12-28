@@ -1,0 +1,14 @@
+ion-view(view-title='Mascotas' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref='comunidad-mascotas-new')
+        i.color-white.ion-plus-round
+  ion-content.padding-top.anuncios-view
+    .list
+      a.item.item-avatar(ng-repeat='pet in mascotas', ui-sref='comunidad-mascotas-detail')
+        img(src='/img/blank.png')
+        small.muted.right {{pet.date}} {{pet.hourStart}}
+        h2 {{pet.title}}
+        p.muted {{pet.desc}}
