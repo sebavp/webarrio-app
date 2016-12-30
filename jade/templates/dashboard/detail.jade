@@ -41,7 +41,7 @@ ion-view(view-title='Gastos Comunes')
             span.text-left Total: 
             span.text-right
               small $
-              {{item.total_light +  item.total_water + item.total_gas + item.total_personal}}
+              {{item.total_light +  item.total_water + item.total_gas + item.total_personal | CLP}}
   ion-footer-bar.bar-dark.account-footer
     button.button.button-full.pay-button
       | PAGAR
