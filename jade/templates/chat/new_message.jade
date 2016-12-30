@@ -3,9 +3,14 @@ ion-view(view-title='Nuevo Mensaje' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top
+    .subheader.row
+      .col.inputhead
+        span.search
+          i.ion-ios-search-strong
+        input(type='text' placeholder="Buscar por Nombre")
     .list
-      .item.item-divider.text-center.condominio
-        span {{currentCondominio.name}}
+      .item.text-left.button.button-full.icon-right.ion-ios-arrow-right.orange
+        span.bold Crear Grupo
       a.item.item-avatar
         img(src='/img/person-men.png')
         h2 Juan

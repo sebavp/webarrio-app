@@ -66,6 +66,12 @@ input{
 .full{
   width: 100%;
 }
+.orange{
+  color: $orange;
+  .bold{
+    font-family: 'work_sansbold';
+  }
+}
 .bar-orange{
   background: $orange;
   button{

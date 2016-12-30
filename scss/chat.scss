@@ -1,61 +1,76 @@
 .chat-view{
-	.subheader{
-		.active{
-			color: $orange;
-		}
-	}
+  .subheader{
+    .active{
+      color: $orange;
+    }
+  }
   .arrow{
     position: absolute;
-    right: 20px;
     top: 30px;
+    right: 20px;
   }
 }
-
+.inputhead{
+  input{
+    width: 75%;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #9c9c9c;
+    background: transparent;
+  }
+  span.search{
+    float: left;
+    width:15%;
+    font-size: 24px;
+    color: #adadad;
+  }
+}
 .chat-new{
+  font-size: 20px;
   position: relative;
   top: 10px;
-  font-size: 20px;
 }
 
 .chat-footer{
-	border: 1px solid $orange;
-	.button{
-		margin: 0;
-		background-color: transparent;
-		font-size: 17px;
-		color: $orange;
-    	font-family: 'work_sansregular';
-    	&.activated{
-    		border: 0px;
-    		opacity: 0.7;
-    	}
-	}
+  border: 1px solid $orange;
+  .button{
+    font-family: 'work_sansregular';
+    font-size: 17px;
+    margin: 0;
+    color: $orange;
+    background-color: transparent;
+    &.activated{
+      opacity: .7;
+      border: 0;
+    }
+  }
 }
 
 //chat
 
-.chat {
+.chat{
+  background-color: #e0dad6;
   background-image: url(/img/chat-background.jpg);
-  background-color: #E0DAD6;
   background-repeat: no-repeat;
   background-size: 110%;
 }
 
-.header-picture {
-  max-width: 33px;
-  max-height: 33px;
+.header-picture{
   width: 100%;
+  max-width: 33px;
   height: 100%;
+  max-height: 33px;
   border-radius: 50%;
 }
 
 .message-badge{
   text-align: center;
   span{
-    background-color: transparent;
+    padding: 0 20px;
     color: $black;
     border-radius: 10px;
-    padding: 0 20px;
+    background-color: transparent;
     .spinner{
       position: relative;
       top: 10px;
@@ -63,106 +78,96 @@
   }
 }
 
-.message-list {
+.message-list{
   margin-top: 12px;
   padding: 0 5%;
 }
 
-.message-wrapper {
+.message-wrapper{
   margin-bottom: 9px;
-
-  &::after {
-    content: "";
+  &::after{
     display: table;
     clear: both;
+    content: '';
   }
 }
 
-.message {
-  display: inline-block;
+.message{
   position: relative;
+  display: inline-block;
   max-width: 236px;
   border-radius: 7px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-
   &.message-sticked{
-    height: 35px;
-    padding-top: 5px;
-  	background-color: whitesmoke;
-    max-width: 100%;
-    width: 100%;
-    border-radius: 0;
-    text-align: center;
     position: absolute;
     top: -10px;
-    left: 0px;
-    color: cadetblue;
-    text-transform: uppercase;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 35px;
+    padding-top: 5px;
     padding-left: 71px;
-    box-shadow: 0 4px 11px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    text-transform: uppercase;
+    color: cadetblue;
+    border-radius: 0;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 11px rgba(0, 0, 0, .15);
   }
-  &.message-mine {
+  &.message-mine{
     float: right;
-    background-color: #DCF8C6;
+    background-color: #dcf8c6;
   }
-
-  &.message-other {
+  &.message-other{
     float: left;
-    background-color: #FFF;
+    background-color: #fff;
   }
-
-  &.message-other::before, &.message-mine::before, {
-    content: "";
+  &.message-other::before,
+  &.message-mine::before,{
     position: absolute;
     bottom: 3px;
     width: 12px;
     height: 19px;
-    background-position: 50% 50%;
+    content: '';
     background-repeat: no-repeat;
+    background-position: 50% 50%;
     background-size: contain;
   }
-
-  &.message-other::before {
+  &.message-other::before{
     left: -11px;
-    background-image: url(/img/message-other.png)
+    background-image: url(/img/message-other.png);
   }
-
-  &.message-mine::before {
+  &.message-mine::before{
     right: -11px;
-    background-image: url(/img/message-mine.png)
+    background-image: url(/img/message-mine.png);
   }
-
-  .message-text {
+  .message-text{
     padding: 5px 7px;
     word-wrap: break-word;
-
-    &::after {
-      content: " \00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+    &::after{
       display: inline;
+      content: ' \00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
     }
   }
-
-  .message-timestamp {
-    position: absolute;
-    bottom: 2px;
-    right: 7px;
-    color: gray;
+  .message-timestamp{
     font-size: 12px;
+    position: absolute;
+    right: 7px;
+    bottom: 2px;
+    color: gray;
   }
 }
 
-.footer-chat {
-  .item-input-wrapper {
-    background-color: #FFF;
+.footer-chat{
+  .item-input-wrapper{
+    background-color: #fff;
   }
-
-  .button.button-icon {
+  .button.button-icon{
     margin: 0 10px;
   }
-
-  .buttons-seperator {
-    color: gray;
+  .buttons-seperator{
     font-size: 18px;
     line-height: 32px;
+    color: gray;
   }
 }
