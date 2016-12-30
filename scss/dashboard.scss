@@ -11,6 +11,9 @@
     padding: 10px;
     &.common-expenses{
       font-size: 40px;
+      small{
+        font-size: 50%;
+      }
     }
     .detalle-mes{
       .item{
@@ -73,6 +76,9 @@
           }
         }
       }
+    }
+    .red{
+      color: $orange;
     }
   }
 }

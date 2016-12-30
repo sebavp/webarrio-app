@@ -10018,7 +10018,8 @@ button.button-clear {
     font-size: 17px;
     padding: 30px;
     text-align: center;
-    color: #484848; }
+    color: #484848;
+    border-radius: 0; }
     .home-menu .col .row-options {
       position: relative;
       top: 10px; }
@@ -10247,6 +10248,9 @@ button.button-clear {
   .dashboard-view p.common-expenses,
   .detail-view p.common-expenses {
     font-size: 40px; }
+    .dashboard-view p.common-expenses small,
+    .detail-view p.common-expenses small {
+      font-size: 50%; }
   .dashboard-view p .detalle-mes .item,
   .detail-view p .detalle-mes .item {
     border: 10px solid #000; }
@@ -10300,6 +10304,9 @@ button.button-clear {
     .dashboard-view .list .item .detalle-mes .item .mute,
     .detail-view .list .item .detalle-mes .item .mute {
       color: #94a4a4; }
+  .dashboard-view .list .red,
+  .detail-view .list .red {
+    color: #f76913; }
 
 .account-view .item {
   padding-top: 10px;

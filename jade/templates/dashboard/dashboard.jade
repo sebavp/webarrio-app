@@ -12,7 +12,9 @@ ion-view(view-title='Administración')
   ion-content.dashboard-view
     .hero(ng-if='commonExpenses')
       small A PAGAR
-      p.common-expenses ${{commonExpenses[0].total}}
+      p.common-expenses
+        small $
+        {{commonExpenses[0].total | CLP}}
       small Correspondiente a
       p {{commonExpenses[0].month}}
     .hero(ng-show='!commonExpenses')

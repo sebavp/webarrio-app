@@ -26,6 +26,7 @@ button.button-clear{
 .home-menu{
   padding-top: 0;
   background-color: $whitesmoke;
+
   @media(min-width: 767px){
     margin: 0 25%;
     border: solid 1px $whitesmoke;
@@ -46,6 +47,7 @@ button.button-clear{
     padding: 30px;
     text-align: center;
     color: $text;
+    border-radius: 0;
     // border: 1px solid $black;
     .row-options{
       position: relative;
