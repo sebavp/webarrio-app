@@ -1,4 +1,4 @@
-ion-view(view-title='Mi Cuenta')
+ion-view(view-title='Gastos Comunes')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
@@ -6,29 +6,42 @@ ion-view(view-title='Mi Cuenta')
     .list
       .item.button.button-full.icon-right.ion-ios-arrow-down(ng-repeat='item in commonExpenses', ng-init='hideInfo=true', ng-click='hideInfo=!hideInfo')
         span.upper {{item.month}}
+        small.right.red 
+          small $
+          {{item.total_light +  item.total_water + item.total_gas + item.total_personal  | CLP}}
         .detalle-mes(ng-hide='hideInfo')
           hr
           p  Detalle de Gastos
           .item.item-icon-left
             i.icon.ion-ios-lightbulb
             span.text-left Luz:
-            span.text-right {{item.total_light}}
+            span.text-right 
+              small $
+              {{item.total_light | CLP}}
           .item.item-icon-left
             i.icon.ion-waterdrop
             span.text-left Agua:
-            span.text-right {{item.total_water}}
+            span.text-right
+              small $
+              {{item.total_water | CLP}}
           .item.item-icon-left
             i.icon.ion-ios-flame
             span.text-left Gas:
-            span.text-right {{item.total_gas}}
+            span.text-right
+              small $
+              {{item.total_gas | CLP}}
           .item.item-icon-left
             i.icon.ion-ios-people
             span.text-left Personal:
-            span.text-right {{item.total_personal}}
+            span.text-right
+              small $
+              {{item.total_personal | CLP}}
           hr
           p.red
             span.text-left Total: 
-            span.text-right {{item.total_light +  item.total_water + item.total_gas + item.total_personal}}
+            span.text-right
+              small $
+              {{item.total_light +  item.total_water + item.total_gas + item.total_personal}}
   ion-footer-bar.bar-dark.account-footer
     button.button.button-full.pay-button
       | PAGAR
