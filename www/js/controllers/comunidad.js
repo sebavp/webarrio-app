@@ -12,8 +12,6 @@ angular
   .controller('recomendacionesDetailController', recomendacionesDetailController)
   .controller('mascotasController', mascotasController)
   .controller('mascotasDetailController', mascotasDetailController)
-  .controller('carpController', carpController)
-  .controller('carpDetailController', carpDetailController);
 
   function comunidadController($scope, $state) {
     console.info("comunidadController init");
@@ -28,34 +26,6 @@ angular
     console.info("clasificadosDetailController init");
     $scope.goBack = function (){
       $state.go("comunidad-clasificados");
-    };
-  }
-  function carpDetailController($scope, $state) {
-    console.info("carpDetailController init");
-    $scope.goBack = function (){
-      $state.go("comunidad-carp");
-    };
-  }
-  function carpController($scope, $state) {
-    console.info("carpController init");
-    $scope.carp = [
-      {
-        title: 'Viajo a Valpo',
-        desc: 'Me quedan 2 lugares disponibles. Viajo por el fin de semana, puede ser ida y vuelta.',
-        by: 'Ana María',
-        img: '/img/blank.png',
-        date: '14 JUN'
-      },
-      {
-        title: 'Ida a la Moneda',
-        desc: 'Viajo todas las mañanas.',
-        by: 'Ana María',
-        img: '/img/blank.png',
-        date: '14 JUN'
-      }
-    ]
-    $scope.goBack = function (){
-      $state.go("tabs.comunidad");
     };
   }
   function mascotasDetailController($scope, $state) {

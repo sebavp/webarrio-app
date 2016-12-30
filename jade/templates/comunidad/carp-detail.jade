@@ -5,23 +5,23 @@ ion-view(view-title='Detalle Car Pooling' hide-back-button='true')
   ion-content.padding-top.instalaciones-detail-view
     .list
       .padding
-        h2 Viajo a Valpo
+        h2 {{currentCarPooling.name}}
         .avatar
           img(src='/img/blank.png')
-          span Ana María
+          span {{currentCarPooling.user_name}}
         hr.muted
         small.muted Fecha y hora
         br
-        small.upper MARTES 14 JUN / 21.00 HS
+        small.uppercased {{currentCarPooling.event_date | date : "EEEE dd 'de' MMMM"}} / {{currentCarPooling.start_time | date: 'HH:mm'}} HS
         br
         small.muted Destino
         br
-        small.upper VALPARAISO
+        small.uppercased {{currentCarPooling.place}}
         br
-        small.muted Lugares Disponibles
-        small.upper 2
+        small.muted Lugares Disponibles 
+        small.upper {{currentCarPooling.seats_available}}
          hr.muted
-        p Me quedan 2 lugares disponibles. Viajo por el fin de semana, puede ser ida y vuelta.
+        p {{currentCarPooling.details}}
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
-      |  Enviar un mensaje a Ana María
+    button.button.button-full.pay-button(ng-click="goToChat(currentCarPooling)")
+      |  Enviar un mensaje a {{currentCarPooling.user_name}}
