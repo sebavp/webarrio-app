@@ -1,21 +1,21 @@
 ion-view(view-title='Detalle Uso de Instalaciones' hide-back-button='true')
   ion-nav-bar
-    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+    ion-nav-back-button.button-clear.force-show(ui-sref="dashboard-instalaciones")
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
     .list
       .item.item-avatar
         img(src='/img/blank.png')
-        h2 Sergio Andueza
+        h2 {{currentEvent.user_name}}
         p.title 
           small Instalación
         p.desc
-          small QUINCHO TERRAZA
+          small {{currentEvent.place}}
         p.title 
           small Fecha
         p.desc
-          small MARTES 14 DE JUNIO
+          small.uppercased {{currentEvent.event_date | date : "EEEE dd 'de' MMMM"}}
         p.title 
           small Horario
         p.desc
-          small 21:00 - 23:00 HS.
+          small {{currentEvent.start_time | date : 'HH:mm'}} - {{currentEvent.final_time | date : 'HH:mm'}} HS.

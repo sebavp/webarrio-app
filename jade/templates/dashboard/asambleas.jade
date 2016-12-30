@@ -3,29 +3,27 @@ ion-view(view-title='Asambleas' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
     ion-nav-buttons(side='right')
-      button.button-clear.force-show(ui-sref='dashboard-asambleas-detail')
+      button.button-clear.force-show()
         i.color-white.ion-plus-round
   ion-content.padding-top.asambleas-view
     .list
-      a.item(ui-sref='dashboard-asambleas-detail')
+      a.item(ng-click="goToCurrentAsamblea()")
         p
-          strong Asamblea 2017
+          strong {{currentAsamblea.name}}
           small.right
             i.ion-calendar
-            |   14/12 20:00 HS
+            |   {{currentAsamblea.event_date | date : 'dd/MM'}} {{currentAsamblea.start_time | date : 'HH:mm'}} HS HS
     .list.muted.br
       .item
         small Asambleas anteriores
     .list.muted
-      a.item(ui-sref='dashboard-asambleas-detail')
+      a.item(ng-if="asambleas.length == 0")
         p
-          strong Asamblea 2016
+          small
+            | No se registran asambleas anteriores
+      a.item(ui-sref='dashboard-asambleas-detail({event_id: a.id})' ng-repeat="a in asambleas")
+        p
+          strong {{a.name}}
           small.right
             i.ion-calendar
-            |   14/12 20:00 HS
-      a.item(ui-sref='dashboard-asambleas-detail')
-        p
-          strong Asamblea 2015
-          small.right
-            i.ion-calendar
-            |   14/12 20:00 HS
+            |   {{a.event_date | date : 'dd/MM'}} {{a.start_time | date : 'HH:mm'}} HS

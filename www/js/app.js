@@ -9,6 +9,7 @@ angular.module('WeBarrio', [
   'WeBarrio.services.auth',
   'WeBarrio.services.agenda',
   'WeBarrio.services.mensajes',
+  'WeBarrio.services.events',
   'WeBarrio.services',
   'WeBarrio.config',
   'WeBarrio.filters',

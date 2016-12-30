@@ -64,9 +64,9 @@ angular.module('WeBarrio.routes', [])
       controller:'instalacionesController'
     })
     .state('dashboard-instalaciones-detail', {
-      url: '/menu/dashboard/instalaciones-detail',
+      url: '/menu/dashboard/instalaciones-detail/:event_id',
       templateUrl: 'templates/dashboard/instalaciones-detail.html',
-      controller:'instalacionesDetailController'
+      controller:'instalacionesController'
     })
     .state('dashboard-asambleas', {
       url: '/menu/dashboard/asambleas',
@@ -74,9 +74,9 @@ angular.module('WeBarrio.routes', [])
       controller:'asambleasController'
     })
     .state('dashboard-asambleas-detail', {
-      url: '/menu/dashboard/asambleas-detail',
+      url: '/menu/dashboard/asambleas-detail/:event_id',
       templateUrl: 'templates/dashboard/asambleas-detail.html',
-      controller:'asambleasDetailController'
+      controller:'asambleasController'
     })
     .state('dashboard-mantenciones', {
       url: '/menu/dashboard/mantenciones',
@@ -84,7 +84,7 @@ angular.module('WeBarrio.routes', [])
       controller:'mantencionesController'
     })
     .state('dashboard-mantenciones-detail', {
-      url: '/menu/dashboard/mantenciones-detail',
+      url: '/menu/dashboard/mantenciones-detail/:event_id',
       templateUrl: 'templates/dashboard/mantenciones-detail.html',
       controller:'mantencionesDetailController'
     })
@@ -194,7 +194,7 @@ angular.module('WeBarrio.routes', [])
       controller:'eventosController'
     })
     .state('comunidad-eventos-detail', {
-      url: '/comunidad/eventos-detail/',
+      url: '/comunidad/eventos-detail//:event_id',
       templateUrl: 'templates/comunidad/eventos-detail.html',
       controller:'eventosDetailController'
     })
@@ -234,7 +234,7 @@ angular.module('WeBarrio.routes', [])
       controller:'carpController'
     })
     .state('comunidad-carp-detail', {
-      url: '/comunidad/carp-detail/',
+      url: '/comunidad/carp-detail/:event_id',
       templateUrl: 'templates/comunidad/carp-detail.html',
       controller:'carpDetailController'
     })

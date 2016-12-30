@@ -3,7 +3,7 @@ ion-view(view-title='Uso de Instalaciones' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
     ion-nav-buttons(side='right')
-      button.button-clear.force-show(ui-sref='dashboard-instalaciones-detail')
+      button.button-clear.force-show
         i.color-white.ion-plus-round
   ion-content.padding-top.instalaciones-view
     .subheader.row
@@ -14,9 +14,12 @@ ion-view(view-title='Uso de Instalaciones' hide-back-button='true')
       .col(ng-class="{'active': activeTab == 3}" ng-click='selectTab(3)')
         span Mes
     .list(ng-show='activeTab == 2')
-      a.item.item-avatar(ng-repeat='inst in instalaciones', ui-sref='dashboard-instalaciones-detail')
-        img(ng-src='{{inst.img}}')
+      a.item.item-avatar(ng-if='instalaciones.length == 0')
+        p
+          small No Hay Reservas de Uso de Instalaciones
+      a.item.item-avatar(ng-repeat='inst in instalaciones', ui-sref='dashboard-instalaciones-detail({event_id: inst.id})')
+        img(ng-src='{{inst.img_thumb_url}}' err-src="/img/blank.png")
         h2 {{inst.name}}
         p
-          small.left por {{inst.by}}
-          small.right {{inst.date}} {{inst.hourStart}} HS
+          small.left por {{inst.user_name}}
+          small.right {{inst.event_date | date : 'dd/MM'}} {{inst.start_time | date: 'HH:mm'}} HS

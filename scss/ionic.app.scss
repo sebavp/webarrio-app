@@ -72,6 +72,9 @@ input{
     font-family: 'work_sansbold';
   }
 }
+.uppercased{
+  text-transform: uppercase;
+}
 .bar-orange{
   background: $orange;
   button{

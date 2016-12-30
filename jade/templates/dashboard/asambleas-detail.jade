@@ -1,4 +1,4 @@
-ion-view(view-title='Detalle Asamblea' hide-back-button='true')
+ion-view(view-title='Detalle {{currentAsamblea.name}}' hide-back-button='true')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
@@ -8,8 +8,9 @@ ion-view(view-title='Detalle Asamblea' hide-back-button='true')
         p.title 
           small Fecha
         p.desc
-          small MARTES 14 DE JUNIO
+          small.uppercased {{currentAsamblea.event_date | date : "EEEE dd 'de' MMMM"}}
         p.title 
           small Detalle
         p.desc
-          small Descargar PDF
+          small Sin detalle adjunto
+          //- small Descargar PDF

@@ -10717,6 +10717,9 @@ input {
   .orange .bold {
     font-family: 'work_sansbold'; }
 
+.uppercased {
+  text-transform: uppercase; }
+
 .bar-orange {
   background: #f76913; }
   .bar-orange button {
