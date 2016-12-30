@@ -4,8 +4,9 @@
     .module('WeBarrio.controllers')
     .controller('mantencionesController', mantencionesController);
 
-  function mantencionesController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage) {
+  function mantencionesController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
     var currentDepto =  $localStorage.currentDepto;
+    var currentCondo = $localStorage.currentCondo;
     console.info("mantencionesController init");
     $scope.activeTab = 3;
     $scope.selectTab = function(active){
@@ -14,28 +15,30 @@
     $scope.goBack = function (){
       $state.go("tabs.dashboard");
     };
-    $scope.mantenciones = [
-      {
-        name: "Corte de Agua",
-        by: "mantención de tanque",
-        date: "14/06",
-        hourStart: "21:00",
-        hourEnd: "23:00"
-      },
-      {
-        name: "Piscina Cerrada",
-        by: "limpieza",
-        date: "14/06",
-        hourStart: "21:00",
-        hourEnd: "23:00"
-      },
-      {
-        name: "Obras en el piso 5",
-        by: "filtraciones",
-        date: "14/06",
-        hourStart: "21:00",
-        hourEnd: "23:00"
+    
+    var loadMantenciones = function (){
+      eventsService.getMantenciones(currentCondo.id).then(function (response){
+        $scope.mantenciones = angular.copy(response.mantenciones);
+      }, function(error){
+        console.log(error)
+      });
+    }
+
+    var loadMantencion = function (){
+      eventsService.getEvent($stateParams.event_id).then(function (response){
+        $scope.currentMantencion = response.event;
+      }, function(error){
+        console.log(error)
+      });
+    }
+
+    $scope.$on('$ionicView.beforeEnter', function (){
+      if ($state.current.name == "dashboard-mantenciones") {
+        loadMantenciones();
+      } else {
+        loadMantencion();
       }
-    ];
+    })
+
   }
 }).call(this);

@@ -6,8 +6,6 @@ angular
   .controller('comunidadController', comunidadController)
   .controller('anunciosController', anunciosController)
   .controller('anunciosDetailController', anunciosController)
-  .controller('eventosController', eventosController)
-  .controller('eventosDetailController', eventosDetailController)
   .controller('clasificadosController', clasificadosController)
   .controller('clasificadosDetailController', clasificadosDetailController)
   .controller('recomendacionesController', recomendacionesController)
@@ -30,12 +28,6 @@ angular
     console.info("clasificadosDetailController init");
     $scope.goBack = function (){
       $state.go("comunidad-clasificados");
-    };
-  }
-  function eventosDetailController($scope, $state) {
-    console.info("eventosDetailController init");
-    $scope.goBack = function (){
-      $state.go("comunidad-eventos");
     };
   }
   function carpDetailController($scope, $state) {
@@ -175,38 +167,6 @@ angular
         title: 'Miel artesanal',
         desc: 'Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 2 cajones. Estado impecable!!',
         by: 'Ana María',
-        date: '14 Jun',
-        img: '/img/blank.png'
-      }
-    ]
-    $scope.goBack = function (){
-      $state.go("tabs.comunidad");
-    };
-  }
-  function eventosController($scope, $state) {
-    console.info("eventosController init");
-    $scope.eventos = [
-      {
-        title: 'Parrillada bienvenida!',
-        desc: 'Están todos invitados al asado en la terraza del edificio, confirmar para calcular las compras. Traer bebida!!!!',
-        by: 'Ana María',
-        asist: 9,
-        date: '14 Jun',
-        img: '/img/blank.png'
-      },
-      {
-        title: 'Showroom zapatos',
-        desc: 'Se cambió el horario de retiro de basura de 21 a 20 hs.',
-        by: 'Ana María',
-        asist: 19,
-        date: '14 Jun',
-        img: '/img/blank.png'
-      },
-      {
-        title: 'Cumpleaños Sergio',
-        desc: 'Pueden participar en el nuevo huerto que creamos en el jardín contrafrente.',
-        by: 'Ana María',
-        asist: 4,
         date: '14 Jun',
         img: '/img/blank.png'
       }

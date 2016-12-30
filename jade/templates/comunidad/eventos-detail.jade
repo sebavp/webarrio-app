@@ -3,19 +3,19 @@ ion-view(view-title='Detalle Evento' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    img.full(src='/img/parrilla.jpg')
+    img.full(ng-src="{{currentEvent.img_original_url}}" err-src='/img/avatar-blank.png')
     .list
       .padding
-        small.muted 14 JUN
+        small.muted {{currentEvent.event_date | date : 'dd MMMM'}}
         br
-        small.muted Quincho terraza
+        small.muted {{currentEvent.place}}
         br
-        small.muted 9 asistentes
-        h2 Parrillada bienvenida!
+        small.muted {{currentEvent.assistens || 0}} asistentes
+        h2 {{currentEvent.name}}
         .avatar
           img(src='/img/blank.png')
-          span Ana María
-        p Están todos invitados al asado en la terraza del edificio, confirmar para calcular las compras. Traer bebida!!!!
+          span {{currentEvent.user_name}}
+        p {{currentEvent.details}}
   ion-footer-bar.bar-orange.account-footer
     .col
       button.button.button-full.pay-button

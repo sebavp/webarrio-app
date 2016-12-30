@@ -5,16 +5,13 @@ ion-view(view-title='Administración')
   ion-nav-buttons(side='right')
     button.button-clear.force-show(main-sidebar='')
       img.user(src='img/icons/user.svg')
-  //- ion-nav-bar
-  //-   ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
-  //-     i.color-white.ion-chevron-left
 
   ion-content.dashboard-view
     .hero(ng-if='commonExpenses')
       small A PAGAR
       p.common-expenses
         small $
-        {{commonExpenses[0].total | CLP}}
+        {{commonExpenses[0].total | currency: $:0}}
       small Correspondiente a
       p {{commonExpenses[0].month}}
     .hero(ng-show='!commonExpenses')

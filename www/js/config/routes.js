@@ -86,7 +86,7 @@ angular.module('WeBarrio.routes', [])
     .state('dashboard-mantenciones-detail', {
       url: '/menu/dashboard/mantenciones-detail/:event_id',
       templateUrl: 'templates/dashboard/mantenciones-detail.html',
-      controller:'mantencionesDetailController'
+      controller:'mantencionesController'
     })
     .state('dashboard-longtext', {
       url: '/menu/dashboard/longtext',
@@ -194,9 +194,9 @@ angular.module('WeBarrio.routes', [])
       controller:'eventosController'
     })
     .state('comunidad-eventos-detail', {
-      url: '/comunidad/eventos-detail//:event_id',
+      url: '/comunidad/eventos-detail/:event_id',
       templateUrl: 'templates/comunidad/eventos-detail.html',
-      controller:'eventosDetailController'
+      controller:'eventosController'
     })
     .state('comunidad-clasificados', {
       url: '/comunidad/clasificados/',

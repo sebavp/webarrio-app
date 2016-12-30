@@ -5,19 +5,19 @@ ion-view(view-title='Detalle Mantenciones' hide-back-button='true')
   ion-content.padding-top.instalaciones-detail-view
     .row
       .col
-        h2 Corte de Agua
-        p por mantención de tanque se cortará el suministro de agua por una hora.
+        h2 {{currentMantencion.name}}
+        p {{currentMantencion.details}}
     .list
       .item
         p.title 
           small Lugar
         p.desc
-          small TODO EL CONDOMINIO
+          small.uppercased {{currentMantencion.place}}
         p.title 
           small Fecha
         p.desc
-          small MARTES 14 DE JUNIO
+          small.uppercased {{currentMantencion.event_date | date : "EEEE dd 'de' MMMM"}}
         p.title 
           small Horario
         p.desc
-          small 21:00 - 23:00 HS.
+          small {{currentMantencion.start_time | date : 'HH:mm'}} - {{currentMantencion.final_time | date : 'HH:mm'}} HS.
