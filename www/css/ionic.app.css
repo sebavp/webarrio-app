@@ -10116,6 +10116,39 @@ button.button-clear {
   top: 30px;
   right: 20px; }
 
+input.bbottom {
+  border-bottom: 1px solid #bfbfbf;
+  width: 90%; }
+
+.list.nb .item {
+  border-bottom: none; }
+
+.group .title {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  text-indent: 20px;
+  border-bottom: 1px solid #dadada; }
+
+.group .int {
+  position: relative;
+  width: 25%;
+  float: left; }
+  .group .int .avatar {
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin: auto; }
+    .group .int .avatar img {
+      width: 100%; }
+  .group .int h2 {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    margin: 8px 0;
+    font-family: 'work_sansregular'; }
+
 .inputhead input {
   width: 75%;
   height: 24px;

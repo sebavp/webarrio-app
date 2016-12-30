@@ -140,6 +140,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/chat/new_message.html',
       controller:'chatController'
     })
+    .state('chat-new-group', {
+      url: '/menu/chat/nuevo_grupo',
+      templateUrl: 'templates/chat/new_group.html',
+      controller:'chatController'
+    })
 
     // FEED (NOTIFICACIONES)
     .state('tabs.feed', {
