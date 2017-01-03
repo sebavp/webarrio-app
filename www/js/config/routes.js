@@ -68,6 +68,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/instalaciones-detail.html',
       controller:'instalacionesController'
     })
+    .state('dashboard-instalaciones-new', {
+      url: '/menu/dashboard/instalaciones-new',
+      templateUrl: 'templates/dashboard/instalaciones-new.html',
+      controller:'instalacionesController'
+    })
     .state('dashboard-asambleas', {
       url: '/menu/dashboard/asambleas',
       templateUrl: 'templates/dashboard/asambleas.html',

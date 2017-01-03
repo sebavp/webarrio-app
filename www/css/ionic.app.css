@@ -10060,7 +10060,8 @@ button.button-clear {
       width: 100%;
       margin-top: 10px; }
   .home-menu .col-50.message {
-    border-right: 1px solid #f76913; }
+    border-right: 1px solid #f76913;
+    max-width: 100%; }
   .home-menu .clickable:hover {
     -moz-transition: background-color ease 0.7s;
     -o-transition: background-color ease 0.7s;
@@ -10676,6 +10677,11 @@ input.bbottom {
     color: black;
     margin-bottom: 10px; }
 
+.date-as-placeholder {
+  color: #aeaeae;
+  font-size: 14px;
+  font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI"; }
+
 .asambleas-view .list {
   margin-bottom: 0; }
   .asambleas-view .list .item {
@@ -10775,3 +10781,21 @@ img.user {
 .button.back-button {
   position: relative;
   left: 15px; }
+
+.ionic_datepicker_popup .popup-body .selected_date_full {
+  background-color: #f76913 !important; }
+
+.ionic_datepicker_popup .selected_date {
+  background-color: #f76913 !important;
+  border: 1px solid #f76913 !important; }
+
+.ionic_datepicker_popup .popup-buttons button {
+  background-color: #f76913 !important; }
+
+.ionic_datepicker_popup .month_select, .ionic_datepicker_popup .year_select {
+  border-bottom: 1px solid #f76913 !important; }
+  .ionic_datepicker_popup .month_select:after, .ionic_datepicker_popup .year_select:after {
+    color: #f76913 !important; }
+
+.ionic_timepicker_popup .heading, .ionic_timepicker_popup .button_set, .ionic_timepicker_popup .button_close {
+  background-color: #f76913 !important; }

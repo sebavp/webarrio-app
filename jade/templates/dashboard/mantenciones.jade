@@ -14,6 +14,8 @@ ion-view(view-title='Mantenciones' hide-back-button='true')
       .col(ng-class="{'active': activeTab == 3}" ng-click='selectTab(3)')
         span Mes
     .list(ng-show='activeTab == 3')
+      .item(ng-show="!mantenciones").text-center
+        ion-spinner(icon="dots")
       a.item(ng-repeat='mant in mantenciones', ui-sref='dashboard-mantenciones-detail({event_id: mant.id})')
         h2 {{mant.name}}
         p 

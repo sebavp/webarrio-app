@@ -34,7 +34,8 @@
       // templateUrl: function(element, attr) {
       //   return scope.templateUrl ? scope.templateUrl : 'partials/viewer.html';
       // },
-      template: '<div ng-class="getNavStyle(scroll)"><div class="row"><button class="col col-30 button icon-left ion-chevron-left" ng-click="goPrevious()"></button><button class="col col-10 button" ng-click="zoomOut()"><span>-</span></button><button class="col col-20 button" ng-click="fit()"><span>100%</span></button><button class="col col-10 button" ng-click="zoomIn()"><span>+</span></button><button class="col col-30 button icon-right ion-chevron-right" ng-click="goNext()"></button></div><div class="row text-center"><small class="col">Pág: {{pageNum}} / {{pageCount}}</small></div></div><ion-scroll zooming="true" min-zoom="-1" direction="xy" class="ionic-scroll scrollCanvas"><canvas id="pdf" class="rotate0"></canvas></ion-scroll>',
+      template: '<div ng-class="getNavStyle(scroll)"><div class="row"><button class="col col-30 button icon-left ion-chevron-left" ng-click="goPrevious()"></button><button class="col col-10 button" ng-click="zoomOut()"><span>-</span></button>' +
+        '<button class="col col-20 button" ng-click="fit()"><span>Zoom</span></button><button class="col col-10 button" ng-click="zoomIn()"><span>+</span></button><button class="col col-30 button icon-right ion-chevron-right" ng-click="goNext()"></button></div><div class="row text-center"><small class="col">Pág: {{pageNum}} / {{pageCount}}</small></div></div><ion-scroll zooming="true" min-zoom="-1" direction="xy" class="ionic-scroll scrollCanvas"><canvas id="pdf" class="rotate0"></canvas></ion-scroll>',
       link: function(scope, element, attrs) {
         element.css('display', 'block');
         var url = scope.pdfUrl;
@@ -59,6 +60,7 @@
 
         PDFJS.disableWorker = true;
         scope.pageNum = pageToDisplay;
+        scope.scale = scale;
 
         scope.renderPage = function(num) {
           if (renderTask) {
@@ -116,6 +118,7 @@
           pageFit = false;
           scale = parseFloat(scale) + 0.2;
           scope.renderPage(scope.pageToDisplay);
+          scope.scale = scale
           return scale;
         };
 
@@ -123,6 +126,7 @@
           pageFit = false;
           scale = parseFloat(scale) - 0.2;
           scope.renderPage(scope.pageToDisplay);
+          scope.scale = scale
           return scale;
         };
 

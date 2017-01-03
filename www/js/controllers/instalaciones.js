@@ -4,7 +4,7 @@
     .module('WeBarrio.controllers')
     .controller('instalacionesController', instalacionesController);
 
-  function instalacionesController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
+  function instalacionesController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams, ionicDatePicker, ionicTimePicker) {
     var currentDepto =  $localStorage.currentDepto;
     var currentCondo =  $localStorage.currentCondo;
     console.log(currentCondo)
@@ -36,19 +36,36 @@
     $scope.$on('$ionicView.beforeEnter', function (){
       if ($state.current.name == "dashboard-instalaciones") {
         loadInstalaciones();
-      } else {
+      }
+      if ($state.current.name == "dashboard-instalaciones-detail") {
         loadInstalacion();
       }
+      $scope.newEvent = {}
     })
-    // $scope.instalaciones = [
-    //   {
-    //     name: "Terraza",
-    //     by: "Sergio Andueza",
-    //     img: "/img/blank.png",
-    //     date: "14/06",
-    //     hourStart: "21:00",
-    //     hourEnd: "23:00"
-    //   }
-    // ];
+
+    $scope.openDatepicker = function(){
+      var today = new Date();
+      var twoWeeks = new Date(new Date().getTime() + (14 * 24 * 60 * 60 * 1000));
+
+      ionicDatePicker.openDatePicker({
+        callback: function(val) {
+          $scope.newEvent.event_date = new Date(val);
+        },
+        from: today,
+        to: twoWeeks,
+        mondayFirst: true,
+        closeOnSelect: true,
+        templateType: 'popup'
+      });
+
+    }
+
+    $scope.openTimepicker = function(){
+      ionicTimePicker.openTimePicker({
+        callback: function (val) {      //Mandatory
+          $scope.newEvent.event_date = new Date(val * 1000);
+        },
+      });
+    }
   }
 }).call(this);

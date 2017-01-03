@@ -144,3 +144,31 @@ img.user{
     position: relative;
     left: 15px;
 }
+
+
+.ionic_datepicker_popup {
+  .popup-body .selected_date_full {
+    background-color: $orange !important;
+  }
+   .selected_date {
+    background-color: $orange !important; 
+    border: 1px solid $orange !important; 
+   }
+   .popup-buttons button {
+      background-color: $orange !important; 
+   }
+   .month_select, .year_select{
+    border-bottom: 1px solid $orange !important;
+    &:after{
+      color: $orange !important;
+    } 
+   }
+}
+
+.ionic_timepicker_popup{
+  .heading, .button_set, .button_close {
+    background-color: $orange !important; 
+  }
+
+}
+

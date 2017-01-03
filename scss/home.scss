@@ -99,6 +99,7 @@ button.button-clear{
   }
   .col-50.message{
     border-right: 1px solid $orange;
+    max-width: 100%;
   }
   .clickable{
     &:hover{

@@ -1,0 +1,23 @@
+ion-view(view-title='Nueva Reserva' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="dashboard-instalaciones")
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.instalaciones-detail-view
+    .list
+      .item.item-input
+        .input-label
+          | Lugar
+        input(type="text" placeholder="Ingrese Lugar")
+      .item.item-input
+        .input-label
+          | Fecha
+        .date-as-placeholder(ng-click="openDatepicker()")
+          {{(newEvent.event_date | date: "dd/MM" ) || 'Ingrese Fecha'}}
+      .item.item-input
+        .input-label
+          | Hora
+        .date-as-placeholder(ng-click="openTimepicker()")
+          {{(newEvent.start_time | date: "HH:mm" ) || 'Ingrese Hora'}}
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button
+      |  CREAR RESERVA

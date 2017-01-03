@@ -16,7 +16,9 @@ angular.module('WeBarrio', [
   'ngStorage',
   'ngCordova',
   'firebase',
-  'pdf'
+  'pdf',
+  'ionic-datepicker',
+  'ionic-timepicker'
   ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function(FURL) {
@@ -28,10 +30,36 @@ angular.module('WeBarrio', [
     }
   });
 })
-.config(function($ionicConfigProvider) {
+.config(function($ionicConfigProvider, ionicDatePickerProvider, ionicTimePickerProvider) {
   $ionicConfigProvider.views.transition('ios');
   $ionicConfigProvider.tabs.style('standard').position('bottom');
   $ionicConfigProvider.navBar.alignTitle('center').positionPrimaryButtons('left');
+  ionicDatePickerProvider.configDatePicker({
+    inputDate: new Date(),
+    titleLabel: 'Seleccione Fecha',
+    setLabel: 'Elegir',
+    todayLabel: 'Hoy',
+    closeLabel: 'Cancelar',
+    mondayFirst: false,
+    weeksList: ["D", "L", "M", "M", "J", "V", "S"],
+    monthsList: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"],
+    templateType: 'popup',
+    from: new Date(1960, 1, 1),
+    to: new Date(),
+    showTodayButton: false,
+    dateFormat: 'dd/MMMM/yyyy',
+    closeOnSelect: true,
+    disableWeekdays: []
+  });
+
+  ionicTimePickerProvider.configTimePicker({
+    inputTime: (((new Date()).getHours() + 1) * 60 * 60),
+    format: 24,
+    step: 15,
+    setLabel: 'Elegir',
+    closeLabel: 'Cancelar'
+  });
+
 
   // Initialize Firebase
   var config = {
