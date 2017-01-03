@@ -39,6 +39,62 @@ angular.module('WeBarrio.directives', [])
 		};
 	}
 ])
+.directive("datepicker", [
+	"ionicDatePicker", '$compile', function(ionicDatePicker, $compile) {
+		return {
+			restrict: 'E',
+			transclude: true,
+			scope: {
+				eventDate: "=",
+			},
+			templateUrl: 'templates/directives/datepicker.html',
+			link: function(scope, element) {
+			    var today = new Date();
+			    var twoWeeks = new Date(new Date().getTime() + (14 * 24 * 60 * 60 * 1000));
+
+			    element.bind('click', function(){
+					ionicDatePicker.openDatePicker({
+						callback: function(val) {
+							scope.eventDate = new Date(val);
+							$compile(element.contents())(scope);
+
+						},
+						from: today,
+						to: twoWeeks,
+						mondayFirst: true,
+						closeOnSelect: true,
+						templateType: 'popup'
+					});
+			    })
+
+			}
+		};
+	}
+])
+
+.directive("timepicker", [
+	"ionicTimePicker", '$compile', function(ionicTimePicker, $compile) {
+		return {
+			restrict: 'E',
+			transclude: true,
+			scope: {
+				startTime: "=",
+			},
+			templateUrl: 'templates/directives/timepicker.html',
+			link: function(scope, element) {
+			    element.bind('click', function(){
+			      ionicTimePicker.openTimePicker({
+			        callback: function (val) {      //Mandatory
+			          scope.startTime = new Date(val * 1000);
+			          $compile(element.contents())(scope);
+			        },
+			      });
+			    })
+
+			}
+		};
+	}
+])
 .directive('errSrc', function() {
   return {
 	link: function(scope, element, attrs) {

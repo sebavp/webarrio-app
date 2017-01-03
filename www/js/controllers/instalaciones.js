@@ -4,7 +4,7 @@
     .module('WeBarrio.controllers')
     .controller('instalacionesController', instalacionesController);
 
-  function instalacionesController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams, ionicDatePicker, ionicTimePicker) {
+  function instalacionesController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
     var currentDepto =  $localStorage.currentDepto;
     var currentCondo =  $localStorage.currentCondo;
     console.log(currentCondo)
@@ -43,29 +43,5 @@
       $scope.newEvent = {}
     })
 
-    $scope.openDatepicker = function(){
-      var today = new Date();
-      var twoWeeks = new Date(new Date().getTime() + (14 * 24 * 60 * 60 * 1000));
-
-      ionicDatePicker.openDatePicker({
-        callback: function(val) {
-          $scope.newEvent.event_date = new Date(val);
-        },
-        from: today,
-        to: twoWeeks,
-        mondayFirst: true,
-        closeOnSelect: true,
-        templateType: 'popup'
-      });
-
-    }
-
-    $scope.openTimepicker = function(){
-      ionicTimePicker.openTimePicker({
-        callback: function (val) {      //Mandatory
-          $scope.newEvent.event_date = new Date(val * 1000);
-        },
-      });
-    }
   }
 }).call(this);

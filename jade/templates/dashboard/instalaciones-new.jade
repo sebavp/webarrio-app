@@ -11,13 +11,11 @@ ion-view(view-title='Nueva Reserva' hide-back-button='true')
       .item.item-input
         .input-label
           | Fecha
-        .date-as-placeholder(ng-click="openDatepicker()")
-          {{(newEvent.event_date | date: "dd/MM" ) || 'Ingrese Fecha'}}
+        datepicker(event-date="newEvent.event_date")
       .item.item-input
         .input-label
           | Hora
-        .date-as-placeholder(ng-click="openTimepicker()")
-          {{(newEvent.start_time | date: "HH:mm" ) || 'Ingrese Hora'}}
+        timepicker(start-time="newEvent.start_time")
   ion-footer-bar.bar-orange.account-footer
     button.button.button-full.pay-button
       |  CREAR RESERVA
