@@ -11,7 +11,7 @@ ion-view(view-title='Administración')
       small A PAGAR
       p.common-expenses
         small $
-        {{(commonExpenses[0].total | currency: $:0) || 0 }}
+        {{(commonExpenses[0].total | currency: '':0) || 0 }}
       small Correspondiente a
       p {{commonExpenses[0].month}}
     .hero(ng-show='!commonExpenses')
