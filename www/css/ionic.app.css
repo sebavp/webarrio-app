@@ -10698,6 +10698,13 @@ h3,
 option {
   font-family: 'work_sansregular'; }
 
+.clickable:hover {
+  color: #484848 !important;
+  background-color: transparent !important; }
+
+* {
+  box-shadow: none !important; }
+
 .view {
   font-family: 'work_sansregular';
   width: 100%;

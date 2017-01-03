@@ -45,6 +45,16 @@ h3,
 option{
   font-family: 'work_sansregular';
 }
+.clickable{
+  &:hover{
+    color: $text!important;
+    background-color: transparent!important;
+  }
+}
+
+*{
+  box-shadow:none!important;
+}
 
 .view{
   font-family: 'work_sansregular';
