@@ -10310,6 +10310,9 @@ input.bbottom {
 .detail-view .list {
   position: relative;
   top: -12px; }
+  .dashboard-view .list .small,
+  .detail-view .list .small {
+    font-size: 14px; }
   .dashboard-view .list .button,
   .detail-view .list .button {
     margin: 0;
@@ -10532,6 +10535,20 @@ input.bbottom {
     padding: 30px;
     white-space: pre-line; }
 
+.agenda-detail .resenas {
+  background-color: #dae4e4;
+  margin: 0; }
+
+.agenda-detail .resena-bar {
+  border-top: 1px solid #FAFAFA; }
+  .agenda-detail .resena-bar p {
+    color: #f76913;
+    font-size: 16px;
+    font-family: 'work_sansregular';
+    font-weight: 500; }
+  .agenda-detail .resena-bar i {
+    font-size: 16px; }
+
 .phone-input input[type='number'] {
   width: 90%;
   margin-left: 10%; }
@@ -10728,6 +10745,9 @@ input {
 .uppercased {
   text-transform: uppercase; }
 
+.capitalized {
+  text-transform: capitalize; }
+
 .bar-orange {
   background: #f76913; }
   .bar-orange button {
@@ -10744,6 +10764,9 @@ input {
   background: #f76913; }
   .bar-header .title {
     line-height: 50px !important; }
+
+.circled {
+  border-radius: 100%; }
 
 a {
   font-family: 'work_sansbold';

@@ -12,6 +12,16 @@ angular.module('WeBarrio.services.agenda', [])
         });
         return deferred.promise;
       },
+      loadContact: function(condoId, contactId){
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/condos/' + condoId + '/agenda/' + contactId
+        }).then(function(agenda) {
+          deferred.resolve(agenda.data);
+        });
+        return deferred.promise;
+      },
       saveNewContact: function(condoId, newContact){
         deferred = $q.defer();
         $http({

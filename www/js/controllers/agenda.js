@@ -34,8 +34,8 @@
             }
         };
 
-        $scope.goToDetail = function(profesion, persona){
-        	$state.go('agenda-detail', {profesion: profesion.name, person_id: persona.id});
+        $scope.goToDetail = function(persona){
+        	$state.go('agenda-detail', {contactId: persona.id});
         };
 
         $scope.nuevoRegistro = function(){
@@ -46,12 +46,14 @@
             agendaService.getAllProfesions(condoId).then(function(response){
                 $scope.profesiones = response.contacts;
                 allProfesiones = angular.copy(response.contacts);
-                if ($state.current.name === "agenda-detail") {
-                    $scope.currentProfesion = _.findWhere($scope.profesiones, {name: $stateParams.profesion});
-                    $scope.currentPerson = _.findWhere($scope.currentProfesion.contacts, {id: parseInt($stateParams.person_id)});
-                }
             });
         };
+
+        var loadContact = function(condoId, contactId){
+            agendaService.loadContact(condoId, contactId).then(function(response){
+                $scope.currentContact = response.contact
+            })
+        }
 
         $scope.newContact = function(newRecord){
             newRecord.profession_id = newRecord.profesion.id;
@@ -63,8 +65,12 @@
 
         $scope.$on("$ionicView.beforeEnter", function (){
             currentCondo = $localStorage.currentCondo;
-            loadProfesions(currentCondo.id);
             $scope.newRecord = {phone: "+569"};
+            if ($state.current.name === "agenda-detail") {
+                loadContact(currentCondo.id, $stateParams.contactId);
+            } else{
+                loadProfesions(currentCondo.id);
+            }
         });
 
         $scope.goBack = function (){

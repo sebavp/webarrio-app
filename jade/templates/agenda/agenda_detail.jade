@@ -8,15 +8,22 @@ ion-view(view-title='Agenda' hide-back-button='true')
         .row.orange-bar
         .row.img-container
           .img
-          // <img src="">
       .item
-        h1.text-center {{currentPerson.name}}
-        h3.text-center {{currentProfesion.name}}
+        h1.text-center {{currentContact.name}}
+        h3.text-center {{currentContact.profession_name}}
     .list.card.detail-content
       .item.text-center.text
-        | {{currentPerson.description}}
+        | {{currentContact.description}}
       .item.text-center
-        a(ng-href='tel:{{currentPerson.phone}}') {{currentPerson.phone}}
-    img.more.block-center(src='img/icons/chev-down.svg')
-    .item
-      h1.text-center Comentarios
+        a(ng-href='tel:{{currentContact.phone}}') {{currentContact.phone}}
+    .item.item-icon-right.resena-bar
+      p RESEÑAS
+      i.icon.ion-chevron-down
+    .list-inset.resenas
+      .item(ng-if="currentContact.all_reviews.length == 0")
+        p No hay reseñas
+      .item.item-avatar(ng-repeat="review in currentContact.all_reviews")
+        img(src='/img/blank.png')
+        small.muted.right.uppercased {{review.created_at | date: "dd MM / HH:mm"}}
+        h2 {{review.user_name}}
+        p.muted {{review.comment}}

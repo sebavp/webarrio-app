@@ -3,10 +3,8 @@
   angular
     .module('WeBarrio.controllers')
     .controller('sideMenuController', sideMenuController);
-  function sideMenuController($scope, $state, $log, $localStorage, $ionicHistory) {
-    console.info("sideMenuController init");
+  function sideMenuController($scope, $state, $log, $localStorage, $ionicHistory, dataAPIService) {
 	  $scope.currentUser = $localStorage.currentUser.user;
-    console.log($scope.currentUser);
     $scope.goBack = function (){
       if (_.isNull($ionicHistory.viewHistory().backView)) {
         $state.go("tabs.home");
@@ -14,5 +12,16 @@
         $ionicHistory.goBack();
       }
     };
+
+    var loadCurrentUser = function (){
+      dataAPIService.getUser($scope.currentUser.id).then(function(response){
+        console.log(response);
+        $localStorage.currentUser.user = response.data.user
+      });
+    };
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+      loadCurrentUser();
+    });
   }
 }).call(this);

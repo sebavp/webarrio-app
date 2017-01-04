@@ -115,7 +115,7 @@ angular.module('WeBarrio.routes', [])
       }
     })
     .state('agenda-detail', {
-      url: '/menu/agenda/:profesion/:person_id',
+      url: '/menu/agenda/:contactId',
       templateUrl: 'templates/agenda/agenda_detail.html',
       controller:'agendaController'
     })

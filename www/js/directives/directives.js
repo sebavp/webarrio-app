@@ -1,6 +1,6 @@
 angular.module('WeBarrio.directives', [])
 .directive("mainSidebar", [
-	"$ionicModal", "$rootScope", "$state", function($ionicModal, $rootScope, $state, $localstorage) {
+	"$ionicModal", "$rootScope", "$state", "$localStorage", function($ionicModal, $rootScope, $state, $localStorage) {
 		return {
 			restrict: 'A',
 			link: function(scope, element) {
@@ -19,7 +19,7 @@ angular.module('WeBarrio.directives', [])
 				createModal();
 
 				scope.logOut = function () {
-					$localstorage.$reset();
+					$localStorage.$reset();
 					modal.hide();
 					$state.go('login');
 				};

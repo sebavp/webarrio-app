@@ -13,7 +13,7 @@ ion-view(view-title='Administración')
         small $
         {{(commonExpenses[0].total | currency: '':0) || 0 }}
       small Correspondiente a
-      p {{commonExpenses[0].month}}
+      p.capitalized {{commonExpenses[0].month || (today | date: 'MMMM') }}
     .hero(ng-show='!commonExpenses')
       small No Registra Deuda Pendiente
     .list

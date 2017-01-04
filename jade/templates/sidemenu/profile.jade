@@ -5,15 +5,15 @@ ion-view(title='Perfil')
   ion-content.profile-view(has-header='true')
     .list.card
       .item.item-image
-        img(src='/img/person-men.png')
+        img.circled(src='/img/blank.png')
       .item
         h2.text-center {{currentUser.name}} {{currentUser.last_name}}
-      .item.item-icon-left
+      .item.item-icon-left(ng-if="currentUser.email")
         i.icon.ion-email
         | {{currentUser.email}}
-      .item.item-icon-left
-        i.icon.ion-male
+      .item.item-icon-left(ng-if="currentUser.sex")
+        i.icon(ng-class="{'ion-male': currentUser.sex == 'Hombre', 'ion-female': currentUser.sex == 'Mujer'}")
         | {{currentUser.sex}}
-      .item.item-icon-left
+      .item.item-icon-left(ng-if="currentUser.birthday")
         i.icon.ion-calendar
-        | {{currentUser.birthday}}
+        | {{currentUser.birthday | date: "dd/MM/yyyy"}}

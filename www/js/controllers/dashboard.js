@@ -6,13 +6,12 @@
 
   function dashboardController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage) {
     var currentDepto =  $localStorage.currentDepto;
-    console.log(currentDepto);
     if (currentDepto) {
       dataAPIService.getCommonExpenses(currentDepto[0].id).then(function(resp){
         $scope.commonExpenses = resp.data.common_expenses;
       });
     }
-
+    $scope.today = new Date();
     $scope.pdfUrl = "pdf/EjemploReglamentoInterno.pdf";
     $scope.page = 1;
 

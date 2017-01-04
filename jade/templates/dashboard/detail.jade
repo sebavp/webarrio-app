@@ -4,6 +4,9 @@ ion-view(view-title='Gastos Comunes')
       i.color-white.ion-chevron-left
   ion-content.detail-view
     .list
+      .item(ng-if="commonExpenses.length == 0")
+        p
+          span.small No se registran Gastos comunes asociados
       .item.button.button-full.icon-right.ion-ios-arrow-down(ng-repeat='item in commonExpenses', ng-init='hideInfo=true', ng-click='hideInfo=!hideInfo')
         span.upper {{item.month}}
         small.right.red 
@@ -42,6 +45,6 @@ ion-view(view-title='Gastos Comunes')
             span.text-right
               small $
               {{item.total_light +  item.total_water + item.total_gas + item.total_personal | CLP}}
-  ion-footer-bar.bar-dark.account-footer
+  ion-footer-bar.bar-dark.account-footer(ng-if="commonExpenses.length > 0")
     button.button.button-full.pay-button
       | PAGAR

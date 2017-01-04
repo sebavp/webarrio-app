@@ -85,6 +85,9 @@ input{
 .uppercased{
   text-transform: uppercase;
 }
+.capitalized{
+  text-transform: capitalize;
+}
 .bar-orange{
   background: $orange;
   button{
@@ -103,6 +106,9 @@ input{
   .title{
     line-height: 50px !important;
   }
+}
+.circled{
+  border-radius: 100%;
 }
 a{
   font-family: 'work_sansbold';

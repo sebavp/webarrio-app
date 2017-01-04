@@ -17,5 +17,5 @@ ion-view(view-title='Agenda' hide-back-button='true')
           | {{profesion.name}}
           i.icon.ion-chevron-down
         .list-inset(ng-if='profesion.id == profesionSeleccionada || searching')
-          .item.item-icon-right(ng-repeat='persona in profesion.contacts | filter: searchText' ng-click='goToDetail(profesion, persona)')
+          .item.item-icon-right(ng-repeat='persona in profesion.contacts | filter: searchText' ng-click='goToDetail(persona)')
             | {{persona.name}}
