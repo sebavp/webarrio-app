@@ -11,7 +11,7 @@
 
         $scope.goBack = function (){
         	if (_.isNull($ionicHistory.viewHistory().backView)) {
-        		$state.go("tabs.home")
+        		$state.go("tabs.home");
         	} else{
         		$ionicHistory.goBack();	
         	} 

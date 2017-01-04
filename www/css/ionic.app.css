@@ -10768,6 +10768,16 @@ img.user {
   height: 20px;
   margin-top: 8px; }
 
+input.bordered, textarea.bordered {
+  border: 1px solid #9E9E9E !important;
+  padding: 0 5px !important; }
+
+select.bordered {
+  border: 1px solid #9E9E9E !important;
+  height: 40px;
+  margin-top: 15px;
+  border-radius: 0; }
+
 @media (min-width: 450px) {
   .platform-browser .scroll-content {
     overflow-y: auto !important; } }
@@ -10783,6 +10793,9 @@ img.user {
 .button.back-button {
   position: relative;
   left: 15px; }
+
+.item-select select {
+  font-family: work_sansregular; }
 
 .ionic_datepicker_popup .popup-body .selected_date_full {
   background-color: #f76913 !important; }

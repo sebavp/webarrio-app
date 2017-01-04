@@ -1,0 +1,6 @@
+coffee/*
+plugins/*
+www/lib/*
+www/js/app.js
+www/js/vendor/*
+node_modules/**/*.js

@@ -1,5 +1,6 @@
 angular.module('WeBarrio.services.events', [])
   .service('eventsService', function($q, $http, CONFIG) {
+    var deferred;
     var service = {
       getInstalaciones: function(condoId) {
         deferred = $q.defer();

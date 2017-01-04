@@ -1,8 +1,6 @@
 angular.module('WeBarrio.services', [])
   .service('dataAPIService', function($q, $http, CONFIG) {
-    var user = {};
-    var currentDepto = {};
-
+    var deferred;
     var service = {
       getCommonExpenses: function(dptoId) {
         deferred = $q.defer();

@@ -7,15 +7,11 @@ ion-view(view-title='Nuevo Mensaje' hide-back-button='true')
       .col.inputhead
         span.search
           i.ion-ios-search-strong
-        input(type='text' placeholder="Buscar por Nombre")
+        input(type='text' placeholder="Buscar por Nombre" ng-model="search")
     .list
-      .item.text-left.button.button-full.icon-right.ion-ios-arrow-right.orange(ui-sref="chat-new-group")
+      .item.text-left.button.button-full.icon-right.ion-ios-arrow-right.orange(ui-sref="chat-new-group" ng-hide="search.length > 0")
         span.bold Crear Grupo
-      a.item.item-avatar
-        img(src='/img/person-men.png')
-        h2 Juan
-        p Torre B, Depto 1103
-      a.item.item-avatar
-        img(src='/img/person-girl.png')
-        h2 Juana
-        p Torre A, Depto 210
+      a.item.item-avatar(ng-repeat="p in people | orderBy: 'name' | filter: search")
+        img(ng-src="{{p.avatar_url ? p.avatar_url : '/img/avatar-thumb.png'}}")
+        h2 {{p.name}}
+        p Departamento {{p.depto_number}}

@@ -1,6 +1,6 @@
 angular.module('WeBarrio.directives', [])
 .directive("mainSidebar", [
-	"$ionicModal", "$rootScope", "$state", function($ionicModal, $rootScope, $state) {
+	"$ionicModal", "$rootScope", "$state", function($ionicModal, $rootScope, $state, $localstorage) {
 		return {
 			restrict: 'A',
 			link: function(scope, element) {
@@ -15,10 +15,11 @@ angular.module('WeBarrio.directives', [])
 					});
 					
 				};
+
 				createModal();
 
 				scope.logOut = function () {
-					//TODO: CLEAR LOCALSTORAGE
+					$localstorage.$reset();
 					modal.hide();
 					$state.go('login');
 				};
@@ -65,7 +66,7 @@ angular.module('WeBarrio.directives', [])
 						closeOnSelect: true,
 						templateType: 'popup'
 					});
-			    })
+			    });
 
 			}
 		};
@@ -86,11 +87,11 @@ angular.module('WeBarrio.directives', [])
 			    element.bind('click', function(){
 			      ionicTimePicker.openTimePicker({
 			        callback: function (val) {
-			          	scope.selectedTime = (new Date(((val + (180*60)) * 1000) )).toISOString();;
+			          	scope.selectedTime = (new Date(((val + (180*60)) * 1000) )).toISOString();
 			          	$compile(element.contents())(scope);
 			        },
 			      });
-			    })
+			    });
 
 			}
 		};

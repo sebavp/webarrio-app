@@ -1,5 +1,6 @@
 angular.module('WeBarrio.services.announcements', [])
   .service('announcementsService', function($q, $http, CONFIG) {
+    var deferred;
     var service = {
       getAnuncio: function(announcementId) {
         deferred = $q.defer();

@@ -5,10 +5,12 @@
         .module('WeBarrio.controllers')
         .controller('feedController', feedController);
 
-    function feedController($scope, $state) {
+    function feedController($scope) {
         
         console.info("feedController init");
-
+        $scope.feed = [
+        	{name: "Nueva Notificacion"}
+        ];
         
     }
 

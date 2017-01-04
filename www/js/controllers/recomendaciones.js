@@ -3,7 +3,7 @@
 
 angular
   .module('WeBarrio.controllers')
-  .controller('recomendacionesController', recomendacionesController)
+  .controller('recomendacionesController', recomendacionesController);
 
   function recomendacionesController($scope, $state, $stateParams, announcementsService, $localStorage) {
     console.info("recomendacionesController init");
@@ -13,17 +13,17 @@ angular
       announcementsService.getRecomendaciones(currentCondo.id).then(function (response){
         $scope.recomendaciones = angular.copy(response.recomendaciones);
       }, function(error){
-        console.log(error)
+        console.log(error);
       });
-    }
+    };
 
     var loadRecomendacion = function (){
       announcementsService.getAnuncio($stateParams.announcement_id).then(function (response){
         $scope.currentRecomendacion = response.announcement;
       }, function(error){
-        console.log(error)
+        console.log(error);
       });
-    }
+    };
 
     $scope.$on('$ionicView.beforeEnter', function (){
       if ($state.current.name == "comunidad-recomendaciones") {
@@ -31,7 +31,7 @@ angular
       } else {
         loadRecomendacion();
       }
-    })
+    });
 
     $scope.goBack = function (){
       if ($state.current.name == "comunidad-recomendaciones") {

@@ -3,7 +3,7 @@
 
 angular
   .module('WeBarrio.controllers')
-  .controller('comunidadController', comunidadController)
+  .controller('comunidadController', comunidadController);
 
   function comunidadController($scope, $state) {
     console.info("comunidadController init");

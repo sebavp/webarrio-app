@@ -4,9 +4,7 @@
     .module('WeBarrio.controllers')
     .controller('longtextController', longtextController);
 
-  function longtextController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage) {
-    var currentDepto =  $localStorage.currentDepto;
-    console.info("longtextController init");
+  function longtextController($scope, $state) {
     $scope.longtext = {
       title: 'Reglamento',
       iframe: 'http://www.admicomu.cl/documentacion/EjemploReglamentoInterno.pdf',

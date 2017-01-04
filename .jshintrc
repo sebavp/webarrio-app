@@ -1,0 +1,28 @@
+{
+	"globals": { // Globals variables.
+        "jasmine": true,
+        "angular": true,
+        "browser": true,
+        "element": true,
+        "by":true,
+        "window":true,
+        "cordova":true,
+        "io":true,
+        "_":true,
+        "$":true,
+        "ionic": true,
+        "navigator": true,
+        "Connection": true,
+        "Image": true,
+        "document": true,
+        "firebase": true
+    },
+	  "indent": 4,
+	  "white": true,
+	  "node": true,
+	  "undef": true,
+	  "unused": true,
+	  "-W058": true,
+	  "-W014": true,
+	  "expr": true
+}
