@@ -3,15 +3,15 @@ ion-view(view-title='Detalle Mascotas' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    img.full(src='/img/mascota.jpg')
+    img.full(ng-src="{{currentMascota.img_original_url}}" err-src='/img/blank.png')
     .list
       .padding
-        small.muted 14 JUN
-        h2 Se perdió Flaco!!!!!!!!
+        small.muted {{currentMascota.created_at | date : "dd MMMM"}}
+        h2 {{currentMascota.title}}
         .avatar
           img(src='/img/blank.png')
-          span Ana María
-        p Gato negro, macho. Lleva collar rojo. Por favor si lo encuentran contáctenme por acá o al 599991003. Visto por última vez el viernes a la tarde.
+          span {{currentMascota.user_name}}
+        p {{currentMascota.description}}
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
-      |  Enviar un mensaje a Ana María
+    button.button.button-full.pay-button(ng-click="goToChat(currentMascota)")
+      |  Enviar un mensaje a {{currentMascota.user_name}}

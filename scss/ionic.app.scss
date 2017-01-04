@@ -182,3 +182,15 @@ img.user{
 
 }
 
+
+.date-as-placeholder{
+  color: #aeaeae;
+  font-size: 14px;
+  font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI";
+  &.with-data{
+    font-family: 'work_sansregular';
+    color: #444;
+    font-size: 16px;
+  }
+}
+

@@ -78,15 +78,15 @@ angular.module('WeBarrio.directives', [])
 			restrict: 'E',
 			transclude: true,
 			scope: {
-				startTime: "=",
+				selectedTime: "=",
 			},
 			templateUrl: 'templates/directives/timepicker.html',
 			link: function(scope, element) {
 			    element.bind('click', function(){
 			      ionicTimePicker.openTimePicker({
-			        callback: function (val) {      //Mandatory
-			          scope.startTime = new Date(val * 1000);
-			          $compile(element.contents())(scope);
+			        callback: function (val) {
+			          	scope.selectedTime = (new Date(((val + (180*60)) * 1000) )).toISOString();;
+			          	$compile(element.contents())(scope);
 			        },
 			      });
 			    })

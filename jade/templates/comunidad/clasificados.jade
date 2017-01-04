@@ -7,8 +7,12 @@ ion-view(view-title='Clasificados' hide-back-button='true')
         i.color-white.ion-plus-round
   ion-content.padding-top.anuncios-view
     .list
-      a.item.item-avatar(ng-repeat='clas in clasificados', ui-sref='comunidad-clasificados-detail')
-        img(src='/img/blank.png')
-        small.muted.right {{clas.date}} {{clas.hourStart}}
+      a.item(ng-if="clasificados.length == 0")
+        p.text-center
+          small
+            | No hay Clasificados aún
+      a.item.item-avatar(ng-repeat='clas in clasificados', ui-sref='comunidad-clasificados-detail({announcement_id: clas.id})')
+        img(ng-src='{{clas.img_thumb_url}}' err-src="/img/blank.png")
+        small.muted.right {{clas.created_at | date: "dd MMM"}}
         h2 {{clas.title}}
-        p.muted {{clas.desc}}
+        p.muted {{clas.description}}

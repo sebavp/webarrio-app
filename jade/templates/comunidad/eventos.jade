@@ -3,10 +3,14 @@ ion-view(view-title='Eventos' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
     ion-nav-buttons(side='right')
-      button.button-clear.force-show(ui-sref='comunidad-anuncios-new')
+      button.button-clear.force-show(ui-sref='comunidad-eventos-new')
         i.color-white.ion-plus-round
   ion-content.padding-top.anuncios-view
     .list
+      a.item(ng-if="eventos.length == 0")
+        p
+          small
+            | No hay eventos
       a.item.item-avatar(ng-repeat='ev in eventos', ui-sref='comunidad-eventos-detail({event_id: ev.id})')
         img(ng-src='{{ev.img_thumb_url}}' err-src="/img/blank.png")
         small.muted.right {{ev.event_date | date: 'dd/MM'}} {{ev.start_time | date: 'HH:mm'}}

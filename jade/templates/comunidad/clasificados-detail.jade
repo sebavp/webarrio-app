@@ -3,15 +3,15 @@ ion-view(view-title='Detalle Clasificado' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    img.full(src='/img/escritorio.jpg')
+    img.full(ng-src="{{currentClasificado.img_original_url}}" err-src='/img/avatar-blank.png')
     .list
       .padding
-        small.muted 14 JUN
-        h2 Vendo sillón y escritorio
+        small.muted {{currentClasificado.created_at | date: "dd MMM"}}
+        h2 {{currentClasificado.title}}
         .avatar
           img(src='/img/blank.png')
-          span Ana María
-        p Sillón 2 plazas gris, 1,50 x 70 mts y escritorio escandinavo, 2 cajones. Estado impecable!! $50000 el escritorio y $70000 el sillón
+          span {{currentClasificado.user_name}}
+        p {{currentClasificado.description}}
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
-      |  Enviar un mensaje a Ana María
+    button.button.button-full.pay-button(ng-click="goToChat(currentClasificado)")
+      |  Enviar un mensaje a {{currentClasificado.user_name}}

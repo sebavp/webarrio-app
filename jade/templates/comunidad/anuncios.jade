@@ -7,8 +7,12 @@ ion-view(view-title='Anuncios' hide-back-button='true')
         i.color-white.ion-plus-round
   ion-content.padding-top.anuncios-view
     .list
-      a.item.item-avatar(ng-repeat='an in anuncios', ui-sref='comunidad-anuncios-detail')
-        img(ng-src='{{an.img}}')
-        small.muted.right {{an.date}} {{an.hourStart}}
+      a.item(ng-if="anuncios.length == 0")
+        p.text-center
+          small
+            | No hay Anuncios aún
+      a.item.item-avatar(ng-repeat='an in anuncios', ui-sref='comunidad-anuncios-detail({announcement_id: an.id})')
+        img(ng-src='{{an.img_thumb_url}}' err-src="/img/blank.png")
+        small.muted.right {{an.created_at | date: "dd MMM"}}
         h2 {{an.title}}
-        p {{an.desc}}
+        p {{an.description | truncate: 30: '..'}}

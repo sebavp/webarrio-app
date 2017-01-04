@@ -1,1 +1,1 @@
-<div class="date-as-placeholder">{{(eventDate | date: "dd/MM" ) || 'Ingrese Fecha'}}</div>
+<div ng-class="{'with-data': eventDate}" class="date-as-placeholder">{{(eventDate | date: "dd/MM" ) || 'Ingrese Fecha'}}</div>

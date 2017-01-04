@@ -1,72 +1,62 @@
-angular.module('WeBarrio.services.events', [])
-  .service('eventsService', function($q, $http, CONFIG) {
+angular.module('WeBarrio.services.announcements', [])
+  .service('announcementsService', function($q, $http, CONFIG) {
     var service = {
-      getInstalaciones: function(condoId) {
+      getAnuncio: function(announcementId) {
         deferred = $q.defer();
         $http({
           method: 'GET',
-          url: CONFIG.apiURL + '/events/' + condoId + '/instalaciones'
+          url: CONFIG.apiURL + '/announcements/detail/' + announcementId
         }).then(function(response) {
           deferred.resolve(response.data);
         });
         return deferred.promise;
       },
-      getEvent: function(eventId) {
+      getMascotas: function(condoId) {
         deferred = $q.defer();
         $http({
           method: 'GET',
-          url: CONFIG.apiURL + '/events/detail/' + eventId
+          url: CONFIG.apiURL + '/announcements/' + condoId + '/mascotas'
         }).then(function(response) {
           deferred.resolve(response.data);
         });
         return deferred.promise;
       },
-      getEventos: function(condoId) {
+      getRecomendaciones: function(condoId) {
         deferred = $q.defer();
         $http({
           method: 'GET',
-          url: CONFIG.apiURL + '/events/' + condoId + '/normal_events'
+          url: CONFIG.apiURL + '/announcements/' + condoId + '/recomendaciones'
         }).then(function(response) {
           deferred.resolve(response.data);
         });
         return deferred.promise;
       },
-      getAsambleas: function(condoId) {
+      getAnuncios: function(condoId) {
         deferred = $q.defer();
         $http({
           method: 'GET',
-          url: CONFIG.apiURL + '/events/' + condoId + '/asambleas'
+          url: CONFIG.apiURL + '/announcements/' + condoId + '/anuncios'
         }).then(function(response) {
           deferred.resolve(response.data);
         });
         return deferred.promise;
       },
-      getMantenciones: function(condoId) {
+      getClasificados: function(condoId) {
         deferred = $q.defer();
         $http({
           method: 'GET',
-          url: CONFIG.apiURL + '/events/' + condoId + '/mantenciones'
+          url: CONFIG.apiURL + '/announcements/' + condoId + '/clasificados'
         }).then(function(response) {
           deferred.resolve(response.data);
         });
         return deferred.promise;
       },
-      getCarPooling: function(condoId) {
-        deferred = $q.defer();
-        $http({
-          method: 'GET',
-          url: CONFIG.apiURL + '/events/' + condoId + '/car_pooling'
-        }).then(function(response) {
-          deferred.resolve(response.data);
-        });
-        return deferred.promise;
-      },
-      createEvent: function(type, newEvent, condoId){
+      createAnnouncement: function(type, newAnnouncement, condoId){
         deferred = $q.defer();
         $http({
           method: 'POST',
-          url: CONFIG.apiURL + '/events/' + condoId + '/' + type,
-          data: newEvent
+          url: CONFIG.apiURL + '/announcements/' + condoId + '/' + type,
+          data: newAnnouncement
         }).then(function(response) {
           deferred.resolve(response.data);
         });

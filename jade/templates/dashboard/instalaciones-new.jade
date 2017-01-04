@@ -7,15 +7,19 @@ ion-view(view-title='Nueva Reserva' hide-back-button='true')
       .item.item-input
         .input-label
           | Lugar
-        input(type="text" placeholder="Ingrese Lugar")
+        input(type="text" placeholder="Ingrese Lugar" ng-model="newEvent.place")
       .item.item-input
         .input-label
           | Fecha
         datepicker(event-date="newEvent.event_date")
       .item.item-input
         .input-label
-          | Hora
-        timepicker(start-time="newEvent.start_time")
+          | Hora Inicio
+        timepicker(selected-time="newEvent.start_time")
+      .item.item-input
+        .input-label
+          | Hora Término
+        timepicker(selected-time="newEvent.final_time")
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
+    button.button.button-full.pay-button(ng-click="createReservation(newEvent)" ng-disabled="!newEvent.place || !newEvent.event_date || !newEvent.start_time")
       |  CREAR RESERVA

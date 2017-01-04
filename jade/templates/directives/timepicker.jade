@@ -1,2 +1,2 @@
-.date-as-placeholder
-	{{(startTime | date: "HH:mm" ) || 'Ingrese Hora'}}
+.date-as-placeholder(ng-class="{'with-data': selectedTime}")
+	{{(selectedTime | date: "HH:mm" ) || 'Ingrese Hora'}}

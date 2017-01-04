@@ -189,9 +189,9 @@ angular.module('WeBarrio.routes', [])
       controller:'anunciosController'
     })
     .state('comunidad-anuncios-detail', {
-      url: '/comunidad/anuncios-detail/',
+      url: '/comunidad/anuncios-detail/:announcement_id',
       templateUrl: 'templates/comunidad/anuncios-detail.html',
-      controller:'anunciosDetailController'
+      controller:'anunciosController'
     })
     .state('comunidad-eventos', {
       url: '/comunidad/eventos/',
@@ -209,9 +209,9 @@ angular.module('WeBarrio.routes', [])
       controller:'clasificadosController'
     })
     .state('comunidad-clasificados-detail', {
-      url: '/comunidad/clasificados-detail/',
+      url: '/comunidad/clasificados-detail/:announcement_id',
       templateUrl: 'templates/comunidad/clasificados-detail.html',
-      controller:'clasificadosDetailController'
+      controller:'clasificadosController'
     })
     .state('comunidad-recomendaciones', {
       url: '/comunidad/recomendaciones/',
@@ -219,9 +219,9 @@ angular.module('WeBarrio.routes', [])
       controller:'recomendacionesController'
     })
     .state('comunidad-recomendaciones-detail', {
-      url: '/comunidad/recomendaciones-detail/',
+      url: '/comunidad/recomendaciones-detail/:announcement_id',
       templateUrl: 'templates/comunidad/recomendaciones-detail.html',
-      controller:'recomendacionesDetailController'
+      controller:'recomendacionesController'
     })
     .state('comunidad-mascotas', {
       url: '/comunidad/mascotas/',
@@ -229,9 +229,9 @@ angular.module('WeBarrio.routes', [])
       controller:'mascotasController'
     })
     .state('comunidad-mascotas-detail', {
-      url: '/comunidad/mascotas-detail/',
+      url: '/comunidad/mascotas-detail/:announcement_id',
       templateUrl: 'templates/comunidad/mascotas-detail.html',
-      controller:'mascotasDetailController'
+      controller:'mascotasController'
     })
     .state('comunidad-carp', {
       url: '/comunidad/carp/',

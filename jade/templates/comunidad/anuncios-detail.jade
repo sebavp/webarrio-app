@@ -3,15 +3,15 @@ ion-view(view-title='Detalle Anuncio' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    img.full(src='/img/ball.jpg')
+    img.full(ng-src="{{currentAnuncio.img_original_url}}" err-src='/img/avatar-blank.png')
     .list
       .padding
-        small.muted 14 JUN
-        h2 Pelota perdida
+        small.muted {{currentAnuncio.created_at | date: "dd MMM"}}
+        h2 {{currentAnuncio.title}}
         .avatar
           img(src='/img/blank.png')
-          span Ana María
-        p Se encontró una pelota en la cancha de fútbol el jueves a la tarde, contactarse conmigo.
+          span {{currentAnuncio.user_name}}
+        p {{currentAnuncio.description}}
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
-      |  Enviar un mensaje a Ana María
+    button.button.button-full.pay-button(ng-click="goToChat(currentAnuncio)")
+      |  Enviar un mensaje a {{currentAnuncio.user_name}}

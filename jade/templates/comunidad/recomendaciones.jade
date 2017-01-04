@@ -7,8 +7,12 @@ ion-view(view-title='Recomendaciones' hide-back-button='true')
         i.color-white.ion-plus-round
   ion-content.padding-top.anuncios-view
     .list
-      a.item.item-avatar(ng-repeat='reco in recomendaciones', ui-sref='comunidad-recomendaciones-detail')
+      a.item(ng-if="recomendaciones.length == 0")
+        p.text-center
+          small
+            | No hay Recomendaciones aún
+      a.item.item-avatar(ng-repeat='reco in recomendaciones', ui-sref='comunidad-recomendaciones-detail({announcement_id: reco.id})')
         img(src='/img/blank.png')
-        small.muted.right {{reco.date}} {{reco.hourStart}}
+        small.muted.right.uppercased {{reco.created_at | date: "dd MMM"}}
         h2 {{reco.title}}
-        p.muted {{reco.desc}}
+        p.muted {{reco.description | truncate: 30: '..'}}
