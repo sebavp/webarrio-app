@@ -9,7 +9,11 @@ angular
     console.info("eventosController init");
     var currentCondo = $localStorage.currentCondo;
     $scope.goBack = function (){
-      $state.go("tabs.comunidad");
+      if ($state.current.name == "comunidad-eventos") {
+        $state.go("tabs.comunidad");
+      } else{
+        $state.go("comunidad-eventos");
+      }
     };
 
    var loadEventos = function (){

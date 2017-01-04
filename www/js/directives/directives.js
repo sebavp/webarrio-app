@@ -79,6 +79,7 @@ angular.module('WeBarrio.directives', [])
 			transclude: true,
 			scope: {
 				selectedTime: "=",
+				placeholder: "="
 			},
 			templateUrl: 'templates/directives/timepicker.html',
 			link: function(scope, element) {

@@ -7,17 +7,20 @@ ion-view(view-title='Mantenciones' hide-back-button='true')
         i.color-white.ion-plus-round
   ion-content.padding-top.instalaciones-view
     .subheader.row
-      .col(ng-class="{'active': activeTab == 1}" ng-click='selectTab(1)')
+      .col(ng-class="{'active': activeTab == 1}" ng-click='filterBy(1)')
         span Hoy
-      .col(ng-class="{'active': activeTab == 2}" ng-click='selectTab(2)')
+      .col(ng-class="{'active': activeTab == 2}" ng-click='filterBy(2)')
         span Semana
-      .col(ng-class="{'active': activeTab == 3}" ng-click='selectTab(3)')
+      .col(ng-class="{'active': activeTab == 3}" ng-click='filterBy(3)')
         span Mes
-    .list(ng-show='activeTab == 3')
+    .list
       .item(ng-show="!mantenciones").text-center
         ion-spinner(icon="dots")
+      a.item.item-avatar(ng-if='mantenciones.length == 0')
+        p
+          small No Hay Mantenciones programadas
       a.item(ng-repeat='mant in mantenciones', ui-sref='dashboard-mantenciones-detail({event_id: mant.id})')
         h2 {{mant.name}}
         p 
           small.left por {{mant.details | truncate : 25 : '..'}}
-          small.right {{mant.start_time | date: 'HH:mm'}} - {{mant.final_time | date: 'HH:mm'}} HS
+          small.right {{mant.event_date | date: 'dd/MM'}} {{mant.start_time | date: 'HH:mm'}} - {{mant.final_time | date: 'HH:mm'}} HS

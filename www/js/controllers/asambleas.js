@@ -7,9 +7,13 @@
   function asambleasController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
     var currentDepto =  $localStorage.currentDepto;
     var currentCondo = $localStorage.currentCondo;
-    console.info("asambleasController init");
+
     $scope.goBack = function (){
-      $state.go("tabs.dashboard");
+      if ($state.current.name == "dashboard-asambleas") {
+        $state.go("tabs.dashboard");
+      } else{
+        $state.go("dashboard-asambleas");
+      }
     };
 
     $scope.goToCurrentAsamblea = function (){
