@@ -3,16 +3,18 @@ ion-view(view-title='Nuevo Clasificado' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ui-sref="comunidad-clasificados")
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    .uploadpic Subir foto
+    div(ng-class="{'invisible-canvas': !newEventImage}" ng-thumb="newEventImage._file" height="160")
+    .uploadpic(ng-hide="newEventImage") Subir foto
+    input(id="upload-input" type="file" nv-file-select="" uploader="uploader")
     .list
       .item.item-input
-        input.text-center.orange(type="text" placeholder="Título de la Publicación")
+        input.text-center.orange(type="text" placeholder="Título de la Publicación" ng-model="newPublication.title")
     .row
       .col
         .label.muted Detalles
       .col.col-75
-        input(type="text" placeholder="Detalles del clasificado")
+        input(type="text" placeholder="Detalles de la publicación" ng-model="newPublication.description")
 
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
+    button.button.button-full.pay-button(ng-disabled="newPublication.title.length < 3 || newPublication.description.length < 3" ng-click="createAnnouncement(newPublication)")
       |  CREAR CLASIFICADO

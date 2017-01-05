@@ -28,7 +28,7 @@ angular
     $scope.createReservation = function (evento){
       evento.user_id = currentUser.id;
       $ionicLoading.show({template: "Creando Evento..."});
-      eventsService.createEvent('car_pooling', evento, currentCondo.id).then(function(response){
+      eventsService.createEvent('car_pooling', evento, currentCondo.id).then(function(){
         $state.go("comunidad-carp");
         $ionicLoading.hide();
       }, function(){
