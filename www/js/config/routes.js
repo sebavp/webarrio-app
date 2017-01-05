@@ -228,6 +228,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/recomendaciones-detail.html',
       controller:'recomendacionesController'
     })
+    .state('comunidad-recomendaciones-new', {
+      url: '/comunidad/recomendaciones-new/:announcement_id',
+      templateUrl: 'templates/comunidad/recomendaciones-new.html',
+      controller:'recomendacionesController'
+    })
     .state('comunidad-mascotas', {
       url: '/comunidad/mascotas/',
       templateUrl: 'templates/comunidad/mascotas.html',
