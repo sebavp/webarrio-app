@@ -53,7 +53,7 @@ option{
 }
 
 *{
-  box-shadow:none!important;
+  box-shadow: none!important;
 }
 
 .view{
@@ -61,8 +61,34 @@ option{
   width: 100%;
   height: 100vh;
 }
+.col-75{
+  input{
+    border: 1px solid $grey;
+    width: 100%;
+    padding: 0 10px;
+  }
+}
 input{
   border-radius: 0;
+  &.orange{
+    border: 1px solid $orange;
+    width: 90%;
+    margin: 5%;
+  }
+}
+.label{
+  line-height: 40px;
+  &.date-input{
+    line-height: 24px;
+  }
+}
+.uploadpic{
+  line-height: 160px;
+  width: 100%;
+  height: 160px;
+  text-align: center;
+  color: $text;
+  background: $grey;
 }
 .left{
   float: left;
@@ -137,14 +163,15 @@ img.user{
   height: 20px;
   margin-top: 8px;
 }
-input.bordered, textarea.bordered{
-  border: 1px solid #9E9E9E !important;
+input.bordered,
+textarea.bordered{
   padding: 0 5px !important;
+  border: 1px solid #9e9e9e !important;
 }
 select.bordered{
-  border: 1px solid #9E9E9E !important;
   height: 40px;
   margin-top: 15px;
+  border: 1px solid #9e9e9e !important;
   border-radius: 0;
 }
 @media(min-width:450px){
@@ -166,8 +193,8 @@ select.bordered{
 }
 
 .button.back-button{
-    position: relative;
-    left: 15px;
+  position: relative;
+  left: 15px;
 }
 
 .item-select select{
@@ -175,41 +202,42 @@ select.bordered{
 }
 
 
-.ionic_datepicker_popup {
-  .popup-body .selected_date_full {
+.ionic_datepicker_popup{
+  .popup-body .selected_date_full{
     background-color: $orange !important;
   }
-   .selected_date {
-    background-color: $orange !important; 
-    border: 1px solid $orange !important; 
-   }
-   .popup-buttons button {
-      background-color: $orange !important; 
-   }
-   .month_select, .year_select{
+  .selected_date{
+    border: 1px solid $orange !important;
+    background-color: $orange !important;
+  }
+  .popup-buttons button{
+    background-color: $orange !important;
+  }
+  .month_select,
+  .year_select{
     border-bottom: 1px solid $orange !important;
     &:after{
       color: $orange !important;
-    } 
-   }
+    }
+  }
 }
 
 .ionic_timepicker_popup{
-  .heading, .button_set, .button_close {
-    background-color: $orange !important; 
+  .heading,
+  .button_set,
+  .button_close{
+    background-color: $orange !important;
   }
-
 }
 
 
 .date-as-placeholder{
-  color: #aeaeae;
+  font-family: '-apple-system', 'Helvetica Neue', 'Roboto', 'Segoe UI';
   font-size: 14px;
-  font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI";
+  color: #aeaeae;
   &.with-data{
     font-family: 'work_sansregular';
-    color: #444;
     font-size: 16px;
+    color: #444;
   }
 }
-

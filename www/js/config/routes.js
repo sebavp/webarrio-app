@@ -203,6 +203,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/anuncios-detail.html',
       controller:'anunciosController'
     })
+    .state('comunidad-anuncios-new', {
+      url: '/comunidad/anuncios-new/:announcement_id',
+      templateUrl: 'templates/comunidad/anuncios-new.html',
+      controller:'anunciosController'
+    })
     .state('comunidad-eventos', {
       url: '/comunidad/eventos/',
       templateUrl: 'templates/comunidad/eventos.html',
@@ -211,6 +216,11 @@ angular.module('WeBarrio.routes', [])
     .state('comunidad-eventos-detail', {
       url: '/comunidad/eventos-detail/:event_id',
       templateUrl: 'templates/comunidad/eventos-detail.html',
+      controller:'eventosController'
+    })
+    .state('comunidad-eventos-new', {
+      url: '/comunidad/eventos-new/:event_id',
+      templateUrl: 'templates/comunidad/eventos-new.html',
       controller:'eventosController'
     })
     .state('comunidad-clasificados', {
@@ -223,6 +233,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/clasificados-detail.html',
       controller:'clasificadosController'
     })
+    .state('comunidad-clasificados-new', {
+      url: '/comunidad/clasificados-new/:announcement_id',
+      templateUrl: 'templates/comunidad/clasificados-new.html',
+      controller:'clasificadosController'
+    })
     .state('comunidad-recomendaciones', {
       url: '/comunidad/recomendaciones/',
       templateUrl: 'templates/comunidad/recomendaciones.html',
@@ -231,6 +246,11 @@ angular.module('WeBarrio.routes', [])
     .state('comunidad-recomendaciones-detail', {
       url: '/comunidad/recomendaciones-detail/:announcement_id',
       templateUrl: 'templates/comunidad/recomendaciones-detail.html',
+      controller:'recomendacionesController'
+    })
+    .state('comunidad-recomendaciones-new', {
+      url: '/comunidad/recomendaciones-new/:announcement_id',
+      templateUrl: 'templates/comunidad/recomendaciones-new.html',
       controller:'recomendacionesController'
     })
     .state('comunidad-mascotas', {
@@ -243,6 +263,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/mascotas-detail.html',
       controller:'mascotasController'
     })
+    .state('comunidad-mascotas-new', {
+      url: '/comunidad/mascotas-new/:announcement_id',
+      templateUrl: 'templates/comunidad/mascotas-new.html',
+      controller:'mascotasController'
+    })
     .state('comunidad-carp', {
       url: '/comunidad/carp/',
       templateUrl: 'templates/comunidad/carp.html',
@@ -251,6 +276,11 @@ angular.module('WeBarrio.routes', [])
     .state('comunidad-carp-detail', {
       url: '/comunidad/carp-detail/:event_id',
       templateUrl: 'templates/comunidad/carp-detail.html',
+      controller:'carpController'
+    })
+    .state('comunidad-carp-new', {
+      url: '/comunidad/carp-new/:event_id',
+      templateUrl: 'templates/comunidad/carp-new.html',
       controller:'carpController'
     })
 
