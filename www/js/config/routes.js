@@ -203,6 +203,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/eventos-detail.html',
       controller:'eventosController'
     })
+    .state('comunidad-eventos-new', {
+      url: '/comunidad/eventos-new/:event_id',
+      templateUrl: 'templates/comunidad/eventos-new.html',
+      controller:'eventosController'
+    })
     .state('comunidad-clasificados', {
       url: '/comunidad/clasificados/',
       templateUrl: 'templates/comunidad/clasificados.html',

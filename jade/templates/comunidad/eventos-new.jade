@@ -1,0 +1,33 @@
+ion-view(view-title='Nuevo Evento' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="comunidad-eventos")
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.instalaciones-detail-view
+    .uploadpic Subir foto del evento
+    .list
+      .item.item-input
+        input.text-center.orange(type="text" placeholder="Nombre del evento")
+    .row
+      .col
+        .label.date-input.muted Fecha
+      .col.col-75
+        datepicker
+    .row
+      .col
+        .label.date-input.muted Hora
+      .col.col-75
+        timepicker(selected-time="newEvent.start_time" placeholder="'Ingrese Hora Inicio'")
+    .row
+      .col
+        .label.muted Lugar
+      .col.col-75
+        input(type="text" placeholder="Ingrese Lugar")
+    .row
+      .col
+        .label.muted Detalles
+      .col.col-75
+        input(type="text" placeholder="Detalles del evento")
+
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button
+      |  CREAR EVENTO
