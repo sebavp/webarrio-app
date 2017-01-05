@@ -3,8 +3,9 @@ ion-view(view-title='Nuevo Evento' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ui-sref="comunidad-eventos")
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    .uploadpic Subir foto del evento
-    input.ng-hide(id="upload-input" type="file" nv-file-select="" uploader="uploader")
+    div(ng-class="{'invisible-canvas': !newEventImage}" ng-thumb="newEventImage._file" height="160")
+    .uploadpic(ng-hide="newEventImage") Subir foto del evento
+    input(id="upload-input" type="file" nv-file-select="" uploader="uploader")
     .list
       .item.item-input
         input.text-center.orange(type="text" placeholder="Nombre del evento" ng-model="newEvent.name")

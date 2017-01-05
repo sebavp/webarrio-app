@@ -122,20 +122,30 @@ angular.module('WeBarrio.directives', [])
 
     return {
         restrict: 'A',
-        template: '<canvas/>',
+        template: '<canvas class="image-preview"/>',
+        scope: {
+        	ngThumb: "=",
+        	width: "=?",
+        	height: "=?",
+        },
         link: function(scope, element, attributes) {
             if (!helper.support) return;
+			var canvas;
+            scope.$watch(function(){ return scope.ngThumb}, function(newV){
+            	if (newV) {
+            		init(newV);
+            	}
+            });
 
-            var params = scope.$eval(attributes.ngThumb);
+            function init(file){
+	            if (!helper.isFile(file)) return;
+	            if (!helper.isImage(file)) return;
+	            canvas = element.find('canvas');
+	            var reader = new FileReader();
+	            reader.onload = onLoadFile;
+	            reader.readAsDataURL(file);
 
-            if (!helper.isFile(params.file)) return;
-            if (!helper.isImage(params.file)) return;
-
-            var canvas = element.find('canvas');
-            var reader = new FileReader();
-
-            reader.onload = onLoadFile;
-            reader.readAsDataURL(params.file);
+            }
 
             function onLoadFile(event) {
                 var img = new Image();
@@ -144,8 +154,8 @@ angular.module('WeBarrio.directives', [])
             }
 
             function onLoadImage() {
-                var width = params.width || this.width / this.height * params.height;
-                var height = params.height || this.height / this.width * params.width;
+                var width = scope.width || this.width / this.height * scope.height;
+                var height = scope.height || this.height / this.width * scope.width;
                 canvas.attr({ width: width, height: height });
                 canvas[0].getContext('2d').drawImage(this, 0, 0, width, height);
             }

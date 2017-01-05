@@ -51,3 +51,16 @@
     }
   }
 }
+
+#upload-input{
+  position: absolute;
+  z-index: 9999;
+  top: 60px;
+  left: 31%;
+  opacity: 0;
+}
+
+.invisible-canvas{
+  position: absolute;
+  z-index: -1;
+}
