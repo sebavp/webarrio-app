@@ -193,6 +193,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/anuncios-detail.html',
       controller:'anunciosController'
     })
+    .state('comunidad-anuncios-new', {
+      url: '/comunidad/anuncios-new/:announcement_id',
+      templateUrl: 'templates/comunidad/anuncios-new.html',
+      controller:'anunciosController'
+    })
     .state('comunidad-eventos', {
       url: '/comunidad/eventos/',
       templateUrl: 'templates/comunidad/eventos.html',
