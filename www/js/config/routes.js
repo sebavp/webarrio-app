@@ -258,6 +258,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/carp-detail.html',
       controller:'carpController'
     })
+    .state('comunidad-carp-new', {
+      url: '/comunidad/carp-new/:event_id',
+      templateUrl: 'templates/comunidad/carp-new.html',
+      controller:'carpController'
+    })
 
     // VISTAS SIDEMENU
     // PERFIL

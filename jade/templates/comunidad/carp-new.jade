@@ -1,0 +1,37 @@
+ion-view(view-title='Nueva Publicación' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="comunidad-carp")
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.instalaciones-detail-view
+    .list
+      .item.item-input
+        input.text-center.orange(type="text" placeholder="Título de la Publicación")
+    .row
+      .col
+        .label.date-input.muted Fecha
+      .col.col-75
+        datepicker
+    .row
+      .col
+        .label.date-input.muted Hora
+      .col.col-75
+        timepicker(selected-time="newEvent.start_time" placeholder="'Ingrese Hora Inicio'")
+    .row
+      .col
+        .label.muted Destino
+      .col.col-75
+        input(type="text" placeholder="Ingrese Destino")
+    .row
+      .col.col-25
+        .label.muted Cupos
+      .col.col-30
+        input(type="number" placeholder="1")
+    .row
+      .col
+        .label.muted Detalles
+      .col.col-75
+        input(type="text" placeholder="Detalles del evento")
+
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button
+      |  CREAR PUBLICACIÓN
