@@ -1,0 +1,33 @@
+ion-view(view-title='Nueva Mantención' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="dashboard-mantenciones")
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.instalaciones-detail-view
+    .list
+      .item.item-input
+        .input-label
+          | Titulo
+        input(type="text" placeholder="Ingrese Titulo" ng-model="newMantencion.name")
+      .item.item-input
+        .input-label
+          | Lugar
+        input(type="text" placeholder="Ingrese Lugar" ng-model="newMantencion.place")
+      .item.item-input
+        .input-label
+          | Fecha
+        datepicker(event-date="newMantencion.event_date")
+      .item.item-input
+        .input-label
+          | Hora Inicio
+        timepicker(selected-time="newMantencion.start_time" placeholder="'Ingrese Hora Inicio'")
+      .item.item-input
+        .input-label
+          | Hora Término
+        timepicker(selected-time="newMantencion.final_time" placeholder="'Ingrese Hora Término'")
+      .item.item-input
+        .input-label
+          | Motivo
+        input(type="text" placeholder="Ingrese Motivo" ng-model="newMantencion.details")
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button(ng-click="createReservation(newMantencion)" ng-disabled="!newMantencion.name || !newMantencion.place || !newMantencion.event_date || !newMantencion.start_time || !newMantencion.details")
+      |  CREAR MANTENCIÓN

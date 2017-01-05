@@ -52,9 +52,9 @@
 
         var loadContact = function(condoId, contactId){
             agendaService.loadContact(condoId, contactId).then(function(response){
-                $scope.currentContact = response.contact
-            })
-        }
+                $scope.currentContact = response.contact;
+            });
+        };
 
         $scope.newContact = function(newRecord){
             newRecord.profession_id = newRecord.profesion.id;
@@ -71,7 +71,7 @@
             }).then(function(modal) {
                 $scope.modal = modal;
             });
-        }
+        };
 
         $scope.$on("$ionicView.beforeEnter", function (){
             currentCondo = $localStorage.currentCondo;
@@ -90,9 +90,9 @@
 
         $scope.saveReview = function(newReviewText){
             agendaService.newReview(currentCondo.id, {contact_id: parseInt($stateParams.contactId), comment: newReviewText, user_id: currentUser.id}).then(function(response){
-                $scope.currentContact.all_reviews.push(response.review)
+                $scope.currentContact.all_reviews.push(response.review);
                 $scope.closeModal();
-            })
+            });
         };
 
         $scope.newReview = function(){
@@ -102,7 +102,7 @@
 
         $scope.goBack = function (){
             if ($state.current.name === "agenda-detail") {
-        		$state.go("tabs.agenda")
+        		$state.go("tabs.agenda");
         	} else{
         		$state.go("tabs.home");
         	}

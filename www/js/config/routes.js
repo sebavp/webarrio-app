@@ -83,6 +83,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/asambleas-detail.html',
       controller:'asambleasController'
     })
+    .state('dashboard-asambleas-new', {
+      url: '/menu/dashboard/asambleas-new',
+      templateUrl: 'templates/dashboard/asambleas-new.html',
+      controller:'asambleasController'
+    })
     .state('dashboard-mantenciones', {
       url: '/menu/dashboard/mantenciones',
       templateUrl: 'templates/dashboard/mantenciones.html',
@@ -91,6 +96,11 @@ angular.module('WeBarrio.routes', [])
     .state('dashboard-mantenciones-detail', {
       url: '/menu/dashboard/mantenciones-detail/:event_id',
       templateUrl: 'templates/dashboard/mantenciones-detail.html',
+      controller:'mantencionesController'
+    })
+    .state('dashboard-mantenciones-new', {
+      url: '/menu/dashboard/mantenciones-new',
+      templateUrl: 'templates/dashboard/mantenciones-new.html',
       controller:'mantencionesController'
     })
     .state('dashboard-longtext', {

@@ -31,7 +31,7 @@ angular
       currentUser = $localStorage.currentUser.user;
       eventsService.getEvent($stateParams.event_id).then(function (response){
         $scope.currentEvent = response.event;
-        if (_.contains(_.map(response.event.assistants_id, function(v,k){return parseInt(_.keys(v)[0])}), currentUser.id) ) {
+        if (_.contains(_.map(response.event.assistants_id, function(v){return parseInt(_.keys(v)[0]); }), currentUser.id) ) {
           $scope.currentUserAssistent = true;
         }
       }, function(error){
@@ -42,14 +42,14 @@ angular
     $scope.newAssistent = function(confirmed){
       eventsService.newAssistent({user_id: currentUser.id, event_id: parseInt($stateParams.event_id), confirmed: confirmed}).then(function(){
         $scope.currentUserAssistent = true;
-      })
-    }
+      });
+    };
 
     $scope.cancelAssistent = function(){
       eventsService.cancelAssistent({user_id: currentUser.id, event_id: parseInt($stateParams.event_id)}).then(function(){
         $scope.currentUserAssistent = false;
-      })
-    }
+      });
+    };
 
     $scope.$on('$ionicView.beforeEnter', function (){
       if ($state.current.name == "comunidad-eventos") {

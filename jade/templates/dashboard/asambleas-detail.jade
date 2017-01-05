@@ -1,4 +1,4 @@
-ion-view(view-title='Detalle {{currentAsamblea.name}}' hide-back-button='true')
+ion-view(view-title="Detalle Asamblea {{currentAsamblea.event_date | date : 'MM/yyyy'}}" hide-back-button='true')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
@@ -6,11 +6,15 @@ ion-view(view-title='Detalle {{currentAsamblea.name}}' hide-back-button='true')
     .list
       .item
         p.title 
+          small Nombre
+        p.desc
+          small.uppercased {{currentAsamblea.name}}
+        p.title 
           small Fecha
         p.desc
           small.uppercased {{currentAsamblea.event_date | date : "EEEE dd 'de' MMMM"}}
         p.title 
           small Detalle
         p.desc
-          small Sin detalle adjunto
+          small {{currentAsamblea.details}}
           //- small Descargar PDF

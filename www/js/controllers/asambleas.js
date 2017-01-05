@@ -4,9 +4,10 @@
     .module('WeBarrio.controllers')
     .controller('asambleasController', asambleasController);
 
-  function asambleasController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
+  function asambleasController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams, $filter) {
 
     var currentCondo = $localStorage.currentCondo;
+    var currentUser = $localStorage.currentUser;
 
     $scope.goBack = function (){
       if ($state.current.name == "dashboard-asambleas") {
@@ -38,11 +39,24 @@
       });
     };
 
+    $scope.saveAsamblea = function(asamblea){
+      asamblea.event_date = new Date();
+      asamblea.user_id = currentUser.user.id;
+      eventsService.createEvent('asambleas', asamblea, currentCondo.id).then(function(){
+        $state.go('dashboard-asambleas');
+      });
+    };
+
     $scope.$on('$ionicView.beforeEnter', function (){
+      currentUser = $localStorage.currentUser;
       if ($state.current.name == "dashboard-asambleas") {
         loadAsambleas();
       } else {
-        loadAsamblea();
+        if ($state.current.name === "dashboard-asambleas-new") {
+          $scope.newAsamblea = {name: "Asamblea del " + $filter('date')(new Date, "dd/MM 'del' yyyy"), details: '' };
+        } else{
+          loadAsamblea();
+         }
       }
     });
   }

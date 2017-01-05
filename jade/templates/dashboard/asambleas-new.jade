@@ -1,0 +1,19 @@
+ion-view(view-title='Nueva Asamblea' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="dashboard-asamblea")
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.instalaciones-detail-view
+    .list
+      .item.item-input
+        .input-label
+          | Nombre
+        input(type="text" placeholder="Asamblea ..." ng-model="newAsamblea.name")
+      .item.item-input
+        textarea( placeholder="Detalle de la Asamblea" ng-model="newAsamblea.details")
+      //- .item.item-input
+      //-   .input-label
+      //-     | Adjuntar PDF
+      //-   div(s3-upload bucket="s3Bucket" ng-model="newAsamblea.remote_product_file_url" s3-upload-options="{getOptionsUri: s3OptionsUri, folder: 'images/'}")
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button(ng-click="saveAsamblea(newAsamblea)" ng-disabled="newAsamblea.details.length < 5")
+      |  REGISTRAR ASAMBLEA

@@ -19,7 +19,8 @@ angular.module('WeBarrio', [
   'firebase',
   'pdf',
   'ionic-datepicker',
-  'ionic-timepicker'
+  'ionic-timepicker',
+  'ngS3upload'
   ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function(FURL) {
