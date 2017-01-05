@@ -4,14 +4,15 @@ ion-view(view-title='Nuevo Evento' hide-back-button='true')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
     .uploadpic Subir foto del evento
+    input.ng-hide(id="upload-input" type="file" nv-file-select="" uploader="uploader")
     .list
       .item.item-input
-        input.text-center.orange(type="text" placeholder="Nombre del evento")
+        input.text-center.orange(type="text" placeholder="Nombre del evento" ng-model="newEvent.name")
     .row
       .col
         .label.date-input.muted Fecha
       .col.col-75
-        datepicker
+        datepicker(event-date="newEvent.event_date")
     .row
       .col
         .label.date-input.muted Hora
@@ -21,13 +22,13 @@ ion-view(view-title='Nuevo Evento' hide-back-button='true')
       .col
         .label.muted Lugar
       .col.col-75
-        input(type="text" placeholder="Ingrese Lugar")
+        input(type="text" placeholder="Ingrese Lugar" ng-model="newEvent.place")
     .row
       .col
         .label.muted Detalles
       .col.col-75
-        input(type="text" placeholder="Detalles del evento")
+        input(type="text" placeholder="Detalles del evento" ng-model="newEvent.details")
 
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
+    button.button.button-full.pay-button(ng-click="createReservation(newEvent)" ng-disabled="!newEvent.name || !newEvent.place || !newEvent.event_date || !newEvent.start_time || !newEvent.details")
       |  CREAR EVENTO

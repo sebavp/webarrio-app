@@ -6,6 +6,7 @@
     "underscore": "^1.8.3",
     "ionic-datepicker": "^1.2.1",
     "ionic-timepicker": "^0.6.0",
-    "ng-s3upload": "^0.1.2"
+    "ng-s3upload": "^0.1.2",
+    "angular-file-upload": "^2.4.1"
   }
 }

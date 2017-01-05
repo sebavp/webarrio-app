@@ -219,7 +219,7 @@ angular.module('WeBarrio.routes', [])
       controller:'eventosController'
     })
     .state('comunidad-eventos-new', {
-      url: '/comunidad/eventos-new/:event_id',
+      url: '/comunidad/eventos-new/',
       templateUrl: 'templates/comunidad/eventos-new.html',
       controller:'eventosController'
     })
