@@ -1,7 +1,9 @@
-ion-view(view-title='Agenda' hide-back-button='true')
+ion-view(view-title='Contacto' hide-back-button='true')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show.agenda-review-btn(ng-click="newReview()") Reseñar
   ion-content.agenda-detail(has-header='true')
     .list.card
       .item.item-image
@@ -24,6 +26,8 @@ ion-view(view-title='Agenda' hide-back-button='true')
         p No hay reseñas
       .item.item-avatar(ng-repeat="review in currentContact.all_reviews")
         img(src='/img/blank.png')
-        small.muted.right.uppercased {{review.created_at | date: "dd MM / HH:mm"}}
+        small.muted.right.uppercased {{review.created_at | date: "dd MMM / HH:mm"}}
         h2 {{review.user_name}}
         p.muted {{review.comment}}
+  script(id="new-review.html" type="text/ng-template")
+    include ./new-review.jade

@@ -1,0 +1,10 @@
+ion-modal-view.new-review-view
+  ion-header-bar
+      h1.title Nueva Reseña
+      span.close(ng-click="closeModal()")
+        i.icon.ion-close
+  ion-content
+    .list
+      .item.item-input
+        textarea(placeholder="Ingresar una Reseña" ng-model="newReviewText")
+    button.btn-full(ng-click="saveReview(newReviewText)" ng-disabled="newReviewText.length < 5") Ingresar

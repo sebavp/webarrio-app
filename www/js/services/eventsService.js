@@ -72,7 +72,28 @@ angular.module('WeBarrio.services.events', [])
           deferred.resolve(response.data);
         });
         return deferred.promise;
-      }
+      },
+      newAssistent: function(assistent){
+        deferred = $q.defer();
+        $http({
+          method: 'POST',
+          url: CONFIG.apiURL + '/events/assistent/' + assistent.event_id,
+          data: assistent
+        }).then(function(response) {
+          deferred.resolve(response.data);
+        });
+        return deferred.promise;
+      },
+      cancelAssistent: function(assistent){
+        deferred = $q.defer();
+        $http({
+          method: 'DELETE',
+          url: CONFIG.apiURL + '/events/assistent/' + assistent.event_id + "/" + assistent.user_id ,
+        }).then(function(response) {
+          deferred.resolve(response.data);
+        });
+        return deferred.promise;
+      },
     };
     return service;
 });

@@ -10576,6 +10576,43 @@ input.bbottom {
     border-radius: 5px;
     background: #f76913; }
 
+.buttons .right-buttons .agenda-review-btn {
+  color: #fff;
+  font-family: 'work_sansregular';
+  font-size: 16px; }
+
+.new-review-view {
+  min-height: 220px;
+  margin-top: 20px; }
+  .new-review-view .title {
+    color: #fff;
+    font-family: 'work_sansregular'; }
+  .new-review-view textarea {
+    height: 90px;
+    padding: 20px; }
+  .new-review-view .btn-full {
+    font-family: 'work_sansregular';
+    width: 90%;
+    background-color: #000;
+    color: #fff;
+    height: 50px;
+    margin: auto;
+    display: block;
+    font-weight: 600;
+    border: 0;
+    font-size: 17px; }
+    .new-review-view .btn-full[disabled=disabled] {
+      opacity: 0.5; }
+  .new-review-view .close {
+    cursor: pointer;
+    right: 20px;
+    display: block;
+    position: absolute;
+    top: 15px; }
+
+.modal-backdrop-bg {
+  background-color: rgba(128, 128, 128, 0.62); }
+
 .profile-view .card {
   margin: 0; }
 

@@ -5,9 +5,10 @@
         .module('WeBarrio.controllers')
         .controller('agendaController', agendaController);
 
-    function agendaController($scope, $state, $ionicHistory, $stateParams, $filter, agendaService, $localStorage) {
+    function agendaController($scope, $state, $ionicHistory, $stateParams, $filter, agendaService, $localStorage, $ionicModal) {
         
         var currentCondo = $localStorage.currentCondo;
+        var currentUser = $localStorage.currentUser.user;
         var allProfesiones = [];
         
         $scope.searchInAgenda = function (text){
@@ -63,21 +64,47 @@
             });
         };
 
+        var loadModal = function(){
+             $ionicModal.fromTemplateUrl('new-review.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function(modal) {
+                $scope.modal = modal;
+            });
+        }
+
         $scope.$on("$ionicView.beforeEnter", function (){
             currentCondo = $localStorage.currentCondo;
             $scope.newRecord = {phone: "+569"};
             if ($state.current.name === "agenda-detail") {
                 loadContact(currentCondo.id, $stateParams.contactId);
+                loadModal();
             } else{
                 loadProfesions(currentCondo.id);
             }
         });
 
+        $scope.closeModal = function(){
+            $scope.modal.hide();
+        };
+
+        $scope.saveReview = function(newReviewText){
+            agendaService.newReview(currentCondo.id, {contact_id: parseInt($stateParams.contactId), comment: newReviewText, user_id: currentUser.id}).then(function(response){
+                $scope.currentContact.all_reviews.push(response.review)
+                $scope.closeModal();
+            })
+        };
+
+        $scope.newReview = function(){
+            $scope.newReviewText = "";
+            $scope.modal.show();
+        };
+
         $scope.goBack = function (){
-        	if (_.isNull($ionicHistory.viewHistory().backView)) {
-        		$state.go("tabs.home");
+            if ($state.current.name === "agenda-detail") {
+        		$state.go("tabs.agenda")
         	} else{
-        		$ionicHistory.goBack();	
+        		$state.go("tabs.home");
         	}
         };
         

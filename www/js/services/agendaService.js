@@ -32,6 +32,17 @@ angular.module('WeBarrio.services.agenda', [])
           deferred.resolve(agenda.data);
         });
         return deferred.promise;
+      },
+      newReview: function(condoId, review){
+        deferred = $q.defer();
+        $http({
+          method: 'POST',
+          url: CONFIG.apiURL + '/condos/' + condoId + '/agenda/' + review.contact_id,
+          data: review
+        }).then(function(agenda) {
+          deferred.resolve(agenda.data);
+        });
+        return deferred.promise;
       }
     };
     return service;

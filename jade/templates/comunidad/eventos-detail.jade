@@ -10,16 +10,20 @@ ion-view(view-title='Detalle Evento' hide-back-button='true')
         br
         small.muted {{currentEvent.place}}
         br
-        small.muted {{currentEvent.assistens || 0}} asistentes
+        small.muted
+          ng-pluralize(count="currentEvent.assistants_id.length" when="{'0': 'Sin asistentes', '1': '1 asistente', 'other': '{} asistentes'  }")
         h2 {{currentEvent.name}}
         .avatar
           img(src='/img/blank.png')
           span {{currentEvent.user_name}}
         p {{currentEvent.details}}
-  ion-footer-bar.bar-orange.account-footer
-    .col
-      button.button.button-full.pay-button
+  ion-footer-bar.account-footer(ng-class="{'bar-orange': !currentUserAssistent, 'bar-assertive': currentUserAssistent}")
+    .col(ng-hide="currentUserAssistent")
+      button.button.button-full.pay-button(ng-click="newAssistent(true)")
         |  Asistiré
-    .col
-      button.button.button-full.pay-button
+    .col(ng-hide="currentUserAssistent")
+      button.button.button-full.pay-button(ng-click="newAssistent(false)")
         |  Tal vez
+    .col(ng-show="currentUserAssistent")
+      button.button.button-full.pay-button(ng-click="cancelAssistent()")
+        |  Cancelar Asistencia
