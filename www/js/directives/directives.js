@@ -128,10 +128,10 @@ angular.module('WeBarrio.directives', [])
         	width: "=?",
         	height: "=?",
         },
-        link: function(scope, element, attributes) {
+        link: function(scope, element) {
             if (!helper.support) return;
 			var canvas;
-            scope.$watch(function(){ return scope.ngThumb}, function(newV){
+            scope.$watch(function(){ return scope.ngThumb; }, function(newV){
             	if (newV) {
             		init(newV);
             	}
@@ -144,7 +144,6 @@ angular.module('WeBarrio.directives', [])
 	            var reader = new FileReader();
 	            reader.onload = onLoadFile;
 	            reader.readAsDataURL(file);
-
             }
 
             function onLoadFile(event) {

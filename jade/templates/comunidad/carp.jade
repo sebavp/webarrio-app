@@ -7,6 +7,10 @@ ion-view(view-title='Car Pooling' hide-back-button='true')
         i.color-white.ion-plus-round
   ion-content.padding-top.anuncios-view
     .list
+      a.item(ng-if="carp.length == 0")
+        p.text-center
+          small
+            | No hay publicaciones de Car Pooling aún
       a.item.item-avatar(ng-repeat='car in carp', ui-sref='comunidad-carp-detail({event_id: car.id})')
         img(ng-src='{{car.img_thumb_url}}' err-src="/img/blank.png")
         small.muted.right {{car.event_date | date: ''}} {{car.hourStart}}

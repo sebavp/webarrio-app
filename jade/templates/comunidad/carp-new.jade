@@ -5,12 +5,12 @@ ion-view(view-title='Nueva Publicación' hide-back-button='true')
   ion-content.padding-top.instalaciones-detail-view
     .list
       .item.item-input
-        input.text-center.orange(type="text" placeholder="Título de la Publicación")
+        input.text-center.orange(type="text" placeholder="Título de la Publicación" ng-model="newEvent.name")
     .row
       .col
         .label.date-input.muted Fecha
       .col.col-75
-        datepicker
+        datepicker(event-date="newEvent.event_date")
     .row
       .col
         .label.date-input.muted Hora
@@ -20,18 +20,23 @@ ion-view(view-title='Nueva Publicación' hide-back-button='true')
       .col
         .label.muted Destino
       .col.col-75
-        input(type="text" placeholder="Ingrese Destino")
+        input(type="text" placeholder="Ingrese Destino" ng-model="newEvent.place")
     .row
       .col.col-25
         .label.muted Cupos
       .col.col-30
-        input(type="number" placeholder="1")
+        .item.item-select
+          select(ng-model='newEvent.seats_available' required)
+            option(value='1') 1
+            option(value='2') 2
+            option(value='3') 3
+            option(value='4') 4
     .row
       .col
         .label.muted Detalles
       .col.col-75
-        input(type="text" placeholder="Detalles del evento")
+        input(type="text" placeholder="Detalles del evento" ng-model="newEvent.details")
 
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
+    button.button.button-full.pay-button(ng-click="createReservation(newEvent)" ng-disabled="!newEvent.name || !newEvent.place || !newEvent.event_date || !newEvent.start_time || !newEvent.details")
       |  CREAR PUBLICACIÓN

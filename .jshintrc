@@ -15,7 +15,8 @@
         "Connection": true,
         "Image": true,
         "document": true,
-        "firebase": true
+        "firebase": true,
+        "FileReader": true
     },
 	  "indent": 4,
 	  "white": true,

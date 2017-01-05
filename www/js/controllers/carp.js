@@ -4,9 +4,10 @@
 angular
   .module('WeBarrio.controllers')
   .controller('carpController', carpController);
-  function carpController($scope, $state, eventsService, $localStorage, $stateParams) {
+  function carpController($scope, $state, eventsService, $localStorage, $stateParams, announcementsService, $ionicLoading) {
 
     var currentCondo = $localStorage.currentCondo;
+    var currentUser = $localStorage.currentUser.user;
 
     var loadCarps = function (){
       eventsService.getCarPooling(currentCondo.id).then(function (response){
@@ -24,11 +25,26 @@ angular
       });
     };
 
+    $scope.createReservation = function (evento){
+      evento.user_id = currentUser.id;
+      $ionicLoading.show({template: "Creando Evento..."});
+      eventsService.createEvent('car_pooling', evento, currentCondo.id).then(function(response){
+        $state.go("comunidad-carp");
+        $ionicLoading.hide();
+      }, function(){
+        $ionicLoading.hide();
+      });
+    };
+
     $scope.$on('$ionicView.beforeEnter', function (){
       if ($state.current.name == "comunidad-carp") {
         loadCarps();
       } else {
-        loadCarp();
+        if ($state.current.name == "comunidad-carp-new") {
+          $scope.newEvent = {details: "", seats_available: "1"};
+        } else {
+          loadCarp();
+        }
       }
     });
     

@@ -5,8 +5,20 @@ angular
   .module('WeBarrio.controllers')
   .controller('mascotasController', mascotasController);
 
-  function mascotasController($scope, $state, $stateParams, $localStorage, announcementsService) {
+  function mascotasController($scope, $state, $stateParams, $localStorage, announcementsService, FileUploader, $ionicLoading, CONFIG) {
     var currentCondo = $localStorage.currentCondo;
+    var currentUser = $localStorage.currentUser.user;
+    var uploader = $scope.uploader = new FileUploader({autoUpload: false});
+    
+    // CALLBACKS
+    uploader.onAfterAddingAll = function(addedFileItems) {
+      $scope.newEventImage = addedFileItems[0];
+    };
+
+    uploader.onCompleteAll = function() {
+        $ionicLoading.hide();
+        $state.go('comunidad-mascotas');
+    };
 
     var loadMascotas = function (){
       announcementsService.getMascotas(currentCondo.id).then(function (response){
@@ -24,11 +36,30 @@ angular
       });
     };
 
+    $scope.createAnnouncement = function (anuncio){
+      anuncio.user_id = currentUser.id;
+      $ionicLoading.show({template: "Creando publicación..."});
+      announcementsService.createAnnouncement('mascotas', anuncio, currentCondo.id).then(function(response){
+        var imageUrl =  CONFIG.apiURL + '/announcements/image/' + response.mascota.id;
+        $scope.uploader.url = imageUrl;
+        if ($scope.uploader.queue.length > 0) {
+          $scope.uploader.queue[0].url = imageUrl;
+          $scope.uploader.uploadAll();
+        }
+      }, function(){
+        $ionicLoading.hide();
+      });
+    };
+
     $scope.$on('$ionicView.beforeEnter', function (){
       if ($state.current.name == "comunidad-mascotas") {
         loadMascotas();
       } else {
-        loadMascota();
+        if ($state.current.name == "comunidad-mascotas-new") {
+          $scope.newPublication = {description: '', title: ''};
+        } else {
+          loadMascota();
+        }
       }
     });
 

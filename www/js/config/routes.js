@@ -249,7 +249,7 @@ angular.module('WeBarrio.routes', [])
       controller:'recomendacionesController'
     })
     .state('comunidad-recomendaciones-new', {
-      url: '/comunidad/recomendaciones-new/:announcement_id',
+      url: '/comunidad/recomendaciones-new/',
       templateUrl: 'templates/comunidad/recomendaciones-new.html',
       controller:'recomendacionesController'
     })
@@ -264,7 +264,7 @@ angular.module('WeBarrio.routes', [])
       controller:'mascotasController'
     })
     .state('comunidad-mascotas-new', {
-      url: '/comunidad/mascotas-new/:announcement_id',
+      url: '/comunidad/mascotas-new/',
       templateUrl: 'templates/comunidad/mascotas-new.html',
       controller:'mascotasController'
     })
@@ -279,7 +279,7 @@ angular.module('WeBarrio.routes', [])
       controller:'carpController'
     })
     .state('comunidad-carp-new', {
-      url: '/comunidad/carp-new/:event_id',
+      url: '/comunidad/carp-new/',
       templateUrl: 'templates/comunidad/carp-new.html',
       controller:'carpController'
     })
