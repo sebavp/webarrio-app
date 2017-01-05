@@ -223,6 +223,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/clasificados-detail.html',
       controller:'clasificadosController'
     })
+    .state('comunidad-clasificados-new', {
+      url: '/comunidad/clasificados-new/:announcement_id',
+      templateUrl: 'templates/comunidad/clasificados-new.html',
+      controller:'clasificadosController'
+    })
     .state('comunidad-recomendaciones', {
       url: '/comunidad/recomendaciones/',
       templateUrl: 'templates/comunidad/recomendaciones.html',
