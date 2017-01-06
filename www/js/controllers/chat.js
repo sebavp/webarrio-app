@@ -10,10 +10,11 @@
     $scope.currentCondo = $localStorage.currentCondo;
     $scope.currentUser = $localStorage.currentUser;
     $scope.loading = true;
+    var page = 1;
 
     var getAllPeople = function (){
       dataAPIService.getPeopleFromCondo($scope.currentCondo.id).then(function (response){
-        $scope.people = response.data.people;
+        $scope.people = _.without(response.data.people, _.findWhere(response.data.people, {id: $scope.currentUser.user.id}));
       });
     };
 
@@ -46,11 +47,13 @@
           $scope.chatTitle = $scope.user.name;
           $scope.$broadcast('scroll.refreshComplete');
           $scope.loading = false;
+          loadChats();
       });
     };
 
-    var loadChat = function (userLoading){
-      mensajeService.getMessage($stateParams.chatId).then(function (response) {
+    var loadChat = function (userLoading, page){
+      mensajeService.getMessage($stateParams.chatId, page).then(function (response) {
+        $scope.$broadcast('scroll.refreshComplete');
         $scope.messages = response.$value === null ? [] : response;
         if (!userLoading) {
           loadUser();
@@ -71,12 +74,28 @@
         personName: $scope.user.name,
         deptoNumber: $stateParams.deptoNumber,
         createdAt: Date.now(),
+        lastMessage: $scope.newMessageText,
       };
       mensajeService.saveConversation($scope.currentUser.user.id, chatInfo).then(function(response){
         console.log(response);
       }, function(error){
         console.log(error);
       });
+    };
+
+    var updateLastMessage = function (lastMessage) {
+      var currentConversation = _.findWhere($scope.conversations, {chatId: $stateParams.chatId});
+      currentConversation.lastMessage = lastMessage;
+      mensajeService.updateConversation($scope.currentUser.user.id, currentConversation).then(function(response){
+        console.log(response);
+      }, function(error){
+        console.log(error);
+      });
+    };
+
+    $scope.loadPastMessages = function () {
+      page++;
+      loadChat(true, page);
     };
 
     $scope.$on("$ionicView.beforeEnter", function(){
@@ -94,13 +113,14 @@
             text: $scope.newMessageText,
             sentAt: Date.now(),
         };
-        
         mensajeService.newMessage($stateParams.chatId, msg).then(function () {
-            $scope.newMessageText = "";
             if ($scope.messages.length === 0) {
               saveConversation();
               loadChat(true);
+            } else{
+              updateLastMessage(angular.copy($scope.newMessageText));
             }
+            $scope.newMessageText = "";
         }, function (error) {
             console.log(error);
         });

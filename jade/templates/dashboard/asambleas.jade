@@ -7,13 +7,16 @@ ion-view(view-title='Asambleas' hide-back-button='true')
         i.color-white.ion-plus-round
   ion-content.padding-top.asambleas-view
     .list
+      .item(ng-show="!currentAsamblea").text-center
+        ion-spinner(icon="dots")
+    .list(ng-if="currentAsamblea")
       a.item(ng-click="goToCurrentAsamblea()")
         p
           strong {{currentAsamblea.name}}
           small.right
             i.ion-calendar
             |   {{currentAsamblea.event_date | date : 'dd/MM'}} {{currentAsamblea.start_time | date : 'HH:mm'}} HS
-    .list.muted.br
+    .list.muted.br(ng-if="currentAsamblea")
       .item
         small Asambleas anteriores
     .list.muted

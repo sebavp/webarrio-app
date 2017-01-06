@@ -3,8 +3,9 @@ angular.module('WeBarrio.services.mensajes', [])
     var deferred;
     var ref = firebase.database().ref();
     var service = {
-      getMessage: function (message_id) {
-        return $firebaseObject(ref.child("/messages/"+message_id)).$loaded();
+      getMessage: function (message_id, page) {
+        page = page || 1;
+        return $firebaseObject(ref.child("/messages/"+message_id).limitToLast( page * 10 )).$loaded();
       },
       getMessages: function (userId) {
         deferred = $q.defer();
@@ -18,6 +19,12 @@ angular.module('WeBarrio.services.mensajes', [])
       },
       saveConversation: function(userId, chat){
         return $firebaseArray(ref.child("/users/" + userId + "/chats")).$add(chat);
+      },
+      updateConversation: function (userId, conversation) {
+        conversation.updatedAt = Date.now();
+        var u = $firebaseObject(ref.child("/users/" + userId + "/chats/" + conversation.$id));
+        angular.merge(u, _.pick(conversation, "chatId", "createdAt", "deptoNumber", "personName", "lastMessage", "updatedAt"));
+        return u.$save();
       }
     };
     return service;
