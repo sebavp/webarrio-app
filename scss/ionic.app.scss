@@ -252,3 +252,9 @@ canvas.image-preview {
   margin: auto;
   display: block;
 }
+
+.platform-browser{
+    .scroll-content{
+      overflow-y: auto !important;
+    }
+}
