@@ -2,22 +2,31 @@ ion-view(view-title='Nuevo Grupo' hide-back-button='true')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
-  ion-content.padding-top
+  ion-content.padding-top.group-view
     .list.nb
       .item.item.item-avatar
         img(src='/img/new.svg')
-        input.bbottom(type='text' placeholder="Nombre del Grupo")
-    
-    .group
-      .title Participantes
-      .int
-        .avatar
-          img(src='/img/person-men.png')
-        h2 Juan
-      .int
-        .avatar
-          img(src='/img/person-girl.png')
-        h2 Juana
+        input.bbottom(type='text' placeholder="Nombre del Grupo" ng-model="$parent.newGroupName")
+    .row(ng-if="selectedPeople.length == 0")
+      p Escoja para agregar al grupo
+    .item(ng-show="!people").text-center
+      ion-spinner(icon="dots")
+    .row(ng-if="selectedPeople.length > 0")
+      .group.col.col-100
+        .title Participantes
+    .row(ng-if="selectedPeople.length > 0")
+      .group.col.col-100
+        .int(ng-repeat="p in selectedPeople" ng-click="selectToGroup(p)")
+          .avatar
+            img.circled.rotated-45(src='/img/new.svg')
+          h2 {{p.name}}
+    .list
+      a.item.item-avatar(ng-repeat="p in people | orderBy: 'name' | filter: search" ng-click="selectToGroup(p)")
+        img(ng-src="{{p.avatar_url ? p.avatar_url : '/img/blank.png'}}")
+        h2 {{p.name}}
+        p Departamento {{p.depto_number}}
+        span.toggle-icon
+          i.icon(ng-class="{'ion-ios-checkmark-outline': !p.selected, 'ion-ios-checkmark': p.selected }")
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button
+    button.button.button-full.pay-button(ng-disabled="newGroupName.length == 0 || selectedPeople.length == 0" ng-click="createGroup(newGroupName, selectedPeople)")
       |  Crear Grupo

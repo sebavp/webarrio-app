@@ -71,26 +71,19 @@
     var saveConversation = function (){
       var chatInfo = {
         chatId: $stateParams.chatId,
+        personId: $scope.user.id,
         personName: $scope.user.name,
         deptoNumber: $stateParams.deptoNumber,
         createdAt: Date.now(),
         lastMessage: $scope.newMessageText,
       };
-      mensajeService.saveConversation($scope.currentUser.user.id, chatInfo).then(function(response){
-        console.log(response);
-      }, function(error){
-        console.log(error);
-      });
+      mensajeService.saveConversation($scope.currentUser.user.id, chatInfo)
     };
 
     var updateLastMessage = function (lastMessage) {
       var currentConversation = _.findWhere($scope.conversations, {chatId: $stateParams.chatId});
       currentConversation.lastMessage = lastMessage;
-      mensajeService.updateConversation($scope.currentUser.user.id, currentConversation).then(function(response){
-        console.log(response);
-      }, function(error){
-        console.log(error);
-      });
+      mensajeService.updateConversation($scope.currentUser.user.id, currentConversation)
     };
 
     $scope.loadPastMessages = function () {
@@ -103,8 +96,30 @@
         loadChat();
       } else {
         loadChats();
+        $scope.selectedPeople = [];
+        $scope.newGroupName = '';
       }
     });
+
+    $scope.selectToGroup = function (p) {
+      if (p.selected) {
+        p.selected = false;
+        $scope.selectedPeople = _.without($scope.selectedPeople, _.findWhere($scope.selectedPeople, {id: p.id}));
+      } else {
+        p.selected = true;
+        $scope.selectedPeople.push(p);
+      }
+    };
+
+    $scope.createGroup = function (groupName, groupPeople) {
+        var userId = $scope.currentUser.user.id;
+        var usersIds = _.pluck(groupPeople, 'id')
+        usersIds.push(userId)
+        usersIds = _.map(usersIds, function (m){ return parseInt(m);})
+        console.log(usersIds)
+        mensajeService.createGroup(groupName, usersIds)
+        // $state.go('chat-group-conversation', {groupId: chatId, groupName: person.id});
+    };
 
     $scope.sendMessage = function () {
         var msg = {

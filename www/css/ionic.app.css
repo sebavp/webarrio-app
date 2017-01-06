@@ -10121,6 +10121,16 @@ input.bbottom {
   border-bottom: 1px solid #bfbfbf;
   width: 90%; }
 
+.group-view .toggle-icon {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  font-size: 30px;
+  color: #f76913; }
+
+.rotated-45 {
+  transform: rotate(45deg); }
+
 .list.nb .item {
   border-bottom: none; }
 
