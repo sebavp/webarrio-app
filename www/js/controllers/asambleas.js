@@ -4,7 +4,7 @@
     .module('WeBarrio.controllers')
     .controller('asambleasController', asambleasController);
 
-  function asambleasController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams, FileUploader) {
+  function asambleasController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams, FileUploader, CONFIG, $ionicLoading) {
 
     var currentCondo = $localStorage.currentCondo;
     var currentUser = $localStorage.currentUser;
@@ -17,7 +17,7 @@
 
     uploader.onCompleteAll = function() {
         $ionicLoading.hide();
-        $state.go('comunidad-eventos');
+        $state.go('dashboard-asambleas');
     };
     
     $scope.goBack = function (){
@@ -56,8 +56,8 @@
 
     $scope.saveAsamblea = function(asamblea){
       asamblea.user_id = currentUser.user.id;
+      $ionicLoading.show({template: "Creando Asamblea..."});
       eventsService.createEvent('asambleas', asamblea, currentCondo.id).then(function(response){
-        $state.go('dashboard-asambleas');
         $scope.uploader.url = CONFIG.apiURL + '/events/image/' + response.asamblea.id;
         if ($scope.uploader.queue.length > 0) {
           $scope.uploader.queue[0].url = CONFIG.apiURL + '/events/image/' + response.asamblea.id;

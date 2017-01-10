@@ -3,13 +3,16 @@ ion-view(view-title='Nueva Asamblea' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ui-sref="dashboard-asamblea")
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
+    div(ng-class="{'invisible-canvas': !newEventImage}" ng-thumb="newEventImage._file" height="160")
+    .uploadpic(ng-hide="newEventImage") Subir foto
+    input(id="upload-input" type="file" nv-file-select="" uploader="uploader")
     .list
       .item.item-input
         .input-label
           | Titulo
-        input(type="text" placeholder="Asamblea ..." ng-model="newAsamblea.name")
+        input(type="text" placeholder="Ingrese Titulo de Asamblea" ng-model="newAsamblea.name")
       .item.item-input
-        textarea( placeholder="Detalle de la Asamblea" ng-model="newAsamblea.details")
+        textarea( placeholder="Ingrese Detalle de la Asamblea" ng-model="newAsamblea.details")
       .item.item-input
         .input-label
           | Fecha Cierre
