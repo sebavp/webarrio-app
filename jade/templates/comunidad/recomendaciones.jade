@@ -11,7 +11,7 @@ ion-view(view-title='Recomendaciones' hide-back-button='true')
         p.text-center
           small
             | No hay Recomendaciones aún
-      a.item.item-avatar(ng-repeat='reco in recomendaciones', ui-sref='comunidad-recomendaciones-detail({announcement_id: reco.id})')
+      a.item.item-avatar(ng-repeat="reco in recomendaciones | orderBy: '-created_at'", ui-sref='comunidad-recomendaciones-detail({announcement_id: reco.id})')
         img(ng-src="{{reco.img_thumb_url}}" err-src='/img/blank.png')
         small.muted.right.uppercased {{reco.created_at | date: "dd MMM"}}
         h2 {{reco.title}}

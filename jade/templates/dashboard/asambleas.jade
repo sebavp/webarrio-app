@@ -24,7 +24,7 @@ ion-view(view-title='Asambleas' hide-back-button='true')
         p
           small
             | No se registran asambleas anteriores
-      a.item(ui-sref='dashboard-asambleas-detail({event_id: a.id})' ng-repeat="a in asambleas")
+      a.item(ui-sref='dashboard-asambleas-detail({event_id: a.id})' ng-repeat="a in asambleas | orderBy: 'event_date'")
         p
           strong {{a.name}}
           small.left

@@ -28,6 +28,16 @@ ion-view(view-title='Nueva Mantención' hide-back-button='true')
         .input-label
           | Motivo
         input(type="text" placeholder="Ingrese Motivo" ng-model="newMantencion.details")
+      .item.item-input.alert-input
+        .input-label
+          | Alerta
+        input(type="number" placeholder="Ingrese Cantidad" ng-model="newMantencion.alertQuantity")
+        .item.item-select
+          select(ng-model='newMantencion.alertTimeMeasure' required)
+            option(value='minutes') Minuto(s) ante(s)
+            option(value='hours') Hora(s) ante(s)
+            option(value='days') Dias(s) ante(s)
+
   ion-footer-bar.bar-orange.account-footer
     button.button.button-full.pay-button(ng-click="createReservation(newMantencion)" ng-disabled="!newMantencion.name || !newMantencion.place || !newMantencion.event_date || !newMantencion.start_time || !newMantencion.details")
       |  CREAR MANTENCIÓN

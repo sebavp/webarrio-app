@@ -19,7 +19,7 @@ ion-view(view-title='Mantenciones' hide-back-button='true')
       a.item.item-avatar(ng-if='mantenciones.length == 0')
         p
           small No Hay Mantenciones programadas
-      a.item(ng-repeat='mant in mantenciones', ui-sref='dashboard-mantenciones-detail({event_id: mant.id})')
+      a.item(ng-repeat="mant in mantenciones | orderBy: 'event_date'", ui-sref='dashboard-mantenciones-detail({event_id: mant.id})')
         h2 {{mant.name}}
         p 
           small.left por {{mant.details | truncate : 25 : '..'}}

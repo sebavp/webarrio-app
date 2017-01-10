@@ -11,7 +11,7 @@ ion-view(view-title='Clasificados' hide-back-button='true')
         p.text-center
           small
             | No hay Clasificados aún
-      a.item.item-avatar(ng-repeat='clas in clasificados', ui-sref='comunidad-clasificados-detail({announcement_id: clas.id})')
+      a.item.item-avatar(ng-repeat="clas in clasificados | orderBy: '-created_at'", ui-sref='comunidad-clasificados-detail({announcement_id: clas.id})')
         img(ng-src='{{clas.img_thumb_url}}' err-src="/img/blank.png")
         small.muted.right {{clas.created_at | date: "dd MMM"}}
         h2 {{clas.title}}
