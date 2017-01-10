@@ -7,6 +7,7 @@
   function instalacionesController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
     var currentCondo =  $localStorage.currentCondo;
     var currentUser =  $localStorage.currentUser;
+    $scope.currentUser = currentUser.user;
     var allInstalaciones = [];
 
     $scope.goBack = function (){
