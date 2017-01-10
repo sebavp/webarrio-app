@@ -6,6 +6,7 @@
 
   function dashboardController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage) {
     var currentDepto =  $localStorage.currentDepto;
+    $scope.currentCondo =  $localStorage.currentCondo;
     if (currentDepto) {
       dataAPIService.getCommonExpenses(currentDepto[0].id).then(function(resp){
         $scope.commonExpenses = resp.data.common_expenses;

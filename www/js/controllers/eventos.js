@@ -50,7 +50,6 @@ angular
       });
     };
 
-
     $scope.createReservation = function (evento){
       evento.user_id = currentUser.id;
       $ionicLoading.show({template: "Creando Evento..."});

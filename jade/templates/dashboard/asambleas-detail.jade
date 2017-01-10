@@ -17,4 +17,17 @@ ion-view(view-title="Detalle Asamblea {{currentAsamblea.event_date | date : 'MM/
           small Detalle
         p.desc
           small {{currentAsamblea.details}}
-          //- small Descargar PDF
+        p.title 
+          small VOTOS
+        p.desc
+          small SI:{{currentAsamblea.vote_details.yes.length}} / NO: {{currentAsamblea.vote_details.no.length}}
+  ion-footer-bar.account-footer(ng-class="{'bar-orange': !currentAsamblea.userVoted, 'bar-assertive': currentAsamblea.userVoted}" ng-show="currentAsamblea")
+    .col(ng-hide="currentAsamblea.userVoted")
+      button.button.button-full.pay-button(ng-click="newVote(true)")
+        |  SI
+    .col(ng-hide="currentAsamblea.userVoted")
+      button.button.button-full.pay-button(ng-click="newVote(false)")
+        |  NO
+    .col(ng-show="currentAsamblea.userVoted")
+      .bar-full.pay-button.text-center
+        |  {{currentAsamblea.userVote == true ? "SI" : "NO"}}

@@ -19,7 +19,7 @@ ion-view(view-title='Uso de Instalaciones' hide-back-button='true')
       a.item.item-avatar(ng-if='instalaciones.length == 0')
         p
           small No Hay Reservas de Uso de Instalaciones
-      a.item.item-avatar(ng-repeat='inst in instalaciones', ui-sref='dashboard-instalaciones-detail({event_id: inst.id})')
+      a.item.item-avatar(ng-repeat="inst in instalaciones | orderBy: ['event_date', 'start_time']" ui-sref="dashboard-instalaciones-detail({event_id: inst.id})")
         img(ng-src='{{inst.img_thumb_url}}' err-src="/img/blank.png")
         h2 {{inst.name}}
         p

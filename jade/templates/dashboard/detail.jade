@@ -11,10 +11,10 @@ ion-view(view-title='Gastos Comunes')
         span.upper {{item.month}}
         small.right.red 
           small $
-          {{item.total_light +  item.total_water + item.total_gas + item.total_personal | currency: '':0}}
+          {{item.total | currency: '':0}}
         .detalle-mes(ng-hide='hideInfo')
           hr
-          p  Detalle de Gastos
+          p  Detalle de {{currentCondo.name}}
           .item.item-icon-left
             i.icon.ion-ios-lightbulb
             span.text-left Luz:

@@ -4,11 +4,22 @@
     .module('WeBarrio.controllers')
     .controller('asambleasController', asambleasController);
 
-  function asambleasController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams, $filter) {
+  function asambleasController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams, FileUploader) {
 
     var currentCondo = $localStorage.currentCondo;
     var currentUser = $localStorage.currentUser;
+    var uploader = $scope.uploader = new FileUploader({autoUpload: false});
 
+    // CALLBACKS
+    uploader.onAfterAddingAll = function(addedFileItems) {
+      $scope.newEventImage = addedFileItems[0];
+    };
+
+    uploader.onCompleteAll = function() {
+        $ionicLoading.hide();
+        $state.go('comunidad-eventos');
+    };
+    
     $scope.goBack = function (){
       if ($state.current.name == "dashboard-asambleas") {
         $state.go("tabs.dashboard");
@@ -23,8 +34,6 @@
 
     var loadAsambleas = function (){
       eventsService.getAsambleas(currentCondo.id).then(function (response){
-        $scope.currentAsamblea = _.first(response.asambleas);
-        response.asambleas.shift();
         $scope.asambleas = angular.copy(response.asambleas);
       }, function(error){
         console.log(error);
@@ -33,17 +42,43 @@
 
     var loadAsamblea = function (){
       eventsService.getEvent($stateParams.event_id).then(function (response){
+        var userInVotantesYes = _.findWhere(response.event.vote_details.yes, {user_id: currentUser.user.id} )
+        var userInVotantesNo = _.findWhere(response.event.vote_details.no, {user_id: currentUser.user.id})
         $scope.currentAsamblea = response.event;
+        if (userInVotantesYes || userInVotantesNo) {
+          $scope.currentAsamblea.userVoted = true;
+          $scope.currentAsamblea.userVote = userInVotantesYes ? true : false;
+        }
       }, function(error){
         console.log(error);
       });
     };
 
     $scope.saveAsamblea = function(asamblea){
-      asamblea.event_date = new Date();
       asamblea.user_id = currentUser.user.id;
-      eventsService.createEvent('asambleas', asamblea, currentCondo.id).then(function(){
+      eventsService.createEvent('asambleas', asamblea, currentCondo.id).then(function(response){
         $state.go('dashboard-asambleas');
+        $scope.uploader.url = CONFIG.apiURL + '/events/image/' + response.asamblea.id;
+        if ($scope.uploader.queue.length > 0) {
+          $scope.uploader.queue[0].url = CONFIG.apiURL + '/events/image/' + response.asamblea.id;
+          $scope.uploader.uploadAll();
+        }
+      });
+    };
+
+    $scope.getVotes = function (votes, option) {
+      var allVotes = _.map(votes, function(v){return parseInt(_.keys(v)[0]); } ) ;
+    };
+
+   $scope.newVote = function(confirmed){
+      eventsService.newAssistent({user_id: currentUser.user.id, event_id: parseInt($stateParams.event_id), confirmed: confirmed}).then(function(){
+        $scope.currentAsamblea.userVoted = true;
+        $scope.currentAsamblea.userVote = confirmed;
+        if (confirmed) {
+          $scope.currentAsamblea.vote_details.yes.push({user_id: currentUser.user.id})
+        } else {
+          $scope.currentAsamblea.vote_details.no.push({user_id: currentUser.user.id})
+        }
       });
     };
 
@@ -53,7 +88,7 @@
         loadAsambleas();
       } else {
         if ($state.current.name === "dashboard-asambleas-new") {
-          $scope.newAsamblea = {name: "Asamblea del " + $filter('date')(new Date, "dd/MM 'del' yyyy"), details: '' };
+          $scope.newAsamblea = {name: "", details: '' };
         } else{
           loadAsamblea();
          }
