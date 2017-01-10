@@ -3,7 +3,7 @@ ion-view(view-title='Mantenciones' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
     ion-nav-buttons(side='right')
-      button.button-clear.force-show(ui-sref="dashboard-mantenciones-new")
+      button.button-clear.force-show(ui-sref="dashboard-mantenciones-new" ng-show="currentUser.role == 'superadmin'")
         i.color-white.ion-plus-round
   ion-content.padding-top.instalaciones-view
     .subheader.row

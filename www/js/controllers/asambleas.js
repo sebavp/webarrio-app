@@ -8,6 +8,7 @@
 
     var currentCondo = $localStorage.currentCondo;
     var currentUser = $localStorage.currentUser;
+    $scope.currentUser = currentUser.user;
     var uploader = $scope.uploader = new FileUploader({autoUpload: false});
 
     // CALLBACKS
@@ -42,8 +43,8 @@
 
     var loadAsamblea = function (){
       eventsService.getEvent($stateParams.event_id).then(function (response){
-        var userInVotantesYes = _.findWhere(response.event.vote_details.yes, {user_id: currentUser.user.id} )
-        var userInVotantesNo = _.findWhere(response.event.vote_details.no, {user_id: currentUser.user.id})
+        var userInVotantesYes = _.findWhere(response.event.vote_details.yes, {user_id: currentUser.user.id} );
+        var userInVotantesNo = _.findWhere(response.event.vote_details.no, {user_id: currentUser.user.id});
         $scope.currentAsamblea = response.event;
         if (userInVotantesYes || userInVotantesNo) {
           $scope.currentAsamblea.userVoted = true;
@@ -66,18 +67,14 @@
       });
     };
 
-    $scope.getVotes = function (votes, option) {
-      var allVotes = _.map(votes, function(v){return parseInt(_.keys(v)[0]); } ) ;
-    };
-
    $scope.newVote = function(confirmed){
       eventsService.newAssistent({user_id: currentUser.user.id, event_id: parseInt($stateParams.event_id), confirmed: confirmed}).then(function(){
         $scope.currentAsamblea.userVoted = true;
         $scope.currentAsamblea.userVote = confirmed;
         if (confirmed) {
-          $scope.currentAsamblea.vote_details.yes.push({user_id: currentUser.user.id})
+          $scope.currentAsamblea.vote_details.yes.push({user_id: currentUser.user.id});
         } else {
-          $scope.currentAsamblea.vote_details.no.push({user_id: currentUser.user.id})
+          $scope.currentAsamblea.vote_details.no.push({user_id: currentUser.user.id});
         }
       });
     };

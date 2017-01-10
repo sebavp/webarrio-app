@@ -9,6 +9,7 @@
     var currentCondo = $localStorage.currentCondo;
     var currentUser = $localStorage.currentUser;
     var allMantenciones = [];
+    $scope.currentUser = currentUser.user;
 
     $scope.goBack = function (){
       if ($state.current.name == "dashboard-mantenciones") {

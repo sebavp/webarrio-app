@@ -8,6 +8,7 @@
   function chatController($scope, $state, $localStorage, $ionicHistory, dataAPIService, mensajeService, $stateParams) {
 
     $scope.currentCondo = $localStorage.currentCondo;
+    $scope.currentDepto = $localStorage.currentDepto;
     $scope.currentUser = $localStorage.currentUser;
     $scope.loading = true;
     var page = 1;
@@ -77,13 +78,13 @@
         createdAt: Date.now(),
         lastMessage: $scope.newMessageText,
       };
-      mensajeService.saveConversation($scope.currentUser.user.id, chatInfo)
+      mensajeService.saveConversation($scope.currentUser.user.id, chatInfo, {deptoNumber: $scope.currentDepto.number, name: $scope.currentUser.user.name});
     };
 
     var updateLastMessage = function (lastMessage) {
       var currentConversation = _.findWhere($scope.conversations, {chatId: $stateParams.chatId});
       currentConversation.lastMessage = lastMessage;
-      mensajeService.updateConversation($scope.currentUser.user.id, currentConversation)
+      mensajeService.updateConversation($scope.currentUser.user.id, currentConversation);
     };
 
     $scope.loadPastMessages = function () {
@@ -113,11 +114,11 @@
 
     $scope.createGroup = function (groupName, groupPeople) {
         var userId = $scope.currentUser.user.id;
-        var usersIds = _.pluck(groupPeople, 'id')
-        usersIds.push(userId)
-        usersIds = _.map(usersIds, function (m){ return parseInt(m);})
-        console.log(usersIds)
-        mensajeService.createGroup(groupName, usersIds)
+        var usersIds = _.pluck(groupPeople, 'id');
+        usersIds.push(userId);
+        usersIds = _.map(usersIds, function (m){ return parseInt(m);});
+        console.log(usersIds);
+        mensajeService.createGroup(groupName, usersIds);
         // $state.go('chat-group-conversation', {groupId: chatId, groupName: person.id});
     };
 

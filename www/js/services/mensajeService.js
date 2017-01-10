@@ -17,9 +17,11 @@ angular.module('WeBarrio.services.mensajes', [])
       newMessage: function (messageId, message) {
         return $firebaseArray(ref.child("/messages/" + messageId)).$add(message);
       },
-      saveConversation: function(userId, chat){
+      saveConversation: function(userId, chat, user){
         return $firebaseArray(ref.child("/users/" + userId + "/chats")).$add(chat).then(function () {
-          $firebaseArray(ref.child("/users/" + chat.personId + "/chats")).$add(chat)
+          chat.deptoNumber = user.deptoNumber;
+          chat.personName = user.name;
+          $firebaseArray(ref.child("/users/" + chat.personId + "/chats")).$add(chat);
         });
       },
       updateConversation: function (userId, conversation) {
