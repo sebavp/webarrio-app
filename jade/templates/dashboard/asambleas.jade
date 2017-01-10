@@ -5,9 +5,9 @@ ion-view(view-title='Asambleas' hide-back-button='true')
     ion-nav-buttons(side='right')
       button.button-clear.force-show(ui-sref="dashboard-asambleas-new")
         i.color-white.ion-plus-round
-  ion-content.padding-top.asambleas-view
-    .list
-      .item(ng-show="!asambleas").text-center
+  ion-content.instalaciones-view
+    .list(ng-show="!asambleas")
+      .item.text-center
         ion-spinner(icon="dots")
     //- .list(ng-if="currentAsamblea")
     //-   a.item(ng-click="goToCurrentAsamblea()")
@@ -25,10 +25,10 @@ ion-view(view-title='Asambleas' hide-back-button='true')
           small
             | No se registran asambleas anteriores
       a.item(ui-sref='dashboard-asambleas-detail({event_id: a.id})' ng-repeat="a in asambleas | orderBy: 'event_date'")
+        small.right
+          ng-pluralize(count="a.assistants_number" when="{'0': 'Sin Votos', '1': '1 Voto', 'other': '{} Votos'  }")
+        h2.titulo-asamblea {{a.name}}
         p
-          strong {{a.name}}
           small.left
-            ng-pluralize(count="a.assistants_number" when="{'0': 'Sin Votos', '1': '1 Voto', 'other': '{} Votos'  }")
-          small.right
             i.ion-calendar
             |  Finaliza el  {{a.event_date | date : 'dd/MM'}} a las {{a.final_time | date : 'HH:mm'}} HS

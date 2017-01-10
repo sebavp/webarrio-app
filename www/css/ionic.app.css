@@ -10788,6 +10788,18 @@ input.bbottom {
     .asambleas-view .list.br .item {
       padding: 5px 16px; }
 
+h2.titulo-asamblea {
+  white-space: initial; }
+
+p.votes {
+  line-height: 50px; }
+  p.votes img {
+    height: 50px; }
+  p.votes span {
+    font-size: 20px;
+    float: right;
+    margin-top: 10px; }
+
 p,
 span,
 div,
