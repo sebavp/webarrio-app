@@ -27,6 +27,8 @@ ion-view(view-title='Asambleas' hide-back-button='true')
       a.item(ui-sref='dashboard-asambleas-detail({event_id: a.id})' ng-repeat="a in asambleas")
         p
           strong {{a.name}}
+          small.left
+            ng-pluralize(count="a.assistants_number" when="{'0': 'Sin Votos', '1': '1 Voto', 'other': '{} Votos'  }")
           small.right
             i.ion-calendar
-            |   {{a.event_date | date : 'dd/MM'}} {{a.final_time | date : 'HH:mm'}} HS
+            |  Finaliza el  {{a.event_date | date : 'dd/MM'}} a las {{a.final_time | date : 'HH:mm'}} HS
