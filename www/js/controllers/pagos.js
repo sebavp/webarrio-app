@@ -5,15 +5,18 @@
         .module('WeBarrio.controllers')
         .controller('pagosController', pagosController);
 
-    function pagosController($scope, $localStorage, dataAPIService, $state) {
+    function pagosController($scope, $localStorage, dataAPIService, $state, $stateParams) {
         
         console.info("pagosController init");
-        var currentDepto =  $localStorage.currentDepto;
         var currentCondo =  $localStorage.currentCondo;
         var currentUser =  $localStorage.currentUser;
 
         $scope.goBack = function (){
-          $state.go("tabs.dashboard");
+            if ($state.current.name == "dashboard-pagos") {
+                $state.go("tabs.dashboard");
+            } else {
+                $state.go("dashboard-pagos");
+            }
         };
 
         var loadPagos = function () {
@@ -25,6 +28,7 @@
         var loadPagosDepartment = function (deptoId) {
             dataAPIService.getPayments(deptoId).then(function (response) {
                 $scope.payments = response.data.payments;
+                $scope.currentDepartment = {name: _.first($scope.payments).depto_number};
             });
         };
 
@@ -33,12 +37,12 @@
         };
 
         $scope.$on("$ionicView.beforeEnter", function(){
-            if ($state.current.state == "dashboard-pagos") {
+            if ($state.current.name == "dashboard-pagos") {
                 loadPagos();
             }
-            if ($state.current.state == "dashboard-pagos-detail") {
-                loadPagosDepartment($stateParams.deptoId)
-            };
+            if ($state.current.name == "dashboard-pagos-detail") {
+                loadPagosDepartment($stateParams.deptoId);
+            }
         });
         
     }

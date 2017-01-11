@@ -27,6 +27,6 @@
       $scope.today = new Date();
       $scope.pdfUrl = "pdf/EjemploReglamentoInterno.pdf";
       $scope.page = 1;
-    })
+    });
   }
 }).call(this);

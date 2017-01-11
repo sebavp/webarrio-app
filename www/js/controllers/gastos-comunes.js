@@ -39,12 +39,12 @@
           $scope.commonExpenses = resp.data.common_expenses;
           $scope.currentGC = _.first($scope.commonExpenses);
         });
-      };
+      }
     });
 
     $scope.goToDetail = function (item) {
       var parts = item.name.split(" ");
-      $state.go('dashboard-gastos-comunes-detail', {month: parts[0], year: parts[1]})
+      $state.go('dashboard-gastos-comunes-detail', {month: parts[0], year: parts[1]});
     };
     
     $scope.goBack = function (){
