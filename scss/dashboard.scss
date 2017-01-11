@@ -83,6 +83,28 @@
     .red{
       color: $orange;
     }
+    &.admin{
+      .button{
+        padding: 0 15px;
+        &::before{
+          padding-top: 10px;
+        }
+      }
+      span{
+        font-size: 20px; 
+      }
+    }
+  }
+  &.pagos{
+    .item{
+      height: 70px;
+    }
+    .down{
+      position: absolute;
+      left: 20px;
+      top: 25px;
+      color: lighten($black, 50%);
+    }
   }
 }
 
@@ -130,32 +152,9 @@
     border: 0;
   }
 }
-
-// .modal-open{
-//  &.sidebar-modal{
-//    .modal-wrapper{
-//      height: 100%;
-//      position: relative;
-//      top: 45px;
-//      .main-sidebar{
-//        height: 100%;
-//        background-color: rgba(0, 0, 0, 0.74);
-//        .row{
-//          height: 100%;
-//          padding: 0;
-//          .col{
-//            padding: 0;
-//            background-color: $black;
-//            .item{
-//              background-color: $black;
-//              color: $white;
-//            }
-//          }
-//        }
-//      }
-//    }
-//  }
-// }
+.gc-view{
+  margin-top: 30px;
+}
 
 .modal-wrapper{
   position: relative;

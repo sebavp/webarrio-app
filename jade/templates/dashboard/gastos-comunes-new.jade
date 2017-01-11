@@ -1,0 +1,33 @@
+ion-view(view-title='Agregar')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-content.gc-view
+    .list.padding.padding-top
+      .item.item-icon-left(ng-click="download()")
+        i.icon.ion-android-download
+        span.capitalized Descargar plantilla
+    hr
+    .list.padding.padding-top
+      .item.item-select
+        span.input-label Mes
+        select(ng-model='newGC.month' ng-options='m as m.name for m in meses' required)
+          option(value='') Seleccione...
+      .item.item-icon-left(ng-click="upload()")
+        i.icon.ion-upload
+        span.capitalized Cargar plantilla de Gastos
+      .item.item-input
+        span.input-label Total Luz
+        input(type='number' ng-model='c.total_light' placeholder='Total Luz' required)
+      .item.item-input
+        span.input-label Total Agua
+        input(type='number' ng-model='c.total_water' placeholder='Total Agua' required)
+      .item.item-input
+        span.input-label Total Gas
+        input(type='number' ng-model='c.total_gas' placeholder='Total Gas' required)
+      .item.item-input
+        span.input-label Total Personal Edificio
+        input(type='number' ng-model='c.total_personal' placeholder='Total Personal' required)
+  ion-footer-bar.bar-dark.account-footer(ng-click="crearGC()")
+    button.button.button-full.pay-button
+      | CREAR

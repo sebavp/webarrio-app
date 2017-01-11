@@ -1,0 +1,15 @@
+ion-view(view-title='Gastos Comunes')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref="dashboard-gastos-comunes-new")
+        i.color-white.ion-plus-round
+  ion-content.detail-view
+    .list.admin
+      .item(ng-if="commonExpenses.length == 0")
+        p
+          span.small No se registran Gastos comunes aún
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ng-repeat="item in commonExpenses | orderBy: '-created_at'" ng-click="goToDetail(item)")
+        p
+          span.capitalized {{item.name}}

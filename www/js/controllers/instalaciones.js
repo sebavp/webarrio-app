@@ -7,8 +7,11 @@
   function instalacionesController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
     var currentCondo =  $localStorage.currentCondo;
     var currentUser =  $localStorage.currentUser;
-    $scope.currentUser = currentUser.user;
     var allInstalaciones = [];
+
+    $scope.isAdmin = function () {
+      return currentUser.user.role == 'superadmin' || currentUser.user.role == "admin";
+    };
 
     $scope.goBack = function (){
       if ($state.current.name == "dashboard-instalaciones") {

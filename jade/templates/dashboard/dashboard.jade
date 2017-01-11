@@ -7,17 +7,23 @@ ion-view(view-title='Administración')
       img.user(src='img/icons/user.svg')
 
   ion-content.dashboard-view
-    .hero(ng-if='commonExpenses')
+    .hero(ng-if='commonExpenses && !isAdmin')
       small A PAGAR
       p.common-expenses
         small $
         {{(commonExpenses[0].total | currency: '':0) || 0 }}
       small Correspondiente a
       p.capitalized {{commonExpenses[0].month || (today | date: 'MMMM') }}
-    .hero(ng-show='!commonExpenses')
+    .hero(ng-show='!commonExpenses && !isAdmin')
       small No Registra Deuda Pendiente
     .list
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-detail')
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-pagos' ng-if="isAdmin")
+        | Pagos
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-gastos-comunes-admin' ng-if="isAdmin")
+        | Administración Gastos Comunes
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-avisos' ng-if="isAdmin")
+        | Aviso de Utilidad Pública
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-gastos-comunes')
         | Gastos Comunes
       .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-instalaciones')
         | Uso de Instalaciones

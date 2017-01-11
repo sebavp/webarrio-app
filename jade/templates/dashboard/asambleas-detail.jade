@@ -4,14 +4,17 @@ ion-view(view-title="Detalle Asamblea" hide-back-button='true')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
     img.full(ng-src="{{currentAsamblea.img_original_url}}" err-src='/img/avatar-blank.png')
-    .list
+    .list(ng-show="!currentAsamblea")
+      .item.text-center
+        ion-spinner(icon="dots")
+    .list(ng-show="currentAsamblea")
       .padding
         small.muted {{currentAsamblea.event_date | date : "EEEE dd 'de' MMMM"}}
         h2 {{currentAsamblea.name}}
         p.desc
           small {{currentAsamblea.details}}
 
-        .row
+        .row(ng-show="currentAsamblea.userVoted")
           .col
             p.votes.text-center
               img(src="img/icons/up-or.svg")
@@ -21,15 +24,16 @@ ion-view(view-title="Detalle Asamblea" hide-back-button='true')
               img(src="img/icons/down-gr.svg")
               span.muted NO ({{currentAsamblea.vote_details.no.length}})
 
-  ion-footer-bar.account-footer.text-center(ng-class="{'bar-orange': !currentAsamblea.userVoted, 'bar-assertive': currentAsamblea.userVoted}")
-    .votes(ng-show="currentAsamblea")
-      .col(ng-hide="currentAsamblea.userVoted")
+  ion-footer-bar.account-footer.text-center.bar-orange.asambleas-footer(ng-show="!currentAsamblea.userVoted")
+    .row
+      .col
         button.button.button-full.pay-button(ng-click="newVote(true)")
-          |  SI
-      .col(ng-hide="currentAsamblea.userVoted")
-        button.button.button-full.pay-button(ng-click="newVote(false)")
-          |  NO
-      .col(ng-show="currentAsamblea.userVoted")
-        .bar-full.pay-button.text-center
-          |  {{currentAsamblea.userVote == true ? "SI" : "NO"}}
-    .row.muted(ng-show="!currentAsamblea") CERRADA
+          img(src="img/icons/up-wh.svg")
+          |  SI ({{currentAsamblea.vote_details.yes.length}})
+      .col
+        button.button.button-full.pay-button.no(ng-click="newVote(false)")
+          img(src="img/icons/down-wh.svg")
+          |  NO ({{currentAsamblea.vote_details.no.length}})
+      //- .col(ng-show="currentAsamblea.userVoted")
+      //-   .bar-full.pay-button.text-center
+      //-     |  {{currentAsamblea.userVote == true ? "SI" : "NO"}}

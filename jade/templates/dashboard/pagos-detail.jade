@@ -1,0 +1,19 @@
+ion-view(view-title='Pagos')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref="dashboard-pagos-new" ng-show="isAdmin()")
+        i.color-white.ion-plus-round
+  ion-content.detail-view
+    .list
+      .item 
+        p DEPTO 213
+      .item(ng-if="payments.length == 0")
+        p
+          span.small No se registran pagos aún
+      .item.button.button-full.icon-right(ng-repeat='item in payments')
+        span.upper {{item.month}}
+        small.right.red 
+          small $
+          {{item.total | currency: '':0}}

@@ -1,0 +1,51 @@
+ion-view(view-title='Detalle')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref="dashboard-gastos-comunes-new")
+        i.color-white.ion-plus-round
+  ion-content.detail-view
+    .list.admin
+      .item.button.button-full
+        span.upper.text-center.block {{currentMonth}} {{currentYear}}
+        .detalle-mes
+          hr
+          p  Detalle del Mes
+          .item.item-icon-left
+            i.icon.ion-ios-lightbulb
+            span.text-left Luz:
+            span.text-right 
+              small $
+              {{currentGC.total_light | currency: '':0}}
+          .item.item-icon-left(ng-if="currentGC.total_water")
+            i.icon.ion-waterdrop
+            span.text-left Agua:
+            span.text-right
+              small $
+              {{currentGC.total_water | currency: '':0}}
+          .item.item-icon-left(ng-if="currentGC.total_gas")
+            i.icon.ion-ios-flame
+            span.text-left Gas:
+            span.text-right
+              small $
+              {{currentGC.total_gas | currency: '':0}}
+          .item.item-icon-left(ng-if="currentGC.total_personal")
+            i.icon.ion-ios-people
+            span.text-left Personal:
+            span.text-right
+              small $
+              {{currentGC.total_personal | currency: '':0}}
+          hr
+          p.red
+            span.text-left Total: 
+            span.text-right
+              small $
+              {{currentGC.total_light +  currentGC.total_water + currentGC.total_gas + currentGC.total_personal | currency: '':0}}
+      .item.button.button-full.icon-right(ng-repeat="item in commonExpenses | orderBy: '-created_at'"  ng-click='showInfo(item.month)' ng-class="{'ion-ios-arrow-down': showingMonth != item.month, 'ion-ios-arrow-up': showingMonth == item.month}")
+        p
+          span.capitalized {{item.department_number}}
+        .detalle-mes(ng-show="showingMonth == item.month")
+          hr
+          p  Total : 
+            small ${{item.total | currency: '':0}}

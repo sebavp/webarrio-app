@@ -3,22 +3,12 @@ ion-view(view-title='Asambleas' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
     ion-nav-buttons(side='right')
-      button.button-clear.force-show(ui-sref="dashboard-asambleas-new" ng-show="currentUser.role == 'superadmin'")
+      button.button-clear.force-show(ui-sref="dashboard-asambleas-new" ng-show="isAdmin()")
         i.color-white.ion-plus-round
   ion-content.instalaciones-view
     .list(ng-show="!asambleas")
       .item.text-center
         ion-spinner(icon="dots")
-    //- .list(ng-if="currentAsamblea")
-    //-   a.item(ng-click="goToCurrentAsamblea()")
-    //-     p
-    //-       strong {{currentAsamblea.name}}
-    //-       small.right
-    //-         i.ion-calendar
-    //-         |   {{currentAsamblea.event_date | date : 'dd/MM'}} {{currentAsamblea.start_time | date : 'HH:mm'}} HS
-    //- .list.muted.br(ng-if="currentAsamblea")
-    //-   .item
-    //-     small Asambleas anteriores
     .list.muted
       a.item(ng-if="asambleas.length == 0")
         p

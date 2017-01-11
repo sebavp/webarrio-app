@@ -53,10 +53,35 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/account.html',
       controller:'accountController'
     })
-    .state('dashboard-detail', {
-      url: '/menu/dashboard/detail',
-      templateUrl: 'templates/dashboard/detail.html',
-      controller:'detailController'
+    .state('dashboard-gastos-comunes', {
+      url: '/menu/dashboard/gastos-comunes',
+      templateUrl: 'templates/dashboard/gastos-comunes.html',
+      controller:'gastosComunesController'
+    })
+    .state('dashboard-gastos-comunes-detail', {
+      url: '/menu/dashboard/gastos-comunes-detail/:year/:month',
+      templateUrl: 'templates/dashboard/gastos-comunes-detail.html',
+      controller:'gastosComunesController'
+    })
+    .state('dashboard-gastos-comunes-admin', {
+      url: '/menu/dashboard/gastos-comunes-admin',
+      templateUrl: 'templates/dashboard/gastos-comunes-admin.html',
+      controller:'gastosComunesController'
+    })
+    .state('dashboard-gastos-comunes-new', {
+      url: '/menu/dashboard/gastos-comunes-new',
+      templateUrl: 'templates/dashboard/gastos-comunes-new.html',
+      controller:'gastosComunesController'
+    })
+    .state('dashboard-pagos', {
+      url: '/menu/dashboard/pagos',
+      templateUrl: 'templates/dashboard/pagos.html',
+      controller:'pagosController'
+    })
+    .state('dashboard-pagos-detail', {
+      url: '/menu/dashboard/pagos-detail/:deptoId',
+      templateUrl: 'templates/dashboard/pagos-detail.html',
+      controller:'pagosController'
     })
     .state('dashboard-instalaciones', {
       url: '/menu/dashboard/instalaciones',
@@ -102,11 +127,6 @@ angular.module('WeBarrio.routes', [])
       url: '/menu/dashboard/mantenciones-new',
       templateUrl: 'templates/dashboard/mantenciones-new.html',
       controller:'mantencionesController'
-    })
-    .state('dashboard-longtext', {
-      url: '/menu/dashboard/longtext',
-      templateUrl: 'templates/dashboard/longtext.html',
-      controller:'longtextController'
     })
     // reglamento
     .state('dashboard-reglamento', {

@@ -108,6 +108,10 @@ input{
     font-family: 'work_sansbold';
   }
 }
+.button-orange{
+  background-color: $orange;
+  color: $white;
+}
 .uppercased{
   text-transform: uppercase;
 }

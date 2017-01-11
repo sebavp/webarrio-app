@@ -8,8 +8,11 @@
 
     var currentCondo = $localStorage.currentCondo;
     var currentUser = $localStorage.currentUser;
-    $scope.currentUser = currentUser.user;
     var uploader = $scope.uploader = new FileUploader({autoUpload: false});
+
+    $scope.isAdmin = function () {
+      return currentUser.user.role == 'superadmin' || currentUser.user.role == "admin";
+    };
 
     // CALLBACKS
     uploader.onAfterAddingAll = function(addedFileItems) {

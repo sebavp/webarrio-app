@@ -1,0 +1,18 @@
+ion-view(view-title='Pagos')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref="dashboard-pagos-new" ng-show="isAdmin()")
+        i.color-white.ion-plus-round
+  ion-content.detail-view.pagos
+    .list
+      .item(ng-if="payments.length == 0")
+        p
+          span.small No se registran pagos aún
+      .item.button.button-full.icon-right(ng-repeat='item in payments' ng-click="goToPayment(item)")
+        span.upper {{item.payer_name"}}
+        span.down {{item.depto_number}}
+        small.right.red 
+          small $
+          {{item.total_amount | currency: '':0}}

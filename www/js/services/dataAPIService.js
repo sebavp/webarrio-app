@@ -12,6 +12,46 @@ angular.module('WeBarrio.services', [])
         });
         return deferred.promise;
       },
+      getAllCommonExpenses: function(condoId) {
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/condos/' + condoId + '/common_expenses'
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
+      },
+      getCommonExpensesInMonth: function(condoId, month, year) {
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/condos/' + condoId + '/common_expenses/' + year + "/" + month
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
+      },
+      getPayments: function(dptoId) {
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/departments/' + dptoId + '/payments'
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
+      },
+      getAllPayments: function(condoId) {
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/condos/' + condoId + '/payments'
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
+      },
       getPeopleFromCondo: function(condoId) {
         deferred = $q.defer();
         $http({

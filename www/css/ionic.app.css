@@ -10378,6 +10378,26 @@ input.bbottom {
   .dashboard-view .list .red,
   .detail-view .list .red {
     color: #f76913; }
+  .dashboard-view .list.admin .button,
+  .detail-view .list.admin .button {
+    padding: 0 15px; }
+    .dashboard-view .list.admin .button::before,
+    .detail-view .list.admin .button::before {
+      padding-top: 10px; }
+  .dashboard-view .list.admin span,
+  .detail-view .list.admin span {
+    font-size: 20px; }
+
+.dashboard-view.pagos .item,
+.detail-view.pagos .item {
+  height: 70px; }
+
+.dashboard-view.pagos .down,
+.detail-view.pagos .down {
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  color: gray; }
 
 .account-view .item {
   padding-top: 10px;
@@ -10409,6 +10429,9 @@ input.bbottom {
 .account-footer .pay-button {
   margin: 0;
   border: 0; }
+
+.gc-view {
+  margin-top: 30px; }
 
 .modal-wrapper {
   position: relative;
@@ -10800,6 +10823,25 @@ p.votes {
     float: right;
     margin-top: 10px; }
 
+.asambleas-footer {
+  margin: 0;
+  padding: 0; }
+  .asambleas-footer .row {
+    padding: 0;
+    margin: 0; }
+    .asambleas-footer .row .col {
+      padding: 0; }
+      .asambleas-footer .row .col button {
+        height: 100%;
+        font-size: 18px;
+        font-weight: bolder; }
+        .asambleas-footer .row .col button.no {
+          background-color: #333333; }
+        .asambleas-footer .row .col button img {
+          height: 20px;
+          display: inline-block;
+          margin-top: 10px; }
+
 p,
 span,
 div,
@@ -10860,6 +10902,10 @@ input {
   color: #f76913; }
   .orange .bold {
     font-family: 'work_sansbold'; }
+
+.button-orange {
+  background-color: #f76913;
+  color: #fff; }
 
 .uppercased {
   text-transform: uppercase; }

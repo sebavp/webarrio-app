@@ -9,7 +9,10 @@
     var currentCondo = $localStorage.currentCondo;
     var currentUser = $localStorage.currentUser;
     var allMantenciones = [];
-    $scope.currentUser = currentUser.user;
+
+    $scope.isAdmin = function () {
+      return currentUser.user.role == 'superadmin' || currentUser.user.role == "admin";
+    };
 
     $scope.goBack = function (){
       if ($state.current.name == "dashboard-mantenciones") {
