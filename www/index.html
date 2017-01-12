@@ -19,16 +19,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="http://www.webarrio.cl/" />
 
-  <!-- compiled css output -->
-  <link href="css/ionic.app.css" rel="stylesheet">
+    <!-- build:css assets/build.css -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="lib/tabbed-slide-box/tabSlideBox.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="lib/nvd3/build/nv.d3.min.css">
+    <!-- endbuild -->
 
-  <!-- ionic/angularjs js -->
+    <!-- build:js assets/build.js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-  <!-- cordova script (this will be a 404 during development) 
-   <script src="cordova.js"></script>-->
-
-  <!-- libraries -->
   <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
   <script src="lib/ngstorage/ngStorage.min.js"></script>
   <script src="lib/firebase/firebase.js"></script>
@@ -43,7 +41,6 @@
   <script src="js/vendor/angular-pdf.js"></script>
   <script src="js/vendor/ng-locale_esCL.js"></script>
 
-  <!-- your app's js -->
   <script src="js/app.js"></script>
   <script src="js/config/config.js"></script>
   <script src="js/config/routes.js"></script>
@@ -79,7 +76,7 @@
   <script src="js/services/utils.js"></script>
   <script src="js/services/dataAPIService.js"></script>
   <script src="js/directives/directives.js"></script>
-
+  <!-- endbuild -->
   </head>
 
   <body ng-app="WeBarrio" class="{{modalType}}">

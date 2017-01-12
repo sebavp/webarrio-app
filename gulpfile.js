@@ -8,9 +8,13 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var jshint = require('gulp-jshint');
+var useref = require('gulp-useref');
+var uglify = require('gulp-uglify');
+var ngAnnotate = require('gulp-ng-annotate');  
+
 
 var paths = {
-  sass: ['./scss/**/*.scss'],
+  sass: ['./scss/**/*.scss'],n
   jade: ['./jade/**/*.jade'],
   jslint: ['./www/js/**/*.js', './www/views/**/*.js']
 };
@@ -48,6 +52,54 @@ gulp.task('watch', function() {
   gulp.watch(paths.jslint, ['lint']);
   gulp.watch(paths.jade, ['jade']);
 });
+
+
+gulp.task('minify-css', function() {
+  return gulp.src('./dist/assets/build.css')
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(gulp.dest('./dist/assets/'));
+});
+
+gulp.task('annotate', function () {
+return gulp.src('./dist/assets/build.js')
+    .pipe(ngAnnotate())
+    .pipe(gulp.dest('./dist/assets/', {overwrite: true}));
+});
+
+gulp.task('uglify-js', function() {  
+    return gulp.src('./dist/assets/build.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/assets/'));
+});
+
+gulp.task('useref', function (done) {
+  gulp.src('./www/index.html')
+    .pipe(useref())
+    .pipe(gulp.dest('./dist'));
+});
+
+var filesToMove = [
+        './fonts/*.*',
+        './img/**/*.*',
+        './templates/**/*.*',
+        './browserconfig.xml'
+        './favicon.ico'
+        './manifest.json'
+    ];
+
+gulp.task('move', function(){
+  // the base option sets the relative root for the set of files,
+  // preserving the folder structure
+  gulp.src(filesToMove, { base: './www' })
+  .pipe(gulp.dest('dist'));
+});
+
+
+gulp.task('build', ['useref', 'minify-css', 'annotate', 'uglify-js', 'move']);
+
+// BUILD => useref, minify-css, annotate, uglify-js
 
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
