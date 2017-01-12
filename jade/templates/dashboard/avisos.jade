@@ -1,0 +1,24 @@
+ion-view(view-title='Avisos de Utilidad Pública' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(ui-sref="dashboard-avisos-new")
+        i.color-white.ion-plus-round
+  ion-content.instalaciones-view
+    .list(ng-show="!avisos")
+      .item.text-center
+        ion-spinner(icon="dots")
+    .list.muted
+      a.item(ng-if="avisos.length == 0")
+        p
+          small
+            | No se registran avisos anteriores
+      a.item(ui-sref='dashboard-avisos-detail({event_id: a.id})' ng-repeat="a in avisos | orderBy: 'event_date'")
+        small.right
+          ng-pluralize(count="a.assistants_number" when="{'0': 'Sin Votos', '1': '1 Voto', 'other': '{} Votos'  }")
+        h2.titulo-asamblea {{a.name}}
+        p
+          small.left
+            i.ion-calendar
+            |  Finaliza el  {{a.event_date | date : 'dd/MM'}} a las {{a.final_time | date : 'HH:mm'}} HS

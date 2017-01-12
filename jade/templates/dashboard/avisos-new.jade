@@ -1,0 +1,26 @@
+ion-view(view-title='Nuevo Aviso' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="dashboard-avisos")
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.instalaciones-detail-view
+    div(ng-class="{'invisible-canvas': !newEventImage}" ng-thumb="newEventImage._file" height="160")
+    .uploadpic(ng-hide="newEventImage") Subir foto
+    input(id="upload-input" type="file" nv-file-select="" uploader="uploader")
+    .list
+      .item.item-input
+        .input-label
+          | Titulo
+        input(type="text" placeholder="Ingrese Titulo de Aviso" ng-model="newAviso.name")
+      .item.item-input
+        textarea( placeholder="Ingrese Detalle de la Aviso" ng-model="newAviso.details")
+      .item.item-input
+        .input-label
+          | Fecha Cierre
+        datepicker(event-date="newAviso.event_date")
+      .item.item-input
+        .input-label
+          | Hora Cierre
+        timepicker(selected-time="newAviso.final_time" placeholder="'Ingrese Hora Cierre'")
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button(ng-click="saveAviso(newAviso)" ng-disabled="newAviso.details.length < 5")
+      |  REGISTRAR AVISO COMUNITARIO
