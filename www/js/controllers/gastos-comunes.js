@@ -14,7 +14,6 @@
     // CALLBACKS
     uploader.onAfterAddingAll = function(addedFileItems) {
       $scope.newGcFile = addedFileItems[0];
-      console.log($scope.newGcFile)
     };
 
     uploader.onSuccessItem = function(item, response) {
@@ -23,9 +22,9 @@
         $state.go('dashboard-gastos-comunes-admin');
     };
 
-    uploader.onErrorItem = function(item, response, status){
+    uploader.onErrorItem = function(item, response){
       console.log(response);
-    }
+    };
 
     var isAdmin = function () {
       return currentUser.user.role == "admin" || currentUser.user.role == "superadmin";
@@ -54,7 +53,7 @@
         ];
         $scope.uploader.uploadAll();
       }
-    }
+    };
 
     $scope.$on('$ionicView.beforeEnter', function () {
       currentCondo = $localStorage.currentCondo;
@@ -100,7 +99,8 @@
     };
 
     $scope.download = function () {
-      $window.location = 'https://s3-sa-east-1.amazonaws.com/webarrio.cl/Template+Gastos+Comunes.xlsx';
+        $window.location = CONFIG.apiURL + '/condos/' + currentCondo.id + '/common_expenses_template';
+      
     };
 
     $scope.meses = [

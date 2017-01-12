@@ -14,8 +14,8 @@
         $scope.newPay = {};
 
         $scope.isAdmin = function () {
-            return currentUser.user.role == "superadmin" || currentUser.user.role == "admin"
-        }
+            return currentUser.user.role == "superadmin" || currentUser.user.role == "admin";
+        };
 
         $scope.goBack = function (){
             if ($state.current.name == "dashboard-pagos") {
@@ -46,7 +46,7 @@
 
         $scope.createPayment = function (payment) {
             payment.admin_id = currentUser.user.id;
-            payment.department = payment.department.id
+            payment.department = payment.department.id;
             dataAPIService.createPayment(currentDepto[0].id, payment).then(function () {
                 $state.go("dashboard-pagos");
             });

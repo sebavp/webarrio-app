@@ -4,10 +4,10 @@
     .module('WeBarrio.controllers')
     .controller('avisosController', avisosController);
 
-  function avisosController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams, FileUploader, CONFIG, $ionicLoading) {
+  function avisosController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
 
   	var currentUser = $localStorage.currentUser;
-  	var currentCondo = $localStorage.currentCondo
+  	var currentCondo = $localStorage.currentCondo;
 
     $scope.goBack = function (){
       if ($state.current.name == "dashboard-avisos") {
