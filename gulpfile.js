@@ -11,15 +11,23 @@ var jshint = require('gulp-jshint');
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');  
-
+var clean = require('gulp-clean');
+var runSequence = require('run-sequence');
 
 var paths = {
-  sass: ['./scss/**/*.scss'],n
+  sass: ['./scss/**/*.scss'],
   jade: ['./jade/**/*.jade'],
-  jslint: ['./www/js/**/*.js', './www/views/**/*.js']
+  jslint: ['./www/js/**/*.js', './www/views/**/*.js'],
+  movefiles: [
+    './www/fonts/**/*.*',
+    './www/img/**/*.*',
+    './www/templates/**/*.*',
+    './www/manifest.json',
+    './www/browserconfig.xml',
+    './www/favicon.ico'
+  ]
 };
 
-// gulp.task( 'default', ['sass', 'jade'] );
 gulp.task('serve:before', ['sass', 'watch', 'jade']);
 
 gulp.task('lint', function() {
@@ -75,31 +83,38 @@ gulp.task('uglify-js', function() {
 });
 
 gulp.task('useref', function (done) {
-  gulp.src('./www/index.html')
+  return gulp.src('./www/index.html')
     .pipe(useref())
     .pipe(gulp.dest('./dist'));
 });
 
-var filesToMove = [
-        './fonts/*.*',
-        './img/**/*.*',
-        './templates/**/*.*',
-        './browserconfig.xml'
-        './favicon.ico'
-        './manifest.json'
-    ];
 
-gulp.task('move', function(){
+gulp.task('clean', function(){
+  return gulp.src(['dist/*'], {read:false})
+  .pipe(clean());
+});
+
+
+gulp.task('movefiles', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
-  gulp.src(filesToMove, { base: './www' })
+  return gulp.src(paths.movefiles, { base: './www/' })
   .pipe(gulp.dest('dist'));
 });
 
 
-gulp.task('build', ['useref', 'minify-css', 'annotate', 'uglify-js', 'move']);
+// BUILD =>
+// This will run in this order: 
+// * clean 
+// * useref
+// * minify-css' and annotate in parallel 
+// * uglify-js
+// * movefiles
+// * Finally call the callback function
 
-// BUILD => useref, minify-css, annotate, uglify-js
+gulp.task('build', function(callback) {
+  runSequence('clean', 'useref', 'minify-css', 'annotate', 'uglify-js', 'movefiles', callback);
+});
 
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
