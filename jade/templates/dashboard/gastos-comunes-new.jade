@@ -13,21 +13,23 @@ ion-view(view-title='Agregar')
         span.input-label Mes
         select(ng-model='newGC.month' ng-options='m as m.name for m in meses' required)
           option(value='') Seleccione...
-      .item.item-icon-left(ng-click="upload()")
+      .item.item-icon-left
         i.icon.ion-upload
         span.capitalized Cargar plantilla de Gastos
+          small.right {{newGcFile._file.name}}
+        input(id="excel-upload-input" type="file" nv-file-select="" uploader="uploader")
       .item.item-input
         span.input-label Total Luz
-        input(type='number' ng-model='c.total_light' placeholder='Total Luz' required)
+        input(type='number' ng-model='newGC.total_light' placeholder='Total Luz' required)
       .item.item-input
         span.input-label Total Agua
-        input(type='number' ng-model='c.total_water' placeholder='Total Agua' required)
+        input(type='number' ng-model='newGC.total_water' placeholder='Total Agua' required)
       .item.item-input
         span.input-label Total Gas
-        input(type='number' ng-model='c.total_gas' placeholder='Total Gas' required)
+        input(type='number' ng-model='newGC.total_gas' placeholder='Total Gas' required)
       .item.item-input
         span.input-label Total Personal Edificio
-        input(type='number' ng-model='c.total_personal' placeholder='Total Personal' required)
-  ion-footer-bar.bar-dark.account-footer(ng-click="crearGC()")
-    button.button.button-full.pay-button
+        input(type='number' ng-model='newGC.total_personal' placeholder='Total Personal' required)
+  ion-footer-bar.bar-dark.account-footer
+    button.button.button-full.pay-button(ng-click="upload(newGC)" ng-disabled="isInvalid(newGC, newGcFile)")
       | CREAR

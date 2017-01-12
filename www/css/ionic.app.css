@@ -10468,6 +10468,14 @@ input.bbottom {
   .alert-input .item-select::after {
     right: 0; }
 
+#excel-upload-input {
+  cursor: pointer;
+  position: absolute;
+  z-index: 9999;
+  top: 10px;
+  left: 1%;
+  opacity: 0; }
+
 .alert-view {
   text-align: center;
   color: #fff; }

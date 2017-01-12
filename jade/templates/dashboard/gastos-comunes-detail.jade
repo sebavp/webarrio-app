@@ -42,10 +42,10 @@ ion-view(view-title='Detalle')
             span.text-right
               small $
               {{currentGC.total_light +  currentGC.total_water + currentGC.total_gas + currentGC.total_personal | currency: '':0}}
-      .item.button.button-full.icon-right(ng-repeat="item in commonExpenses | orderBy: '-created_at'"  ng-click='showInfo(item.month)' ng-class="{'ion-ios-arrow-down': showingMonth != item.month, 'ion-ios-arrow-up': showingMonth == item.month}")
+      .item.button.button-full.icon-right(ng-repeat="item in commonExpenses | orderBy: '-created_at'"  ng-click='showInfo(item.id)' ng-class="{'ion-ios-arrow-down': showingMonth != item.id, 'ion-ios-arrow-up': showingMonth == item.id}")
         p
           span.capitalized {{item.department_number}}
-        .detalle-mes(ng-show="showingMonth == item.month")
+        .detalle-mes(ng-show="showingMonth == item.id")
           hr
           p  Total : 
             small ${{item.total | currency: '':0}}

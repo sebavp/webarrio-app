@@ -83,12 +83,6 @@
       });
     };
 
-      //place: params[:place],
-      // event_date: params[:event_date], 
-      // start_time: params[:start_time], 
-      //name: params[:name], 
-      //details: params[:details]
-
     $scope.createReservation = function (mantencion){
       mantencion.user_id = currentUser.user.id;
       eventsService.createEvent('mantenciones', mantencion, currentCondo.id).then(function(){

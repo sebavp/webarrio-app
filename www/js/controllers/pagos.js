@@ -9,7 +9,13 @@
         
         console.info("pagosController init");
         var currentCondo =  $localStorage.currentCondo;
+        var currentDepto = $localStorage.currentDepto;
         var currentUser =  $localStorage.currentUser;
+        $scope.newPay = {};
+
+        $scope.isAdmin = function () {
+            return currentUser.user.role == "superadmin" || currentUser.user.role == "admin"
+        }
 
         $scope.goBack = function (){
             if ($state.current.name == "dashboard-pagos") {
@@ -32,16 +38,39 @@
             });
         };
 
+        var loadDepartamentos = function () {
+            dataAPIService.getDepartments(currentCondo.id).then(function (response) {
+                $scope.departments = response.data.departments;
+            });
+        };
+
+        $scope.createPayment = function (payment) {
+            payment.admin_id = currentUser.user.id;
+            payment.department = payment.department.id
+            dataAPIService.createPayment(currentDepto[0].id, payment).then(function () {
+                $state.go("dashboard-pagos");
+            });
+        };
+
+        $scope.isInvalid = function (newPay) {
+            return !newPay.department || !newPay.total_amount || !newPay.payment_method || !newPay.payer_name;
+        };
+
         $scope.goToPayment = function (payment) {
             $state.go('dashboard-pagos-detail', {deptoId: payment.department_id});
         };
 
         $scope.$on("$ionicView.beforeEnter", function(){
-            if ($state.current.name == "dashboard-pagos") {
-                loadPagos();
-            }
-            if ($state.current.name == "dashboard-pagos-detail") {
-                loadPagosDepartment($stateParams.deptoId);
+            switch($state.current.name){
+                case "dashboard-pagos":
+                    loadPagos();
+                    break;
+                case "dashboard-pagos-detail":
+                    loadPagosDepartment($stateParams.deptoId);
+                    break;
+                case "dashboard-pagos-new":
+                    loadDepartamentos();
+                    break;
             }
         });
         

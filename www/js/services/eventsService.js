@@ -62,6 +62,16 @@ angular.module('WeBarrio.services.events', [])
         });
         return deferred.promise;
       },
+      getAvisos: function(condoId) {
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/events/' + condoId + '/avisos'
+        }).then(function(response) {
+          deferred.resolve(response.data);
+        });
+        return deferred.promise;
+      },
       createEvent: function(type, newEvent, condoId){
         deferred = $q.defer();
         $http({

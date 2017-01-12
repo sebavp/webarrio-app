@@ -3,7 +3,6 @@ ion-view(view-title="Detalle Aviso Comunitario" hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    img.full(ng-src="{{currentAviso.img_original_url}}" err-src='/img/avatar-blank.png')
     .list(ng-show="!currentAviso")
       .item.text-center
         ion-spinner(icon="dots")
@@ -13,27 +12,3 @@ ion-view(view-title="Detalle Aviso Comunitario" hide-back-button='true')
         h2 {{currentAviso.name}}
         p.desc
           small {{currentAviso.details}}
-
-        .row(ng-show="currentAviso.userVoted")
-          .col
-            p.votes.text-center
-              img(src="img/icons/up-or.svg")
-              span.orange SI ({{currentAviso.vote_details.yes.length}})
-          .col
-            p.votes.text-center
-              img(src="img/icons/down-gr.svg")
-              span.muted NO ({{currentAviso.vote_details.no.length}})
-
-  ion-footer-bar.account-footer.text-center.bar-orange.Avisos-footer(ng-show="!currentAviso.userVoted")
-    .row
-      .col
-        button.button.button-full.pay-button(ng-click="newVote(true)")
-          img(src="img/icons/up-wh.svg")
-          |  SI ({{currentAviso.vote_details.yes.length}})
-      .col
-        button.button.button-full.pay-button.no(ng-click="newVote(false)")
-          img(src="img/icons/down-wh.svg")
-          |  NO ({{currentAviso.vote_details.no.length}})
-      //- .col(ng-show="currentAviso.userVoted")
-      //-   .bar-full.pay-button.text-center
-      //-     |  {{currentAviso.userVote == true ? "SI" : "NO"}}

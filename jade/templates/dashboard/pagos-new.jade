@@ -1,0 +1,31 @@
+ion-view(view-title='Nuevo Pago' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="dashboard-pagos")
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.instalaciones-detail-view
+    .list
+      .item.item-select
+        .input-label
+          | Departamento
+        select(ng-options="p as (p.number + ' ' + p.tower) for p in departments | orderBy : 'number'" required ng-model="$parent.newPay.department")
+          option(value="") Seleccione...
+      .item.item-input
+        .input-label
+          | Monto
+        input(type="text" placeholder="Ingrese Monto" ng-model="$parent.newPay.total_amount" required)
+      .item.item-select
+        .input-label
+          | Medio de Pago
+        select(ng-model="$parent.newPay.payment_method" required)
+          option(value="") Seleccione...
+          option(val="Efectivo") Efectivo
+          option(val="Transferencia") Transferencia
+          option(val="Cheque") Cheque
+      .item.item-input
+        .input-label
+          | Nombre Pagador
+        input(type="text" placeholder="Ingrese Nombre" ng-model="$parent.newPay.payer_name" required)
+
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button(ng-click="createPayment(newPay)" ng-disabled="isInvalid(newPay)")
+      |  REGISTRAR

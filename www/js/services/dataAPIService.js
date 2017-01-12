@@ -42,11 +42,32 @@ angular.module('WeBarrio.services', [])
         });
         return deferred.promise;
       },
+      createPayment: function(deptoId, payment) {
+        deferred = $q.defer();
+        $http({
+          method: 'POST',
+          url: CONFIG.apiURL + '/departments/' + deptoId + '/payment',
+          data: payment
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
+      },
       getAllPayments: function(condoId) {
         deferred = $q.defer();
         $http({
           method: 'GET',
           url: CONFIG.apiURL + '/condos/' + condoId + '/payments'
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
+      },
+      getDepartments: function(condoId) {
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/condos/' + condoId + '/departments'
         }).then(function(userData) {
           deferred.resolve(userData);
         });
