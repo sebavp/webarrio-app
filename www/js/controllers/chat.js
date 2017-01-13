@@ -10,6 +10,7 @@
     $scope.currentCondo = $localStorage.currentCondo;
     $scope.currentDepto = $localStorage.currentDepto;
     $scope.currentUser = $localStorage.currentUser;
+
     $scope.loading = true;
     var page = 1;
 
@@ -48,7 +49,7 @@
           $scope.chatTitle = $scope.user.name;
           $scope.$broadcast('scroll.refreshComplete');
           $scope.loading = false;
-          loadChats();
+          loadChats(true);
       });
     };
 
@@ -57,34 +58,52 @@
         $scope.$broadcast('scroll.refreshComplete');
         $scope.messages = response.$value === null ? [] : response;
         if (!userLoading) {
-          loadUser();
+          loadUser(true);
         }
       });
     };
 
-    var loadChats = function(){
+    var loadChats = function(fromConversation){
       mensajeService.getMessages($scope.currentUser.user.id).then(function (response) {
           $scope.conversations = response;
-          getAllPeople();
+          if (!fromConversation) {
+            getAllPeople();
+          };
       });
     };
 
     var saveConversation = function (){
       var chatInfo = {
         chatId: $stateParams.chatId,
-        personId: $scope.user.id,
+        personId: $stateParams.personId,
         personName: $scope.user.name,
         deptoNumber: $stateParams.deptoNumber,
         createdAt: Date.now(),
-        lastMessage: $scope.newMessageText,
+        lastMessage: angular.copy($scope.newMessageText),
       };
-      mensajeService.saveConversation($scope.currentUser.user.id, chatInfo, {deptoNumber: $scope.currentDepto.number, name: $scope.currentUser.user.name});
+      mensajeService.saveConversation($scope.currentUser.user.id, chatInfo).then(function(response){
+        chatInfo.personId =  $scope.currentUser.user.id;
+        chatInfo.personName =  $scope.currentUser.user.name;
+        chatInfo.deptoNumber = $scope.currentDepto.number;
+        mensajeService.saveConversation($stateParams.personId, chatInfo).then(function(){
+          console.log("both created")
+        })
+      });
     };
 
     var updateLastMessage = function (lastMessage) {
       var currentConversation = _.findWhere($scope.conversations, {chatId: $stateParams.chatId});
       currentConversation.lastMessage = lastMessage;
-      mensajeService.updateConversation($scope.currentUser.user.id, currentConversation);
+      currentConversation.personId = $stateParams.personId;
+      mensajeService.updateConversation($scope.currentUser.user.id, currentConversation).then(function(){
+        var otherConversation = angular.copy(currentConversation);
+        otherConversation.deptoNumber = $scope.currentDepto.number;
+        otherConversation.personName = $scope.currentUser.user.name;
+        // debugger
+        mensajeService.updateConversation($stateParams.personId, otherConversation).then(function(){
+          console.log("both updated")
+        })
+      });
     };
 
     $scope.loadPastMessages = function () {
@@ -113,16 +132,28 @@
     };
 
     $scope.createGroup = function (groupName, groupPeople) {
-        var userId = $scope.currentUser.user.id;
-        var usersIds = _.pluck(groupPeople, 'id');
-        usersIds.push(userId);
-        usersIds = _.map(usersIds, function (m){ return parseInt(m);});
-        console.log(usersIds);
-        mensajeService.createGroup(groupName, usersIds);
+
+        groupPeople.push(angular.copy($scope.currentUser.user));
+        var allNewUsers = {};
+        angular.forEach(groupPeople, function (m){
+          allNewUsers[m.id] = {id: m.id, name: m.name };
+        });
+        console.log(allNewUsers);
+        var groupInfo = {
+          users: allNewUsers,
+          groupName: groupName,
+          createdAt: Date.now(),
+          condo: currentCondo.name
+        }
+        mensajeService.newGroup(groupInfo).then(function(response){
+          console.log(response)
+
+        });
         // $state.go('chat-group-conversation', {groupId: chatId, groupName: person.id});
     };
 
     $scope.sendMessage = function () {
+        if (!$scope.newMessageText || $scope.newMessageText == "") return false;
         var msg = {
             personId: $scope.currentUser.user.id,
             userId: $scope.user.id,

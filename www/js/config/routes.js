@@ -48,11 +48,6 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-    .state('dashboard-account', {
-      url: '/menu/dashboard/mi-cuenta',
-      templateUrl: 'templates/dashboard/account.html',
-      controller:'accountController'
-    })
     .state('dashboard-gastos-comunes', {
       url: '/menu/dashboard/gastos-comunes',
       templateUrl: 'templates/dashboard/gastos-comunes.html',

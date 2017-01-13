@@ -20,7 +20,7 @@
       $scope.currentCondo =  $localStorage.currentCondo;
 
       if (currentDepto) {
-        dataAPIService.getCommonExpenses(currentDepto[0].id).then(function(resp){
+        dataAPIService.getCommonExpenses(currentDepto.id).then(function(resp){
           $scope.commonExpenses = resp.data.common_expenses;
         });
       }

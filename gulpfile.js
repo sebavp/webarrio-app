@@ -22,6 +22,7 @@ var paths = {
     './www/fonts/**/*.*',
     './www/img/**/*.*',
     './www/templates/**/*.*',
+    './www/pdf/**/*.*',
     './www/manifest.json',
     './www/browserconfig.xml',
     './www/favicon.ico'

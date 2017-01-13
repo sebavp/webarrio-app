@@ -15,7 +15,6 @@
 
     var loadCurrentUser = function (){
       dataAPIService.getUser($scope.currentUser.id).then(function(response){
-        console.log(response);
         $localStorage.currentUser.user = response.data.user;
       });
     };

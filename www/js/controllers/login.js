@@ -17,6 +17,8 @@
         Utils.show();
         Auth.login(user).then(function(authData) {
           $localStorage.currentUser = authData.data;
+          $localStorage.currentCondo = authData.data.condos[0];
+          $localStorage.currentDepto = authData.data.condos[0].departments[0];
           Utils.hide();
           $state.go('tabs.home');
         }, function(err) {

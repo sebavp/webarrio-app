@@ -4,15 +4,16 @@ ion-view(view-title='Home' hide-back-button='true')
       img.user(src='img/icons/user.svg')
   ion-content.padding-top.home-bg(scroll='false')
     .list.home-menu
-      .item.item-divider.text-center.condominio(,='' ng-if='!home.condos')
+      .item.item-divider.text-center.condominio(ng-if='!allCondos')
         ion-spinner(icon='dots')
-      ion-slide-box(on-slide-changed='slideHasChanged($index)')
-        ion-slide.item.item-divider.text-center.condominio(ng-class='{"moreinfo":home.condos.length>1}' ng-repeat='condo in home.condos')
+      ion-slide-box(on-slide-changed='changeCurrentCondo($index)' delegate-handle="condoslider")
+        ion-slide.item.item-divider.text-center.condominio(ng-class='{"moreinfo": allCondos.length > 1}' ng-repeat='condo in allCondos')
           span {{condo.name}}
-        .item.item-divider.text-center.condominio(ng-if='home.condos.length == 0')
+        .item.item-divider.text-center.condominio(ng-if='allCondos.length == 0')
           span No estas asociado a ningun condominio
-      .item.item-divider.text-center.condominio
-        span(ng-repeat='depto in currentDepto') Dpto. {{depto.number}}
+      ion-slide-box(on-slide-changed='changeCurrentDepto($index)' delegate-handle="deptoslider")
+        ion-slide.item.item-divider.text-center.condominio(ng-class='{"moreinfo": allDeptos.length > 1}' ng-repeat='depto in allDeptos')
+          span {{depto.number}}
       .row.admin.border-bottom
         .col.col-100.clickable(ui-sref='tabs.dashboard')
           .text-center.row-options

@@ -6,7 +6,7 @@ angular
   .controller('clasificadosController', clasificadosController);
 
   function clasificadosController($scope, $state, $stateParams, $localStorage, announcementsService, FileUploader, $ionicLoading, CONFIG) {
-    console.info("clasificadosController init");
+
     var currentCondo = $localStorage.currentCondo;
     var currentUser = $localStorage.currentUser.user;
     var uploader = $scope.uploader = new FileUploader({autoUpload: false});

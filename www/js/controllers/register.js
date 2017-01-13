@@ -5,7 +5,7 @@
         .module('WeBarrio.controllers')
         .controller('registerController', registerController);
 
-    function registerController($scope, $state, $log, $localStorage, Auth, Utils) {
+    function registerController($scope, $state, $log, Auth, Utils) {
         
         console.info("registerController init");
 

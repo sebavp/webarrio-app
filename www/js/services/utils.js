@@ -1,4 +1,4 @@
-angular.module('WeBarrio.utils', []).factory('Utils', function($ionicLoading,$ionicPopup) {
+angular.module('WeBarrio.utils', []).factory('Utils', function($ionicLoading, $ionicPopup) {
 
 	var Utils = {
 

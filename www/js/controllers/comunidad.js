@@ -6,7 +6,6 @@ angular
   .controller('comunidadController', comunidadController);
 
   function comunidadController($scope, $state) {
-    console.info("comunidadController init");
     $scope.goBack = function (){
       $state.go("tabs.home");
     };

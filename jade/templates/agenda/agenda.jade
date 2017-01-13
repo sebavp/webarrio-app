@@ -12,6 +12,10 @@ ion-view(view-title='Agenda' hide-back-button='true')
         span.new
           i.icon.ion-plus
     .list
+      a.item(ng-if="profesiones.length == 0")
+        p
+          small
+            | No se registran Contactos aún.
       div(ng-repeat="profesion in profesiones | orderBy:'name'" ng-hide='profesion.contacts.length == 0 ')
         .item.item-icon-right(ng-click='selectProfesion(profesion)')
           | {{profesion.name}}
