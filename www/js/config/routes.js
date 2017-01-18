@@ -185,6 +185,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/chat/conversation.html',
       controller:'chatController'
     })
+    .state('chat-group-conversation', {
+      url: '/chat/group-conversation/:groupName/:chatId',
+      templateUrl: 'templates/chat/group_conversation.html',
+      controller:'chatController'
+    })
     .state('chat-new-message', {
       url: '/menu/chat/nuevo_mensaje',
       templateUrl: 'templates/chat/new_message.html',

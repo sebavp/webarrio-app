@@ -26,9 +26,9 @@ ion-view(view-title='Mensajes' hide-back-button='true')
       .item(ng-if="conversations.length == 0")
         p.text-center
           | No tienes conversaciones
-      a.item.item-avatar(ng-repeat="c in conversations | orderBy: 'createdAt' " ng-click="goToConversation(c, true)")
+      a.item.item-avatar(ng-repeat="c in conversations | orderBy: '-createdAt' " ng-click="goToConversation(c, true)")
         img(ng-src="{{p.avatar_url ? p.avatar_url : '/img/avatar-thumb.png'}}")
-        h2 {{c.personName}}
+        h2 {{c.personName || c.groupName}}
         p {{c.lastMessage}}
         span.arrow
           i.icon.ion-chevron-right
