@@ -12,7 +12,7 @@ ion-view(title='Perfil')
         i.icon.ion-email
         | {{currentUser.email}}
       .item.item-icon-left(ng-if="currentUser.sex")
-        i.icon(ng-class="{'ion-male': currentUser.sex == 'Hombre', 'ion-female': currentUser.sex == 'Mujer'}")
+        i.icon(ng-class="{'ion-male': currentUser.sex == 'Masculino', 'ion-female': currentUser.sex == 'Femenino'}")
         | {{currentUser.sex}}
       .item.item-icon-left(ng-if="currentUser.birthday")
         i.icon.ion-calendar
