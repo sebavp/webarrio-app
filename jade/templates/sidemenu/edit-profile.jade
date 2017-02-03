@@ -1,0 +1,34 @@
+ion-view(view-title='Editar Perfil' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="profile")
+      i.color-white.ion-chevron-left
+  ion-content.padding-top.profile-view
+    div(ng-class="{'invisible-canvas': !newEventImage}" ng-thumb="newEventImage._file" height="160")
+    .uploadpic(ng-hide="newEventImage") Subir foto
+    input(id="upload-input" type="file" nv-file-select="" uploader="uploader")
+    .list
+    .row
+      .col
+        .label.muted Nombre
+      .col.col-75
+        input(type="text" placeholder="Ingrese Nombre" ng-model="currentUser.name")
+    .row
+      .col
+        .label.muted Apellido
+      .col.col-75
+        input(type="text" placeholder="Ingrese Apellido" ng-model="currentUser.last_name")
+    .row
+      .col
+        .label.date-input.muted Sexo
+      .col.col-75.item-input.item-select
+        select(ng-model="currentUser.sex")
+          option Masculino
+          option Femenino
+    .row
+      .col
+        .label.date-input.muted Fecha de Nacimiento
+      .col.col-75
+        datepicker(event-date="currentUser.birthday" date-format="'dd/MM/yyyy'" from-date="fromDate" to-date="toDate")
+  ion-footer-bar.bar-orange.account-footer
+    button.button.button-full.pay-button(ng-disabled="currentUser.name.length < 2 || currentUser.last_name.length < 2" ng-click="updateProfile(currentUser)")
+      |  ACTUALIZAR 

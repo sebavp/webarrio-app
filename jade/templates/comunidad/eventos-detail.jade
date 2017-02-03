@@ -10,8 +10,11 @@ ion-view(view-title='Detalle Evento' hide-back-button='true')
         br
         small.muted {{currentEvent.place}}
         br
-        small.muted
-          ng-pluralize(count="currentEvent.assistants_id.length" when="{'0': 'Sin asistentes', '1': '1 asistente', 'other': '{} asistentes'  }")
+        small.muted.link(ng-click="showAssitants()")
+          ng-pluralize(count="assistants.length" when="{'0': 'Sin asistentes confirmados', '1': '1 asistente', 'other': '{} asistentes'  }")
+        br
+        small.muted.link(ng-if="maybe_assistants.length > 0" ng-click="showAssitants()")
+          {{maybe_assistants.length}} tal vez
         h2 {{currentEvent.name}}
         .avatar
           img(src='/img/blank.png')
@@ -27,3 +30,6 @@ ion-view(view-title='Detalle Evento' hide-back-button='true')
     .col(ng-show="currentUserAssistent")
       button.button.button-full.pay-button(ng-click="cancelAssistent()")
         |  Cancelar Asistencia
+  script(id="assistants-modal.html" type="text/ng-template")
+    ion-modal-view
+      include ./assistants-modal

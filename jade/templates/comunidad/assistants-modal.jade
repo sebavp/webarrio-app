@@ -1,0 +1,7 @@
+ion-view(hide-nav-bar='true')
+  ion-content.assistants-modal
+    h3.text-center Asistentes al Evento
+    .list
+      .item.item-input(ng-repeat="assistant in currentEvent.assistants_desc")
+        span.input-label {{assistant.name}} - {{assistant.confirmed ? "Confirmado" : "Tal vez"}}
+      button(ng-click="closeModal()") Cerrar

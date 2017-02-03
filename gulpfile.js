@@ -20,6 +20,7 @@ var paths = {
   jslint: ['./www/js/**/*.js', './www/views/**/*.js'],
   movefiles: [
     './www/fonts/**/*.*',
+    './www/lib/ionic/**/*.*',
     './www/img/**/*.*',
     './www/templates/**/*.*',
     './www/pdf/**/*.*',

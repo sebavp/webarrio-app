@@ -5,7 +5,7 @@ angular
   .module('WeBarrio.controllers')
   .controller('eventosController', eventosController);
 
-  function eventosController($scope, $state, $localStorage, $stateParams, eventsService, $timeout, FileUploader, CONFIG, $ionicLoading) {
+  function eventosController($scope, $state, $localStorage, $stateParams, eventsService, $timeout, FileUploader, CONFIG, $ionicLoading, $ionicModal) {
     
     var currentCondo = $localStorage.currentCondo;
     var currentUser = $localStorage.currentUser.user;
@@ -42,7 +42,9 @@ angular
       currentUser = $localStorage.currentUser.user;
       eventsService.getEvent($stateParams.event_id).then(function (response){
         $scope.currentEvent = response.event;
-        if (_.contains(_.map(response.event.assistants_id, function(v){return parseInt(_.keys(v)[0]); }), currentUser.id) ) {
+        $scope.assistants = _.where(response.event.assistants_desc, {confirmed: true});
+        $scope.maybe_assistants = _.where(response.event.assistants_desc, {confirmed: false});
+        if (_.contains(_.pluck($scope.assistants, "id" ), currentUser.id) ) {
           $scope.currentUserAssistent = true;
         }
       }, function(error){
@@ -76,6 +78,23 @@ angular
       });
     };
 
+    var loadModal = function (){
+      $ionicModal.fromTemplateUrl('assistants-modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.assistantsModal = modal;
+      });
+    }
+
+    $scope.showAssitants = function(){
+      $scope.assistantsModal.show();
+    }
+
+    $scope.closeModal = function (){
+     $scope.assistantsModal.hide(); 
+    }
+
     $scope.$on('$ionicView.beforeEnter', function (){
       if ($state.current.name == "comunidad-eventos") {
         loadEventos();
@@ -84,6 +103,7 @@ angular
           $scope.newEvent = {details: ""};
         } else {
           loadEvento();
+          loadModal();
         }
       }
     });

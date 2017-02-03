@@ -1,2 +1,2 @@
 .date-as-placeholder(ng-class="{'with-data': eventDate}")
-  {{(eventDate | date: "dd/MM" ) || 'Ingrese Fecha'}}
+  {{(eventDate | date: dateFormat ) || 'Ingrese Fecha'}}

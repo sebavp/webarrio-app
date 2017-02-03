@@ -29,6 +29,14 @@ angular.module('WeBarrio.services.auth', [])
         };
         return $http(req);
     },
+    updateProfile: function(user){
+        var req = {
+          method: 'PUT',
+          url: CONFIG.apiURL + "/users/" + user.id,
+          data: user,
+        };
+        return $http(req);
+    }
 	};
 	return Auth;
 });

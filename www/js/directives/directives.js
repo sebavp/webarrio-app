@@ -47,21 +47,25 @@ angular.module('WeBarrio.directives', [])
 			transclude: true,
 			scope: {
 				eventDate: "=",
+				dateFormat: "=?",
+				fromDate: "=?",
+				toDate: "=?"
 			},
 			templateUrl: 'templates/directives/datepicker.html',
 			link: function(scope, element) {
 			    var today = new Date();
 			    var twoWeeks = new Date(new Date().getTime() + (14 * 24 * 60 * 60 * 1000));
+			    
+			    scope.dateFormat = scope.dateFormat || "dd/MM";
 
 			    element.bind('click', function(){
 					ionicDatePicker.openDatePicker({
 						callback: function(val) {
 							scope.eventDate = new Date(val);
 							$compile(element.contents())(scope);
-
 						},
-						from: today,
-						to: twoWeeks,
+						from: scope.fromDate || today,
+						to: scope.toDate || twoWeeks,
 						mondayFirst: true,
 						closeOnSelect: true,
 						templateType: 'popup'

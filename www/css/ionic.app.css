@@ -10797,6 +10797,20 @@ input.bbottom {
   position: absolute;
   z-index: -1; }
 
+.assistants-modal {
+  border: 2px solid;
+  border-radius: 2px;
+  padding: 20px; }
+  .assistants-modal button {
+    text-align: center;
+    display: block;
+    margin: auto;
+    background: black;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    margin-top: 20px; }
+
 .instalaciones-view .subheader .active {
   color: #f76913; }
 
@@ -10920,6 +10934,12 @@ input {
 
 .capitalized {
   text-transform: capitalize; }
+
+.link {
+  text-decoration: underline;
+  opacity: 1;
+  color: #1b1be8;
+  cursor: pointer; }
 
 .bar-orange {
   background: #f76913; }

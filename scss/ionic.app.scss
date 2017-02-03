@@ -118,6 +118,12 @@ input{
 .capitalized{
   text-transform: capitalize;
 }
+.link{
+  text-decoration: underline;
+  opacity: 1;
+  color: #1b1be8;
+  cursor: pointer;
+}
 .bar-orange{
   background: $orange;
   button{

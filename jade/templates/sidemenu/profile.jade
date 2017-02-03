@@ -2,10 +2,13 @@ ion-view(title='Perfil')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
+    ion-nav-buttons(side="right")
+      .chat-new.button-clear.force-show(ui-sref="edit-profile")
+        i.color-white.ion-compose
   ion-content.profile-view(has-header='true')
     .list.card
       .item.item-image
-        img.circled(src='/img/blank.png')
+        img.circled(ng-src="{{currentUser.image_url}}" err-src='/img/blank.png')
       .item
         h2.text-center {{currentUser.name}} {{currentUser.last_name}}
       .item.item-icon-left(ng-if="currentUser.email")

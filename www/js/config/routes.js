@@ -331,6 +331,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/sidemenu/profile.html',
       controller:'sideMenuController'
     })
+    .state('edit-profile', {
+      url: '/profile/edit',
+      templateUrl: 'templates/sidemenu/edit-profile.html',
+      controller:'sideMenuController'
+    })
     // AYUDA
     .state('help', {
       url: '/help',
