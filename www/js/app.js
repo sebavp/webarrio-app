@@ -20,8 +20,8 @@ angular.module('WeBarrio', [
   'pdf',
   'ionic-datepicker',
   'ionic-timepicker',
-  'ngS3upload',
-  'angularFileUpload'
+  'angularFileUpload',
+  'angular-web-notification'
   ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function(FURL) {

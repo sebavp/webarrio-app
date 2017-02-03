@@ -3,13 +3,32 @@
   angular
     .module('WeBarrio.controllers')
     .controller('loginController', loginController);
-  function loginController($scope, $state, $log, Utils, Auth, $localStorage, $timeout) {
+  function loginController($scope, $state, $log, Utils, Auth, $localStorage, $timeout, webNotification, CONFIG) {
     console.info("loginController init");
 
     $scope.$on('$ionicView.beforeEnter', function (){
       if ($state.current.name == "forgot") {
         $scope.forgot = true;
       }
+      // webNotification.showNotification('Example Notification', {
+      //     body: 'Gracias por recibir notificaciones...',
+      //     icon: 'img/favicons/apple-icon.png',
+      //     onClick: function onNotificationClicked() {
+      //         console.log('Notification clicked.');
+      //     },
+      //     autoClose: 4000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+      // }, function onShow(error, hide) {
+      //     if (error) {
+      //         window.alert('Unable to show notification: ' + error.message);
+      //     } else {
+      //         console.log('Notification Shown.');
+
+      //         setTimeout(function hideNotification() {
+      //             console.log('Hiding notification....');
+      //             hide(); //manually close the notification (you can skip this if you use the autoClose option)
+      //         }, 5000);
+      //     }
+      // });
     });
 
     $scope.signIn = function (user) {
@@ -20,6 +39,11 @@
           $localStorage.currentCondo = authData.data.condos[0];
           $localStorage.currentDepto = authData.data.condos[0].departments[0];
           Utils.hide();
+          webNotification.showNotification('Bienvenido a WeBarrio!', {
+              body: 'Las notificaciones se mostrarán por acá.',
+              icon: CONFIG.notificationIcon,
+              autoClose: 4000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+          });
           $state.go('tabs.home');
         }, function(err) {
           console.log(err);

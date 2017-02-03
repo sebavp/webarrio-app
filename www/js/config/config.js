@@ -5,4 +5,5 @@ angular.module('WeBarrio.config', [])
     authDomain: "webarrio-6ffa7.firebaseapp.com",
     databaseURL: "https://webarrio-6ffa7.firebaseio.com",
     storageBucket: "webarrio-6ffa7.appspot.com",
+    notificationIcon: 'img/favicons/apple-icon.png'
   });
