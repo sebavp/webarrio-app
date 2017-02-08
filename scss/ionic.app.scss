@@ -268,3 +268,23 @@ canvas.image-preview {
       overflow-y: auto !important;
     }
 }
+
+.modal-open{
+  .default-title{
+    display: none !important;
+  }
+}
+
+.avisoAlert{
+  .popup{
+    background-color: $orange;
+    h3, button, .popup-body{
+      color: $white;
+      background-color: $orange;
+    }
+    .activated{
+      background-color: $orange;
+      opacity: 0.8; 
+    }
+  }
+}

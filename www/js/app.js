@@ -80,3 +80,4 @@ angular.module('WeBarrio', [
 
 
 angular.module('WeBarrio.controllers', []);
+

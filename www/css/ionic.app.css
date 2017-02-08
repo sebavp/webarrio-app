@@ -11057,3 +11057,15 @@ canvas.image-preview {
 
 .platform-browser .scroll-content {
   overflow-y: auto !important; }
+
+.modal-open .default-title {
+  display: none !important; }
+
+.avisoAlert .popup {
+  background-color: #f76913; }
+  .avisoAlert .popup h3, .avisoAlert .popup button, .avisoAlert .popup .popup-body {
+    color: #fff;
+    background-color: #f76913; }
+  .avisoAlert .popup .activated {
+    background-color: #f76913;
+    opacity: 0.8; }

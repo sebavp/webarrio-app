@@ -1,5 +1,7 @@
 {
  "name": "WeBarrio",
+ "short_name": "WeBarrio",
+ "gcm_sender_id": "94113503596",
  "icons": [
   {
    "src": "img/favicons/android-icon-36x36.png",

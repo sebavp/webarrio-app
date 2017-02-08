@@ -5,8 +5,34 @@
         .module('WeBarrio.controllers')
         .controller('homeController', homeController);
 
-    function homeController($scope, $state, $ionicSlideBoxDelegate, $localStorage, $timeout) {
+    function homeController($scope, $state, $ionicSlideBoxDelegate, $localStorage, $timeout, Auth, $ionicPopup) {
       var currentUser = $localStorage.currentUser;
+
+      var openMessageModal = function(aviso) {
+        var av = aviso || {};
+          var alertPopup = $ionicPopup.alert({
+           cssClass: "avisoAlert",
+           title: av.title || "Aviso",
+           template: av.details || "Este es un Aviso",
+           okText: "X"
+         });
+
+         alertPopup.then(function(res) {
+            Auth.updateNotification($scope.currentAviso.id).then(function(){
+              modalRef.close();
+            })
+         });
+      };
+
+
+      var loadAvisos = function (){
+        Auth.getAvisos(currentUser.user.id, $scope.currentCondo.id).then(function(response){
+          console.log(response.data.avisos);
+          if (response.data.avisos.length > 0) {
+            openMessageModal(_.first(response.data.avisos))
+          };
+        });
+      };
 
       $scope.$on('$ionicView.beforeEnter', function(){
         currentUser = $localStorage.currentUser;
@@ -15,6 +41,34 @@
         $scope.allDeptos = $scope.currentCondo.departments;
         $ionicSlideBoxDelegate.$getByHandle('condoslider').update();
         $ionicSlideBoxDelegate.$getByHandle('deptoslider').update();
+
+        loadAvisos();
+
+          if ('serviceWorker' in navigator && $localStorage.dvNotifications !== true) {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                  console.log("successs")
+                  registration.pushManager.subscribe({
+                    userVisibleOnly: true
+                  }).then(function(s) {
+                      var data = {
+                        user_agent: navigator.userAgent,
+                        endpoint: s.endpoint,
+                        p256dh: btoa(String.fromCharCode.apply(null, new Uint8Array(s.getKey('p256dh')))).replace(/\+/g, '-').replace(/\//g, '_'),
+                        auth: btoa(String.fromCharCode.apply(null, new Uint8Array(s.getKey('auth')))).replace(/\+/g, '-').replace(/\//g, '_')
+                      }
+                      Auth.setDevice(currentUser.user.id, data).then(function(response){
+                        console.log("response")
+                        console.log("device ok")
+                        $localStorage.dvNotifications = true;
+                      });
+                  }).catch(function(e) {
+                    console.log(e)
+                  });
+                }).catch(function(err) {
+                  // registration failed :(
+                  console.log('ServiceWorker registration failed: ', err);
+                });
+              }
       });
 
       $scope.changeCurrentCondo = function(index){
