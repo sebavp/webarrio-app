@@ -1,5 +1,5 @@
 angular.module('WeBarrio.services.auth', [])
-  .service('Auth', function($http, $log, Utils, CONFIG) {
+  .service('Auth', function($http, $log, Utils, CONFIG, $localStorage) {
   var Auth = {
     login: function(user) {
         var req = {
@@ -16,6 +16,11 @@ angular.module('WeBarrio.services.auth', [])
     },
     logout: function() {
 			console.log("Usuario Sale.");
+    },
+    isSession: function(){
+      return ($localStorage.currentUser !== undefined &&
+          $localStorage.currentCondo !== undefined &&
+          $localStorage.currentDepto !== undefined);
     },
 		resetpassword: function(user) {
         var req = {

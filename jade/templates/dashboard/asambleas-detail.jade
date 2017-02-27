@@ -3,7 +3,7 @@ ion-view(view-title="Detalle Asamblea" hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    img.full(ng-src="{{currentAsamblea.img_original_url}}" err-src='/img/avatar-blank.png')
+    img.full(ng-src="{{currentAsamblea.img_original_url}}" err-src='img/avatar-blank.png')
     .list(ng-show="!currentAsamblea")
       .item.text-center
         ion-spinner(icon="dots")

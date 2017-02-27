@@ -12,7 +12,7 @@ ion-view(view-title='Mascotas' hide-back-button='true')
           small
             | No hay Anuncios de Mascotas
       a.item.item-avatar(ng-repeat="pet in mascotas | orderBy: '-created_at'", ui-sref='comunidad-mascotas-detail({announcement_id: pet.id})')
-        img(ng-src="{{pet.img_thumb_url}}" err-src='/img/blank.png')
+        img(ng-src="{{pet.img_thumb_url}}" err-src='img/blank.png')
         small.muted.right.uppercased {{pet.created_at | date: 'dd/MMMM'}}
         h2 {{pet.title}}
         p.muted {{pet.description}}

@@ -12,7 +12,7 @@ ion-view(view-title='Anuncios' hide-back-button='true')
           small
             | No hay Anuncios aún
       a.item.item-avatar(ng-repeat="an in anuncios | orderBy: '-created_at'", ui-sref='comunidad-anuncios-detail({announcement_id: an.id})')
-        img(ng-src='{{an.img_thumb_url}}' err-src="/img/blank.png")
+        img(ng-src='{{an.img_thumb_url}}' err-src="img/blank.png")
         small.muted.right {{an.created_at | date: "dd MMM"}}
         h2 {{an.title}}
         p {{an.description | truncate: 30: '..'}}

@@ -12,7 +12,7 @@ ion-view(view-title='Car Pooling' hide-back-button='true')
           small
             | No hay publicaciones de Car Pooling aún
       a.item.item-avatar(ng-repeat="car in carp | orderBy: ['event_date', 'start_time']", ui-sref='comunidad-carp-detail({event_id: car.id})')
-        img(ng-src='{{car.img_thumb_url}}' err-src="/img/blank.png")
+        img(ng-src='{{car.img_thumb_url}}' err-src="img/blank.png")
         small.muted.right {{car.event_date | date: 'dd/MM'}} {{car.start_time | date : 'HH:mm'}}
         h2 {{car.name}}
         p.muted {{car.details | truncate : 20 : '..'}}

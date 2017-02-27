@@ -10,6 +10,9 @@
       if ($state.current.name == "forgot") {
         $scope.forgot = true;
       }
+      if (Auth.isSession() == true) {
+        $state.go('tabs.home');
+      };
       // webNotification.showNotification('Example Notification', {
       //     body: 'Gracias por recibir notificaciones...',
       //     icon: 'img/favicons/apple-icon.png',

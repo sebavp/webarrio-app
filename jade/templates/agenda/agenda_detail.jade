@@ -25,7 +25,7 @@ ion-view(view-title='Contacto' hide-back-button='true')
       .item(ng-if="currentContact.all_reviews.length == 0")
         p No hay reseñas
       .item.item-avatar(ng-repeat="review in currentContact.all_reviews")
-        img(src='/img/blank.png')
+        img(src='img/blank.png')
         small.muted.right.uppercased {{review.created_at | date: "dd MMM / HH:mm"}}
         h2 {{review.user_name}}
         p.muted {{review.comment}}

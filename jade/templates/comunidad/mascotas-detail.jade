@@ -3,13 +3,13 @@ ion-view(view-title='Detalle Mascotas' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    img.full(ng-src="{{currentMascota.img_original_url}}" err-src='/img/blank.png')
+    img.full(ng-src="{{currentMascota.img_original_url}}" err-src='img/blank.png')
     .list
       .padding
         small.muted {{currentMascota.created_at | date : "dd MMMM"}}
         h2 {{currentMascota.title}}
         .avatar
-          img(src='/img/blank.png')
+          img(src='img/blank.png')
           span {{currentMascota.user_name}}
         p {{currentMascota.description}}
   ion-footer-bar.bar-orange.account-footer
