@@ -20,6 +20,13 @@ angular.module('WeBarrio.routes', [])
       controller:'registerController'
     })
 
+    //TyC
+    .state('tyc', {
+      url: '/tyc',
+      templateUrl: 'templates/tyc/tyc.html',
+      controller: 'tycController'
+    })
+
     // HOME-TABS
     .state('tabs', {
       url: '/menu',
