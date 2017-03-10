@@ -8,7 +8,6 @@
     $scope.goBack = function (){
       $state.go("tabs.home");
     };
-    $scope.pdfUrl = "pdf/TyC_Webarrio.pdf";
     $scope.$on("$ionicView.beforeEnter", function () {
       $scope.pdfUrl = "pdf/TyC_Webarrio.pdf";
       $scope.page = 1;
