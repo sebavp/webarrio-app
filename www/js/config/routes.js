@@ -23,8 +23,7 @@ angular.module('WeBarrio.routes', [])
     //TyC
     .state('tyc', {
       url: '/tyc',
-      templateUrl: 'templates/tyc/tyc.html',
-      controller: 'tycController'
+      templateUrl: 'templates/tyc/tyc.html'
     })
 
     // HOME-TABS
