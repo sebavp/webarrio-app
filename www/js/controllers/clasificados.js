@@ -18,7 +18,7 @@ angular
 
     uploader.onCompleteAll = function() {
         $ionicLoading.hide();
-        $state.go('comunidad-clasificados');
+        $state.go('tabs.comunidad-clasificados');
     };
     var loadClasificados = function (){
       announcementsService.getClasificados(currentCondo.id).then(function (response){
@@ -46,6 +46,9 @@ angular
           _.last($scope.uploader.queue).url = imageUrl;
           _.last($scope.uploader.queue).removeAfterUpload = true;
           $scope.uploader.uploadAll();
+        } else{
+          $ionicLoading.hide();
+          $state.go('tabs.comunidad-clasificados');
         }
       }, function(){
         $ionicLoading.hide();
@@ -53,7 +56,7 @@ angular
     };
 
     $scope.$on('$ionicView.beforeEnter', function (){
-      if ($state.current.name == "comunidad-clasificados") {
+      if ($state.current.name == "tabs.comunidad-clasificados") {
         loadClasificados();
       } else {
         if ($state.current.name == "comunidad-clasificados-new") {
@@ -71,10 +74,10 @@ angular
     };
 
     $scope.goBack = function (){
-      if ($state.current.name == "comunidad-clasificados") {
+      if ($state.current.name == "tabs.comunidad-clasificados") {
         $state.go("tabs.comunidad");
       } else{
-        $state.go("comunidad-clasificados");
+        $state.go("tabs.comunidad-clasificados");
       }
     };
   }

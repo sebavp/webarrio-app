@@ -10,10 +10,10 @@
   	var currentCondo = $localStorage.currentCondo;
 
     $scope.goBack = function (){
-      if ($state.current.name == "dashboard-avisos") {
+      if ($state.current.name == "tabs.dashboard-avisos") {
        	$state.go("tabs.dashboard");
        } else {
-       	$state.go('dashboard-avisos');
+       	$state.go('tabs.dashboard-avisos');
        }
     };
 
@@ -40,13 +40,13 @@
     $scope.saveAviso = function (aviso){
       aviso.user_id = currentUser.user.id;
       eventsService.createEvent('avisos', aviso, currentCondo.id).then(function(){
-        $state.go('dashboard-avisos');
+        $state.go('tabs.dashboard-avisos');
       });
     };
 
     $scope.$on('$ionicView.beforeEnter', function (){
       currentUser = $localStorage.currentUser;
-      if ($state.current.name == "dashboard-avisos") {
+      if ($state.current.name == "tabs.dashboard-avisos") {
         loadAvisos();
       } else {
         if ($state.current.name === "dashboard-avisos-new") {

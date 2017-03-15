@@ -10468,6 +10468,13 @@ input.bbottom {
   .alert-input .item-select::after {
     right: 0; }
 
+.reglamento-view iframe {
+  min-height: 450px;
+  min-width: 300px; }
+  @media (min-width: 450px) {
+    .reglamento-view iframe {
+      margin: 50px; } }
+
 #excel-upload-input {
   cursor: pointer;
   position: absolute;

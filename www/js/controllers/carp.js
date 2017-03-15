@@ -29,7 +29,7 @@ angular
       evento.user_id = currentUser.id;
       $ionicLoading.show({template: "Creando Evento..."});
       eventsService.createEvent('car_pooling', evento, currentCondo.id).then(function(){
-        $state.go("comunidad-carp");
+        $state.go("tabs.comunidad-carp");
         $ionicLoading.hide();
       }, function(){
         $ionicLoading.hide();
@@ -37,7 +37,7 @@ angular
     };
 
     $scope.$on('$ionicView.beforeEnter', function (){
-      if ($state.current.name == "comunidad-carp") {
+      if ($state.current.name == "tabs.comunidad-carp") {
         loadCarps();
       } else {
         if ($state.current.name == "comunidad-carp-new") {
@@ -49,7 +49,11 @@ angular
     });
     
     $scope.goBack = function (){
-      $state.go("tabs.comunidad");
+      if ($state.current.name == "tabs.comunidad-carp") {
+        $state.go("tabs.comunidad");
+      } else {
+        $state.go("tabs.comunidad-carp");
+      }
     };
     
     $scope.goToChat = function (carp){

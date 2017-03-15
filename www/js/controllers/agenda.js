@@ -101,7 +101,7 @@
         };
 
         $scope.goBack = function (){
-            if ($state.current.name === "agenda-detail") {
+            if ($state.current.name === "agenda-detail" || $state.current.name === "agenda-new") {
         		$state.go("tabs.agenda");
         	} else{
         		$state.go("tabs.home");

@@ -48,19 +48,27 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-    .state('dashboard-gastos-comunes', {
-      url: '/menu/dashboard/gastos-comunes',
-      templateUrl: 'templates/dashboard/gastos-comunes.html',
-      controller:'gastosComunesController'
+    .state('tabs.dashboard-gastos-comunes', {
+      url: '/dashboard/gastos-comunes',
+      views:{
+        'tab_dashboard': {
+            templateUrl: 'templates/dashboard/gastos-comunes.html',
+            controller:'gastosComunesController'
+        }
+      }
+    })
+    .state('tabs.dashboard-gastos-comunes-admin', {
+      url: '/dashboard/gastos-comunes-admin',
+      views:{
+        'tab_dashboard': {
+            templateUrl: 'templates/dashboard/gastos-comunes-admin.html',
+            controller:'gastosComunesController'
+        }
+      }
     })
     .state('dashboard-gastos-comunes-detail', {
       url: '/menu/dashboard/gastos-comunes-detail/:year/:month',
       templateUrl: 'templates/dashboard/gastos-comunes-detail.html',
-      controller:'gastosComunesController'
-    })
-    .state('dashboard-gastos-comunes-admin', {
-      url: '/menu/dashboard/gastos-comunes-admin',
-      templateUrl: 'templates/dashboard/gastos-comunes-admin.html',
       controller:'gastosComunesController'
     })
     .state('dashboard-gastos-comunes-new', {
@@ -68,10 +76,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/gastos-comunes-new.html',
       controller:'gastosComunesController'
     })
-    .state('dashboard-pagos', {
-      url: '/menu/dashboard/pagos',
-      templateUrl: 'templates/dashboard/pagos.html',
-      controller:'pagosController'
+    .state('tabs.dashboard-pagos', {
+      url: '/dashboard/pagos',
+      views: {
+        'tab_dashboard': {
+          templateUrl: 'templates/dashboard/pagos.html',
+          controller:'pagosController'
+        }
+      }
     })
     .state('dashboard-pagos-detail', {
       url: '/menu/dashboard/pagos-detail/:deptoId',
@@ -83,10 +95,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/pagos-new.html',
       controller:'pagosController'
     })
-    .state('dashboard-instalaciones', {
-      url: '/menu/dashboard/instalaciones',
-      templateUrl: 'templates/dashboard/instalaciones.html',
-      controller:'instalacionesController'
+    .state('tabs.dashboard-instalaciones', {
+      url: '/dashboard/instalaciones',
+      views: {
+        'tab_dashboard': {
+            templateUrl: 'templates/dashboard/instalaciones.html',
+            controller:'instalacionesController'
+        }
+      }
     })
     .state('dashboard-instalaciones-detail', {
       url: '/menu/dashboard/instalaciones-detail/:event_id',
@@ -98,10 +114,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/instalaciones-new.html',
       controller:'instalacionesController'
     })
-    .state('dashboard-asambleas', {
-      url: '/menu/dashboard/asambleas',
-      templateUrl: 'templates/dashboard/asambleas.html',
-      controller:'asambleasController'
+    .state('tabs.dashboard-asambleas', {
+      url: '/dashboard/asambleas',
+      views: {
+        'tab_dashboard': {
+            templateUrl: 'templates/dashboard/asambleas.html',
+            controller:'asambleasController'
+        }
+      }
     })
     .state('dashboard-asambleas-detail', {
       url: '/menu/dashboard/asambleas-detail/:event_id',
@@ -113,10 +133,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/asambleas-new.html',
       controller:'asambleasController'
     })
-    .state('dashboard-avisos', {
-      url: '/menu/dashboard/avisos',
-      templateUrl: 'templates/dashboard/avisos.html',
-      controller:'avisosController'
+    .state('tabs.dashboard-avisos', {
+      url: '/dashboard/avisos',
+      views: {
+        'tab_dashboard': {
+            templateUrl: 'templates/dashboard/avisos.html',
+            controller:'avisosController'
+        }
+      }
     })
     .state('dashboard-avisos-detail', {
       url: '/menu/dashboard/avisos-detail/:event_id',
@@ -128,10 +152,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/avisos-new.html',
       controller:'avisosController'
     })
-    .state('dashboard-mantenciones', {
-      url: '/menu/dashboard/mantenciones',
-      templateUrl: 'templates/dashboard/mantenciones.html',
-      controller:'mantencionesController'
+    .state('tabs.dashboard-mantenciones', {
+      url: '/dashboard/mantenciones',
+      views: {
+        'tab_dashboard': {
+            templateUrl: 'templates/dashboard/mantenciones.html',
+            controller:'mantencionesController'
+        }
+      }
     })
     .state('dashboard-mantenciones-detail', {
       url: '/menu/dashboard/mantenciones-detail/:event_id',
@@ -144,10 +172,14 @@ angular.module('WeBarrio.routes', [])
       controller:'mantencionesController'
     })
     // reglamento
-    .state('dashboard-reglamento', {
-      url: '/menu/dashboard/reglamento',
-      templateUrl: 'templates/dashboard/reglamento.html',
-      controller:'dashboardController'
+    .state('tabs.dashboard-reglamento', {
+      url: '/dashboard/reglamento',
+      views: {
+        'tab_dashboard': {
+            templateUrl: 'templates/dashboard/reglamento.html',
+            controller:'dashboardController'
+        }
+      }
     })
     // AGENDA
     .state('tabs.agenda', {
@@ -159,14 +191,14 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-    .state('agenda-detail', {
-      url: '/menu/agenda/:contactId',
-      templateUrl: 'templates/agenda/agenda_detail.html',
-      controller:'agendaController'
-    })
     .state('agenda-new', {
       url: '/menu/agenda/nuevo',
       templateUrl: 'templates/agenda/agenda_new.html',
+      controller:'agendaController'
+    })
+    .state('agenda-detail', {
+      url: '/menu/agenda/:contactId',
+      templateUrl: 'templates/agenda/agenda_detail.html',
       controller:'agendaController'
     })
 
@@ -233,10 +265,14 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
-    .state('comunidad-anuncios', {
-      url: '/comunidad/anuncios/',
-      templateUrl: 'templates/comunidad/anuncios.html',
-      controller:'anunciosController'
+    .state('tabs.comunidad-anuncios', {
+      url: '/anuncios/',
+      views:{
+        'tab_home':{
+          templateUrl: 'templates/comunidad/anuncios.html',
+          controller:'anunciosController'
+        }
+      }
     })
     .state('comunidad-anuncios-detail', {
       url: '/comunidad/anuncios-detail/:announcement_id',
@@ -248,10 +284,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/anuncios-new.html',
       controller:'anunciosController'
     })
-    .state('comunidad-eventos', {
-      url: '/comunidad/eventos/',
-      templateUrl: 'templates/comunidad/eventos.html',
-      controller:'eventosController'
+    .state('tabs.comunidad-eventos', {
+      url: '/eventos/',
+      views:{
+        'tab_home':{
+          templateUrl: 'templates/comunidad/eventos.html',
+          controller:'eventosController'
+        }
+      }
     })
     .state('comunidad-eventos-detail', {
       url: '/comunidad/eventos-detail/:event_id',
@@ -263,10 +303,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/eventos-new.html',
       controller:'eventosController'
     })
-    .state('comunidad-clasificados', {
-      url: '/comunidad/clasificados/',
-      templateUrl: 'templates/comunidad/clasificados.html',
-      controller:'clasificadosController'
+    .state('tabs.comunidad-clasificados', {
+      url: '/clasificados/',
+      views:{
+        'tab_home':{
+          templateUrl: 'templates/comunidad/clasificados.html',
+          controller:'clasificadosController'
+        }
+      }
     })
     .state('comunidad-clasificados-detail', {
       url: '/comunidad/clasificados-detail/:announcement_id',
@@ -278,10 +322,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/clasificados-new.html',
       controller:'clasificadosController'
     })
-    .state('comunidad-recomendaciones', {
-      url: '/comunidad/recomendaciones/',
-      templateUrl: 'templates/comunidad/recomendaciones.html',
-      controller:'recomendacionesController'
+    .state('tabs.comunidad-recomendaciones', {
+      url: '/recomendaciones/',
+      views:{
+        'tab_home':{
+          templateUrl: 'templates/comunidad/recomendaciones.html',
+          controller:'recomendacionesController'
+        }
+      }
     })
     .state('comunidad-recomendaciones-detail', {
       url: '/comunidad/recomendaciones-detail/:announcement_id',
@@ -293,10 +341,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/recomendaciones-new.html',
       controller:'recomendacionesController'
     })
-    .state('comunidad-mascotas', {
-      url: '/comunidad/mascotas/',
-      templateUrl: 'templates/comunidad/mascotas.html',
-      controller:'mascotasController'
+    .state('tabs.comunidad-mascotas', {
+      url: '/mascotas/',
+      views:{
+        'tab_home':{
+          templateUrl: 'templates/comunidad/mascotas.html',
+          controller:'mascotasController'
+        }
+      }
     })
     .state('comunidad-mascotas-detail', {
       url: '/comunidad/mascotas-detail/:announcement_id',
@@ -308,10 +360,14 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/comunidad/mascotas-new.html',
       controller:'mascotasController'
     })
-    .state('comunidad-carp', {
-      url: '/comunidad/carp/',
-      templateUrl: 'templates/comunidad/carp.html',
-      controller:'carpController'
+    .state('tabs.comunidad-carp', {
+      url: '/carp/',
+      views:{
+        'tab_home':{
+          templateUrl: 'templates/comunidad/carp.html',
+          controller:'carpController'
+        }
+      }
     })
     .state('comunidad-carp-detail', {
       url: '/comunidad/carp-detail/:event_id',

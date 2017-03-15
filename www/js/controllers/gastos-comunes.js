@@ -16,10 +16,9 @@
       $scope.newGcFile = addedFileItems[0];
     };
 
-    uploader.onSuccessItem = function(item, response) {
-        console.log(response);
+    uploader.onSuccessItem = function() {
         $ionicLoading.hide();
-        $state.go('dashboard-gastos-comunes-admin');
+        $state.go('tabs.dashboard-gastos-comunes-admin');
     };
 
     uploader.onErrorItem = function(item, response){
@@ -59,12 +58,12 @@
       currentCondo = $localStorage.currentCondo;
       currentDepto = $localStorage.currentDepto;
 
-      if ($state.current.name == "dashboard-gastos-comunes-admin" && isAdmin()) {
+      if ($state.current.name == "tabs.dashboard-gastos-comunes-admin" && isAdmin()) {
         dataAPIService.getAllCommonExpenses(currentCondo.id).then(function (resp) {
           $scope.commonExpenses = resp.data.common_expenses;
         });
       } 
-      if ($state.current.name == "dashboard-gastos-comunes"){
+      if ($state.current.name == "tabs.dashboard-gastos-comunes"){
         dataAPIService.getCommonExpenses(currentDepto.id).then(function(resp){
           $scope.commonExpenses = resp.data.common_expenses;
         });
@@ -87,13 +86,13 @@
     
     $scope.goBack = function (){
       switch($state.current.name){
-        case "dashboard-gastos-comunes":
-        case "dashboard-gastos-comunes-admin":
+        case "tabs.dashboard-gastos-comunes":
+        case "tabs.dashboard-gastos-comunes-admin":
           $state.go("tabs.dashboard");
           break;
         case "dashboard-gastos-comunes-detail":
         case "dashboard-gastos-comunes-new":
-          $state.go("dashboard-gastos-comunes-admin");
+          $state.go("tabs.dashboard-gastos-comunes-admin");
           break;
       }
     };

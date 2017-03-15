@@ -8,20 +8,18 @@
     function pagosController($scope, $localStorage, dataAPIService, $state, $stateParams) {
         
         console.info("pagosController init");
-        var currentCondo =  $localStorage.currentCondo;
-        var currentDepto = $localStorage.currentDepto;
-        var currentUser =  $localStorage.currentUser;
         $scope.newPay = {};
+        var currentCondo, currentDepto, currentUser;
 
         $scope.isAdmin = function () {
             return currentUser.user.role == "superadmin" || currentUser.user.role == "admin";
         };
 
         $scope.goBack = function (){
-            if ($state.current.name == "dashboard-pagos") {
+            if ($state.current.name == "tabs.dashboard-pagos") {
                 $state.go("tabs.dashboard");
             } else {
-                $state.go("dashboard-pagos");
+                $state.go("tabs.dashboard-pagos");
             }
         };
 
@@ -47,8 +45,8 @@
         $scope.createPayment = function (payment) {
             payment.admin_id = currentUser.user.id;
             payment.department = payment.department.id;
-            dataAPIService.createPayment(currentDepto[0].id, payment).then(function () {
-                $state.go("dashboard-pagos");
+            dataAPIService.createPayment(currentDepto.id, payment).then(function () {
+                $state.go("tabs.dashboard-pagos");
             });
         };
 
@@ -61,8 +59,11 @@
         };
 
         $scope.$on("$ionicView.beforeEnter", function(){
+            currentCondo =  $localStorage.currentCondo;
+            currentDepto = $localStorage.currentDepto;
+            currentUser =  $localStorage.currentUser;
             switch($state.current.name){
-                case "dashboard-pagos":
+                case "tabs.dashboard-pagos":
                     loadPagos();
                     break;
                 case "dashboard-pagos-detail":

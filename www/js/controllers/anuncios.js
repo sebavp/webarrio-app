@@ -17,7 +17,7 @@ angular
 
     uploader.onCompleteAll = function() {
         $ionicLoading.hide();
-        $state.go('comunidad-anuncios');
+        $state.go('tabs.comunidad-anuncios');
     };
 
     var loadAnuncios = function (){
@@ -46,6 +46,9 @@ angular
           _.last($scope.uploader.queue).url = imageUrl;
           _.last($scope.uploader.queue).removeAfterUpload = true;
           $scope.uploader.uploadAll();
+        } else{
+          $ionicLoading.hide();
+          $state.go('tabs.comunidad-anuncios');
         }
       }, function(){
         $ionicLoading.hide();
@@ -53,7 +56,7 @@ angular
     };
 
     $scope.$on('$ionicView.beforeEnter', function (){
-      if ($state.current.name == "comunidad-anuncios") {
+      if ($state.current.name == "tabs.comunidad-anuncios") {
         loadAnuncios();
       } else {
         if ($state.current.name == "comunidad-anuncios-new") {
@@ -71,10 +74,10 @@ angular
     };
 
     $scope.goBack = function (){
-      if ($state.current.name == "comunidad-anuncios") {
+      if ($state.current.name == "tabs.comunidad-anuncios") {
         $state.go("tabs.comunidad");
       } else{
-        $state.go("comunidad-anuncios");
+        $state.go("tabs.comunidad-anuncios");
       }
     };
   }

@@ -21,14 +21,14 @@
 
     uploader.onCompleteAll = function() {
         $ionicLoading.hide();
-        $state.go('dashboard-asambleas');
+        $state.go('tabs.dashboard-asambleas');
     };
     
     $scope.goBack = function (){
-      if ($state.current.name == "dashboard-asambleas") {
+      if ($state.current.name == "tabs.dashboard-asambleas") {
         $state.go("tabs.dashboard");
       } else{
-        $state.go("dashboard-asambleas");
+        $state.go("tabs.dashboard-asambleas");
       }
     };
 
@@ -84,7 +84,7 @@
 
     $scope.$on('$ionicView.beforeEnter', function (){
       currentUser = $localStorage.currentUser;
-      if ($state.current.name == "dashboard-asambleas") {
+      if ($state.current.name == "tabs.dashboard-asambleas") {
         loadAsambleas();
       } else {
         if ($state.current.name === "dashboard-asambleas-new") {

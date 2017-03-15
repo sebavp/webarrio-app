@@ -14,10 +14,10 @@
     };
 
     $scope.goBack = function (){
-      if ($state.current.name == "dashboard-instalaciones") {
+      if ($state.current.name == "tabs.dashboard-instalaciones") {
         $state.go("tabs.dashboard");
       } else {
-        $state.go("dashboard-instalaciones");
+        $state.go("tabs.dashboard-instalaciones");
       }
     };
 
@@ -41,7 +41,7 @@
     $scope.createReservation = function (reservation){
       reservation.user_id = currentUser.user.id;
       eventsService.createEvent('instalaciones', reservation, currentCondo.id).then(function(){
-        $state.go('dashboard-instalaciones');
+        $state.go('tabs.dashboard-instalaciones');
       });
     };
 
@@ -90,7 +90,7 @@
     };
 
     $scope.$on('$ionicView.beforeEnter', function (){
-      if ($state.current.name == "dashboard-instalaciones") {
+      if ($state.current.name == "tabs.dashboard-instalaciones") {
         loadInstalaciones();
       }
       if ($state.current.name == "dashboard-instalaciones-detail") {

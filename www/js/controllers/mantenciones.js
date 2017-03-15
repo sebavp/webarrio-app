@@ -15,10 +15,10 @@
     };
 
     $scope.goBack = function (){
-      if ($state.current.name == "dashboard-mantenciones") {
+      if ($state.current.name == "tabs.dashboard-mantenciones") {
         $state.go("tabs.dashboard");
       } else {
-        $state.go("dashboard-mantenciones");
+        $state.go("tabs.dashboard-mantenciones");
       }
     };
 
@@ -86,13 +86,13 @@
     $scope.createReservation = function (mantencion){
       mantencion.user_id = currentUser.user.id;
       eventsService.createEvent('mantenciones', mantencion, currentCondo.id).then(function(){
-        $state.go('dashboard-mantenciones');
+        $state.go('tabs.dashboard-mantenciones');
       });
     };
 
     $scope.$on('$ionicView.beforeEnter', function (){
       currentUser = $localStorage.currentUser;
-      if ($state.current.name == "dashboard-mantenciones") {
+      if ($state.current.name == "tabs.dashboard-mantenciones") {
         loadMantenciones();
       } else {
         if ($state.current.name === "dashboard-mantenciones-new") {

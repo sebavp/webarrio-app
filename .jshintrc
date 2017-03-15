@@ -16,7 +16,9 @@
         "Image": true,
         "document": true,
         "firebase": true,
-        "FileReader": true
+        "FileReader": true,
+        "ActiveXObject": true,
+        "btoa": true
     },
 	  "indent": 4,
 	  "white": true,

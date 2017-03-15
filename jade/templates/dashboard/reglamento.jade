@@ -2,6 +2,9 @@ ion-view(title='Reglamento')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
-  ion-content.padding(overflow-scroll='false')
+  ion-content.reglamento-view.padding(overflow-scroll='false')
     .text-center.search.search-pdf-view
-      ng-pdf(canvasid='pdf' scale='page-fit' page='{{page}}')
+      iframe( ng-src="{{pdfUrl}}" ng-if="supportsPDFs")
+      .list
+        .item
+          a.padding(ng-href="{{pdfUrl}}" ng-if="!supportsPDFs" target="_blank") VER REGLAMENTO

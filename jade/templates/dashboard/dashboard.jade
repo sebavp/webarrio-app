@@ -17,19 +17,19 @@ ion-view(view-title='Administración')
     .hero(ng-show='!commonExpenses && !isAdmin')
       small No Registra Deuda Pendiente
     .list
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-pagos' ng-if="isAdmin")
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-pagos' ng-if="isAdmin")
         | Pagos
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-gastos-comunes-admin' ng-if="isAdmin")
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-gastos-comunes-admin' ng-if="isAdmin")
         | Administración Gastos Comunes
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-avisos' ng-if="isAdmin")
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-avisos' ng-if="isAdmin")
         | Aviso de Utilidad Pública
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-gastos-comunes')
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-gastos-comunes')
         | Gastos Comunes
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-instalaciones')
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-instalaciones')
         | Uso de Instalaciones
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-asambleas')
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-asambleas')
         | Asambleas
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-mantenciones')
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-mantenciones')
         | Mantenciones
-      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='dashboard-reglamento')
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-reglamento')
         | Reglamento

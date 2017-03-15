@@ -50,8 +50,8 @@
           $state.go('profile');
         }
 
-      })
-    }
+      });
+    };
 
     $scope.$on('$ionicView.beforeEnter', function(){
       loadCurrentUser();

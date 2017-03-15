@@ -47,5 +47,7 @@ ion-view(view-title='Detalle')
           span.capitalized {{item.department_number}}
         .detalle-mes(ng-show="showingMonth == item.id")
           hr
+          p(ng-if="item.total_extras")  Extra ({{item.extra_text}}): 
+            small ${{item.total_extras | currency: '':0}}
           p  Total : 
             small ${{item.total | currency: '':0}}

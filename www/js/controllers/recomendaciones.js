@@ -18,7 +18,7 @@ angular
 
     uploader.onCompleteAll = function() {
         $ionicLoading.hide();
-        $state.go('comunidad-recomendaciones');
+        $state.go('tabs.comunidad-recomendaciones');
     };
 
     var loadRecomendaciones = function (){
@@ -46,6 +46,9 @@ angular
         if ($scope.uploader.queue.length > 0) {
           $scope.uploader.queue[0].url = imageUrl;
           $scope.uploader.uploadAll();
+        } else{
+          $ionicLoading.hide();
+          $state.go('tabs.comunidad-recomendaciones');
         }
       }, function(){
         $ionicLoading.hide();
@@ -53,7 +56,7 @@ angular
     };
 
     $scope.$on('$ionicView.beforeEnter', function (){
-      if ($state.current.name == "comunidad-recomendaciones") {
+      if ($state.current.name == "tabs.comunidad-recomendaciones") {
         loadRecomendaciones();
       } else {
         if ($state.current.name == "comunidad-recomendaciones-new") {
@@ -65,10 +68,10 @@ angular
     });
 
     $scope.goBack = function (){
-      if ($state.current.name == "comunidad-recomendaciones") {
+      if ($state.current.name == "tabs.comunidad-recomendaciones") {
         $state.go("tabs.comunidad");
       } else{
-        $state.go("comunidad-recomendaciones");
+        $state.go("tabs.comunidad-recomendaciones");
       }
     };
   }

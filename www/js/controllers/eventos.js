@@ -19,14 +19,14 @@ angular
 
     uploader.onCompleteAll = function() {
         $ionicLoading.hide();
-        $state.go('comunidad-eventos');
+        $state.go('tabs.comunidad-eventos');
     };
     
     $scope.goBack = function (){
-      if ($state.current.name == "comunidad-eventos") {
+      if ($state.current.name == "tabs.comunidad-eventos") {
         $state.go("tabs.comunidad");
       } else{
-        $state.go("comunidad-eventos");
+        $state.go("tabs.comunidad-eventos");
       }
     };
 
@@ -60,6 +60,9 @@ angular
         if ($scope.uploader.queue.length > 0) {
           $scope.uploader.queue[0].url = CONFIG.apiURL + '/events/image/' + response.normal_event.id;
           $scope.uploader.uploadAll();
+        } else{
+          $ionicLoading.hide();
+          $state.go("tabs.comunidad-eventos");
         }
       }, function(){
         $ionicLoading.hide();
@@ -85,18 +88,18 @@ angular
       }).then(function(modal) {
         $scope.assistantsModal = modal;
       });
-    }
+    };
 
     $scope.showAssitants = function(){
       $scope.assistantsModal.show();
-    }
+    };
 
     $scope.closeModal = function (){
      $scope.assistantsModal.hide(); 
-    }
+    };
 
     $scope.$on('$ionicView.beforeEnter', function (){
-      if ($state.current.name == "comunidad-eventos") {
+      if ($state.current.name == "tabs.comunidad-eventos") {
         loadEventos();
       } else {
         if ($state.current.name == "comunidad-eventos-new") {
