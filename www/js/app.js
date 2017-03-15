@@ -25,13 +25,15 @@ angular.module('WeBarrio', [
   ])
 .run(function($ionicPlatform, Auth, $state, $rootScope, $timeout) {
 
-    if (Auth.isSession() == false){
-      console.log("nosession, go login");
-      $timeout(function() {
-        $state.go('login');
-      });
-    } 
-  
+  $rootScope.$on('$stateChangeStart', function(event, toState) {
+    if (toState.name !== 'tyc') {
+      if (Auth.isSession() == false){
+        $timeout(function() {
+          $state.go('login');
+        });
+      } 
+    }
+  });
 
   $ionicPlatform.ready(function(FURL) {
     if(window.cordova && window.cordova.plugins.Keyboard) {
