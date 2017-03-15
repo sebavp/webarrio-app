@@ -33,3 +33,6 @@ ion-view(view-title='Administración')
         | Mantenciones
       .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-reglamento')
         | Reglamento
+      .item.button.button-full.icon-right.ion-ios-arrow-right(ui-sref='tabs.dashboard-alerta' ng-if="isAdmin")
+        | Alerta Vecinal
+

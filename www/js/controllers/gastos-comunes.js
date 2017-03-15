@@ -23,6 +23,15 @@
 
     uploader.onErrorItem = function(item, response){
       console.log(response);
+      $ionicLoading.hide();
+      $ionicPopup.alert({
+        title: 'Creación de Gastos Comunes',
+        template: 'Hay ocurrido un error al subir el Excel, por favor reintente más tard.',
+        buttons: [{
+          text: 'OK',
+          type: 'button-orange',
+        }]
+      });
     };
 
     var isAdmin = function () {

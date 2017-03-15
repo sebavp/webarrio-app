@@ -18,7 +18,3 @@ ion-view(view-title='Avisos de Utilidad Pública' hide-back-button='true')
         small.right
           | {{a.event_date | date : 'dd/MM'}} a las {{a.start_time | date : 'HH:mm'}} HS
         h2.titulo-asamblea {{a.name}}
-        //- p
-        //-   small.left
-        //-     i.ion-calendar
-        //-     |  Finaliza el  {{a.event_date | date : 'dd/MM'}} a las {{a.final_time | date : 'HH:mm'}} HS

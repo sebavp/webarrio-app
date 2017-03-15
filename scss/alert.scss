@@ -30,10 +30,10 @@
     border-color: $white;
     background-color: $alert;
     h2{
-      font-size: 50px;
-      line-height: 90px;
+      font-size: 20px;
       margin: 0;
       padding: 0;
+      padding-top: 25px;
     }
     .icon{
       font-size: 55px;
@@ -45,6 +45,23 @@
       img{
         height: 80px;
       }
+    }
+  }
+}
+
+.alertavecinal-view{
+  .item{
+    .uppercased{
+      color: $black;
+      font-size: 15px;
+    }
+    input{
+      padding-left: 20px;
+      color: $orange;
+    }
+    .help{
+      padding-right: 15px;
+      font-size: 12px;
     }
   }
 }

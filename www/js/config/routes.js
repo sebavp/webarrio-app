@@ -187,6 +187,16 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
+    // reglamento
+    .state('tabs.dashboard-alerta', {
+      url: '/dashboard/alerta',
+      views: {
+        'tab_dashboard': {
+            templateUrl: 'templates/dashboard/alerta.html',
+            controller:'alertaController'
+        }
+      }
+    })
     // AGENDA
     .state('tabs.agenda', {
       url: '/agenda/',
@@ -375,6 +385,7 @@ angular.module('WeBarrio.routes', [])
         }
       }
     })
+
     .state('comunidad-carp-detail', {
       url: '/comunidad/carp-detail/:event_id',
       templateUrl: 'templates/comunidad/carp-detail.html',
