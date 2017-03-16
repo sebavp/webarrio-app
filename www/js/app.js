@@ -26,7 +26,7 @@ angular.module('WeBarrio', [
 .run(function($ionicPlatform, Auth, $state, $rootScope, $timeout) {
 
   $rootScope.$on('$stateChangeStart', function(event, toState) {
-    if (toState.name !== 'tyc') {
+    if (toState.name !== 'tyc' && toState.name !== 'forgot') {
       if (Auth.isSession() == false){
         $timeout(function() {
           $state.go('login');

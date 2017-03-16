@@ -93,6 +93,17 @@ angular.module('WeBarrio.services', [])
         });
         return deferred.promise;
       },
+      updatePhone: function(condoId, phone, label){
+        deferred = $q.defer();
+        $http({
+          method: 'POST',
+          url: CONFIG.apiURL + '/condo/' + condoId + '/phone/' + label,
+          data: phone 
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise
+      }
     };
     return service;
 });

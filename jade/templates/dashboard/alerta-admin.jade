@@ -1,0 +1,37 @@
+ion-view(view-title='Alerta Vecinal' hide-back-button='true')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-content.alertavecinal-view
+    .list.muted
+      .item.item-input
+        span.uppercased Ambulancia
+        input(type="tel" ng-model="alertNumbers.ambulance" ng-class="{'editing': editingNumber == 'ambulance'}" ng-disabled="editingNumber != 'ambulance'")
+        span.help(ng-click="editNumber('ambulance')" ng-show="editingNumber != 'ambulance'")
+          | Editar
+        span.help(ng-click="editNumber(false); updatePhone('ambulance')" ng-show="editingNumber == 'ambulance'")
+          | Guardar
+
+      .item.item-input
+        span.uppercased Bomberos
+        input(type="tel" ng-model="alertNumbers.fireman" ng-class="{'editing': editingNumber == 'fireman'}" ng-disabled="editingNumber != 'fireman'")
+        span.help(ng-click="editNumber('fireman')" ng-show="editingNumber != 'fireman'")
+          | Editar
+        span.help(ng-click="editNumber(false); updatePhone('fireman')" ng-show="editingNumber == 'fireman'")
+          | Guardar
+
+      .item.item-input
+        span.uppercased Carabineros
+        input(type="tel" ng-model="alertNumbers.police" ng-class="{'editing': editingNumber == 'police'}" ng-disabled="editingNumber != 'police'")
+        span.help(ng-click="editNumber('police')" ng-show="editingNumber != 'police'")
+          | Editar
+        span.help(ng-click="editNumber(false); updatePhone('police')" ng-show="editingNumber == 'police'")
+          | Guardar
+
+      .item.item-input
+        span.uppercased Seguridad Ciudadana
+        input(type="tel" ng-model="alertNumbers.security" ng-class="{'editing': editingNumber == 'security'}" ng-disabled="editingNumber != 'security'")
+        span.help(ng-click="editNumber('security')" ng-show="editingNumber != 'security'")
+          | Editar
+        span.help(ng-click="editNumber(false); updatePhone('security')" ng-show="editingNumber == 'security'")
+          | Guardar

@@ -8,25 +8,25 @@ ion-view(view-title='SOS' hide-back-button='true')
         img.sos(src='img/icons/sos.svg')
       h2  ALERTA VECINAL
       p Usar con responsabilidad y respeto a sus vecinos
-    a(href='tel:131')
+    a(ng-href='tel:{{alertNumbers.ambulance}}')
       .alert-row.row
         .col
           h2 AMBULANCIA
         .col
           img.sos-small(src='img/icons/sos-cross.svg')
-    a(href='tel:132')
+    a(ng-href='tel:{{alertNumbers.fireman}}')
       .alert-row.row
         .col
           h2 BOMBEROS
         .col
           img.sos-small(src='img/icons/sos-fire.svg')
-    a(href='tel:133')
+    a(ng-href='tel:{{alertNumbers.police}}')
       .alert-row.row
         .col
           h2 CARABINEROS
         .col
           img.sos-small(src='img/icons/sos-cop.svg')
-    a(href='tel:133')
+    a(ng-href='tel:{{alertNumbers.security}}' ng-if="alertNumbers.security")
       .alert-row.row
         .col
           h2 SEGURIDAD CIUDADANA

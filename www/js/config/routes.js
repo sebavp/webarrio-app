@@ -14,11 +14,11 @@ angular.module('WeBarrio.routes', [])
     })
 
     // REGISTER
-    .state('register', {
-      url: '/register',
-      templateUrl: 'templates/register/register.html',
-      controller:'registerController'
-    })
+    // .state('register', {
+    //   url: '/register',
+    //   templateUrl: 'templates/register/register.html',
+    //   controller:'registerController'
+    // })
 
     //TyC
     .state('tyc', {
@@ -192,7 +192,7 @@ angular.module('WeBarrio.routes', [])
       url: '/dashboard/alerta',
       views: {
         'tab_dashboard': {
-            templateUrl: 'templates/dashboard/alerta.html',
+            templateUrl: 'templates/dashboard/alerta-admin.html',
             controller:'alertaController'
         }
       }

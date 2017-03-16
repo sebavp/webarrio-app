@@ -10530,6 +10530,9 @@ input.bbottom {
 .alertavecinal-view .item input {
   padding-left: 20px;
   color: #f76913; }
+  .alertavecinal-view .item input.editing {
+    border: 1px dotted #000;
+    margin: 0 10px; }
 
 .alertavecinal-view .item .help {
   padding-right: 15px;

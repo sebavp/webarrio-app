@@ -58,6 +58,10 @@
     input{
       padding-left: 20px;
       color: $orange;
+      &.editing{
+        border: 1px dotted $black;
+        margin: 0 10px;
+      }
     }
     .help{
       padding-right: 15px;
