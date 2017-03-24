@@ -204,9 +204,8 @@
 .reglamento-view{
   iframe{
     min-height: 450px;
-    min-width: 300px;
+    min-width: 85%;
     @media(min-width: 450px){
-
       margin: 50px;
     }
   }

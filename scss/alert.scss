@@ -9,6 +9,12 @@
     font-family: 'work_sansmedium';
     color: $white;
   }
+  a{
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
   .title-alert{
     height: 200px;
     border-bottom: 2px solid $white;
@@ -44,6 +50,11 @@
       padding: 0;
       img{
         height: 80px;
+      }
+    }
+    &.seguridad{
+      img{
+        padding: 12px;
       }
     }
   }

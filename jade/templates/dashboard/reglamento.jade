@@ -7,4 +7,4 @@ ion-view(title='Reglamento')
       iframe( ng-src="{{pdfUrl}}" ng-if="supportsPDFs")
       .list
         .item
-          a.padding(ng-href="{{pdfUrl}}" ng-if="!supportsPDFs" target="_blank") VER REGLAMENTO
+          a.padding(ng-click="goToPdf()" ng-if="!supportsPDFs" target="_blank") VER REGLAMENTO

@@ -4,7 +4,7 @@
     .module('WeBarrio.controllers')
     .controller('dashboardController', dashboardController);
 
-  function dashboardController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage) {
+  function dashboardController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, $sce, $window) {
     var currentDepto =  $localStorage.currentDepto;
     var currentUser =  $localStorage.currentUser;
 
@@ -15,7 +15,6 @@
     $scope.goBack = function (){
       $state.go("tabs.home");
     };
-
 
     $scope.$on("$ionicView.beforeEnter", function () {
       var supportsPdfMimeType = typeof navigator.mimeTypes["application/pdf"] !== "undefined";
@@ -47,8 +46,12 @@
         });
       }
       $scope.today = new Date();
-      $scope.pdfUrl = $scope.currentCondo.reglamento_url;
+      $scope.pdfUrl = $sce.trustAsResourceUrl($scope.currentCondo.reglamento_url);
       
+      $scope.goToPdf = function () {
+        $window.open($sce.trustAsResourceUrl($scope.currentCondo.reglamento_url), '_system');
+      }
+
     });
   }
 }).call(this);
