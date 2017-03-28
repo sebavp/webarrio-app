@@ -19,12 +19,11 @@
         
         $scope.editNumber = function (value) {
             $scope.editingNumber = value;
-        }
+        };
 
         $scope.$on('$ionicView.beforeEnter', function () {
             var currentCondo = $localStorage.currentCondo;
             $scope.editingNumber = false;
-            console.log(currentCondo)
             $scope.alertNumbers = {
                 police: currentCondo.phone_police || 133, 
                 fireman: currentCondo.phone_fireman || 132,

@@ -14,11 +14,12 @@ ion-view(view-title='Asambleas' hide-back-button='true')
         p
           small
             | No se registran asambleas anteriores
-      a.item(ui-sref='dashboard-asambleas-detail({event_id: a.id})' ng-repeat="a in asambleas | orderBy: 'event_date'")
+      a.item(ui-sref='dashboard-asambleas-detail({event_id: a.id})' ng-repeat="a in asambleas | orderBy: 'event_date' :true")
         small.right
           ng-pluralize(count="a.assistants_number" when="{'0': 'Sin Votos', '1': '1 Voto', 'other': '{} Votos'  }")
         h2.titulo-asamblea {{a.name}}
         p
           small.left
             i.ion-calendar
-            |  Finaliza el  {{a.event_date | date : 'dd/MM'}} a las {{a.final_time | date : 'HH:mm'}} HS
+              span(ng-hide="a.past_event")  Finaliza el  {{a.event_date | date : 'dd/MM'}} a las {{a.final_time | date : 'HH:mm'}} HS
+              span(ng-show="a.past_event")  FINALIZADO

@@ -50,7 +50,7 @@
       
       $scope.goToPdf = function () {
         $window.open($sce.trustAsResourceUrl($scope.currentCondo.reglamento_url), '_system');
-      }
+      };
 
     });
   }

@@ -3,7 +3,7 @@ ion-view(view-title="Detalle Asamblea" hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
-    img.full(ng-src="{{currentAsamblea.img_original_url}}" err-src='img/avatar-blank.png')
+    img.full(ng-src="{{currentAsamblea.img_original_url}}" err-src='img/avatar-blank.png' style="max-height:400px;")
     .list(ng-show="!currentAsamblea")
       .item.text-center
         ion-spinner(icon="dots")
@@ -14,7 +14,7 @@ ion-view(view-title="Detalle Asamblea" hide-back-button='true')
         p.desc
           small {{currentAsamblea.details}}
 
-        .row(ng-show="currentAsamblea.userVoted")
+        .row(ng-show="currentAsamblea.userVoted || currentAsamblea.past_event")
           .col
             p.votes.text-center
               img(src="img/icons/up-or.svg")
@@ -24,7 +24,7 @@ ion-view(view-title="Detalle Asamblea" hide-back-button='true')
               img(src="img/icons/down-gr.svg")
               span.muted NO ({{currentAsamblea.vote_details.no.length}})
 
-  ion-footer-bar.account-footer.text-center.bar-orange.asambleas-footer(ng-show="!currentAsamblea.userVoted")
+  ion-footer-bar.account-footer.text-center.bar-orange.asambleas-footer(ng-show="!currentAsamblea.userVoted && !currentAsamblea.past_event")
     .row
       .col
         button.button.button-full.pay-button(ng-click="newVote(true)")

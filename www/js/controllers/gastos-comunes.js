@@ -21,7 +21,7 @@
         $state.go('tabs.dashboard-gastos-comunes-admin');
     };
 
-    uploader.onErrorItem = function(item, response){
+    uploader.onErrorItem = function() {
       $ionicLoading.hide();
       $ionicPopup.alert({
         title: 'Creación de Gastos Comunes',

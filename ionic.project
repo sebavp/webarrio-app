@@ -1,6 +1,6 @@
 {
   "name": "WeBarrio",
-  "app_id": "25d14e16",
+  "app_id": "fb47d935",
   "gulpStartupTasks": [
     "jade",
     "sass",

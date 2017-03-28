@@ -102,7 +102,7 @@ angular.module('WeBarrio.services', [])
         }).then(function(userData) {
           deferred.resolve(userData);
         });
-        return deferred.promise
+        return deferred.promise;
       }
     };
     return service;

@@ -1,5 +1,5 @@
 angular.module('WeBarrio.services.mensajes', [])
-  .service('mensajeService', function($q, $firebaseObject, $firebaseArray, $localStorage, Auth, $ionicPopup, webNotification, CONFIG) {
+  .service('mensajeService', function($q, $firebaseObject, $firebaseArray, $localStorage, Auth, $ionicPopup, webNotification, CONFIG, $rootScope) {
     var deferred;
     var ref = firebase.database().ref();
     var service = {
@@ -45,23 +45,26 @@ angular.module('WeBarrio.services.mensajes', [])
         return u.$save();
       },
       startNotiticationListener: function() {
-        console.log("startNotiticationListener!")
-        // retrieve the last record from `ref`
         var currentUser = $localStorage.currentUser;
-        console.log(currentUser.user.id)
+
+        $rootScope.$on('cloud:push:notification', function(event, data) {
+          var msg = data.message;
+          console.log(msg);
+          // alert(msg.title + ': ' + msg.text);
+        });
         ref.child("/users/" + currentUser.user.id + "/notifications").limitToLast(1).on('child_added', function(snapshot) {
-           // all records after the last continue to invoke this function
-           console.log("child_added");
            var notification = snapshot.val();
            notification.details = notification.text + "\n Fecha: " + notification.start_at_datehour;
            notification.$id = snapshot.getKey();
-           if (notification.seen == false) {
+           if (notification.seen === false) {
             openMessageModal(notification);
-            webNotification.showNotification(notification.title, {
-              body: notification.text,
-              icon: CONFIG.notificationIcon,
-              autoClose: 4000
-            });
+            if (!ionic.Platform.isWebView()) {
+              webNotification.showNotification(notification.title, {
+                body: notification.text,
+                icon: CONFIG.notificationIcon,
+                autoClose: 4000
+              });
+            }
            }
         });
       }

@@ -5,7 +5,7 @@
         .module('WeBarrio.controllers')
         .controller('homeController', homeController);
 
-    function homeController($scope, $state, $ionicSlideBoxDelegate, $localStorage, $timeout, Auth) {
+    function homeController($scope, $state, $ionicSlideBoxDelegate, $localStorage, $timeout, Auth, $ionicPush) {
       var currentUser = $localStorage.currentUser;
 
       $scope.$on('$ionicView.beforeEnter', function(){
@@ -15,6 +15,16 @@
         $scope.allDeptos = $scope.currentCondo.departments;
         $ionicSlideBoxDelegate.$getByHandle('condoslider').update();
         $ionicSlideBoxDelegate.$getByHandle('deptoslider').update();
+
+        if (ionic.Platform.isWebView() && $localStorage.dvNotifications !== true) {
+          $ionicPush.register().then(function(t) {
+            // return $ionicPush.saveToken(t);
+              Auth.setDevice(currentUser.user.id, t).then(function(){
+                $localStorage.dvNotifications = true;
+              });
+          });
+          
+        }
 
           // if ('serviceWorker' in navigator && $localStorage.dvNotifications !== true) {
           //       navigator.serviceWorker.register('/sw.js').then(function(registration) {

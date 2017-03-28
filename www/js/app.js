@@ -2,6 +2,7 @@
 
 angular.module('WeBarrio', [
   'ionic',
+  'ionic.cloud',
   'WeBarrio.routes',
   'WeBarrio.controllers',
   'WeBarrio.directives',
@@ -37,16 +38,17 @@ angular.module('WeBarrio', [
     }
   });
 
-  $ionicPlatform.ready(function(FURL) {
+  $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
   });
 })
-.config(function($ionicConfigProvider, ionicDatePickerProvider, ionicTimePickerProvider) {
+.config(function($ionicConfigProvider, ionicDatePickerProvider, ionicTimePickerProvider, $ionicCloudProvider) {
   $ionicConfigProvider.views.transition('ios');
   $ionicConfigProvider.tabs.style('standard').position('bottom');
   $ionicConfigProvider.navBar.alignTitle('center').positionPrimaryButtons('left');
@@ -76,7 +78,23 @@ angular.module('WeBarrio', [
     closeLabel: 'Cancelar'
   });
 
-
+  $ionicCloudProvider.init({
+    "core": {
+      "app_id": "fb47d935"
+    },
+    "push": {
+      "sender_id": "94113503596",
+      "pluginConfig": {
+        "ios": {
+          "badge": true,
+          "sound": true
+        },
+        "android": {
+          "iconColor": "#343434"
+        }
+      }
+    }
+  });
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCK2M3JsJ0bCpooHJZ78bTkkA2Qix-qio0",
