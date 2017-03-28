@@ -23,7 +23,7 @@ angular.module('WeBarrio', [
   'angularFileUpload',
   'angular-web-notification'
   ])
-.run(function($ionicPlatform, Auth, $state, $rootScope, $timeout) {
+.run(function($ionicPlatform, Auth, $state, $rootScope, $timeout, mensajeService) {
 
   $rootScope.$on('$stateChangeStart', function(event, toState) {
     if (toState.name !== 'tyc' && toState.name !== 'forgot') {
@@ -31,7 +31,9 @@ angular.module('WeBarrio', [
         $timeout(function() {
           $state.go('login');
         });
-      } 
+      } else {
+        mensajeService.startNotiticationListener();
+      }
     }
   });
 

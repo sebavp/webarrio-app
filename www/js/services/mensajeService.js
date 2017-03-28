@@ -1,5 +1,5 @@
 angular.module('WeBarrio.services.mensajes', [])
-  .service('mensajeService', function($q, $firebaseObject, $firebaseArray) {
+  .service('mensajeService', function($q, $firebaseObject, $firebaseArray, $localStorage, Auth, $ionicPopup, webNotification, CONFIG) {
     var deferred;
     var ref = firebase.database().ref();
     var service = {
@@ -37,7 +37,51 @@ angular.module('WeBarrio.services.mensajes', [])
         var u = $firebaseObject(ref.child("/users/" + userId + "/chats/" + condoId + "/" + conversation.$id));
         angular.merge(u, _.pick(conversation, "chatId", "createdAt", "groupName", "personName", "lastMessage", "personId", "condoId", "condo"));
         return u.$save();
+      },
+      updateNotification: function (notificationId) {
+        var currentUser = $localStorage.currentUser;
+        var u = $firebaseObject(ref.child("/users/" + currentUser.user.id + "/notifications/" + notificationId));
+        u.seen = true;
+        return u.$save();
+      },
+      startNotiticationListener: function() {
+        console.log("startNotiticationListener!")
+        // retrieve the last record from `ref`
+        var currentUser = $localStorage.currentUser;
+        console.log(currentUser.user.id)
+        ref.child("/users/" + currentUser.user.id + "/notifications").limitToLast(1).on('child_added', function(snapshot) {
+           // all records after the last continue to invoke this function
+           console.log("child_added");
+           var notification = snapshot.val();
+           notification.details = notification.text + "\n Fecha: " + notification.start_at_datehour;
+           notification.$id = snapshot.getKey();
+           if (notification.seen == false) {
+            openMessageModal(notification);
+            webNotification.showNotification(notification.title, {
+              body: notification.text,
+              icon: CONFIG.notificationIcon,
+              autoClose: 4000
+            });
+           }
+        });
       }
+
+    };
+    var openMessageModal = function(aviso) {
+      var av = aviso || {};
+        var alertPopup = $ionicPopup.alert({
+         cssClass: "avisoAlert",
+         title: av.title || "Aviso",
+         template: av.details || "Este es un Aviso",
+         okText: "X"
+       });
+
+       alertPopup.then(function() {
+          Auth.updateNotification(aviso.id).then(function(response){
+            console.log(response);
+           service.updateNotification(aviso.$id);
+          });
+       });
     };
     return service;
 });
