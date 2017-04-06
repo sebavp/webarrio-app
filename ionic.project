@@ -17,7 +17,7 @@
     },
     {
       "path": "/api",
-      "proxyUrl": "http://admin.webarrio.cl/api"
+      "proxyUrl": "https://admin.webarrio.cl/api"
     }
   ]
 }
