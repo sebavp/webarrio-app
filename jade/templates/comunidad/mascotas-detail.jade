@@ -9,7 +9,7 @@ ion-view(view-title='Detalle Mascotas' hide-back-button='true')
         small.muted {{currentMascota.created_at | date : "dd MMMM"}}
         h2 {{currentMascota.title}}
         .avatar
-          img(src='img/blank.png')
+          img(ng-src="{{currentMascota.user_img_thumb_url || '/img/blank.png'}}" err-src='/img/blank.png')
           span {{currentMascota.user_name}}
         p {{currentMascota.description}}
   ion-footer-bar.bar-orange.account-footer

@@ -28,7 +28,7 @@
 
     $scope.goToConversation = function(person, fromConversation){
       if (fromConversation) {
-        if (person.isGroup) {
+        if (person.groupName) {
           $state.go('chat-group-conversation', {chatId: person.chatId, groupName: person.groupName});
         } else {
           $state.go('chat-conversation', {chatId: person.chatId, personId: person.chatId.split("A")[1], deptoNumber: person.deptoNumber});
@@ -87,13 +87,14 @@
 
     var loadChats = function(fromConversation){
       mensajeService.getMessages($scope.currentUser.user.id, $scope.currentCondo.id).then(function (response) {
-          $scope.conversations = response;
-          if (!fromConversation) {
-            getAllPeople();
-          }
-          if ($state.current.name == "chat-group-conversation") {
-            loadGroupMessages();
-          }
+        console.log(response)
+        $scope.conversations = response;
+        if (!fromConversation) {
+          getAllPeople();
+        }
+        if ($state.current.name == "chat-group-conversation") {
+          loadGroupMessages();
+        }
       });
     };
 
@@ -265,6 +266,14 @@
             console.log(error);
         });
     };
+
+    $scope.getConversationImg = function (conversation) {
+      return conversation.groupName ? 'img/group-icon.jpg' : 'img/avatar-blank.png'; 
+    }
+
+    $scope.getRandomColor = function (userId) {
+      return {'color': '#'+ (userId*70).toString(16)}
+    }
 
   }
 }).call(this);

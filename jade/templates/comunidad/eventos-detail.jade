@@ -17,7 +17,7 @@ ion-view(view-title='Detalle Evento' hide-back-button='true')
           {{maybe_assistants.length}} tal vez
         h2 {{currentEvent.name}}
         .avatar
-          img(src='img/blank.png')
+          img(ng-src="{{currentEvent.user_img_thumb_url || '/img/blank.png'}}" err-src='/img/blank.png')
           span {{currentEvent.user_name}}
         p {{currentEvent.details}}
   ion-footer-bar.account-footer(ng-class="{'bar-orange': !currentUserAssistent, 'bar-assertive': currentUserAssistent}")

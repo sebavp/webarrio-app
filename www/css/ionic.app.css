@@ -10291,6 +10291,10 @@ input.bbottom {
     bottom: 2px;
     color: gray; }
 
+.message-user {
+  margin-left: 5px;
+  margin-top: 3px; }
+
 .footer-chat .item-input-wrapper {
   background-color: #fff; }
 

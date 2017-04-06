@@ -15,7 +15,7 @@ ion-view(view-title='Mensajes' hide-back-button='true')
       .item(ng-show="!people").text-center
         ion-spinner(icon="dots")
       a.item.item-avatar(ng-repeat="p in people | orderBy: 'name' " ng-click="goToConversation(p)")
-        img(ng-src="{{p.avatar_url ? p.avatar_url : 'img/avatar-thumb.png'}}")
+        img(ng-src="{{p.image_thumb_url || 'img/avatar-thumb.png'}}" err-src="img/avatar-blank.png")
         h2 {{p.name}}
         p Departamento {{p.depto_number}}
         span.arrow
@@ -27,7 +27,7 @@ ion-view(view-title='Mensajes' hide-back-button='true')
         p.text-center
           | No tienes conversaciones
       a.item.item-avatar(ng-repeat="c in conversations | orderBy: '-createdAt' " ng-click="goToConversation(c, true)")
-        img(ng-src="{{p.avatar_url ? p.avatar_url : 'img/avatar-thumb.png'}}")
+        img(ng-src="{{getConversationImg(c)}}" err-src="img/avatar-blank.png")
         h2 {{c.personName || c.groupName}}
         p {{c.lastMessage}}
         span.arrow

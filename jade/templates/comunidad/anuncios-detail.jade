@@ -9,7 +9,7 @@ ion-view(view-title='Detalle Anuncio' hide-back-button='true')
         small.muted {{currentAnuncio.created_at | date: "dd MMM"}}
         h2 {{currentAnuncio.title}}
         .avatar
-          img(src='/img/blank.png')
+          img(ng-src="{{currentAnuncio.user_img_thumb_url || '/img/blank.png'}}" err-src='/img/blank.png')
           span {{currentAnuncio.user_name}}
         p {{currentAnuncio.description}}
   ion-footer-bar.bar-orange.account-footer

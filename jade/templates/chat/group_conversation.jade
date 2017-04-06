@@ -14,8 +14,8 @@ ion-view(cached='false')
           | Cargando
           ion-spinner(icon="dots")
       .message-wrapper(ng-repeat='message in messages' ng-show="!loading")
-        .message(ng-class="message.personId === currentUser.id ? 'message-mine' : 'message-other'")
-          .message-user {{message.personName}}
+        .message(ng-class="message.personId === currentUser.user.id ? 'message-mine' : 'message-other'")
+          .message-user(ng-style="getRandomColor(message.personId)") {{message.personName}}
           .message-text {{message.text}}
           span.message-timestamp {{message.sentAt | date: 'HH:mm'}}
       .message-wrapper(ng-if='messages.length == 0')

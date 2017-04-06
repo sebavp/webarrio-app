@@ -9,7 +9,7 @@ ion-view(view-title='Detalle Clasificado' hide-back-button='true')
         small.muted {{currentClasificado.created_at | date: "dd MMM"}}
         h2 {{currentClasificado.title}}
         .avatar
-          img(src='img/blank.png')
+          img(ng-src="{{currentClasificado.user_img_thumb_url || '/img/blank.png'}}" err-src='/img/blank.png')
           span {{currentClasificado.user_name}}
         p {{currentClasificado.description}}
   ion-footer-bar.bar-orange.account-footer
