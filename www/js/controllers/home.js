@@ -17,17 +17,17 @@
         $ionicSlideBoxDelegate.$getByHandle('deptoslider').update();
         console.log("isWebView", ionic.Platform.isWebView())
         if (ionic.Platform.isWebView() && $localStorage.dvNotifications !== true) {
-          alert("register!!!")
+          // alert("register!!!")
           $ionicPush.register().then(function(t) {
             console.log("registered")
             
               Auth.setDevice(currentUser.user.id, t).then(function(){
                 $localStorage.dvNotifications = true;
-                alert("register success")
+                // alert("register success")
                 return $ionicPush.saveToken(t, {ignore_user: true});
               }).then( function( response) {
                 console.log(response)
-                alert("register success ionic")
+                // alert("register success ionic")
               });
           }, function (error) {
             alert("register error")
