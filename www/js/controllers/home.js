@@ -15,13 +15,23 @@
         $scope.allDeptos = $scope.currentCondo.departments;
         $ionicSlideBoxDelegate.$getByHandle('condoslider').update();
         $ionicSlideBoxDelegate.$getByHandle('deptoslider').update();
-
+        console.log("isWebView", ionic.Platform.isWebView())
         if (ionic.Platform.isWebView() && $localStorage.dvNotifications !== true) {
+          alert("register!!!")
           $ionicPush.register().then(function(t) {
-            // return $ionicPush.saveToken(t);
+            console.log("registered")
+            
               Auth.setDevice(currentUser.user.id, t).then(function(){
                 $localStorage.dvNotifications = true;
+                alert("register success")
+                return $ionicPush.saveToken(t, {ignore_user: true});
+              }).then( function( response) {
+                console.log(response)
+                alert("register success ionic")
               });
+          }, function (error) {
+            alert("register error")
+            console.log(error)
           });
           
         }

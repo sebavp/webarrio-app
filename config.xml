@@ -4,11 +4,13 @@
     <description>
         App para Condominios
     </description>
-    <author email="info@webarrio.cl" href="http://webarrio.cl/">
+    <author email="info@webarrio.cl" href="http://www.webarrio.cl/">
       Sebástián Schuchhardt
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-intent href="*" />
+    <allow-navigation href="*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />

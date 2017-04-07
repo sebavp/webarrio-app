@@ -2,6 +2,22 @@ angular.module('WeBarrio.services.mensajes', [])
   .service('mensajeService', function($q, $firebaseObject, $firebaseArray, $localStorage, Auth, $ionicPopup, webNotification, CONFIG, $rootScope) {
     var deferred;
     var ref = firebase.database().ref();
+    var openMessageModal = function(aviso) {
+      var av = aviso || {};
+        var alertPopup = $ionicPopup.alert({
+         cssClass: "avisoAlert",
+         title: av.title || "Aviso",
+         template: av.details || "Este es un Aviso",
+         okText: "X"
+       });
+
+       alertPopup.then(function() {
+          Auth.updateNotification(aviso.id).then(function(response){
+            console.log(response);
+           service.updateNotification(aviso.$id);
+          });
+       });
+    };
     var service = {
       getMessage: function (message_id, page) {
         page = page || 1;
@@ -50,8 +66,9 @@ angular.module('WeBarrio.services.mensajes', [])
         $rootScope.$on('cloud:push:notification', function(event, data) {
           var msg = data.message;
           console.log(msg);
-          // alert(msg.title + ': ' + msg.text);
+          alert(msg.title + ': ' + msg.text);
         });
+
         ref.child("/users/" + currentUser.user.id + "/notifications").limitToLast(1).on('child_added', function(snapshot) {
            var notification = snapshot.val();
            notification.details = notification.text + "\n Fecha: " + notification.start_at_datehour;
@@ -70,21 +87,6 @@ angular.module('WeBarrio.services.mensajes', [])
       }
 
     };
-    var openMessageModal = function(aviso) {
-      var av = aviso || {};
-        var alertPopup = $ionicPopup.alert({
-         cssClass: "avisoAlert",
-         title: av.title || "Aviso",
-         template: av.details || "Este es un Aviso",
-         okText: "X"
-       });
 
-       alertPopup.then(function() {
-          Auth.updateNotification(aviso.id).then(function(response){
-            console.log(response);
-           service.updateNotification(aviso.$id);
-          });
-       });
-    };
     return service;
 });

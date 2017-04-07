@@ -25,7 +25,6 @@ angular.module('WeBarrio', [
   'angular-web-notification'
   ])
 .run(function($ionicPlatform, Auth, $state, $rootScope, $timeout, mensajeService) {
-
   $rootScope.$on('$stateChangeStart', function(event, toState) {
     if (toState.name !== 'tyc' && toState.name !== 'forgot') {
       if (Auth.isSession() == false){
@@ -47,6 +46,7 @@ angular.module('WeBarrio', [
     }
 
   });
+
 })
 .config(function($ionicConfigProvider, ionicDatePickerProvider, ionicTimePickerProvider, $ionicCloudProvider) {
   $ionicConfigProvider.views.transition('ios');
