@@ -1,6 +1,9 @@
 ion-view(view-title='Notificaciones' hide-back-button='true')
   ion-content.padding-top
     .list
-      .item
+      .item(ng-if="notifications.length == 0")
         p.text-center
           | No tienes notificaciones
+      .item(ng-repeat="n in notifications")
+        p.text-center
+          | {{n.titles}} - {{n.text}}

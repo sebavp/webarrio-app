@@ -1,12 +1,13 @@
-ion-view(view-title='Nuevo Grupo' hide-back-button='true')
-  ion-nav-bar
-    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+ion-view(cache="false")
+  ion-nav-buttons(side='left')
+    button.back-button.button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
+  ion-nav-title  {{chatTitle || 'Grupo'}} 
   ion-content.padding-top.group-view
     .list.nb
       .item.item.item-avatar
         img(src='img/new.svg')
-        input.bbottom(type='text' placeholder="Nombre del Grupo" ng-model="$parent.newGroupName")
+        input.bbottom(type='text' placeholder="Nombre del Grupo" ng-model="$parent.currentGroup.groupName")
     .row(ng-if="selectedPeople.length == 0")
       p Escoja para agregar al grupo
     .item(ng-show="!people").text-center
@@ -22,11 +23,11 @@ ion-view(view-title='Nuevo Grupo' hide-back-button='true')
           h2 {{p.name}}
     .list
       a.item.item-avatar(ng-repeat="p in people | orderBy: 'name' | filter: search" ng-click="selectToGroup(p)")
-        img(ng-src="{{p.image_thumb_url || 'img/avatar-thumb.png'}}" err-src="img/avatar-blank.png")
+        img(ng-src="{{p.avatar_url ? p.avatar_url : 'img/blank.png'}}")
         h2 {{p.name}}
         p Departamento {{p.depto_number}}
         span.toggle-icon
           i.icon(ng-class="{'ion-ios-checkmark-outline': !p.selected, 'ion-ios-checkmark': p.selected }")
   ion-footer-bar.bar-orange.account-footer
-    button.button.button-full.pay-button(ng-disabled="newGroupName.length == 0 || selectedPeople.length == 0" ng-click="createGroup(newGroupName, selectedPeople)")
-      |  Crear Grupo
+    button.button.button-full.pay-button(ng-disabled="currentGroup.groupName.length == 0 || selectedPeople.length == 0" ng-click="updateGroup(currentGroup, selectedPeople)")
+      |  Actualizar Grupo

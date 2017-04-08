@@ -3,16 +3,18 @@
   angular
     .module('WeBarrio.controllers')
     .controller('sideMenuController', sideMenuController);
-  function sideMenuController($scope, $state, $log, $localStorage, $ionicHistory, dataAPIService, FileUploader, CONFIG, Auth, $ionicLoading) {
-	  
-    $scope.currentUser = $localStorage.currentUser.user;
+  function sideMenuController($scope, $state, $log, $localStorage, $ionicHistory, dataAPIService, FileUploader, CONFIG, Auth, $ionicLoading, $stateParams) {
     
     $scope.toDate = new Date();
     $scope.fromDate = new Date(100);
 
     $scope.goBack = function (){
       if (_.isNull($ionicHistory.viewHistory().backView)) {
-        $state.go("tabs.home");
+        if ($scope.isProfile) {
+          $state.go("tabs.home");
+        } else {
+          $state.go('chat-conversation', {chatId: $stateParams.chatId, personId: $stateParams.personId, deptoNumber: $stateParams.deptoNumber});
+        }
       } else {
         $ionicHistory.goBack();
       }
@@ -34,6 +36,13 @@
     var loadCurrentUser = function (){
       dataAPIService.getUser($scope.currentUser.id).then(function(response){
         $localStorage.currentUser.user = response.data.user;
+        $scope.currentUser = response.data.user;
+      });
+    };
+
+    var loadProfile = function (userId){
+      dataAPIService.getUser(userId).then(function(response){
+        $scope.currentUser = response.data.user;
       });
     };
 
@@ -54,7 +63,12 @@
     };
 
     $scope.$on('$ionicView.beforeEnter', function(){
-      loadCurrentUser();
+      if ($state.current.name == "profile") {
+        loadCurrentUser();
+        $scope.isProfile = true;
+      } else {
+        loadProfile($stateParams.personId);
+      }
     });
   }
 }).call(this);

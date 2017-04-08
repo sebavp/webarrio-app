@@ -7,47 +7,24 @@
 
   function chatController($scope, $state, $localStorage, $ionicHistory, dataAPIService, mensajeService, $stateParams, $ionicLoading, $timeout) {
 
-    $scope.currentCondo = $localStorage.currentCondo;
-    $scope.currentDepto = $localStorage.currentDepto;
-    $scope.currentUser = $localStorage.currentUser;
-
-    $scope.loading = true;
     var page = 1;
 
     var getAllPeople = function (){
       dataAPIService.getPeopleFromCondo($scope.currentCondo.id).then(function (response){
         $scope.people = _.without(response.data.people, _.findWhere(response.data.people, {id: $scope.currentUser.user.id}));
+        if ($state.current.name == "chat-group") {
+          $scope.selectedPeople = [];
+          _.forEach($scope.people, function(person){
+            if (_.contains(_.pluck($scope.currentGroup.users, 'id'), person.id)) {
+              person.selected = true;
+              $scope.selectedPeople.push(person);
+            }
+          });
+        }
       });
     };
 
-    $scope.activeTab = 2;
-
-    $scope.selectTab = function(active){
-      $scope.activeTab = active;
-    };
-
-    $scope.goToConversation = function(person, fromConversation){
-      if (fromConversation) {
-        if (person.groupName) {
-          $state.go('chat-group-conversation', {chatId: person.chatId, groupName: person.groupName});
-        } else {
-          $state.go('chat-conversation', {chatId: person.chatId, personId: person.chatId.split("A")[1], deptoNumber: person.deptoNumber});
-        }
-      } else {
-        var chatId = _.min([$scope.currentUser.user.id, person.id]) + "A" + _.max([$scope.currentUser.user.id, person.id]);
-        $state.go('chat-conversation', {chatId: chatId, personId: person.id, deptoNumber: person.depto_number});
-      }
-    };
-
-    $scope.goBack = function (){
-      if (_.isNull($ionicHistory.viewHistory().backView)) {
-        $state.go("tabs.chat");
-      } else {
-        $ionicHistory.goBack();
-      }
-    };
-
-    var loadUser = function(){
+   var loadUser = function(){
       dataAPIService.getUser($stateParams.personId).then(function (userResponse) {
           $scope.user = userResponse.data.user;
           $scope.chatTitle = $scope.user.name;
@@ -70,7 +47,7 @@
     var loadGroup = function(){
       mensajeService.getGroup($stateParams.chatId).then(function (response) {
           $scope.currentGroup = response;
-          console.log(response);
+          $scope.selectedPeople = [];
           loadChats();
       });
     };
@@ -87,7 +64,6 @@
 
     var loadChats = function(fromConversation){
       mensajeService.getMessages($scope.currentUser.user.id, $scope.currentCondo.id).then(function (response) {
-        console.log(response)
         $scope.conversations = response;
         if (!fromConversation) {
           getAllPeople();
@@ -104,6 +80,7 @@
         chatId: $stateParams.chatId,
         personId: $stateParams.personId,
         personName: $scope.user.name,
+        personPhoto: $scope.user.image_url,
         deptoNumber: $stateParams.deptoNumber,
         createdAt: Date.now(),
         condoId: $scope.currentCondo.id,
@@ -123,14 +100,74 @@
       var currentConversation = _.findWhere($scope.conversations, {chatId: $stateParams.chatId});
       currentConversation.lastMessage = lastMessage;
       currentConversation.personId = $stateParams.personId;
+      currentConversation.personPhoto = $scope.user.image_url;
       mensajeService.updateConversation($scope.currentUser.user.id, $scope.currentCondo.id, currentConversation).then(function(){
         var otherConversation = angular.copy(currentConversation);
         otherConversation.deptoNumber = $scope.currentDepto.number;
         otherConversation.personName = $scope.currentUser.user.name;
+        otherConversation.personPhoto = $scope.currentUser.user.image_url;
         mensajeService.updateConversation($stateParams.personId,$scope.currentCondo.id,  otherConversation).then(function(){
           console.log("both updated");
         });
       });
+    };
+
+    var saveGroupToUser = function(userId, groupInfo){
+      console.log("saving", userId);
+      mensajeService.saveConversation(userId, $scope.currentCondo.id, groupInfo).then(function(){
+        console.log("updated group to ", userId);
+      });
+    };
+
+    var updateLastMessageGroup = function(userId, lastMessage){
+      console.log("saving", userId);
+      var currentConversation = _.findWhere($scope.conversations, {chatId: $stateParams.chatId});
+      currentConversation.lastMessage = lastMessage;
+      currentConversation.groupName = $stateParams.groupName;
+      currentConversation.isGroup = true;
+      mensajeService.updateGroupConversation(userId, $scope.currentCondo.id, currentConversation).then(function(){
+        console.log("updated", userId);
+      });
+    };
+
+    $scope.currentCondo = $localStorage.currentCondo;
+    $scope.currentDepto = $localStorage.currentDepto;
+    $scope.currentUser = $localStorage.currentUser;
+    $scope.selectedPeople = [];
+    $scope.loading = true;
+
+    $scope.activeTab = 2;
+
+    $scope.selectTab = function(active){
+      $scope.activeTab = active;
+    };
+
+    $scope.goToConversation = function(person, fromConversation){
+      if (fromConversation) {
+        if (person.groupName) {
+          $state.go('chat-group-conversation', {chatId: person.chatId, groupName: person.groupName});
+        } else {
+          $state.go('chat-conversation', {chatId: person.chatId, personId: person.chatId.split("A")[1], deptoNumber: person.deptoNumber});
+        }
+      } else {
+        var chatId = _.min([$scope.currentUser.user.id, person.id]) + "A" + _.max([$scope.currentUser.user.id, person.id]);
+        $state.go('chat-conversation', {chatId: chatId, personId: person.id, deptoNumber: person.depto_number});
+      }
+    };
+
+    $scope.updateGroup = function(currentGroup, selectedPeople){
+      currentGroup.users = selectedPeople;
+      mensajeService.updateGroup($stateParams.chatId, currentGroup).then(function () {
+        $state.go('chat-group-conversation', {chatId: $stateParams.chatId, groupName: $stateParams.groupName});
+      });
+    };
+
+    $scope.goBack = function (){
+      if (_.isNull($ionicHistory.viewHistory().backView)) {
+        $state.go("tabs.chat");
+      } else {
+        $ionicHistory.goBack();
+      }
     };
 
     $scope.loadPastMessages = function () {
@@ -142,21 +179,6 @@
       }
     };
 
-    $scope.$on("$ionicView.beforeEnter", function(){
-      if ($state.current.name == "chat-conversation" || $state.current.name == "chat-group-conversation" ) {
-        if ($state.current.name == "chat-group-conversation") {
-          $scope.chatTitle = $stateParams.groupName;
-          loadGroup();
-        } else{
-          loadChat();
-        }
-      } else {
-        loadChats();
-        $scope.selectedPeople = [];
-        $scope.newGroupName = '';
-      }
-    });
-
     $scope.selectToGroup = function (p) {
       if (p.selected) {
         p.selected = false;
@@ -165,13 +187,6 @@
         p.selected = true;
         $scope.selectedPeople.push(p);
       }
-    };
-
-    var saveGroupToUser = function(userId, groupInfo){
-      console.log("saving", userId);
-      mensajeService.saveConversation(userId, $scope.currentCondo.id, groupInfo).then(function(){
-        console.log("updated group to ", userId);
-      });
     };
 
     $scope.createGroup = function (groupName, groupPeople) {
@@ -206,17 +221,6 @@
           });
 
         });
-    };
-
-    var updateLastMessageGroup = function(userId, lastMessage){
-      console.log("saving", userId);
-      var currentConversation = _.findWhere($scope.conversations, {chatId: $stateParams.chatId});
-      currentConversation.lastMessage = lastMessage;
-      currentConversation.groupName = $stateParams.groupName;
-      currentConversation.isGroup = true;
-      mensajeService.updateGroupConversation(userId, $scope.currentCondo.id, currentConversation).then(function(){
-        console.log("updated", userId);
-      });
     };
 
     $scope.sendMessageToGroup = function(){
@@ -267,13 +271,45 @@
         });
     };
 
+    $scope.goToProfile = function () {
+      $state.go("public_profile", {personId: $scope.user.id, deptoNumber: $stateParams.deptoNumber, chatId: $stateParams.chatId});
+    };
+
+    $scope.goToGroup = function () {
+      $state.go("chat-group", {groupName: $stateParams.groupName, chatId: $stateParams.chatId});
+    };
+
     $scope.getConversationImg = function (conversation) {
-      return conversation.groupName ? 'img/group-icon.jpg' : 'img/avatar-blank.png'; 
-    }
+      if (conversation) {
+        return conversation.groupName ? 'img/group-icon.jpg' : conversation.personPhoto; 
+      } else {
+        return 'img/avatar-thumb.png';
+      }
+    };
 
     $scope.getRandomColor = function (userId) {
-      return {'color': '#'+ (userId*70).toString(16)}
-    }
+      return {'color': '#'+ (userId*70).toString(16)};
+    };
+
+    $scope.$on("$ionicView.beforeEnter", function(){
+      switch ($state.current.name){
+        case "tabs.chat":
+          loadChats();
+          break;
+        case 'chat-conversation':
+          loadChat();
+          break;
+        case 'chat-new-message':
+        case 'chat-new-group':
+          getAllPeople();
+          break;
+        case 'chat-group':
+        case 'chat-group-conversation':
+          $scope.chatTitle = $stateParams.groupName;
+          loadGroup();
+          break;
+      }
+    });
 
   }
 }).call(this);

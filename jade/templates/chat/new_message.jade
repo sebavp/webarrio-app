@@ -14,6 +14,6 @@ ion-view(view-title='Nuevo Mensaje' hide-back-button='true')
       .item.text-left.button.button-full.icon-right.ion-ios-arrow-right.orange(ui-sref="chat-new-group" ng-hide="search.length > 0 || !people || people.length == 0")
         span.bold Crear Grupo
       a.item.item-avatar(ng-repeat="p in people | orderBy: 'name' | filter: search" ng-click="goToConversation(p)")
-        img(ng-src="{{p.avatar_url ? p.avatar_url : 'img/avatar-thumb.png'}}")
+        img(ng-src="{{p.image_thumb_url || 'img/avatar-thumb.png'}}" err-src="img/avatar-blank.png")
         h2 {{p.name}}
         p Departamento {{p.depto_number}}

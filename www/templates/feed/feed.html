@@ -1,1 +1,1 @@
-<ion-view view-title="Notificaciones" hide-back-button="true"><ion-content class="padding-top"><div class="list"><div class="item"><p class="text-center">No tienes notificaciones</p></div></div></ion-content></ion-view>
+<ion-view view-title="Notificaciones" hide-back-button="true"><ion-content class="padding-top"><div class="list"><div ng-if="notifications.length == 0" class="item"><p class="text-center">No tienes notificaciones</p></div><div ng-repeat="n in notifications" class="item"><p class="text-center">{{n.titles}} - {{n.text}}</p></div></div></ion-content></ion-view>

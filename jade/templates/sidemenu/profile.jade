@@ -2,8 +2,8 @@ ion-view(title='Perfil')
   ion-nav-bar
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
-    ion-nav-buttons(side="right")
-      .chat-new.button-clear.force-show(ui-sref="edit-profile")
+    ion-nav-buttons(side="right" )
+      .chat-new.button-clear.force-show(ui-sref="edit-profile" ng-if="isProfile")
         i.color-white.ion-compose
   ion-content.profile-view(has-header='true')
     .list.card

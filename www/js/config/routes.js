@@ -243,6 +243,11 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/chat/new_message.html',
       controller:'chatController'
     })
+    .state('chat-group', {
+      url: '/menu/chat/grupo/:groupName/:chatId',
+      templateUrl: 'templates/chat/group.html',
+      controller:'chatController'
+    })
     .state('chat-new-group', {
       url: '/menu/chat/nuevo_grupo',
       templateUrl: 'templates/chat/new_group.html',
@@ -255,7 +260,7 @@ angular.module('WeBarrio.routes', [])
       views: {
         'tab_feed': {
           templateUrl: 'templates/feed/feed.html',
-          controller: 'homeController'
+          controller: 'feedController'
         }
       }
     })
@@ -401,6 +406,11 @@ angular.module('WeBarrio.routes', [])
     // PERFIL
     .state('profile', {
       url: '/profile',
+      templateUrl: 'templates/sidemenu/profile.html',
+      controller:'sideMenuController'
+    })
+    .state('public_profile', {
+      url: '/public_profile/:personId/:deptoNumber/:chatId',
       templateUrl: 'templates/sidemenu/profile.html',
       controller:'sideMenuController'
     })

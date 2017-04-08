@@ -93,6 +93,16 @@ angular.module('WeBarrio.services', [])
         });
         return deferred.promise;
       },
+      getUserNotifications: function(userId, condoId) {
+        deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: CONFIG.apiURL + '/feed/' + userId + "/" + condoId
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
+      },
       updatePhone: function(condoId, phone, label){
         deferred = $q.defer();
         $http({
