@@ -5,5 +5,6 @@ angular.module('WeBarrio.config', [])
     authDomain: "webarrio-6ffa7.firebaseapp.com",
     databaseURL: "https://webarrio-6ffa7.firebaseio.com",
     storageBucket: "webarrio-6ffa7.appspot.com",
-    notificationIcon: 'img/favicons/apple-icon.png'
+    notificationIcon: 'img/favicons/apple-icon.png',
+    oneSignalAppId: "646e05c4-981f-4ee7-ac65-5188930efbc5"
   });

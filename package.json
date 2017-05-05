@@ -37,7 +37,8 @@
       "locator": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git",
       "id": "cordova-plugin-inappbrowser"
     },
-    "cordova-plugin-legacy-whitelist"
+    "cordova-plugin-legacy-whitelist",
+    "onesignal-cordova-plugin"
   ],
   "cordovaPlatforms": [
     "ios",

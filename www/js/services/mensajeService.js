@@ -70,6 +70,7 @@ angular.module('WeBarrio.services.mensajes', [])
         var currentUser = $localStorage.currentUser;
 
         $rootScope.$on('cloud:push:notification', function(event, data) {
+          console.log("LLEGA NOTIFICACION!!!");
           var msg = data.message;
           console.log(msg);
           alert(msg.title + ': ' + msg.text);

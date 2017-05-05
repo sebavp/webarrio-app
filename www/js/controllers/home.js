@@ -5,7 +5,7 @@
         .module('WeBarrio.controllers')
         .controller('homeController', homeController);
 
-    function homeController($scope, $state, $ionicSlideBoxDelegate, $localStorage, $timeout, Auth, $ionicPush) {
+    function homeController($scope, $state, $ionicSlideBoxDelegate, $localStorage, $timeout, Auth) {
       var currentUser = $localStorage.currentUser;
 
       $scope.$on('$ionicView.beforeEnter', function(){
@@ -15,45 +15,15 @@
         $scope.allDeptos = $scope.currentCondo.departments;
         $ionicSlideBoxDelegate.$getByHandle('condoslider').update();
         $ionicSlideBoxDelegate.$getByHandle('deptoslider').update();
-        if (ionic.Platform.isWebView() && $localStorage.dvNotifications !== true) {
-          // alert("register!!!")
-          $ionicPush.register().then(function(t) {
-              Auth.setDevice(currentUser.user.id, t).then(function(){
-                $localStorage.dvNotifications = true;
-                // alert("register success")
-                return $ionicPush.saveToken(t, {ignore_user: true});
-              }).then( function( response) {
-                console.log(response);
-                // alert("register success ionic")
-              });
-          }, function (error) {
-            console.log(error);
-          });
+        if (ionic.Platform.isWebView() && $localStorage.dvNotifications !== true) { 
           
+          window.plugins.OneSignal.getIds(function(ids) {
+            console.log('getIds: ' + JSON.stringify(ids));
+            Auth.setDevice(currentUser.user.id, {token: ids.userId}).then(function(){
+              $localStorage.dvNotifications = true;
+            });
+          });
         }
-
-          // if ('serviceWorker' in navigator && $localStorage.dvNotifications !== true) {
-          //       navigator.serviceWorker.register('/sw.js').then(function(registration) {
-          //         registration.pushManager.subscribe({
-          //           userVisibleOnly: true
-          //         }).then(function(s) {
-          //             var data = {
-          //               user_agent: navigator.userAgent,
-          //               endpoint: s.endpoint,
-          //               p256dh: btoa(String.fromCharCode.apply(null, new Uint8Array(s.getKey('p256dh')))).replace(/\+/g, '-').replace(/\//g, '_'),
-          //               auth: btoa(String.fromCharCode.apply(null, new Uint8Array(s.getKey('auth')))).replace(/\+/g, '-').replace(/\//g, '_')
-          //             };
-          //             Auth.setDevice(currentUser.user.id, data).then(function(){
-          //               $localStorage.dvNotifications = true;
-          //             });
-          //         }).catch(function(e) {
-          //           console.log(e);
-          //         });
-          //       }).catch(function(err) {
-          //         // registration failed :(
-          //         console.log('ServiceWorker registration failed: ', err);
-          //       });
-          //     }
       });
 
       $scope.changeCurrentCondo = function(index){

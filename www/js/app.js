@@ -2,7 +2,6 @@
 
 angular.module('WeBarrio', [
   'ionic',
-  'ionic.cloud',
   'WeBarrio.routes',
   'WeBarrio.controllers',
   'WeBarrio.directives',
@@ -24,8 +23,9 @@ angular.module('WeBarrio', [
   'angularFileUpload',
   'angular-web-notification'
   ])
-.run(function($ionicPlatform, Auth, $state, $rootScope, $timeout, mensajeService) {
+.run(function($ionicPlatform, Auth, $state, $rootScope, $timeout, mensajeService, CONFIG) {
   $rootScope.$on('$stateChangeStart', function(event, toState) {
+    console.log("currentState", toState.name);
     if (toState.name !== 'tyc' && toState.name !== 'forgot') {
       if (Auth.isSession() == false){
         $timeout(function() {
@@ -45,10 +45,28 @@ angular.module('WeBarrio', [
       StatusBar.styleDefault();
     }
 
+    // Enable to debug issues.
+    
+    var notificationOpenedCallback = function(jsonData) {
+      // alert("Notification received:\n" + JSON.stringify(jsonData));
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    };
+
+    if(window.plugins && window.plugins.OneSignal) {
+      // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+      window.plugins.OneSignal.startInit(CONFIG.oneSignalAppId)
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
+        
+      // Call syncHashedEmail anywhere in your app if you have the user's email.
+      // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
+      // window.plugins.OneSignal.syncHashedEmail(userEmail);
+
+    }
   });
 
 })
-.config(function($ionicConfigProvider, ionicDatePickerProvider, ionicTimePickerProvider, $ionicCloudProvider) {
+.config(function($ionicConfigProvider, ionicDatePickerProvider, ionicTimePickerProvider) {
   $ionicConfigProvider.views.transition('ios');
   $ionicConfigProvider.tabs.style('standard').position('bottom');
   $ionicConfigProvider.navBar.alignTitle('center').positionPrimaryButtons('left');
@@ -76,24 +94,6 @@ angular.module('WeBarrio', [
     step: 15,
     setLabel: 'Elegir',
     closeLabel: 'Cancelar'
-  });
-
-  $ionicCloudProvider.init({
-    "core": {
-      "app_id": "fb47d935"
-    },
-    "push": {
-      "sender_id": "94113503596",
-      "pluginConfig": {
-        "ios": {
-          "badge": true,
-          "sound": true
-        },
-        "android": {
-          "iconColor": "#343434"
-        }
-      }
-    }
   });
   // Initialize Firebase
   var config = {
