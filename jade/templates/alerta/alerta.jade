@@ -3,7 +3,7 @@ ion-view(view-title='SOS' hide-back-button='true')
     ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
       i.color-white.ion-chevron-left
   ion-content.padding-top.alert-view
-    .title-alert
+    .title-alert(ng-click="openVecinalAlert()")
       p.text-center
         img.sos(src='img/icons/sos.svg')
       h2  ALERTA VECINAL

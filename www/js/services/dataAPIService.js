@@ -113,6 +113,17 @@ angular.module('WeBarrio.services', [])
           deferred.resolve(userData);
         });
         return deferred.promise;
+      },
+      sendSOS: function (condoId, userId, deptoNumber) {
+        deferred = $q.defer();
+        $http({
+          method: 'POST',
+          url: CONFIG.apiURL + '/condos/' + condoId + '/sos',
+          data: {user_id: userId, depto_number: deptoNumber}
+        }).then(function(userData) {
+          deferred.resolve(userData);
+        });
+        return deferred.promise;
       }
     };
     return service;

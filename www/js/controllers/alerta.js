@@ -8,6 +8,7 @@
     function alertaController($scope, $state, $ionicHistory, $localStorage, $ionicLoading, $ionicPopup, dataAPIService) {
         
         console.info("alertaController init");
+        var currentCondo, currentUser, currentDepto;
 
         $scope.goBack = function (){
         	if (_.isNull($ionicHistory.viewHistory().backView)) {
@@ -22,7 +23,9 @@
         };
 
         $scope.$on('$ionicView.beforeEnter', function () {
-            var currentCondo = $localStorage.currentCondo;
+            currentCondo = $localStorage.currentCondo;
+            currentUser = $localStorage.currentUser;
+            currentDepto = $localStorage.currentDepto;
             $scope.editingNumber = false;
             $scope.alertNumbers = {
                 police: currentCondo.phone_police || 133, 
@@ -52,6 +55,29 @@
                 });
             });
         };
+
+        $scope.openVecinalAlert = function () {
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'Alerta Vecinal',
+                template: '¿Estas seguro de enviar alerta vecinal, esto notificara a todos los vecinos?',
+                okText: "Sí, Enviar",
+                cancelText: "Cancelar"
+            });
+
+            confirmPopup.then(function(res) {
+                if(res) {
+                    console.log('You are sure');
+                    console.log(currentUser)
+                    dataAPIService.sendSOS(currentCondo.id, currentUser.user.id, currentDepto.number).then(function () {
+                        $ionicPopup.alert({
+                            title: 'Alerta Vecinal Enviada',
+                            template: 'Tus vecinos fueron notificados',
+                            okText: "Cerrar"
+                        });
+                    });
+                }
+            });
+        }
     }
 
 
