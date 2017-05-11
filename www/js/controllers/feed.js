@@ -8,13 +8,14 @@
     function feedController($scope, dataAPIService, $localStorage) {
         
         $scope.notifications = [];
-g
+
         var currentCondo, currentUser;
 
         var loadNotifications = function(){
             dataAPIService.getUserNotifications(currentUser.user.id, currentCondo.id)
             .then(function (response) {
-                $scope.notifications = response.feed;
+                console.log(response)
+                $scope.notifications = response.data.feed;
             }, function  (error) {
                 console.log(error);
             });

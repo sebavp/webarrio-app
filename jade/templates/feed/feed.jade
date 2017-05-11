@@ -6,4 +6,4 @@ ion-view(view-title='Notificaciones' hide-back-button='true')
           | No tienes notificaciones
       .item(ng-repeat="n in notifications")
         p.text-center
-          | {{n.titles}} - {{n.text}}
+          | {{n.notification_type}} - {{n.text}}

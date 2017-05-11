@@ -19,6 +19,7 @@
       if(angular.isDefined(user)){
         Utils.show();
         Auth.login(user).then(function(authData) {
+          console.log(authData)
           $localStorage.currentUser = authData.data;
           $localStorage.currentCondo = authData.data.condos[0];
           $localStorage.currentDepto = authData.data.condos[0].departments[0];
