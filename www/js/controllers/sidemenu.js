@@ -66,7 +66,7 @@
         loadCurrentUser();
         $scope.isProfile = true;
       } else {
-        loadProfile($stateParams.personId);
+        loadProfile($state.current.name == "edit-profile" ? $localStorage.currentUser.user.id : $stateParams.personId);
       }
     });
   }
