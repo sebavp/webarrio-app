@@ -46,12 +46,14 @@ angular.module('WeBarrio.services.mensajes', [])
         return $firebaseArray(ref.child("groups")).$add(groupInfo);
       },
       saveConversation: function(userId, condoId, chat){
-        return $firebaseArray(ref.child("/users/" + userId + "/chats/" + condoId)).$add(chat);
+        var u = $firebaseObject(ref.child("/users/" + userId + "/chats/" + condoId + "/" + chat.personId));
+        angular.merge(u, _.pick(chat, "chatId", "condoId", "createdAt", "deptoNumber", "lastMessage", "personId", "personName", "personPhoto", "updatedAt"));
+        return u.$save();
       },
       updateConversation: function (userId, condoId, conversation) {
         conversation.updatedAt = Date.now();
-        var u = $firebaseObject(ref.child("/users/" + userId + "/chats/" + condoId + "/" + conversation.$id));
-        angular.merge(u, _.pick(conversation, "chatId", "createdAt", "deptoNumber", "personName", "lastMessage", "updatedAt", "personId", "condoId", "personPhoto"));
+        var u = $firebaseObject(ref.child("/users/" + userId + "/chats/" + condoId + "/" + conversation.personId));
+        angular.merge(u, _.pick(conversation, "chatId", "condoId", "createdAt", "deptoNumber", "lastMessage", "personId", "personName", "personPhoto", "updatedAt"));
         return u.$save();
       },
       updateGroupConversation: function(userId, condoId, conversation){

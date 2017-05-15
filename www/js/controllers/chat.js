@@ -24,8 +24,8 @@
       });
     };
 
-   var loadUser = function(){
-      dataAPIService.getUser($stateParams.personId).then(function (userResponse) {
+   var loadUser = function(userId){
+      dataAPIService.getUser(userId).then(function (userResponse) {
           $scope.user = userResponse.data.user;
           $scope.chatTitle = $scope.user.name;
           $scope.$broadcast('scroll.refreshComplete');
@@ -57,7 +57,7 @@
         $scope.$broadcast('scroll.refreshComplete');
         $scope.messages = response.$value === null ? [] : response;
         if (!userLoading) {
-          loadUser(true);
+          loadUser($stateParams.personId);
         }
       });
     };
@@ -104,9 +104,10 @@
       mensajeService.updateConversation($scope.currentUser.user.id, $scope.currentCondo.id, currentConversation).then(function(){
         var otherConversation = angular.copy(currentConversation);
         otherConversation.deptoNumber = $scope.currentDepto.number;
+        otherConversation.personId = $scope.currentUser.user.id;
         otherConversation.personName = $scope.currentUser.user.name;
         otherConversation.personPhoto = $scope.currentUser.user.image_url;
-        mensajeService.updateConversation($stateParams.personId,$scope.currentCondo.id,  otherConversation).then(function(){
+        mensajeService.updateConversation($stateParams.personId, $scope.currentCondo.id,  otherConversation).then(function(){
           console.log("both updated");
         });
       });
@@ -147,7 +148,9 @@
         if (person.groupName) {
           $state.go('chat-group-conversation', {chatId: person.chatId, groupName: person.groupName});
         } else {
-          $state.go('chat-conversation', {chatId: person.chatId, personId: person.chatId.split("A")[1], deptoNumber: person.deptoNumber});
+          console.log(person)
+          console.log($scope.currentUser)
+          $state.go('chat-conversation', {chatId: person.chatId, personId: person.personId, deptoNumber: person.deptoNumber});
         }
       } else {
         var chatId = _.min([$scope.currentUser.user.id, person.id]) + "A" + _.max([$scope.currentUser.user.id, person.id]);

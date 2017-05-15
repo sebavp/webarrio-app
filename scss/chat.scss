@@ -234,6 +234,10 @@ input.bbottom{
 }
 
 .footer-chat{
+  .send-form{
+    display: inline-flex;
+    width: 100%;
+  }
   .item-input-wrapper{
     background-color: #fff;
   }

@@ -10295,6 +10295,10 @@ input.bbottom {
   margin-left: 5px;
   margin-top: 3px; }
 
+.footer-chat .send-form {
+  display: inline-flex;
+  width: 100%; }
+
 .footer-chat .item-input-wrapper {
   background-color: #fff; }
 

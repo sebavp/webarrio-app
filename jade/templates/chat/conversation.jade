@@ -21,7 +21,8 @@ ion-view(cached='false')
         .message.message-sticked
           .message-text No hay Mensajes
   ion-footer-bar.bar-stable.footer-chat.item-input-inset(keyboard-attach='')
-    label.item-input-wrapper
-      input(ng-model='newMessageText', on-return='sendMessage()', on-focus='inputUp()', on-blur='inputDown()', dir='auto', type='text' placeholder="Escribe aquí...")
-    span
-      button.button.button-clear.button-positive(ng-click='sendMessage()') Enviar
+    form.send-form(ng-submit='sendMessage()' name="sendForm" novalidate)
+      label.item-input-wrapper
+        input(ng-model='newMessageText' type='text' placeholder="Escribe aquí..." required)
+      span
+        button.button.button-clear.button-positive(type="submit" ng-disabled="sendForm.$invalid") Enviar

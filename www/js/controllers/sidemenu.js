@@ -32,9 +32,8 @@
         $state.go('profile');
     };
 
-
     var loadCurrentUser = function (){
-      dataAPIService.getUser($scope.currentUser.id).then(function(response){
+      dataAPIService.getUser($localStorage.currentUser.user.id).then(function(response){
         $localStorage.currentUser.user = response.data.user;
         $scope.currentUser = response.data.user;
       });
