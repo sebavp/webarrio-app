@@ -61,6 +61,12 @@ angular.module('WeBarrio.services.auth', [])
         method: "PUT",
         url: CONFIG.apiURL + '/current_avisos/'+ notificationId 
       });
+    },
+    sendPush: function (pushContent) {
+      return $http({
+        method: "POST",
+        url: CONFIG.apiURL + '/condos/' + pushContent.condoId + "/send_push" 
+      });
     }
 
 	};

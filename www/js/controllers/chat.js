@@ -5,7 +5,7 @@
     .module('WeBarrio.controllers')
     .controller('chatController', chatController);
 
-  function chatController($scope, $state, $localStorage, $ionicHistory, dataAPIService, mensajeService, $stateParams, $ionicLoading, $timeout) {
+  function chatController($scope, $state, $localStorage, $ionicHistory, dataAPIService, mensajeService, $stateParams, $ionicLoading, $timeout, Auth) {
 
     var page = 1;
 
@@ -97,6 +97,7 @@
     };
 
     var updateLastMessage = function (lastMessage) {
+      console.log("updateLastMessage")
       var currentConversation = _.findWhere($scope.conversations, {chatId: $stateParams.chatId});
       currentConversation.lastMessage = lastMessage;
       currentConversation.personId = $stateParams.personId;
@@ -107,8 +108,10 @@
         otherConversation.personId = $scope.currentUser.user.id;
         otherConversation.personName = $scope.currentUser.user.name;
         otherConversation.personPhoto = $scope.currentUser.user.image_url;
+        console.log("updateLastMessage1")
         mensajeService.updateConversation($stateParams.personId, $scope.currentCondo.id,  otherConversation).then(function(){
           console.log("both updated");
+          Auth.sendPush({condoId: $scope.currentCondo.id, userId: $stateParams.personId, message: lastMessage, depto_number: $scope.currentDepto.number})
         });
       });
     };
@@ -262,6 +265,7 @@
             sentAt: Date.now(),
         };
         mensajeService.newMessage($stateParams.chatId, msg).then(function () {
+            console.log("newMessage")
             if ($scope.messages.length === 0) {
               saveConversation();
               loadChat(true);
