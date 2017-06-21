@@ -4,6 +4,9 @@ ion-view(view-title='Notificaciones' hide-back-button='true')
       .item(ng-if="notifications.length == 0")
         p.text-center
           | No tienes notificaciones
-      .item(ng-repeat="n in notifications")
-        p.text-center
-          | {{n.notification_type}} - {{n.text}}
+      .item.item-icon-left(ng-repeat="n in notifications | orderBy: '-created_at'" ng-click="openNotification(n)")
+        i(class="icon {{getNotificationIcon(n)}}")
+        p.text-left
+          | {{n.text}}
+        span.item-note
+          | {{n.created_at | date: "dd/MM HH:mm"}}

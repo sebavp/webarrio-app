@@ -5,7 +5,7 @@
         .module('WeBarrio.controllers')
         .controller('feedController', feedController);
 
-    function feedController($scope, dataAPIService, $localStorage) {
+    function feedController($scope, dataAPIService, $localStorage, $ionicPopup) {
         
         $scope.notifications = [];
 
@@ -20,6 +20,28 @@
                 console.log(error);
             });
         };
+
+        $scope.openNotification = function (notification) {
+            $ionicPopup.alert({
+                cssClass: "avisoAlert",
+                title: notification.title,
+                template: notification.text + "\n<br> [" + notification.notification_type + "]\n ",
+                okText: "X"
+            });
+        };
+
+        $scope.getNotificationIcon = function (n) {
+            var iconClass = "ion-ios-bell-outline";
+            switch(n.notification_type){
+                case "Aviso":
+                    iconClass = "ion-speakerphone";
+                    break;
+                case "Mantenciones":
+                    iconClass = "ion-wrench";
+                    break;
+            }
+            return iconClass;
+        }
 
         $scope.$on('$ionicView.beforeEnter', function () {
             currentCondo =  $localStorage.currentCondo;
