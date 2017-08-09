@@ -19,7 +19,7 @@
       if(angular.isDefined(user)){
         Utils.show();
         Auth.login(user).then(function(authData) {
-          console.log(authData)
+          //console.log(JSON.stringify(authData));
           $localStorage.currentUser = authData.data;
           $localStorage.currentCondo = authData.data.condos[0];
           $localStorage.currentDepto = authData.data.condos[0].departments[0];
@@ -31,7 +31,7 @@
           });
           $state.go('tabs.home');
         }, function(err) {
-          console.log(err);
+          //console.log(JSON.stringify(err));
           Utils.hide();
           $scope.error = {show: true, msg: err.data.message};
           $timeout(function() {

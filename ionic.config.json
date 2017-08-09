@@ -8,7 +8,8 @@
   ],
   "watchPatterns": [
     "www/**/*",
-    "!www/lib/**/*"
+    "!www/lib/**/*",
+    "scss/**/*"
   ],
   "proxies": [
     {
@@ -19,5 +20,6 @@
       "path": "/api",
       "proxyUrl": "https://admin.webarrio.cl/api"
     }
-  ]
+  ],
+  "type": "ionic1"
 }
