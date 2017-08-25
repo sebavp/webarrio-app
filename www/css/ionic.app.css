@@ -10502,7 +10502,6 @@ input.bbottom {
     color: #fff; }
   .alert-view a {
     z-index: 99;
-    height: 100%;
     width: 100%;
     display: block; }
   .alert-view .title-alert {

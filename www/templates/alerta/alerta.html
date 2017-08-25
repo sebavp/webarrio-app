@@ -1,1 +1,56 @@
-<ion-view view-title="SOS" hide-back-button="true"><ion-nav-bar><ion-nav-back-button ng-click="goBack()" class="button-clear force-show"><i class="color-white ion-chevron-left"></i></ion-nav-back-button></ion-nav-bar><ion-content class="padding-top alert-view"><div ng-click="openVecinalAlert()" class="title-alert"><p class="text-center"><img src="img/icons/sos.svg" class="sos"/></p><h2> ALERTA VECINAL</h2><p>Usar con responsabilidad y respeto a sus vecinos</p></div><a ng-href="tel:{{alertNumbers.ambulance}}"><div class="alert-row row"><div class="col"><h2>AMBULANCIA</h2></div><div class="col"><img src="img/icons/sos-cross.svg" class="sos-small"/></div></div></a><a ng-href="tel:{{alertNumbers.fireman}}"><div class="alert-row row"><div class="col"><h2>BOMBEROS</h2></div><div class="col"><img src="img/icons/sos-fire.svg" class="sos-small"/></div></div></a><a ng-href="tel:{{alertNumbers.police}}"><div class="alert-row row"><div class="col"><h2>CARABINEROS</h2></div><div class="col"><img src="img/icons/sos-cop.svg" class="sos-small"/></div></div></a><a ng-href="tel:{{alertNumbers.security}}" ng-if="alertNumbers.security"><div class="alert-row row"><div class="col"><h2>SEGURIDAD CIUDADANA</h2></div><div class="col"><img src="img/icons/ciudadana.svg" class="sos-small"/></div></div></a></ion-content></ion-view>
+<ion-view view-title="SOS" hide-back-button="true">
+    <ion-nav-bar>
+        <ion-nav-back-button ng-click="goBack()" class="button-clear force-show">
+            <i class="color-white ion-chevron-left"></i>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content class="padding-top alert-view">
+        <div ng-click="openVecinalAlert()" class="title-alert">
+            <p class="text-center">
+                <img src="img/icons/sos.svg" class="sos"/>
+            </p>
+            <h2> ALERTA VECINAL</h2>
+            <p>Usar con responsabilidad y respeto a sus vecinos</p>
+        </div>
+        <a ng-href="tel:{{alertNumbers.ambulance}}">
+            <div class="alert-row row">
+                <div class="col">
+                    <h2>AMBULANCIA</h2>
+                </div>
+                <div class="col">
+                    <img src="img/icons/sos-cross.svg" class="sos-small"/>
+                </div>
+            </div>
+        </a>
+        <a ng-href="tel:{{alertNumbers.fireman}}">
+            <div class="alert-row row">
+                <div class="col">
+                    <h2>BOMBEROS</h2>
+                </div>
+                <div class="col">
+                    <img src="img/icons/sos-fire.svg" class="sos-small"/>
+                </div>
+            </div>
+        </a>
+        <a ng-href="tel:{{alertNumbers.police}}">
+            <div class="alert-row row">
+                <div class="col">
+                    <h2>CARABINEROS</h2>
+                </div>
+                <div class="col">
+                    <img src="img/icons/sos-cop.svg" class="sos-small"/>
+                </div>
+            </div>
+        </a>
+        <a ng-href="tel:{{alertNumbers.security}}" ng-if="alertNumbers.security">
+            <div class="alert-row row">
+                <div class="col">
+                    <h2>SEGURIDAD CIUDADANA</h2>
+                </div>
+                <div class="col">
+                    <img src="img/icons/ciudadana.svg" class="sos-small"/>
+                </div>
+            </div>
+        </a>
+    </ion-content>
+</ion-view>
