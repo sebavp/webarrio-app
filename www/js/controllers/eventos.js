@@ -19,11 +19,13 @@ angular
 
     uploader.onCompleteAll = function() {
         $ionicLoading.hide();
+        uploader.clearQueue();
         $state.go('tabs.comunidad-eventos');
     };
     
     $scope.goBack = function (){
       if ($state.current.name == "tabs.comunidad-eventos") {
+        $scope.newEventImage = false;
         $state.go("tabs.comunidad");
       } else{
         $state.go("tabs.comunidad-eventos");
@@ -58,8 +60,10 @@ angular
       eventsService.createEvent('normal_events', evento, currentCondo.id).then(function(response){
         $scope.uploader.url = CONFIG.apiURL + '/events/image/' + response.normal_event.id;
         if ($scope.uploader.queue.length > 0) {
-          $scope.uploader.queue[0].url = CONFIG.apiURL + '/events/image/' + response.normal_event.id;
+          _.last($scope.uploader.queue).url = CONFIG.apiURL + '/events/image/' + response.normal_event.id;
+          _.last($scope.uploader.queue).removeAfterUpload = true;
           $scope.uploader.uploadAll();
+          $scope.newEventImage = false;
         } else{
           $ionicLoading.hide();
           $state.go("tabs.comunidad-eventos");
@@ -104,6 +108,7 @@ angular
       } else {
         if ($state.current.name == "comunidad-eventos-new") {
           $scope.newEvent = {details: ""};
+          uploader.clearQueue();
         } else {
           loadEvento();
           loadModal();

@@ -17,6 +17,7 @@ angular
 
     uploader.onCompleteAll = function() {
         $ionicLoading.hide();
+        uploader.clearQueue();
         $state.go('tabs.comunidad-anuncios');
     };
 
@@ -46,6 +47,7 @@ angular
           _.last($scope.uploader.queue).url = imageUrl;
           _.last($scope.uploader.queue).removeAfterUpload = true;
           $scope.uploader.uploadAll();
+          $scope.newEventImage = false;
         } else{
           $ionicLoading.hide();
           $state.go('tabs.comunidad-anuncios');
@@ -61,6 +63,7 @@ angular
       } else {
         if ($state.current.name == "comunidad-anuncios-new") {
           $scope.newPublication = {description: '', title: ''};
+          uploader.clearQueue();
         } else {
           loadAnuncio();
         }
@@ -75,6 +78,7 @@ angular
 
     $scope.goBack = function (){
       if ($state.current.name == "tabs.comunidad-anuncios") {
+        $scope.newEventImage = false;
         $state.go("tabs.comunidad");
       } else{
         $state.go("tabs.comunidad-anuncios");
