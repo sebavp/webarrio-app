@@ -28,7 +28,7 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     <!-- endbuild -->
 
-    <!-- build:js assets/build.js -->
+<!-- build:js assets/build.js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
   <script src="lib/bluebird.min.js"></script>
   <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
@@ -45,9 +45,6 @@
   <script src="js/vendor/compatibility.js"></script>
   <script src="js/vendor/angular-pdf.js"></script>
   <script src="js/vendor/ng-locale_esCL.js"></script>
-
-  <!-- cordova script (this will be a 404 during development) -->
-  <script src="cordova.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/config/config.js"></script>
@@ -83,8 +80,14 @@
   <script src="js/services/utils.js"></script>
   <script src="js/services/dataAPIService.js"></script>
   <script src="js/directives/directives.js"></script>
-  <!-- endbuild -->
-  </head>
+<!-- endbuild -->
+
+<!-- build:remove -->  
+<!-- cordova script (this will be a 404 during development) -->
+<script src="cordova.js"></script>
+<!-- endbuild -->
+
+</head>
 
   <body ng-app="WeBarrio" class="{{modalType}}">
     <ion-nav-bar>

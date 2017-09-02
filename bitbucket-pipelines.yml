@@ -1,0 +1,12 @@
+image: mwallasch/docker-ruby-node
+
+pipelines:
+  default:
+    - step:
+        script:
+          - apt-get update
+          - apt-get install --assume-yes openjdk-7-jre
+          - gem install s3_website
+          - npm rebuild node-sass
+          - gulp build
+          - s3_website push
