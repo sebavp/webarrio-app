@@ -1,0 +1,15 @@
+ion-view(view-title='Administración de Hogar')
+  ion-nav-buttons(side='left')
+    button.button-clear.force-show(ng-click='goBack()')
+      i.color-white.ion-chevron-left
+  ion-nav-buttons(side='right')
+    button.button-clear.force-show(main-sidebar='', ui-sref="tabs.dashboard-admin-home-add-user")
+      i.ion-plus-round.color-white
+
+  ion-content.padding-top.dashboard-view
+    .list.margin-top
+      .row.row-center(ng-repeat="user in users")
+          .col {{ user.name }} {{ user.last_name }}
+          .col {{ user.email }}
+          .col-1.button(ng-click="removeUser(user)")
+            i.ion-close-round

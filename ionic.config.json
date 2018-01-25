@@ -9,7 +9,8 @@
   "watchPatterns": [
     "www/**/*",
     "!www/lib/**/*",
-    "scss/**/*"
+    "scss/**/*",
+    "jade/**/*"
   ],
   "proxies": [
     {
@@ -21,5 +22,8 @@
       "proxyUrl": "https://admin.webarrio.cl/api"
     }
   ],
-  "type": "ionic1"
+  "type": "ionic1",
+  "integrations": {
+    "cordova": {}
+  }
 }

@@ -5,12 +5,12 @@
     .controller('dashboardController', dashboardController);
 
   function dashboardController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, $sce, $window) {
-    var currentDepto =  $localStorage.currentDepto;
+    var currentApartment =  $localStorage.currentApartment;
     var currentUser =  $localStorage.currentUser;
 
-    $scope.isAdmin = function () {
-      return currentUser.user.role == 'superadmin' || currentUser.user.role == "admin";
-    };
+    $scope.isAdmin = () => currentUser.user.roles.filter(role => ['admin', 'superadmin'].includes(role)).length > 0;
+
+    $scope.isOwner = () => currentUser.user.roles.includes('owner');
 
     $scope.goBack = function (){
       $state.go("tabs.home");
@@ -40,8 +40,8 @@
 
       $scope.currentCondo =  $localStorage.currentCondo;
 
-      if (currentDepto) {
-        dataAPIService.getCommonExpenses(currentDepto.id).then(function(resp){
+      if (currentApartment) {
+        dataAPIService.getCommonExpenses(currentApartment.id).then(function(resp){
           $scope.commonExpenses = resp.data.common_expenses;
         });
       }

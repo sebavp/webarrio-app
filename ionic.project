@@ -8,7 +8,9 @@
   ],
   "watchPatterns": [
     "www/**/*",
-    "!www/lib/**/*"
+    "!www/lib/**/*",
+    "scss/**/*",
+    "jade/**/*"
   ],
   "proxies": [
     {

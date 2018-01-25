@@ -19,10 +19,10 @@
       if(angular.isDefined(user)){
         Utils.show();
         Auth.login(user).then(function(authData) {
-          //console.log(JSON.stringify(authData));
+          console.log(JSON.stringify(authData));
           $localStorage.currentUser = authData.data;
-          $localStorage.currentCondo = authData.data.condos[0];
-          $localStorage.currentDepto = authData.data.condos[0].departments[0];
+          $localStorage.currentCondo = authData.data.condos ? authData.data.condos[0] : null;
+          $localStorage.currentApartment = authData.data.condos && authData.data.condos[0].apartments ? authData.data.condos[0].apartments[0] : null;
           Utils.hide();
           webNotification.showNotification('Bienvenido a WeBarrio!', {
               body: 'Las notificaciones se mostrarán por acá.',

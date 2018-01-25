@@ -20,7 +20,7 @@ angular.module('WeBarrio.services.auth', [])
     isSession: function(){
       return ($localStorage.currentUser !== undefined &&
           $localStorage.currentCondo !== undefined &&
-          $localStorage.currentDepto !== undefined);
+          $localStorage.currentApartment !== undefined);
     },
 		resetpassword: function(user) {
         var req = {

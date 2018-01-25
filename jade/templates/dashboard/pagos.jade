@@ -17,5 +17,4 @@ ion-view(view-title='Pagos')
         span.upper {{item.payer_name}}
         span.down {{item.depto_number}}
         small.right.red 
-          small $
-          {{item.total_amount | currency: '':0}}
+          small ${{item.total_amount | currency: '':0}}

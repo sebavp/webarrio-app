@@ -13,8 +13,7 @@ ion-view(view-title='Detalle Evento' hide-back-button='true')
         small.muted.link(ng-click="showAssitants()")
           ng-pluralize(count="assistants.length" when="{'0': 'Sin asistentes confirmados', '1': '1 asistente', 'other': '{} asistentes'  }")
         br
-        small.muted.link(ng-if="maybe_assistants.length > 0" ng-click="showAssitants()")
-          {{maybe_assistants.length}} tal vez
+        small.muted.link(ng-if="maybe_assistants.length > 0" ng-click="showAssitants()") {{maybe_assistants.length}} tal vez
         h2 {{currentEvent.name}}
         .avatar
           img(ng-src="{{currentEvent.user_img_thumb_url || '/img/blank.png'}}" err-src='/img/blank.png')

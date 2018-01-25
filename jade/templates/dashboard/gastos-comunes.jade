@@ -10,8 +10,7 @@ ion-view(view-title='Gastos Comunes')
       .item.button.button-full.icon-right(ng-repeat="item in commonExpenses | orderBy: '-created_at' " ng-click='showInfo(item.month)' ng-class="{'ion-ios-arrow-down': showingMonth != item.month, 'ion-ios-arrow-up': showingMonth == item.month}")
         span.upper {{item.month}}
         small.right.red 
-          small $
-          {{item.total | currency: '':0}}
+          small ${{item.total | currency: '':0}}
         .detalle-mes(ng-show='showingMonth == item.month')
           hr
           p  Detalle de {{currentCondo.name}}
@@ -19,32 +18,27 @@ ion-view(view-title='Gastos Comunes')
             i.icon.ion-ios-lightbulb
             span.text-left Luz:
             span.text-right 
-              small $
-              {{item.total_light | currency: '':0}}
+              small ${{item.total_light | currency: '':0}}
           .item.item-icon-left
             i.icon.ion-waterdrop
             span.text-left Agua:
             span.text-right
-              small $
-              {{item.total_water | currency: '':0}}
+              small ${{item.total_water | currency: '':0}}
           .item.item-icon-left
             i.icon.ion-ios-flame
             span.text-left Gas:
             span.text-right
-              small $
-              {{item.total_gas | currency: '':0}}
+              small ${{item.total_gas | currency: '':0}}
           .item.item-icon-left
             i.icon.ion-ios-people
             span.text-left Personal:
             span.text-right
-              small $
-              {{item.total_personal | currency: '':0}}
+              small ${{item.total_personal | currency: '':0}}
           hr
           p.red
             span.text-left Total: 
             span.text-right
-              small $
-              {{item.total_light +  item.total_water + item.total_gas + item.total_personal | currency: '':0}}
+              small ${{item.total_light +  item.total_water + item.total_gas + item.total_personal | currency: '':0}}
   ion-footer-bar.bar-dark.account-footer(ng-click="showPaymentMethod()")
     button.button.button-full.pay-button
       | PAGAR
