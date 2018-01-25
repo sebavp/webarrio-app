@@ -177,6 +177,24 @@ angular.module('WeBarrio.routes', [])
       templateUrl: 'templates/dashboard/mantenciones-new.html',
       controller:'mantencionesController'
     })
+    .state('tabs.dashboard-admin-home-add-user', {
+      url: '/dashboard/admin-home/add-user',
+      views: {
+        'tab_dashboard': {
+          templateUrl: 'templates/dashboard/add-user.html',
+          controller: 'addUserController'
+        }
+      }
+    })
+    .state('tabs.dashboard-admin-home', {
+      url: '/dashboard/admin-home',
+      views: {
+        'tab_dashboard': {
+          templateUrl: 'templates/dashboard/admin-home.html',
+          controller: 'adminHomeController'
+        }
+      }
+    })
     // reglamento
     .state('tabs.dashboard-reglamento', {
       url: '/dashboard/reglamento',

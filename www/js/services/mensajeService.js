@@ -47,13 +47,13 @@ angular.module('WeBarrio.services.mensajes', [])
       },
       saveConversation: function(userId, condoId, chat){
         var u = $firebaseObject(ref.child("/users/" + userId + "/chats/" + condoId + "/" + chat.personId));
-        angular.merge(u, _.pick(chat, "chatId", "condoId", "createdAt", "deptoNumber", "lastMessage", "personId", "personName", "personPhoto", "updatedAt"));
+        angular.merge(u, _.pick(chat, "chatId", "condoId", "createdAt", "apartmentNumber", "lastMessage", "personId", "personName", "personPhoto", "updatedAt"));
         return u.$save();
       },
       updateConversation: function (userId, condoId, conversation) {
         conversation.updatedAt = Date.now();
         var u = $firebaseObject(ref.child("/users/" + userId + "/chats/" + condoId + "/" + conversation.personId));
-        angular.merge(u, _.pick(conversation, "chatId", "condoId", "createdAt", "deptoNumber", "lastMessage", "personId", "personName", "personPhoto", "updatedAt"));
+        angular.merge(u, _.pick(conversation, "chatId", "condoId", "createdAt", "apartmentNumber", "lastMessage", "personId", "personName", "personPhoto", "updatedAt"));
         return u.$save();
       },
       updateGroupConversation: function(userId, condoId, conversation){

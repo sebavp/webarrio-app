@@ -17,5 +17,4 @@ ion-view(view-title='Pagos')
       .item.button.button-full.icon-right(ng-repeat='item in payments')
         span.upper {{item.created_at | date: 'MMMM yyyy'}}
         small.right.red 
-          small $
-          {{item.total_amount | currency: '':0}}
+          small ${{item.total_amount | currency: '':0}}
