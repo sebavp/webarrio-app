@@ -61,11 +61,14 @@ option{
   width: 100%;
   height: 100vh;
 }
-.col-75{
-  input{
+.col{
+  input, datepicker>div{
     border: 1px solid $grey;
     width: 100%;
     padding: 0 10px;
+    height: 34px;
+    display: flex;
+    align-items: center;
   }
 }
 input{
@@ -287,4 +290,8 @@ canvas.image-preview {
       opacity: 0.8; 
     }
   }
+}
+
+.input-stacked-label .input-label {
+  width: auto;
 }

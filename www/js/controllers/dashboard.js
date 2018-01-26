@@ -8,11 +8,17 @@
     var currentApartment =  $localStorage.currentApartment;
     var currentUser =  $localStorage.currentUser;
 
-    $scope.isAdmin = () => currentUser.user.roles.filter(role => ['admin', 'superadmin'].includes(role)).length > 0;
+    $scope.isAdmin = function() {
+      return currentUser.user.roles.filter(function(role) {
+        return ['admin', 'superadmin'].includes(role);
+      }).length > 0;
+    };
 
-    $scope.isOwner = () => currentUser.user.roles.includes('owner');
+    $scope.isOwner = function() {
+      return currentUser.user.roles.includes('owner');
+    };
 
-    $scope.goBack = function (){
+    $scope.goBack = function() {
       $state.go("tabs.home");
     };
 

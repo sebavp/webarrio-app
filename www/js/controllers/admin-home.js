@@ -5,11 +5,11 @@
     .controller('adminHomeController', adminHomeController);
 
   function adminHomeController($rootScope, $scope, $state, $ionicPopup, dataAPIService, $localStorage, eventsService, $stateParams) {
-    dataAPIService.getHomeUsers($localStorage.currentApartment.id).then(usersData => $scope.users = usersData.data.users);
+    dataAPIService.getHomeUsers($localStorage.currentApartment.id).then(function(usersData) {$scope.users = usersData.data.users;});
     
-    $scope.goBack = () => $state.go('tabs.dashboard');
+    $scope.goBack = function() {$state.go('tabs.dashboard');}
 
-    $scope.removeUser = user => {
+    $scope.removeUser = function(user) {
       $ionicPopup.show({
         scope: $scope,
         title: '¿Está seguro?',
@@ -18,9 +18,9 @@
           {
             text: 'Sí',
             type: 'button-positive',
-            onTap: () => {
+            onTap: function() {
               dataAPIService.removeHomeUser({user: user.id, apartment: $localStorage.currentApartment.id});
-              $scope.users = $scope.users.filter(u => u.id != user.id);
+              $scope.users = $scope.users.filter(function(u) {u.id != user.id});
             }
           }
         ]

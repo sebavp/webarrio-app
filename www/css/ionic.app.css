@@ -10919,10 +10919,13 @@ option {
   width: 100%;
   height: 100vh; }
 
-.col-75 input {
+.col input, .col datepicker > div {
   border: 1px solid #e9efef;
   width: 100%;
-  padding: 0 10px; }
+  padding: 0 10px;
+  height: 34px;
+  display: flex;
+  align-items: center; }
 
 input {
   border-radius: 0; }
@@ -11105,3 +11108,6 @@ canvas.image-preview {
   .avisoAlert .popup .activated {
     background-color: #f76913;
     opacity: 0.8; }
+
+.input-stacked-label .input-label {
+  width: auto; }

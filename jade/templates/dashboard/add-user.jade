@@ -4,13 +4,17 @@ ion-view(view-title='Nuevo Usuario' hide-back-button='true')
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
     .list.padding
-      .item.item-input
+      label.item.item-input.item-floating-label
+        span.input-label Nombre
         input(type="text" placeholder="Nombre" ng-model="newUser.name")
-      .item.item-input
+      label.item.item-input.item-floating-label
+        span.input-label Apellido
         input(type="text" placeholder="Apellido" ng-model="newUser.last_name")
-      .item.item-input
+      label.item.item-input.item-floating-label
+        span.input-label RUT
         input(type="text" placeholder="RUT" ng-model="newUser.rut")
-      .item.item-input
+      label.item.item-input.item-floating-label
+        span.input-label E-mail
         input(type="text" placeholder="E-mail" ng-model="newUser.email")
   ion-footer-bar.bar-orange.account-footer
     button.button.button-full.pay-button(ng-click="addUserToHome()" ng-disabled="!isValid()")

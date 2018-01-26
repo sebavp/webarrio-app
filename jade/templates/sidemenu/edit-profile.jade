@@ -8,26 +8,24 @@ ion-view(view-title='Editar Perfil' hide-back-button='true')
     input(id="upload-input" type="file" nv-file-select="" uploader="uploader")
     .list
     .row
-      .col
-        .label.muted Nombre
-      .col.col-75
-        input(type="text" placeholder="Ingrese Nombre" ng-model="currentUser.name")
+      label.item-stacked-label.col
+        span.input-label Nombre
+        input(type="text" placeholder="Nombre" ng-model="currentUser.name")
+    .row
+      label.item-stacked-label.col
+        span.input-label Apellido
+        input(type="text" placeholder="Apellido" ng-model="currentUser.last_name")
+    .row
+      label.col.item-stacked-label
+        span.input-label Sexo
+        .item-select.item
+          select(ng-model="currentUser.sex" placeholder="Sexo")
+            option Masculino
+            option Femenino
     .row
       .col
-        .label.muted Apellido
-      .col.col-75
-        input(type="text" placeholder="Ingrese Apellido" ng-model="currentUser.last_name")
-    .row
-      .col
-        .label.date-input.muted Sexo
-      .col.col-75.item-input.item-select
-        select(ng-model="currentUser.sex")
-          option Masculino
-          option Femenino
-    .row
-      .col
-        .label.date-input.muted Fecha de Nacimiento
-      .col.col-75
+        label.date-input.input-stacked-label
+          span.input-label Fecha de Nacimiento
         datepicker(event-date="currentUser.birthday" date-format="'dd/MM/yyyy'" from-date="fromDate" to-date="toDate")
   ion-footer-bar.bar-orange.account-footer
     button.button.button-full.pay-button(ng-disabled="currentUser.name.length < 2 || currentUser.last_name.length < 2" ng-click="updateProfile(currentUser)")
