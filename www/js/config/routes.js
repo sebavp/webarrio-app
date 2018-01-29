@@ -298,7 +298,7 @@ angular.module('WeBarrio.routes', [])
     .state('tabs.comunidad', {
       url: '/comunidad/',
       views: {
-        'tab_home': {
+        'tab_comunidad': {
           templateUrl: 'templates/comunidad/comunidad.html',
           controller: 'comunidadController'
         }
