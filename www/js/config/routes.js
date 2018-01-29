@@ -219,7 +219,7 @@ angular.module('WeBarrio.routes', [])
     .state('tabs.agenda', {
       url: '/agenda/',
       views: {
-        'tab_home': {
+        'tab_agenda': {
           templateUrl: 'templates/agenda/agenda.html',
           controller: 'agendaController'
         }

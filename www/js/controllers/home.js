@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('WeBarrio.controllers')
-        .controller('homeController', homeController);
+    .module('WeBarrio.controllers')
+    .controller('homeController', homeController);
 
     function homeController($scope, $state, $ionicSlideBoxDelegate, $localStorage, $timeout, Auth) {
       var currentUser = $localStorage.currentUser;
