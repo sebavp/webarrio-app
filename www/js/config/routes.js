@@ -178,9 +178,9 @@ angular.module('WeBarrio.routes', [])
       controller:'mantencionesController'
     })
     .state('tabs.dashboard-admin-home-add-user', {
-      url: '/dashboard/admin-home/add-user',
+      url: '/menu/dashboard/admin-home/add-user',
       views: {
-        'tab_dashboard': {
+        tab_dashboard:{
           templateUrl: 'templates/dashboard/add-user.html',
           controller: 'addUserController'
         }
@@ -189,7 +189,7 @@ angular.module('WeBarrio.routes', [])
     .state('tabs.dashboard-admin-home', {
       url: '/dashboard/admin-home',
       views: {
-        'tab_dashboard': {
+        tab_dashboard:{
           templateUrl: 'templates/dashboard/admin-home.html',
           controller: 'adminHomeController'
         }

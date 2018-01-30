@@ -18,10 +18,6 @@
       return currentUser.user.roles.includes('owner');
     };
 
-    $scope.goBack = function() {
-      $state.go("tabs.home");
-    };
-
     $scope.$on("$ionicView.beforeEnter", function () {
       var supportsPdfMimeType = typeof navigator.mimeTypes["application/pdf"] !== "undefined";
 

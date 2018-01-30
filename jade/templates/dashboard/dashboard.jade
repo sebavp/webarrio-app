@@ -1,10 +1,10 @@
 ion-view(view-title='Administración')
-  ion-nav-buttons(side='left')
-    button.button-clear.force-show(ng-click='goBack()')
+  ion-nav-bar
+    ion-nav-back-button.button-clear.force-show(ui-sref="tabs.home")
       i.color-white.ion-chevron-left
-  ion-nav-buttons(side='right')
-    button.button-clear.force-show(main-sidebar='')
-      img.user(src='img/icons/user.svg')
+    ion-nav-buttons(side='right')
+      button.button-clear.force-show(main-sidebar='')
+        img.user(src='img/icons/user.svg')
 
   ion-content.dashboard-view
     .hero(ng-if='commonExpenses && !isAdmin')

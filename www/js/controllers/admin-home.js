@@ -5,9 +5,8 @@
     .controller('adminHomeController', adminHomeController);
 
   function adminHomeController($rootScope, $scope, $state, $ionicPopup, dataAPIService, $localStorage, eventsService, $stateParams) {
-    dataAPIService.getHomeUsers($localStorage.currentApartment.id).then(function(usersData) {$scope.users = usersData.data.users;});
-    
-    $scope.goBack = function() {$state.go('tabs.dashboard');}
+    dataAPIService.getHomeUsers($localStorage.currentApartment.id)
+    .then(function(usersData) { $scope.users = usersData.data.users; });
 
     $scope.removeUser = function(user) {
       $ionicPopup.show({

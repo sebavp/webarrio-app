@@ -5,8 +5,6 @@
     .controller('addUserController', addUserController);
 
   function addUserController($rootScope, $scope, $state, $ionicHistory, dataAPIService, $localStorage, eventsService, $stateParams) {
-    $scope.goBack = function() {$state.go('tabs.dashboard-admin-home');};
-
     $scope.newUser = {};
     
     $scope.isValid = function() {$scope.newUser.name && $scope.newUser.last_name && $scope.newUser.rut && $scope.newUser.email;};
