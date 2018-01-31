@@ -1,7 +1,7 @@
 angular.module('WeBarrio.config', [])
   .constant("CONFIG", {
     // apiURL: (window.location.hostname == "localhost") ? 'http://localhost:8100/api2' : "https://admin.webarrio.cl/api",
-    apiURL: 'http://192.168.0.144:8100/api2',
+    apiURL: 'http://192.168.0.146:8100/api2',
     apiKey: "AIzaSyCK2M3JsJ0bCpooHJZ78bTkkA2Qix-qio0",
     authDomain: "webarrio-6ffa7.firebaseapp.com",
     databaseURL: "https://webarrio-6ffa7.firebaseio.com",

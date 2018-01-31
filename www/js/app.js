@@ -69,6 +69,7 @@ angular.module('WeBarrio', [
 })
 .config(function($ionicConfigProvider, ionicDatePickerProvider, ionicTimePickerProvider) {
   $ionicConfigProvider.views.transition('ios');
+  $ionicConfigProvider.views.maxCache(0);
   $ionicConfigProvider.tabs.style('standard').position('bottom');
   $ionicConfigProvider.navBar.alignTitle('center').positionPrimaryButtons('left');
   ionicDatePickerProvider.configDatePicker({
