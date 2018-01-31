@@ -1,6 +1,6 @@
 ion-view(cached='false')
   ion-nav-buttons(side='left')
-    button.back-button.button.button-clear.force-show(ng-click='goBack()')
+    button.back-button.button.button-clear.force-show(ui-sref='tabs.chat')
       i.color-white.ion-chevron-left
   ion-nav-title  {{chatTitle || 'Mensajes'}} 
   ion-nav-buttons(side='right')

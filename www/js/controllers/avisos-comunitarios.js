@@ -9,17 +9,9 @@
   	var currentUser = $localStorage.currentUser;
   	var currentCondo = $localStorage.currentCondo;
 
-    $scope.goBack = function (){
-      if ($state.current.name == "tabs.dashboard-avisos") {
-       	$state.go("tabs.dashboard");
-       } else {
-       	$state.go('tabs.dashboard-avisos');
-       }
-    };
-
   	var loadAvisos = function (){
       eventsService.getAvisos(currentCondo.id).then(function (response){
-        $scope.avisos = response.avisos;
+        $scope.avisos = response.events;
       }, function(error){
         console.log(error);
       });
@@ -39,7 +31,7 @@
 
     $scope.saveAviso = function (aviso){
       aviso.user_id = currentUser.user.id;
-      eventsService.createEvent('avisos', aviso, currentCondo.id).then(function(){
+      eventsService.createEvent('avisos', aviso, currentCondo.id).then(function() {
         $state.go('tabs.dashboard-avisos');
       });
     };

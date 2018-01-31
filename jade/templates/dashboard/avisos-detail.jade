@@ -1,6 +1,6 @@
 ion-view(view-title="Detalle Aviso Comunitario" hide-back-button='true')
   ion-nav-bar
-    ion-nav-back-button.button-clear.force-show(ng-click='goBack()')
+    ion-nav-back-button.button-clear.force-show(ui-sref="tabs.dashboard-avisos")
       i.color-white.ion-chevron-left
   ion-content.padding-top.instalaciones-detail-view
     .list(ng-show="!currentAviso")

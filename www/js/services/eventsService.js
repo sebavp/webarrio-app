@@ -74,6 +74,7 @@ angular.module('WeBarrio.services.events', [])
       },
       createEvent: function(type, newEvent, condoId){
         deferred = $q.defer();
+        console.log(newEvent);
         $http({
           method: 'POST',
           url: CONFIG.apiURL + '/events/' + condoId + '/' + type,

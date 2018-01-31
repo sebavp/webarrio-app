@@ -104,7 +104,7 @@ angular.module('WeBarrio.services', [])
         return deferred.promise;
       },
       addUserToHome : function(newUser) {
-        const deferred = $q.defer();
+        var deferred = $q.defer();
         $http({
           method: 'POST',
           url: CONFIG.apiURL + '/users/add_to_apartment',
@@ -135,7 +135,7 @@ angular.module('WeBarrio.services', [])
         deferred = $q.defer();
         $http({
           method: 'POST',
-          url: CONFIG.apiURL + '/condo/' + condoId + '/phone/' + label,
+          url: CONFIG.apiURL + '/condos/' + condoId + '/phone/' + label,
           data: phone 
         }).then(function(userData) {
           deferred.resolve(userData);
