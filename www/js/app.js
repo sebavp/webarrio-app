@@ -51,6 +51,14 @@ angular.module('WeBarrio', [
     var notificationOpenedCallback = function(jsonData) {
       // alert("Notification received:\n" + JSON.stringify(jsonData));
       console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      var data = jsonData.notification.payload.additionalData
+      switch (data.kind){
+        case 'notice':
+          $state.go('tabs.feed', {notification_id: data.notification_id});
+          return
+        default:
+          $state.go('tabs.home');
+      }
     };
 
     if(window.plugins && window.plugins.OneSignal) {

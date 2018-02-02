@@ -27,6 +27,15 @@
     <!-- build:css assets/build.css -->
     <link href="css/ionic.app.css" rel="stylesheet">
     <!-- endbuild -->
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "646e05c4-981f-4ee7-ac65-5188930efbc5",
+      });
+    });
+  </script>
 
 <!-- build:js assets/build.js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>

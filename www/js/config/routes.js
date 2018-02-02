@@ -313,7 +313,7 @@ angular.module('WeBarrio.routes', [])
     // FEED (NOTIFICACIONES)
     .state('tabs.feed', {
       cache: false,
-      url: '/feed/',
+      url: '/feed/{notification_id}',
       views: {
         'tab_feed': {
           templateUrl: 'templates/feed/feed.html',

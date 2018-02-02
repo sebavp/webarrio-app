@@ -31,7 +31,7 @@
 
     $scope.saveAviso = function (aviso){
       aviso.user_id = currentUser.user.id;
-      eventsService.createEvent('avisos', aviso, currentCondo.id).then(function() {
+      eventsService.createEvent('notice', aviso, currentCondo.id).then(function() {
         $state.go('tabs.dashboard-avisos');
       });
     };

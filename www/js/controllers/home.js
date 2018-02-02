@@ -24,6 +24,7 @@
             });
           });
         }
+
       });
 
       $scope.changeCurrentCondo = function(index){

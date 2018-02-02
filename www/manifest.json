@@ -1,7 +1,9 @@
 {
  "name": "WeBarrio",
  "short_name": "WeBarrio",
- "gcm_sender_id": "94113503596",
+ // "gcm_sender_id": "94113503596",
+ "gcm_sender_id": "482941778795",
+ "gcm_sender_id_comment": "Do not change the GCM Sender ID"
  "icons": [
   {
    "src": "img/favicons/android-icon-36x36.png",

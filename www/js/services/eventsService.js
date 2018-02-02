@@ -66,7 +66,7 @@ angular.module('WeBarrio.services.events', [])
         deferred = $q.defer();
         $http({
           method: 'GET',
-          url: CONFIG.apiURL + '/events/' + condoId + '/avisos'
+          url: CONFIG.apiURL + '/events/' + condoId + '/notice'
         }).then(function(response) {
           deferred.resolve(response.data);
         });
