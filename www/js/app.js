@@ -8,7 +8,7 @@ angular.module('WeBarrio', [
   'WeBarrio.utils',
   'WeBarrio.services.auth',
   'WeBarrio.services.agenda',
-  'WeBarrio.services.mensajes',
+  'WeBarrio.services.messages',
   'WeBarrio.services.events',
   'WeBarrio.services.announcements',
   'WeBarrio.services',
@@ -23,7 +23,7 @@ angular.module('WeBarrio', [
   'angularFileUpload',
   'angular-web-notification'
   ])
-.run(function($ionicPlatform, Auth, $state, $rootScope, $timeout, mensajeService, CONFIG) {
+.run(function($ionicPlatform, Auth, $state, $rootScope, $timeout, messageService, CONFIG) {
   $rootScope.$on('$stateChangeStart', function(event, toState) {
     console.log("currentState", toState.name);
     if (toState.name !== 'tyc' && toState.name !== 'forgot') {
@@ -32,7 +32,7 @@ angular.module('WeBarrio', [
           $state.go('login');
         });
       } else {
-        mensajeService.startNotiticationListener();
+        messageService.startNotiticationListener();
       }
     }
   });

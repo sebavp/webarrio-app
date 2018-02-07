@@ -1,5 +1,5 @@
-angular.module('WeBarrio.services.mensajes', [])
-  .service('mensajeService', function($q, $firebaseObject, $firebaseArray, $localStorage, Auth, $ionicPopup, webNotification, CONFIG, $rootScope) {
+angular.module('WeBarrio.services.messages', [])
+  .service('messageService', function($q, $firebaseObject, $firebaseArray, $localStorage, Auth, $ionicPopup, webNotification, CONFIG, $rootScope) {
     var deferred;
     var ref = firebase.database().ref();
     var openMessageModal = function(aviso) {

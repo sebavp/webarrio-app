@@ -5,7 +5,7 @@
     .module('WeBarrio.controllers')
     .controller('chatController', chatController);
 
-  function chatController($scope, $state, $localStorage, $ionicHistory, dataAPIService, mensajeService, $stateParams, $ionicLoading, $timeout, Auth) {
+  function chatController($scope, $state, $localStorage, $ionicHistory, dataAPIService, messageService, $stateParams, $ionicLoading, $timeout, Auth) {
 
     var page = 1;
 
@@ -36,7 +36,7 @@
 
 
     var loadGroupMessages = function (page){
-      mensajeService.getMessage($stateParams.chatId, page).then(function (response) {
+      messageService.getMessage($stateParams.chatId, page).then(function (response) {
         $scope.$broadcast('scroll.refreshComplete');
         $scope.messages = response.$value === null ? [] : response;
         $scope.loading = false;
@@ -45,7 +45,7 @@
 
 
     var loadGroup = function(){
-      mensajeService.getGroup($stateParams.chatId).then(function (response) {
+      messageService.getGroup($stateParams.chatId).then(function (response) {
           $scope.currentGroup = response;
           $scope.selectedPeople = [];
           loadChats();
@@ -53,7 +53,7 @@
     };
 
     var loadChat = function (userLoading, page){
-      mensajeService.getMessage($stateParams.chatId, page).then(function (response) {
+      messageService.getMessage($stateParams.chatId, page).then(function (response) {
         $scope.$broadcast('scroll.refreshComplete');
         $scope.messages = response.$value === null ? [] : response;
         if (!userLoading) {
@@ -63,7 +63,7 @@
     };
 
     var loadChats = function(fromConversation){
-      mensajeService.getMessages($scope.currentUser.user.id, $scope.currentCondo.id).then(function (response) {
+      messageService.getMessages($scope.currentUser.user.id, $scope.currentCondo.id).then(function (response) {
         $scope.conversations = response;
         if (!fromConversation) {
           getAllPeople();
@@ -86,11 +86,11 @@
         condoId: $scope.currentCondo.id,
         lastMessage: angular.copy($scope.newMessageText),
       };
-      mensajeService.saveConversation($scope.currentUser.user.id, $scope.currentCondo.id, chatInfo).then(function(){
+      messageService.saveConversation($scope.currentUser.user.id, $scope.currentCondo.id, chatInfo).then(function(){
         chatInfo.personId =  $scope.currentUser.user.id;
         chatInfo.personName =  $scope.currentUser.user.name;
         chatInfo.deptoNumber = $scope.currentDepto.number;
-        mensajeService.saveConversation($stateParams.personId, $scope.currentCondo.id, chatInfo).then(function(){
+        messageService.saveConversation($stateParams.personId, $scope.currentCondo.id, chatInfo).then(function(){
           console.log("both created");
         });
       });
@@ -102,14 +102,14 @@
       currentConversation.lastMessage = lastMessage;
       currentConversation.personId = $stateParams.personId;
       currentConversation.personPhoto = $scope.user.image_url;
-      mensajeService.updateConversation($scope.currentUser.user.id, $scope.currentCondo.id, currentConversation).then(function(){
+      messageService.updateConversation($scope.currentUser.user.id, $scope.currentCondo.id, currentConversation).then(function(){
         var otherConversation = angular.copy(currentConversation);
         otherConversation.deptoNumber = $scope.currentDepto.number;
         otherConversation.personId = $scope.currentUser.user.id;
         otherConversation.personName = $scope.currentUser.user.name;
         otherConversation.personPhoto = $scope.currentUser.user.image_url;
         console.log("updateLastMessage1")
-        mensajeService.updateConversation($stateParams.personId, $scope.currentCondo.id,  otherConversation).then(function(){
+        messageService.updateConversation($stateParams.personId, $scope.currentCondo.id,  otherConversation).then(function(){
           console.log("both updated");
           Auth.sendPush({condoId: $scope.currentCondo.id, userId: $stateParams.personId, message: lastMessage, depto_number: $scope.currentDepto.number})
         });
@@ -118,7 +118,7 @@
 
     var saveGroupToUser = function(userId, groupInfo){
       console.log("saving", userId);
-      mensajeService.saveConversation(userId, $scope.currentCondo.id, groupInfo).then(function(){
+      messageService.saveConversation(userId, $scope.currentCondo.id, groupInfo).then(function(){
         console.log("updated group to ", userId);
       });
     };
@@ -129,7 +129,7 @@
       currentConversation.lastMessage = lastMessage;
       currentConversation.groupName = $stateParams.groupName;
       currentConversation.isGroup = true;
-      mensajeService.updateGroupConversation(userId, $scope.currentCondo.id, currentConversation).then(function(){
+      messageService.updateGroupConversation(userId, $scope.currentCondo.id, currentConversation).then(function(){
         console.log("updated", userId);
       });
     };
@@ -163,7 +163,7 @@
 
     $scope.updateGroup = function(currentGroup, selectedPeople){
       currentGroup.users = selectedPeople;
-      mensajeService.updateGroup($stateParams.chatId, currentGroup).then(function () {
+      messageService.updateGroup($stateParams.chatId, currentGroup).then(function () {
         $state.go('chat-group-conversation', {chatId: $stateParams.chatId, groupName: $stateParams.groupName});
       });
     };
@@ -211,7 +211,7 @@
           condoId: $scope.currentCondo.id
         };
         var count = 0;
-        mensajeService.newGroup(groupInfo).then(function(response){
+        messageService.newGroup(groupInfo).then(function(response){
           angular.forEach(groupInfo.users, function(user){
             groupInfo.chatId = response.key;
             groupInfo.isGroup = true;
@@ -237,7 +237,7 @@
             text: $scope.newMessageText,
             sentAt: Date.now(),
         };
-        mensajeService.newMessage($stateParams.chatId, msg).then(function () {
+        messageService.newMessage($stateParams.chatId, msg).then(function () {
           if ($scope.messages.length === 0) {
             $scope.newMessageText = "";
             loadGroupMessages();
@@ -264,15 +264,15 @@
             text: $scope.newMessageText,
             sentAt: Date.now(),
         };
-        mensajeService.newMessage($stateParams.chatId, msg).then(function () {
-            console.log("newMessage")
-            if ($scope.messages.length === 0) {
-              saveConversation();
-              loadChat(true);
-            } else{
-              updateLastMessage(angular.copy($scope.newMessageText));
-            }
-            $scope.newMessageText = "";
+        $scope.newMessageText = "";
+        messageService.newMessage($stateParams.chatId, msg).then(function () {
+          console.log("newMessage")
+          if ($scope.messages.length === 0) {
+            saveConversation();
+            loadChat(true);
+          } else{
+            updateLastMessage(angular.copy($scope.newMessageText));
+          }
         }, function (error) {
             console.log(error);
         });
